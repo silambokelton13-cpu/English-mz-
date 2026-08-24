@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English MZ — Aprenda Inglês</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e8ebf0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #1d4ed8;
+    }
+
+    .hero {
+      padding: 80px 7%;
+      text-align: center;
+      background: linear-gradient(135deg, #eaf2ff, #ffffff);
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #1d4ed8;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #5c667a;
+    }
+
+    .button {
+      display: inline-block;
+      background: #1d4ed8;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 60px 7%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .card .icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #697386;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">English <span>MZ</span> 🇲🇿</div>
+    <div>Aprenda inglês</div>
+  </header>
+
+  <section class="hero">
+    <h1>Aprenda inglês de forma <span>simples e prática.</span></h1>
+
+    <p>
+      Desenvolva seu vocabulário, gramática, leitura,
+      compreensão e conversação através de uma experiência
+      de aprendizagem criada para você.
+    </p>
+
+    <a href="#niveis" class="button">Começar a aprender 🚀</a>
+  </section>
+
+  <section class="section" id="niveis">
+    <h2>Escolha o seu nível</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🟢</div>
+        <h3>Iniciante</h3>
+        <p>
+          Comece do zero e aprenda as palavras e frases
+          essenciais em inglês.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔵</div>
+        <h3>Intermediário</h3>
+        <p>
+          Melhore seu vocabulário, gramática e capacidade
+          de conversar em inglês.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🟣</div>
+        <h3>Avançado</h3>
+        <p>
+          Desenvolva sua fluência e aprimore sua comunicação
+          em situações reais.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>O que você vai aprender?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Vocabulário</h3>
+        <p>Aprenda novas palavras e expressões.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Gramática</h3>
+        <p>Entenda a estrutura do inglês de maneira simples.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🗣️</div>
+        <h3>Conversação</h3>
+        <p>Pratique inglês para situações do dia a dia.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 English MZ — Aprender inglês pode ser simples.</p>
+  </footer>
+
+</body>
+  </html>
