@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="pt">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Lesson 1 — Meet Someone | English MZ</title>
+  <title>Lesson 1 — First Meeting | English MZ</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -21,15 +23,16 @@
 
     header {
       background: white;
-      padding: 18px 7%;
+      padding: 16px 7%;
       border-bottom: 1px solid #e8ebf0;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: bold;
     }
 
@@ -37,77 +40,178 @@
       color: #1d4ed8;
     }
 
-    .lesson {
-      max-width: 750px;
-      margin: auto;
-      padding: 45px 20px;
+    .progress {
+      font-size: 14px;
+      color: #697386;
     }
 
-    .number {
+    .lesson {
+      max-width: 760px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .lesson-number {
       color: #1d4ed8;
       font-weight: bold;
+      font-size: 14px;
       margin-bottom: 10px;
     }
 
     h1 {
-      font-size: 38px;
-      margin-bottom: 15px;
+      font-size: 36px;
+      margin-bottom: 12px;
     }
 
     .intro {
       color: #697386;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .card {
       background: white;
       padding: 25px;
-      border-radius: 16px;
+      border-radius: 17px;
       margin-bottom: 20px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.06);
     }
 
     .card h2 {
-      margin-bottom: 18px;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .context {
+      background: #eef4ff;
+      padding: 22px;
+      border-radius: 14px;
+      margin-top: 15px;
+    }
+
+    .person {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .person strong {
+      color: #1d4ed8;
     }
 
     .phrase {
-      background: #f1f5ff;
-      padding: 18px;
+      background: #f4f6fa;
       border-radius: 12px;
+      padding: 17px;
       margin: 12px 0;
+    }
+
+    .english {
       font-size: 20px;
       font-weight: bold;
     }
 
-    .translation {
+    .meaning {
       color: #697386;
-      font-size: 14px;
       margin-top: 6px;
-      font-weight: normal;
+      font-size: 14px;
+    }
+
+    .listen {
+      background: #172033;
+      color: white;
+      border: none;
+      padding: 9px 13px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .repeat-box {
+      background: #f8faff;
+      border: 1px solid #dbe5ff;
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 15px;
+    }
+
+    .repeat-text {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 15px 0;
     }
 
     .button {
       display: inline-block;
       background: #1d4ed8;
       color: white;
-      padding: 14px 24px;
+      padding: 14px 22px;
       border-radius: 10px;
       text-decoration: none;
-      font-weight: bold;
       border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .secondary {
+      background: #e9eef8;
+      color: #172033;
+    }
+
+    .question {
+      font-size: 19px;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: white;
+      border: 1px solid #d9deea;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
       cursor: pointer;
       font-size: 16px;
     }
 
-    .mission {
-      background: #eef6ff;
-      border-left: 5px solid #1d4ed8;
-      padding: 20px;
+    .options button:hover {
+      border-color: #1d4ed8;
+    }
+
+    .feedback {
       margin-top: 15px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .input-answer {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccd3e0;
       border-radius: 10px;
-      line-height: 1.7;
+      font-size: 17px;
+      margin-top: 10px;
+      outline: none;
+    }
+
+    .input-answer:focus {
+      border-color: #1d4ed8;
+    }
+
+    .conversation {
+      background: #f4f7fb;
+      padding: 20px;
+      border-radius: 14px;
+      line-height: 2;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .result {
@@ -115,24 +219,45 @@
       text-align: center;
     }
 
-    .success {
-      font-size: 55px;
-      margin: 20px;
+    .score {
+      font-size: 50px;
+      font-weight: bold;
+      color: #1d4ed8;
+      margin: 20px 0;
+    }
+
+    .result-card {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .next-button {
+      margin-top: 20px;
     }
 
     @media (max-width: 600px) {
+
       h1 {
         font-size: 30px;
       }
 
-      header {
-        padding: 16px 5%;
+      .lesson {
+        padding-top: 28px;
       }
+
+      header {
+        padding: 15px 5%;
+      }
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -140,217 +265,728 @@
     English <span>MZ</span> 🇲🇿
   </div>
 
-  <div>A1</div>
+  <div class="progress">
+    A1 • Lesson 1
+  </div>
 
 </header>
 
 
 <main class="lesson">
 
-  <!-- AULA -->
 
-  <div id="lessonContent">
+<!-- =========================
+     AULA
+========================= -->
 
-    <div class="number">
-      A1 • LESSON 1
-    </div>
-
-    <h1>Meet Someone 👋</h1>
-
-    <p class="intro">
-      Você acabou de conhecer alguém.
-      Vamos aprender a iniciar uma conversa em inglês.
-    </p>
+<div id="lessonContent">
 
 
-    <!-- CONTEXTO -->
-
-    <div class="card">
-
-      <h2>🎬 Imagine a situação</h2>
-
-      <p>
-        Duas pessoas estão se conhecendo pela primeira vez.
-      </p>
-
-      <div class="phrase">
-        Hello!
-        <div class="translation">
-          Olá!
-        </div>
-      </div>
-
-      <div class="phrase">
-        What's your name?
-        <div class="translation">
-          Qual é o seu nome?
-        </div>
-      </div>
-
-      <div class="phrase">
-        I'm Maria.
-        <div class="translation">
-          Eu sou Maria.
-        </div>
-      </div>
-
-      <div class="phrase">
-        Nice to meet you.
-        <div class="translation">
-          Prazer em conhecer você.
-        </div>
-      </div>
-
-      <div class="phrase">
-        Nice to meet you too.
-        <div class="translation">
-          Prazer em conhecer você também.
-        </div>
-      </div>
-
-    </div>
-
-
-    <!-- PRÁTICA -->
-
-    <div class="card">
-
-      <h2>🧠 Pratique</h2>
-
-      <p>
-        A pessoa pergunta:
-      </p>
-
-      <div class="phrase">
-        What's your name?
-      </div>
-
-      <p>
-        Como você responde?
-      </p>
-
-      <br>
-
-      <button class="button" onclick="showAnswer()">
-        Mostrar resposta
-      </button>
-
-      <div id="answer" style="display:none; margin-top:20px;">
-
-        <div class="phrase">
-          I'm ______.
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- MISSÃO -->
-
-    <div class="card">
-
-      <h2>🎯 Sua missão</h2>
-
-      <div class="mission">
-
-        Imagine que você acabou de conhecer alguém.
-
-        <br><br>
-
-        1. Cumprimente a pessoa.<br>
-        2. Pergunte o nome dela.<br>
-        3. Diga seu nome.<br>
-        4. Diga "Nice to meet you."
-
-      </div>
-
-      <br>
-
-      <button class="button" onclick="finishLesson()">
-        Concluir Lesson 1
-      </button>
-
-    </div>
-
+  <div class="lesson-number">
+    A1 • LESSON 1
   </div>
 
+  <h1>Your first conversation 👋</h1>
 
-  <!-- RESULTADO -->
+  <p class="intro">
+    Hoje você não vai decorar uma lista de cumprimentos.
+    Você vai aprender a usar algumas frases dentro de uma
+    situação real.
+  </p>
 
-  <div id="result" class="result">
 
-    <div class="number">
-      A1 • RESULT
-    </div>
+  <!-- CONTEXTO -->
 
-    <div class="success">
-      🎉
-    </div>
+  <div class="card">
 
-    <h1>Lesson 1 Complete!</h1>
+    <h2>🎬 1. Entre no contexto</h2>
 
     <p>
-      Parabéns! Você terminou sua primeira aula.
+      Imagine que você acabou de conhecer alguém pela primeira vez.
+    </p>
+
+    <div class="context">
+
+      <div class="person">
+        <strong>Anna:</strong> Hello!
+      </div>
+
+      <div class="person">
+        <strong>Você:</strong> Hello!
+      </div>
+
+      <div class="person">
+        <strong>Anna:</strong> What's your name?
+      </div>
+
+      <div class="person">
+        <strong>Você:</strong> I'm Alex.
+      </div>
+
+      <div class="person">
+        <strong>Anna:</strong> Nice to meet you.
+      </div>
+
+      <div class="person">
+        <strong>Você:</strong> Nice to meet you.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COMPREENDER -->
+
+  <div class="card">
+
+    <h2>🧠 2. Agora compreenda</h2>
+
+    <p>
+      Vamos pegar apenas as peças que você precisa para
+      essa conversa.
     </p>
 
 
-    <div class="card">
+    <div class="phrase">
 
-      <h2>🧠 O que você aprendeu?</h2>
+      <div class="english">
+        Hello!
+      </div>
 
-      <p>Hello!</p>
-      <p>What's your name?</p>
-      <p>I'm...</p>
-      <p>Nice to meet you.</p>
-      <p>Nice to meet you too.</p>
+      <div class="meaning">
+        Olá!
+      </div>
 
-    </div>
-
-
-    <div class="card">
-
-      <h2>🔄 Isso não termina aqui</h2>
-
-      <p>
-        Essas expressões voltarão nas próximas aulas
-        para ajudar você a lembrar e usar o inglês.
-      </p>
+      <button class="listen"
+        onclick="speak('Hello')">
+        🔊 Listen
+      </button>
 
     </div>
 
 
-    <!-- PRÓXIMA AULA -->
+    <div class="phrase">
 
-    <a href="a1-aula-02.html" class="button">
-      Start Lesson 2 →
-    </a>
+      <div class="english">
+        What's your name?
+      </div>
+
+      <div class="meaning">
+        Qual é o seu nome?
+      </div>
+
+      <button class="listen"
+        onclick="speak('What is your name?')">
+        🔊 Listen
+      </button>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        I'm Alex.
+      </div>
+
+      <div class="meaning">
+        Eu sou Alex.
+      </div>
+
+      <button class="listen"
+        onclick="speak('I am Alex')">
+        🔊 Listen
+      </button>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        Nice to meet you.
+      </div>
+
+      <div class="meaning">
+        Prazer em conhecer você.
+      </div>
+
+      <button class="listen"
+        onclick="speak('Nice to meet you')">
+        🔊 Listen
+      </button>
+
+    </div>
 
   </div>
+
+
+  <!-- REPETIÇÃO -->
+
+  <div class="card">
+
+    <h2>🗣️ 3. Ouça e repita</h2>
+
+    <p>
+      Não leia apenas. Ouça a frase e fale em voz alta.
+      Tente imitar o ritmo.
+    </p>
+
+
+    <div class="repeat-box">
+
+      <div class="repeat-text">
+        Hello!
+      </div>
+
+      <button class="button"
+        onclick="speak('Hello')">
+        🔊 Ouvir
+      </button>
+
+      <button class="button secondary"
+        onclick="nextRepeat()">
+        Já repeti →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- RECUPERAÇÃO -->
+
+  <div class="card">
+
+    <h2>🧠 4. Agora sem olhar a tradução</h2>
+
+    <p class="question">
+      Alguém acabou de perguntar:
+    </p>
+
+    <div class="phrase">
+      What's your name?
+    </div>
+
+    <p>
+      Qual resposta faz sentido?
+    </p>
+
+
+    <div class="options">
+
+      <button onclick="checkChoice(this, false)">
+        Hello!
+      </button>
+
+      <button onclick="checkChoice(this, true)">
+        I'm Alex.
+      </button>
+
+      <button onclick="checkChoice(this, false)">
+        Nice to meet you.
+      </button>
+
+    </div>
+
+    <div id="choiceFeedback"
+         class="feedback">
+    </div>
+
+  </div>
+
+
+  <!-- PRODUÇÃO -->
+
+  <div class="card">
+
+    <h2>✍️ 5. Agora você</h2>
+
+    <p class="question">
+      Imagine que seu nome é Kelton.
+      Como você diz seu nome em inglês?
+    </p>
+
+    <input
+      id="nameAnswer"
+      class="input-answer"
+      type="text"
+      placeholder="Type your answer in English"
+    >
+
+    <button class="button"
+      onclick="checkName()">
+      Check answer
+    </button>
+
+    <div id="nameFeedback"
+         class="feedback">
+    </div>
+
+  </div>
+
+
+  <!-- CONVERSAÇÃO -->
+
+  <div class="card">
+
+    <h2>💬 6. Mini conversa</h2>
+
+    <p>
+      Agora vamos juntar tudo.
+      Imagine que eu sou uma pessoa que você acabou de conhecer.
+    </p>
+
+    <div class="conversation">
+
+      <strong>English MZ:</strong>
+      Hello!
+
+      <br>
+
+      <strong>Você:</strong>
+      <span id="conversationAnswer">
+        ?
+      </span>
+
+    </div>
+
+    <button class="button"
+      onclick="conversationStep()">
+      Responder →
+    </button>
+
+    <div id="conversationFeedback"
+         class="feedback">
+    </div>
+
+  </div>
+
+
+  <!-- MISSÃO -->
+
+  <div class="card">
+
+    <h2>🎯 7. Sua missão</h2>
+
+    <p>
+      Agora feche o ciclo.
+      Imagine que você encontrou uma pessoa pela primeira vez.
+    </p>
+
+    <br>
+
+    <p>
+      Tente fazer mentalmente esta sequência:
+    </p>
+
+    <div class="mission"
+      style="
+      background:#eef4ff;
+      padding:18px;
+      border-radius:12px;
+      margin-top:15px;
+      line-height:1.8;
+      ">
+
+      1. Cumprimente a pessoa.<br>
+
+      2. Pergunte o nome dela.<br>
+
+      3. Diga seu nome.<br>
+
+      4. Diga que foi um prazer conhecê-la.
+
+    </div>
+
+    <p style="margin-top:15px;">
+      Não procure a tradução.
+      Tente lembrar das frases sozinho.
+    </p>
+
+    <br>
+
+    <button class="button"
+      onclick="finishLesson()">
+
+      Concluir Lesson 1 ✓
+
+    </button>
+
+  </div>
+
+
+</div>
+
+
+<!-- =========================
+     RESULTADO
+========================= -->
+
+<div id="result"
+     class="result">
+
+  <div class="lesson-number">
+    A1 • LESSON 1 COMPLETE
+  </div>
+
+  <h1>Você terminou! 🎉</h1>
+
+  <div class="score">
+    <span id="finalScore">0</span>%
+  </div>
+
+  <p>
+    Mas o mais importante não é a porcentagem.
+  </p>
+
+  <div class="card result-card">
+
+    <h2>🧠 O que você deve conseguir fazer agora</h2>
+
+    <p>
+      ✓ Cumprimentar alguém
+    </p>
+
+    <p>
+      ✓ Perguntar o nome
+    </p>
+
+    <p>
+      ✓ Dizer seu nome
+    </p>
+
+    <p>
+      ✓ Dizer "Nice to meet you"
+    </p>
+
+  </div>
+
+
+  <div class="card result-card">
+
+    <h2>🔄 Vamos reutilizar isso</h2>
+
+    <p>
+      Não precisa decorar tudo agora.
+      Essas frases vão voltar nas próximas aulas,
+      em novos contextos.
+    </p>
+
+    <br>
+
+    <p>
+      O objetivo é chegar ao ponto em que você
+      entende e responde sem precisar traduzir
+      mentalmente para português.
+    </p>
+
+  </div>
+
+
+  <div class="card result-card">
+
+    <h2>💬 Seu primeiro desafio</h2>
+
+    <p>
+      Sem olhar para cima, tente dizer em voz alta:
+    </p>
+
+    <br>
+
+    <strong>
+      Hello → What's your name? → I'm... →
+      Nice to meet you.
+    </strong>
+
+  </div>
+
+
+  <!-- POR ENQUANTO NÃO CRIAMOS A AULA 2 -->
+
+  <button class="button next-button"
+    onclick="alert('Lesson 2 será liberada depois da revisão desta aula.')">
+
+    🔒 Lesson 2
+
+  </button>
+
+</div>
+
 
 </main>
 
 
 <script>
 
-  function showAnswer() {
+  /* =========================
+     SISTEMA DE PONTUAÇÃO
+  ========================= */
 
-    document.getElementById("answer").style.display = "block";
+  let score = 0;
+
+  let answered = 0;
+
+
+  /* =========================
+     ÁUDIO
+  ========================= */
+
+  function speak(text) {
+
+    if ('speechSynthesis' in window) {
+
+      window.speechSynthesis.cancel();
+
+      const speech =
+        new SpeechSynthesisUtterance(text);
+
+      speech.lang = 'en-US';
+
+      speech.rate = 0.85;
+
+      window.speechSynthesis.speak(speech);
+
+    } else {
+
+      alert("Seu navegador não suporta áudio automático.");
+
+    }
 
   }
 
 
+  /* =========================
+     REPETIÇÃO
+  ========================= */
+
+  const repeatPhrases = [
+
+    "Hello",
+
+    "What's your name?",
+
+    "I'm Alex.",
+
+    "Nice to meet you."
+
+  ];
+
+  let repeatIndex = 0;
+
+
+  function nextRepeat() {
+
+    repeatIndex++;
+
+    if (repeatIndex >= repeatPhrases.length) {
+
+      repeatIndex = 0;
+
+      alert(
+        "Muito bem! Agora você ouviu e repetiu as frases principais."
+      );
+
+      return;
+
+    }
+
+    document.querySelector(".repeat-text").innerText =
+      repeatPhrases[repeatIndex];
+
+    speak(repeatPhrases[repeatIndex]);
+
+  }
+
+
+  /* =========================
+     QUESTÃO DE ESCOLHA
+  ========================= */
+
+  function checkChoice(button, correct) {
+
+    answered++;
+
+    const feedback =
+      document.getElementById("choiceFeedback");
+
+
+    if (correct) {
+
+      score++;
+
+      feedback.innerText =
+        "✓ Correct! 'I'm Alex.' responde à pergunta 'What's your name?'";
+
+      feedback.style.color = "green";
+
+    } else {
+
+      feedback.innerText =
+        "Not quite. Pense: a pergunta foi 'What's your name?'";
+
+      feedback.style.color = "#c0392b";
+
+    }
+
+  }
+
+
+  /* =========================
+     NOME
+  ========================= */
+
+  function checkName() {
+
+    const answer =
+      document.getElementById("nameAnswer")
+      .value
+      .trim()
+      .toLowerCase();
+
+    const feedback =
+      document.getElementById("nameFeedback");
+
+
+    answered++;
+
+
+    if (
+      answer === "i'm kelton" ||
+      answer === "i'm kelton." ||
+      answer === "im kelton" ||
+      answer === "i am kelton" ||
+      answer === "i am kelton."
+    ) {
+
+      score++;
+
+      feedback.innerText =
+        "✓ Correct! Great job!";
+
+      feedback.style.color = "green";
+
+    } else {
+
+      feedback.innerText =
+        "Quase! Uma resposta natural seria: I'm Kelton.";
+
+      feedback.style.color = "#c0392b";
+
+    }
+
+  }
+
+
+  /* =========================
+     MINI CONVERSA
+  ========================= */
+
+  let conversationStepNumber = 0;
+
+
+  function conversationStep() {
+
+    const answer =
+      document.getElementById("conversationAnswer");
+
+    const feedback =
+      document.getElementById("conversationFeedback");
+
+
+    conversationStepNumber++;
+
+
+    if (conversationStepNumber === 1) {
+
+      answer.innerText =
+        "Hello!";
+
+      feedback.innerText =
+        "✓ Good! Agora continue a conversa.";
+
+    }
+
+    else if (conversationStepNumber === 2) {
+
+      answer.innerText =
+        "What's your name?";
+
+      feedback.innerText =
+        "✓ Agora você está perguntando o nome.";
+
+    }
+
+    else if (conversationStepNumber === 3) {
+
+      answer.innerText =
+        "I'm Kelton.";
+
+      feedback.innerText =
+        "✓ Agora você apresentou seu nome.";
+
+    }
+
+    else if (conversationStepNumber === 4) {
+
+      answer.innerText =
+        "Nice to meet you.";
+
+      feedback.innerText =
+        "✓ Conversation complete! 🎉";
+
+    }
+
+    else {
+
+      feedback.innerText =
+        "Muito bem! Você completou a mini conversa.";
+
+    }
+
+  }
+
+
+  /* =========================
+     FINALIZAR
+  ========================= */
+
   function finishLesson() {
 
-    document.getElementById("lessonContent").style.display = "none";
+    let percentage = 0;
 
-    document.getElementById("result").style.display = "block";
+
+    if (answered > 0) {
+
+      percentage =
+        Math.round((score / answered) * 100);
+
+    } else {
+
+      percentage = 100;
+
+    }
+
+
+    document.getElementById("finalScore")
+      .innerText = percentage;
+
+
+    document.getElementById("lessonContent")
+      .style.display = "none";
+
+
+    document.getElementById("result")
+      .style.display = "block";
+
 
     window.scrollTo(0, 0);
 
   }
 
 </script>
+
 
 </body>
   </html>
