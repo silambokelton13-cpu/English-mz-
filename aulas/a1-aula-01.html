@@ -9,32 +9,47 @@
 
 <style>
 
+/* =========================================
+   ENGLISH MZ — DESIGN
+========================================= */
+
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 :root{
-  --blue:#2563eb;
-  --blue2:#3b82f6;
+  --bg:#080a0f;
+  --card:#121620;
+  --card2:#181d27;
+  --border:#292f3a;
+  --blue:#2f6df6;
+  --blue-dark:#1d4ed8;
   --green:#22c55e;
   --red:#ef4444;
   --yellow:#facc15;
-  --black:#090b10;
-  --dark:#11141b;
-  --dark2:#171b24;
-  --border:#292f3b;
-  --text:#ffffff;
-  --muted:#9299a8;
+  --white:#ffffff;
+  --gray:#9299a8;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
 }
 
 body{
-  background:var(--black);
-  color:var(--text);
+  background:var(--bg);
+  color:var(--white);
   font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
+  overflow-x:hidden;
 }
+
+
+/* =========================================
+   TOP BAR
+========================================= */
 
 .topbar{
   position:fixed;
@@ -42,59 +57,81 @@ body{
   left:0;
   right:0;
   height:72px;
-  background:#090b10;
+
   display:flex;
   align-items:center;
-  gap:14px;
-  padding:0 16px;
-  z-index:100;
-  border-bottom:1px solid #1c2029;
+  gap:12px;
+
+  padding:0 15px;
+
+  background:#080a0f;
+
+  border-bottom:1px solid #1b2029;
+
+  z-index:1000;
 }
 
-.close{
+.close-btn{
   width:38px;
   height:38px;
+
   border:none;
   border-radius:50%;
+
   background:#171b24;
   color:white;
-  font-size:20px;
+
+  font-size:22px;
+
   cursor:pointer;
+
+  flex-shrink:0;
 }
 
-.progress-wrap{
+.progress-container{
   flex:1;
 }
 
-.progress-track{
+.progress-background{
   width:100%;
   height:9px;
-  background:#242a35;
+
+  background:#252b36;
+
   border-radius:20px;
+
   overflow:hidden;
 }
 
 .progress-bar{
-  height:100%;
   width:0%;
+  height:100%;
+
   background:var(--blue);
+
   border-radius:20px;
-  transition:width .45s ease;
+
+  transition:width .4s ease;
 }
 
 .stats{
   display:flex;
-  align-items:center;
   gap:6px;
+  align-items:center;
 }
 
 .stat{
   background:#171b24;
+
   border:1px solid var(--border);
+
   border-radius:20px;
+
   padding:7px 9px;
+
   font-size:11px;
-  font-weight:800;
+  font-weight:bold;
+
   white-space:nowrap;
 }
 
@@ -102,150 +139,263 @@ body{
   color:var(--yellow);
 }
 
+
+/* =========================================
+   MAIN
+========================================= */
+
 main{
   width:100%;
   max-width:620px;
+
   margin:auto;
-  padding:105px 18px 120px;
+
+  padding:105px 18px 125px;
 }
+
+
+/* =========================================
+   TELAS
+========================================= */
 
 .screen{
   display:none;
-  animation:screenIn .35s ease;
+
+  animation:screenAppear .3s ease;
 }
 
 .screen.active{
   display:block;
 }
 
-@keyframes screenIn{
+@keyframes screenAppear{
+
   from{
     opacity:0;
     transform:translateY(15px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
-.lesson-tag{
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.lesson-label{
   color:#60a5fa;
-  font-size:13px;
+
+  font-size:12px;
   font-weight:900;
-  letter-spacing:1.2px;
+
+  letter-spacing:1.5px;
+
   margin-bottom:15px;
 }
 
 h1{
   font-size:36px;
+
   line-height:1.1;
-  margin-bottom:15px;
+
+  margin-bottom:14px;
 }
 
 .subtitle{
-  color:var(--muted);
+  color:var(--gray);
+
   font-size:16px;
+
   line-height:1.55;
 }
+
+
+/* =========================================
+   CHARACTER
+========================================= */
 
 .character{
   width:125px;
   height:125px;
-  margin:25px auto;
+
+  margin:28px auto;
+
   border-radius:40px;
-  background:linear-gradient(145deg,#172554,#1e3a8a);
+
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+
   font-size:65px;
-  box-shadow:0 20px 50px rgba(37,99,235,.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      #172554,
+      #1e40af
+    );
+
+  box-shadow:
+    0 20px 50px
+    rgba(37,99,235,.22);
 }
+
+
+/* =========================================
+   SPEECH
+========================================= */
 
 .speech{
-  background:#171b24;
+  background:var(--card);
+
   border:1px solid var(--border);
+
   border-radius:22px;
+
   padding:22px;
+
   text-align:center;
-  margin-bottom:20px;
+
+  margin:22px 0;
 }
 
-.speech-name{
-  font-size:11px;
+.speech-label{
   color:#60a5fa;
+
+  font-size:10px;
+
   font-weight:900;
-  margin-bottom:8px;
+
   letter-spacing:1px;
+
+  margin-bottom:8px;
 }
 
 .speech-text{
   font-size:25px;
+
   font-weight:900;
+
+  line-height:1.35;
 }
+
+
+/* =========================================
+   CONVERSATION
+========================================= */
 
 .conversation{
   display:flex;
+
   flex-direction:column;
-  gap:12px;
+
+  gap:11px;
+
   margin:25px 0;
 }
 
 .bubble{
-  max-width:85%;
+  max-width:86%;
+
   padding:15px 17px;
+
   border-radius:18px;
-  line-height:1.4;
-}
 
-.bubble.anna{
-  background:#171b24;
-  border:1px solid var(--border);
-  align-self:flex-start;
-  border-bottom-left-radius:5px;
-}
+  line-height:1.45;
 
-.bubble.you{
-  background:var(--blue);
-  align-self:flex-end;
-  border-bottom-right-radius:5px;
+  font-size:16px;
+
+  font-weight:600;
 }
 
 .bubble small{
   display:block;
-  font-size:10px;
-  opacity:.65;
+
+  font-size:9px;
+
+  opacity:.6;
+
   font-weight:900;
-  margin-bottom:4px;
+
+  margin-bottom:5px;
 }
 
-.phrase{
-  background:var(--dark2);
+.bubble.anna{
+  align-self:flex-start;
+
+  background:var(--card);
+
   border:1px solid var(--border);
-  padding:18px;
+
+  border-bottom-left-radius:5px;
+}
+
+.bubble.you{
+  align-self:flex-end;
+
+  background:var(--blue);
+
+  border-bottom-right-radius:5px;
+}
+
+
+/* =========================================
+   PHRASES
+========================================= */
+
+.phrase{
+  background:var(--card);
+
+  border:1px solid var(--border);
+
   border-radius:18px;
+
+  padding:18px;
+
   margin-bottom:12px;
 }
 
 .english{
   font-size:20px;
+
   font-weight:900;
 }
 
 .meaning{
-  color:var(--muted);
+  color:var(--gray);
+
   font-size:14px;
-  margin-top:6px;
+
+  margin-top:7px;
 }
+
+
+/* =========================================
+   AUDIO BUTTON
+========================================= */
 
 .audio-btn{
   margin-top:12px;
-  border:1px solid #38404e;
-  background:#202632;
+
+  background:#202631;
+
+  border:1px solid #38404d;
+
   color:white;
+
   padding:10px 15px;
+
   border-radius:12px;
+
+  font-size:14px;
+
   font-weight:800;
+
   cursor:pointer;
 }
 
@@ -253,61 +403,117 @@ h1{
   transform:scale(.96);
 }
 
-.audio-circle{
+.audio-main{
   width:100px;
   height:100px;
-  border-radius:50%;
+
   border:none;
-  background:var(--blue);
-  color:white;
-  font-size:35px;
-  cursor:pointer;
+
+  border-radius:50%;
+
   display:block;
-  margin:25px auto;
-  box-shadow:0 8px 0 #1743a4;
+
+  margin:28px auto;
+
+  background:var(--blue);
+
+  color:white;
+
+  font-size:36px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 7px 0 var(--blue-dark);
 }
 
-.audio-circle:active{
-  transform:translateY(5px);
+.audio-main:active{
+  transform:translateY(6px);
+
   box-shadow:none;
 }
 
+
+/* =========================================
+   QUESTION
+========================================= */
+
 .question{
   font-size:22px;
+
   font-weight:900;
-  margin:20px 0;
+
+  line-height:1.4;
+
+  margin:25px 0;
 }
 
 .option{
   width:100%;
-  background:var(--dark2);
-  border:2px solid var(--border);
-  color:white;
-  padding:18px;
-  border-radius:17px;
+
+  display:block;
+
   text-align:left;
-  font-size:17px;
+
+  padding:17px;
+
+  margin-bottom:11px;
+
+  background:var(--card);
+
+  color:white;
+
+  border:2px solid var(--border);
+
+  border-radius:17px;
+
+  font-size:16px;
+
   font-weight:800;
-  margin-bottom:12px;
+
   cursor:pointer;
+
+  transition:.15s;
+}
+
+.option:active{
+  transform:scale(.98);
 }
 
 .option.correct{
-  background:rgba(34,197,94,.15);
+  background:rgba(34,197,94,.13);
+
   border-color:var(--green);
+
+  color:#86efac;
 }
 
 .option.wrong{
-  background:rgba(239,68,68,.15);
+  background:rgba(239,68,68,.13);
+
   border-color:var(--red);
+
+  color:#fca5a5;
 }
+
+
+/* =========================================
+   FEEDBACK
+========================================= */
 
 .feedback{
   display:none;
+
+  margin-top:12px;
+
   padding:16px;
+
   border-radius:15px;
-  margin-top:10px;
+
+  font-size:14px;
+
   font-weight:800;
+
   line-height:1.5;
 }
 
@@ -317,22 +523,36 @@ h1{
 
 .feedback.correct{
   background:rgba(34,197,94,.12);
+
   color:#86efac;
 }
 
 .feedback.wrong{
   background:rgba(239,68,68,.12);
+
   color:#fca5a5;
 }
 
+
+/* =========================================
+   INPUT
+========================================= */
+
 .input{
   width:100%;
-  padding:18px;
-  border-radius:16px;
-  border:2px solid var(--border);
-  background:#171b24;
+
+  padding:17px;
+
+  background:var(--card);
+
   color:white;
+
+  border:2px solid var(--border);
+
+  border-radius:16px;
+
   font-size:18px;
+
   outline:none;
 }
 
@@ -340,136 +560,236 @@ h1{
   border-color:var(--blue);
 }
 
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:linear-gradient(transparent,#090b10 25%);
-  padding:35px 18px 18px;
-  z-index:90;
+.input::placeholder{
+  color:#626a78;
 }
 
-.bottom-inner{
-  width:100%;
-  max-width:620px;
-  margin:auto;
-}
 
-.continue{
-  width:100%;
-  border:none;
-  background:var(--blue);
-  color:white;
-  padding:17px;
-  border-radius:16px;
-  font-size:17px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 5px 0 #1743a4;
-}
-
-.continue:active{
-  transform:translateY(5px);
-  box-shadow:none;
-}
-
-.continue:disabled{
-  background:#303642;
-  color:#737b89;
-  box-shadow:none;
-}
+/* =========================================
+   MISSION
+========================================= */
 
 .mission{
   display:flex;
+
   flex-direction:column;
-  gap:12px;
+
+  gap:11px;
+
   margin-top:25px;
 }
 
 .mission-item{
-  background:#171b24;
+  background:var(--card);
+
   border:1px solid var(--border);
+
+  border-radius:17px;
+
   padding:17px;
-  border-radius:16px;
+
+  font-size:16px;
+
   font-weight:800;
 }
 
+
+/* =========================================
+   BOTTOM BUTTON
+========================================= */
+
+.bottom-bar{
+  position:fixed;
+
+  bottom:0;
+  left:0;
+  right:0;
+
+  padding:35px 18px 18px;
+
+  background:
+    linear-gradient(
+      transparent,
+      #080a0f 30%
+    );
+
+  z-index:900;
+}
+
+.bottom-inner{
+  width:100%;
+
+  max-width:620px;
+
+  margin:auto;
+}
+
+.continue-btn{
+  width:100%;
+
+  padding:17px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:var(--blue);
+
+  color:white;
+
+  font-size:17px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 5px 0 var(--blue-dark);
+}
+
+.continue-btn:active{
+  transform:translateY(5px);
+
+  box-shadow:none;
+}
+
+
+/* =========================================
+   XP POPUP
+========================================= */
+
+.xp-popup{
+  position:fixed;
+
+  top:85px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:#211d0c;
+
+  border:1px solid #806b0a;
+
+  color:var(--yellow);
+
+  padding:11px 20px;
+
+  border-radius:25px;
+
+  font-weight:900;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:2000;
+}
+
+.xp-popup.show{
+  animation:xpAnimation 1.2s ease;
+}
+
+@keyframes xpAnimation{
+
+  0%{
+    opacity:0;
+    transform:
+      translateX(-50%)
+      translateY(-15px);
+  }
+
+  20%{
+    opacity:1;
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+  70%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translateX(-50%)
+      translateY(-15px);
+  }
+
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
 .result-icon{
-  width:130px;
-  height:130px;
-  border-radius:45px;
-  background:linear-gradient(145deg,#172554,#2563eb);
+  width:135px;
+  height:135px;
+
+  margin:28px auto;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:45px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #172554,
+      #2563eb
+    );
+
   font-size:70px;
-  margin:25px auto;
 }
 
 .result-xp{
-  font-size:50px;
-  font-weight:900;
-  color:var(--yellow);
   text-align:center;
-  margin:25px 0;
+
+  font-size:50px;
+
+  font-weight:900;
+
+  color:var(--yellow);
+
+  margin:20px 0;
 }
 
 .result-card{
-  background:#11141b;
+  background:var(--card);
+
   border:1px solid var(--border);
-  padding:22px;
+
   border-radius:20px;
-  margin-top:20px;
+
+  padding:21px;
+
+  margin-top:18px;
 }
 
 .learned{
   display:flex;
+
   justify-content:space-between;
+
   padding:14px 0;
-  border-bottom:1px solid #242a35;
+
+  border-bottom:1px solid #252b35;
+
+  font-weight:700;
 }
 
 .learned:last-child{
   border-bottom:none;
 }
 
-.xp-popup{
-  position:fixed;
-  top:85px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#1c1917;
-  border:1px solid #854d0e;
-  color:var(--yellow);
-  padding:12px 20px;
-  border-radius:25px;
-  font-weight:900;
-  opacity:0;
-  z-index:200;
-}
 
-.xp-popup.show{
-  animation:xpPop 1.2s ease;
-}
-
-@keyframes xpPop{
-  0%{
-    opacity:0;
-    transform:translateX(-50%) translateY(-20px);
-  }
-  20%{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-  70%{
-    opacity:1;
-  }
-  100%{
-    opacity:0;
-    transform:translateX(-50%) translateY(-20px);
-  }
-}
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:480px){
 
@@ -479,31 +799,51 @@ h1{
 
   .stat{
     padding:7px 8px;
+
     font-size:10px;
+  }
+
+  .speech-text{
+    font-size:23px;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
+
+<!-- =====================================
+     TOP BAR
+===================================== -->
+
 <header class="topbar">
 
-  <button class="close"
+  <button
+    class="close-btn"
     onclick="confirmExit()">
+
     ×
+
   </button>
 
-  <div class="progress-wrap">
-    <div class="progress-track">
+
+  <div class="progress-container">
+
+    <div class="progress-background">
+
       <div
         class="progress-bar"
         id="progressBar">
       </div>
+
     </div>
+
   </div>
+
 
   <div class="stats">
 
@@ -512,27 +852,48 @@ h1{
     </div>
 
     <div class="stat xp-stat">
-      ⭐ <span id="xp">0</span> XP
+      ⭐ <span id="xp">0</span>
     </div>
 
   </div>
 
 </header>
 
-<div class="xp-popup" id="xpPopup">
+
+<!-- =====================================
+     XP POPUP
+===================================== -->
+
+<div
+  class="xp-popup"
+  id="xpPopup">
+
   +5 XP ⭐
+
 </div>
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
 
 <main>
 
-<section class="screen active" id="screen1">
 
-  <div class="lesson-tag">
+<!-- =====================================
+     SCREEN 1
+===================================== -->
+
+<section
+  class="screen active"
+  id="screen1">
+
+  <div class="lesson-label">
     A1 • LESSON 1
   </div>
 
   <h1>
-    Your first conversation
+    Your first conversation 👋
   </h1>
 
   <p class="subtitle">
@@ -540,13 +901,15 @@ h1{
     alguém em inglês.
   </p>
 
+
   <div class="character">
     👩
   </div>
 
+
   <div class="speech">
 
-    <div class="speech-name">
+    <div class="speech-label">
       ANNA
     </div>
 
@@ -556,41 +919,67 @@ h1{
 
   </div>
 
+
   <div class="conversation">
 
     <div class="bubble anna">
+
       <small>ANNA</small>
+
       Hello!
+
     </div>
+
 
     <div class="bubble you">
+
       <small>YOU</small>
+
       Hello!
+
     </div>
 
+
     <div class="bubble anna">
+
       <small>ANNA</small>
+
       What's your name?
+
     </div>
 
+
     <div class="bubble you">
+
       <small>YOU</small>
+
       I'm Alex.
+
     </div>
+
 
     <div class="bubble anna">
+
       <small>ANNA</small>
+
       Nice to meet you.
+
     </div>
 
+
     <div class="bubble you">
+
       <small>YOU</small>
+
       Nice to meet you.
+
     </div>
 
   </div>
 
-  <button class="audio-btn"
+
+  <button
+    class="audio-btn"
     onclick="playAudio('conversation')">
 
     🔊 Ouvir conversa
@@ -600,23 +989,33 @@ h1{
 </section>
 
 
-<section class="screen" id="screen2">
+<!-- =====================================
+     SCREEN 2
+===================================== -->
 
-  <div class="lesson-tag">
+<section
+  class="screen"
+  id="screen2">
+
+  <div class="lesson-label">
     2 • UNDERSTAND
   </div>
 
   <h1>
-    Understand the conversation
+    Understand
   </h1>
 
   <p class="subtitle">
-    Estas são as quatro frases principais.
+    Estas são as quatro frases
+    que você precisa para esta conversa.
   </p>
 
-  <div style="margin-top:25px">
+
+  <div style="margin-top:25px;">
+
 
     <div class="phrase">
+
       <div class="english">
         Hello!
       </div>
@@ -625,13 +1024,19 @@ h1{
         Olá!
       </div>
 
-      <button class="audio-btn"
+      <button
+        class="audio-btn"
         onclick="playAudio('hello')">
+
         🔊 Listen
+
       </button>
+
     </div>
 
+
     <div class="phrase">
+
       <div class="english">
         What's your name?
       </div>
@@ -640,13 +1045,19 @@ h1{
         Qual é o seu nome?
       </div>
 
-      <button class="audio-btn"
+      <button
+        class="audio-btn"
         onclick="playAudio('whats')">
+
         🔊 Listen
+
       </button>
+
     </div>
 
+
     <div class="phrase">
+
       <div class="english">
         I'm Alex.
       </div>
@@ -655,13 +1066,19 @@ h1{
         Eu sou Alex.
       </div>
 
-      <button class="audio-btn"
+      <button
+        class="audio-btn"
         onclick="playAudio('im')">
+
         🔊 Listen
+
       </button>
+
     </div>
 
+
     <div class="phrase">
+
       <div class="english">
         Nice to meet you.
       </div>
@@ -670,10 +1087,14 @@ h1{
         Prazer em conhecer você.
       </div>
 
-      <button class="audio-btn"
+      <button
+        class="audio-btn"
         onclick="playAudio('nice')">
+
         🔊 Listen
+
       </button>
+
     </div>
 
   </div>
@@ -681,9 +1102,15 @@ h1{
 </section>
 
 
-<section class="screen" id="screen3">
+<!-- =====================================
+     SCREEN 3
+===================================== -->
 
-  <div class="lesson-tag">
+<section
+  class="screen"
+  id="screen3">
+
+  <div class="lesson-label">
     3 • LISTEN & REPEAT
   </div>
 
@@ -693,141 +1120,214 @@ h1{
 
   <p class="subtitle">
     Ouça a frase e fale em voz alta.
+    Tente imitar o ritmo.
   </p>
+
 
   <div class="character">
     🗣️
   </div>
 
+
   <div class="speech">
 
-    <div class="speech-name">
+    <div class="speech-label">
       SAY THIS
     </div>
 
-    <div class="speech-text"
+    <div
+      class="speech-text"
       id="repeatText">
+
       Hello!
+
     </div>
 
   </div>
 
-  <button class="audio-circle"
+
+  <button
+    class="audio-main"
     onclick="playCurrentRepeat()">
 
     🔊
 
   </button>
 
-  <p class="subtitle"
-    style="text-align:center">
 
-    Tente imitar o ritmo e a pronúncia.
+  <p
+    class="subtitle"
+    style="text-align:center;">
+
+    Depois de repetir, toque em
+    <strong style="color:white;">
+      CONTINUAR
+    </strong>
+    para avançar.
 
   </p>
 
-       </section>
-   <section class="screen" id="screen4">
+  </section>
+  <!-- =====================================
+     SCREEN 4 — REMEMBER
+===================================== -->
 
-  <div class="lesson-tag">
+<section
+  class="screen"
+  id="screen4">
+
+  <div class="lesson-label">
     4 • REMEMBER
   </div>
 
   <h1>
-    What did you hear?
+    What did you hear? 🧠
   </h1>
 
   <p class="subtitle">
-    Agora vamos testar se você entendeu.
-    Não olhe a tradução.
+    Agora tente lembrar sem olhar
+    a tradução.
   </p>
 
-  <div class="question">
-    Someone asks:
-    <br><br>
-    "What's your name?"
+
+  <div class="character">
+    🤔
   </div>
 
-  <button class="option"
+
+  <div class="question">
+
+    Someone asks:
+
+    <br><br>
+
+    "What's your name?"
+
+  </div>
+
+
+  <button
+    class="option"
     onclick="answerChoice(this,false)">
+
     Hello!
+
   </button>
 
-  <button class="option"
+
+  <button
+    class="option"
     onclick="answerChoice(this,true)">
+
     I'm Alex.
+
   </button>
 
-  <button class="option"
+
+  <button
+    class="option"
     onclick="answerChoice(this,false)">
+
     Nice to meet you.
+
   </button>
+
 
   <div
-    class="feedback"
-    id="choiceFeedback">
+    id="choiceFeedback"
+    class="feedback">
+
   </div>
 
 </section>
 
 
-<section class="screen" id="screen5">
 
-  <div class="lesson-tag">
+<!-- =====================================
+     SCREEN 5 — PRODUCE
+===================================== -->
+
+<section
+  class="screen"
+  id="screen5">
+
+  <div class="lesson-label">
     5 • PRODUCE
   </div>
 
   <h1>
-    Now you
+    Now you! ✍️
   </h1>
 
   <p class="subtitle">
-    Imagine que seu nome é Kelton.
-    Como você apresenta seu nome em inglês?
+
+    Imagine que seu nome é
+    <strong style="color:white;">
+      Kelton
+    </strong>.
+
+    Como você apresenta seu nome
+    em inglês?
+
   </p>
 
+
   <div class="character">
-    👋
+    🙋
   </div>
 
+
   <input
-    class="input"
     id="nameInput"
+    class="input"
     type="text"
     placeholder="Type your answer..."
     autocomplete="off"
   >
 
+
   <div
-    class="feedback"
-    id="nameFeedback">
+    id="nameFeedback"
+    class="feedback">
+
   </div>
 
 </section>
 
 
-<section class="screen" id="screen6">
 
-  <div class="lesson-tag">
+<!-- =====================================
+     SCREEN 6 — CONVERSATION
+===================================== -->
+
+<section
+  class="screen"
+  id="screen6">
+
+  <div class="lesson-label">
     6 • CONVERSATION
   </div>
 
   <h1>
-    Let's have a conversation
+    Let's talk! 💬
   </h1>
 
   <p class="subtitle">
+
     Você acabou de conhecer Anna.
-    Responda naturalmente.
+    Escolha o que você diria naturalmente.
+
   </p>
+
 
   <div class="character">
     👩
   </div>
 
+
   <div class="speech">
 
-    <div class="speech-name">
+    <div class="speech-label">
       ANNA
     </div>
 
@@ -839,6 +1339,7 @@ h1{
 
     </div>
 
+
     <button
       class="audio-btn"
       onclick="playConversationAudio()">
@@ -849,7 +1350,10 @@ h1{
 
   </div>
 
-  <div id="conversationOptions">
+
+  <div
+    id="conversationOptions">
+
 
     <button
       class="option"
@@ -859,6 +1363,7 @@ h1{
 
     </button>
 
+
     <button
       class="option"
       onclick="conversationAnswer('Nice to meet you.')">
@@ -866,6 +1371,7 @@ h1{
       Nice to meet you.
 
     </button>
+
 
     <button
       class="option"
@@ -875,19 +1381,29 @@ h1{
 
     </button>
 
+
   </div>
 
+
   <div
-    class="feedback"
-    id="conversationFeedback">
+    id="conversationFeedback"
+    class="feedback">
+
   </div>
 
 </section>
 
 
-<section class="screen" id="screen7">
 
-  <div class="lesson-tag">
+<!-- =====================================
+     SCREEN 7 — MISSION
+===================================== -->
+
+<section
+  class="screen"
+  id="screen7">
+
+  <div class="lesson-label">
     7 • YOUR MISSION
   </div>
 
@@ -896,167 +1412,264 @@ h1{
   </h1>
 
   <p class="subtitle">
-    Agora tente fazer a conversa completa
-    sem olhar para a tradução.
+
+    Agora tente fazer a conversa
+    completa sem olhar para a tradução.
+
   </p>
+
+
+  <div class="character">
+    🎯
+  </div>
+
 
   <div class="mission">
 
+
     <div class="mission-item">
+
       👋 Cumprimente alguém
+
     </div>
 
+
     <div class="mission-item">
+
       ❓ Pergunte o nome
+
     </div>
 
+
     <div class="mission-item">
+
       🙋 Diga seu nome
+
     </div>
 
+
     <div class="mission-item">
-      🤝 Diga que foi um prazer conhecer a pessoa
+
+      🤝 Diga que foi um prazer
+      conhecer a pessoa
+
     </div>
+
 
   </div>
 
+
   <div
     class="speech"
-    style="margin-top:25px">
+    style="margin-top:25px;">
 
-    <div class="speech-name">
+    <div class="speech-label">
       REMEMBER
     </div>
 
-    <div class="speech-text"
-      style="font-size:18px;line-height:1.7">
+
+    <div
+      class="speech-text"
+      style="
+        font-size:19px;
+        line-height:1.8;
+      ">
 
       Hello!<br>
+
       What's your name?<br>
+
       I'm...<br>
+
       Nice to meet you.
 
     </div>
 
   </div>
 
+
   <p
     class="subtitle"
-    style="text-align:center">
+    style="text-align:center;">
 
-    Fale tudo em voz alta.
-    Não precisa ser perfeito.
+    Agora fale toda a sequência
+    em voz alta.
 
   </p>
 
 </section>
 
 
-<section class="screen" id="resultScreen">
 
-  <div class="lesson-tag">
+<!-- =====================================
+     RESULT SCREEN
+===================================== -->
+
+<section
+  class="screen"
+  id="resultScreen">
+
+  <div class="lesson-label">
     LESSON COMPLETE
   </div>
+
 
   <h1>
     You did it! 🎉
   </h1>
 
+
   <div class="result-icon">
     🏆
   </div>
 
+
   <div class="result-xp">
-    +<span id="finalXP">0</span> XP
+
+    +<span id="finalXP">0</span> XP ⭐
+
   </div>
+
 
   <p
     class="subtitle"
-    style="text-align:center">
+    style="text-align:center;">
 
-    Você completou sua primeira aula
-    de inglês no English MZ.
+    Você completou sua primeira
+    aula de inglês no English MZ.
 
   </p>
 
+
   <div class="result-card">
 
-    <h2 style="margin-bottom:15px">
-      🧠 O que você aprendeu
+    <h2 style="margin-bottom:10px;">
+      🧠 You learned
     </h2>
 
+
     <div class="learned">
 
-      <span>Hello</span>
+      <span>
+        Hello
+      </span>
 
-      <strong>✓</strong>
+      <strong>
+        ✓
+      </strong>
 
     </div>
 
+
     <div class="learned">
 
-      <span>What's your name?</span>
+      <span>
+        What's your name?
+      </span>
 
-      <strong>✓</strong>
+      <strong>
+        ✓
+      </strong>
 
     </div>
 
+
     <div class="learned">
 
-      <span>I'm...</span>
+      <span>
+        I'm...
+      </span>
 
-      <strong>✓</strong>
+      <strong>
+        ✓
+      </strong>
 
     </div>
 
+
     <div class="learned">
 
-      <span>Nice to meet you.</span>
+      <span>
+        Nice to meet you.
+      </span>
 
-      <strong>✓</strong>
+      <strong>
+        ✓
+      </strong>
 
     </div>
 
   </div>
 
+
   <div class="result-card">
 
-    <h2 style="margin-bottom:12px">
-      🔄 Remember
+    <h2 style="margin-bottom:10px;">
+      🔄 Keep going
     </h2>
+
 
     <p class="subtitle">
 
-      Essas frases não vão desaparecer.
-      Vamos reutilizá-las nas próximas aulas
-      em novos contextos.
+      Estas frases vão voltar
+      nas próximas aulas em
+      novos contextos.
 
     </p>
 
   </div>
 
-  <button
-    class="continue"
-    style="margin-top:20px"
-    onclick="finishMessage()">
 
-    Lesson 1 concluída ✓
+  <div
+    class="speech"
+    style="margin-top:20px;">
+
+    <div class="speech-label">
+      YOUR FIRST CONVERSATION
+    </div>
+
+
+    <div
+      class="speech-text"
+      style="
+        font-size:18px;
+        line-height:1.8;
+      ">
+
+      Hello → What's your name?
+      → I'm... → Nice to meet you.
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="continue-btn"
+    onclick="finishMessage()"
+    style="margin-top:20px;">
+
+    LESSON 1 COMPLETE ✓
 
   </button>
 
 </section>
 
-
 </main>
 
 
-<div class="bottom">
+
+<!-- =====================================
+     BOTTOM NAVIGATION
+===================================== -->
+
+<div class="bottom-bar">
 
   <div class="bottom-inner">
 
     <button
-      class="continue"
       id="continueButton"
+      class="continue-btn"
       onclick="nextScreen()">
 
       CONTINUAR
@@ -1065,14 +1678,18 @@ h1{
 
   </div>
 
-</div>
+      </div>
+  <script>
+
+/* =========================================
+   ENGLISH MZ — LESSON 1
+   SISTEMA PRINCIPAL
+========================================= */
 
 
-<script>
-
-/* =====================================
-   ENGLISH MZ — LESSON 1 ENGINE
-===================================== */
+/* =========================================
+   VARIÁVEIS
+========================================= */
 
 let currentScreen = 1;
 
@@ -1080,68 +1697,90 @@ const totalScreens = 7;
 
 let xp = 0;
 
-let answeredCorrectly = 0;
-
 let repeatIndex = 0;
 
 let conversationStep = 0;
 
+let nameChecked = false;
 
-/* =====================================
+
+/* =========================================
    XP
-===================================== */
+========================================= */
 
 function addXP(amount){
 
   xp += amount;
 
-  document.getElementById("xp").innerText = xp;
+  const xpElement =
+    document.getElementById("xp");
+
+  if(xpElement){
+
+    xpElement.innerText = xp;
+
+  }
+
 
   const popup =
     document.getElementById("xpPopup");
 
-  popup.innerText = "+" + amount + " XP ⭐";
+  if(popup){
 
-  popup.classList.remove("show");
+    popup.innerText =
+      "+" + amount + " XP ⭐";
 
-  void popup.offsetWidth;
+    popup.classList.remove("show");
 
-  popup.classList.add("show");
+    void popup.offsetWidth;
+
+    popup.classList.add("show");
+
+  }
 
 }
 
 
-/* =====================================
-   PROGRESS
-===================================== */
+/* =========================================
+   PROGRESSO
+========================================= */
 
 function updateProgress(){
 
-  const percentage =
+  const progress =
     ((currentScreen - 1) / totalScreens) * 100;
 
-  document.getElementById("progressBar")
-    .style.width = percentage + "%";
+
+  const bar =
+    document.getElementById("progressBar");
+
+
+  if(bar){
+
+    bar.style.width =
+      progress + "%";
+
+  }
 
 }
 
 
-/* =====================================
-   TELA
-===================================== */
+/* =========================================
+   MOSTRAR TELA
+========================================= */
 
 function showScreen(number){
 
   document
     .querySelectorAll(".screen")
-    .forEach(screen => {
+    .forEach(function(screen){
 
       screen.classList.remove("active");
 
     });
 
 
-  const target =
+  let target =
     document.getElementById(
       "screen" + number
     );
@@ -1156,29 +1795,41 @@ function showScreen(number){
 
   currentScreen = number;
 
+
   updateProgress();
 
+
+  updateContinueButton();
+
+
   window.scrollTo({
+
     top:0,
+
     behavior:"smooth"
+
   });
-
-
-  updateButton();
 
 }
 
 
-/* =====================================
+/* =========================================
    BOTÃO CONTINUAR
-===================================== */
+========================================= */
 
-function updateButton(){
+function updateContinueButton(){
 
   const button =
     document.getElementById(
       "continueButton"
     );
+
+
+  if(!button){
+
+    return;
+
+  }
 
 
   if(currentScreen === 7){
@@ -1198,13 +1849,16 @@ function updateButton(){
 }
 
 
-/* =====================================
-   AVANÇAR
-===================================== */
+/* =========================================
+   NAVEGAÇÃO PRINCIPAL
+========================================= */
 
 function nextScreen(){
 
-  /* tela 4 precisa de resposta */
+
+  /* ---------------------------------------
+     SCREEN 4
+  --------------------------------------- */
 
   if(currentScreen === 4){
 
@@ -1213,13 +1867,21 @@ function nextScreen(){
         "choiceFeedback"
       );
 
-    if(!feedback.classList.contains("correct")){
 
-      feedback.innerText =
-        "Escolha uma resposta antes de continuar.";
+    if(
+      !feedback ||
+      !feedback.classList.contains("correct")
+    ){
 
-      feedback.className =
-        "feedback show wrong";
+      if(feedback){
+
+        feedback.innerText =
+          "Escolha a resposta correta antes de continuar.";
+
+        feedback.className =
+          "feedback show wrong";
+
+      }
 
       return;
 
@@ -1228,7 +1890,9 @@ function nextScreen(){
   }
 
 
-  /* tela 5 precisa de resposta */
+  /* ---------------------------------------
+     SCREEN 5
+  --------------------------------------- */
 
   if(currentScreen === 5){
 
@@ -1237,7 +1901,8 @@ function nextScreen(){
         "nameInput"
       );
 
-    if(!input.dataset.checked){
+
+    if(!nameChecked){
 
       checkName();
 
@@ -1248,7 +1913,9 @@ function nextScreen(){
   }
 
 
-  /* tela 6 precisa completar conversa */
+  /* ---------------------------------------
+     SCREEN 6
+  --------------------------------------- */
 
   if(currentScreen === 6){
 
@@ -1259,11 +1926,13 @@ function nextScreen(){
           "conversationFeedback"
         );
 
+
       feedback.innerText =
-        "Continue a conversa antes de avançar.";
+        "Complete a conversa antes de continuar.";
 
       feedback.className =
         "feedback show wrong";
+
 
       return;
 
@@ -1272,9 +1941,15 @@ function nextScreen(){
   }
 
 
+  /* ---------------------------------------
+     IR PARA PRÓXIMA TELA
+  --------------------------------------- */
+
   if(currentScreen < totalScreens){
 
-    showScreen(currentScreen + 1);
+    showScreen(
+      currentScreen + 1
+    );
 
   }
 
@@ -1287,16 +1962,18 @@ function nextScreen(){
 }
 
 
-/* =====================================
+/* =========================================
    ÁUDIO
-===================================== */
+========================================= */
 
 function speak(text){
 
-  if(!("speechSynthesis" in window)){
+  if(
+    !("speechSynthesis" in window)
+  ){
 
     alert(
-      "O seu navegador não suporta áudio automático. Tente abrir o site no Google Chrome."
+      "O áudio automático não está disponível neste navegador. Abra o English MZ no Google Chrome."
     );
 
     return;
@@ -1304,65 +1981,105 @@ function speak(text){
   }
 
 
-  window.speechSynthesis.cancel();
+  try{
+
+    window.speechSynthesis.cancel();
 
 
-  const voice =
-    new SpeechSynthesisUtterance(text);
+    const utterance =
+      new SpeechSynthesisUtterance(text);
 
 
-  voice.lang = "en-US";
+    utterance.lang =
+      "en-US";
 
-  voice.rate = 0.82;
+    utterance.rate =
+      0.82;
 
-  voice.pitch = 1;
+    utterance.pitch =
+      1;
 
-  voice.volume = 1;
-
-
-  window.speechSynthesis.speak(voice);
-
-}
-
-
-/* =====================================
-   ÁUDIOS DA AULA
-===================================== */
-
-function playAudio(type){
-
-  const audios = {
-
-    hello:
-      "Hello!",
-
-    whats:
-      "What's your name?",
-
-    im:
-      "I'm Alex.",
-
-    nice:
-      "Nice to meet you.",
-
-    conversation:
-      "Hello! What's your name? I'm Alex. Nice to meet you."
-
-  };
+    utterance.volume =
+      1;
 
 
-  if(audios[type]){
+    window.speechSynthesis.speak(
+      utterance
+    );
 
-    speak(audios[type]);
+  }
+
+  catch(error){
+
+    alert(
+      "Não foi possível reproduzir o áudio. Tente novamente."
+    );
 
   }
 
 }
 
 
-/* =====================================
+/* =========================================
+   ÁUDIO DAS FRASES
+========================================= */
+
+function playAudio(type){
+
+  let text = "";
+
+
+  if(type === "hello"){
+
+    text = "Hello!";
+
+  }
+
+
+  else if(type === "whats"){
+
+    text =
+      "What's your name?";
+
+  }
+
+
+  else if(type === "im"){
+
+    text =
+      "I'm Alex.";
+
+  }
+
+
+  else if(type === "nice"){
+
+    text =
+      "Nice to meet you.";
+
+  }
+
+
+  else if(type === "conversation"){
+
+    text =
+      "Hello! What's your name? I'm Alex. Nice to meet you.";
+
+  }
+
+
+  if(text !== ""){
+
+    speak(text);
+
+  }
+
+}
+
+
+/* =========================================
    REPETIÇÃO
-===================================== */
+========================================= */
 
 const repeatPhrases = [
 
@@ -1379,9 +2096,11 @@ const repeatPhrases = [
 
 function playCurrentRepeat(){
 
-  speak(
-    repeatPhrases[repeatIndex]
-  );
+  const text =
+    repeatPhrases[repeatIndex];
+
+
+  speak(text);
 
 }
 
@@ -1390,7 +2109,11 @@ function nextRepeat(){
 
   repeatIndex++;
 
-  if(repeatIndex >= repeatPhrases.length){
+
+  if(
+    repeatIndex >=
+    repeatPhrases.length
+  ){
 
     repeatIndex = 0;
 
@@ -1404,10 +2127,20 @@ function nextRepeat(){
 
   }
 
-  document.getElementById(
-    "repeatText"
-  ).innerText =
-    repeatPhrases[repeatIndex];
+
+  const repeatText =
+    document.getElementById(
+      "repeatText"
+    );
+
+
+  if(repeatText){
+
+    repeatText.innerText =
+      repeatPhrases[repeatIndex];
+
+  }
+
 
   speak(
     repeatPhrases[repeatIndex]
@@ -1416,19 +2149,26 @@ function nextRepeat(){
 }
 
 
-/* =====================================
-   QUESTÃO
-===================================== */
+/* =========================================
+   QUESTÃO DE MEMÓRIA
+========================================= */
 
-function answerChoice(button, correct){
+function answerChoice(
+  button,
+  correct
+){
 
-  document
-    .querySelectorAll("#screen4 .option")
-    .forEach(btn => {
+  const buttons =
+    document.querySelectorAll(
+      "#screen4 .option"
+    );
 
-      btn.disabled = true;
 
-    });
+  buttons.forEach(function(btn){
+
+    btn.disabled = true;
+
+  });
 
 
   const feedback =
@@ -1439,15 +2179,18 @@ function answerChoice(button, correct){
 
   if(correct){
 
-    button.classList.add("correct");
+    button.classList.add(
+      "correct"
+    );
+
 
     feedback.innerText =
       "✓ Correct! 'I'm Alex.' responde à pergunta 'What's your name?'";
 
+
     feedback.className =
       "feedback show correct";
 
-    answeredCorrectly++;
 
     addXP(10);
 
@@ -1455,10 +2198,14 @@ function answerChoice(button, correct){
 
   else{
 
-    button.classList.add("wrong");
+    button.classList.add(
+      "wrong"
+    );
+
 
     feedback.innerText =
-      "Not quite. Pense no que a pessoa perguntou.";
+      "Not quite. A pergunta foi: 'What's your name?'";
+
 
     feedback.className =
       "feedback show wrong";
@@ -1468,9 +2215,9 @@ function answerChoice(button, correct){
 }
 
 
-/* =====================================
-   PRODUÇÃO
-===================================== */
+/* =========================================
+   PRODUÇÃO — NOME
+========================================= */
 
 function checkName(){
 
@@ -1480,16 +2227,23 @@ function checkName(){
     );
 
 
-  const answer =
-    input.value
-      .trim()
-      .toLowerCase();
-
-
   const feedback =
     document.getElementById(
       "nameFeedback"
     );
+
+
+  if(!input){
+
+    return;
+
+  }
+
+
+  const answer =
+    input.value
+      .trim()
+      .toLowerCase();
 
 
   if(
@@ -1511,13 +2265,13 @@ function checkName(){
     feedback.innerText =
       "✓ Excellent! That's natural English.";
 
+
     feedback.className =
       "feedback show correct";
 
-    input.dataset.checked =
-      "true";
 
-    answeredCorrectly++;
+    nameChecked = true;
+
 
     addXP(10);
 
@@ -1526,42 +2280,69 @@ function checkName(){
   else{
 
     feedback.innerText =
-      "Quase! Tente: I'm Kelton.";
+      "Quase! Tente dizer: I'm Kelton.";
+
 
     feedback.className =
       "feedback show wrong";
 
-    input.dataset.checked =
-      "";
+
+    nameChecked = false;
 
   }
 
 }
 
 
-/* =====================================
-   CONVERSAÇÃO
-===================================== */
+/* =========================================
+   ÁUDIO DA CONVERSA
+========================================= */
 
 function playConversationAudio(){
 
-  const questions = [
-
-    "Hello!",
-
-    "What's your name?",
-
-    "Nice to meet you."
-
-  ];
+  let text = "";
 
 
-  speak(
-    questions[conversationStep]
-  );
+  if(conversationStep === 0){
+
+    text =
+      "Hello!";
+
+  }
+
+
+  else if(conversationStep === 1){
+
+    text =
+      "What's your name?";
+
+  }
+
+
+  else if(conversationStep === 2){
+
+    text =
+      "Nice to meet you.";
+
+  }
+
+
+  else{
+
+    text =
+      "Hello! What's your name? I'm Kelton. Nice to meet you.";
+
+  }
+
+
+  speak(text);
 
 }
 
+
+/* =========================================
+   RESPOSTA DA CONVERSA
+========================================= */
 
 function conversationAnswer(answer){
 
@@ -1570,13 +2351,17 @@ function conversationAnswer(answer){
       "conversationQuestion"
     );
 
+
   const feedback =
     document.getElementById(
       "conversationFeedback"
     );
 
 
-  /* STEP 1 */
+  /* =====================================
+     PASSO 1
+     ANNA: HELLO
+  ===================================== */
 
   if(conversationStep === 0){
 
@@ -1585,26 +2370,46 @@ function conversationAnswer(answer){
       question.innerText =
         "What's your name?";
 
+
       conversationStep = 1;
 
+
       feedback.innerText =
-        "✓ Great! Anna perguntou seu nome.";
+        "✓ Good! Agora Anna quer saber seu nome.";
+
 
       feedback.className =
         "feedback show correct";
 
+
       addXP(5);
+
 
       updateConversationButtons();
 
+
+      /* ÁUDIO AUTOMÁTICO */
+
+      setTimeout(function(){
+
+        speak(
+          "What's your name?"
+        );
+
+      },400);
+
     }
+
 
     return;
 
   }
 
 
-  /* STEP 2 */
+  /* =====================================
+     PASSO 2
+     ANNA: WHAT'S YOUR NAME?
+  ===================================== */
 
   if(conversationStep === 1){
 
@@ -1613,36 +2418,57 @@ function conversationAnswer(answer){
       question.innerText =
         "Nice to meet you.";
 
+
       conversationStep = 2;
 
+
       feedback.innerText =
-        "✓ Good! Agora Anna respondeu.";
+        "✓ Great! Você apresentou seu nome.";
+
 
       feedback.className =
         "feedback show correct";
 
+
       addXP(5);
 
+
       updateConversationButtons();
+
+
+      /* ÁUDIO AUTOMÁTICO */
+
+      setTimeout(function(){
+
+        speak(
+          "Nice to meet you."
+        );
+
+      },400);
 
     }
 
     else{
 
       feedback.innerText =
-        "Agora diga seu nome: I'm Kelton.";
+        "Agora apresente seu nome: I'm Kelton.";
+
 
       feedback.className =
         "feedback show wrong";
 
     }
 
+
     return;
 
   }
 
 
-  /* STEP 3 */
+  /* =====================================
+     PASSO 3
+     ANNA: NICE TO MEET YOU
+  ===================================== */
 
   if(conversationStep === 2){
 
@@ -1650,15 +2476,28 @@ function conversationAnswer(answer){
 
       conversationStep = 3;
 
+
       feedback.innerText =
-        "🎉 Perfect! Conversa completa.";
+        "🎉 Perfect! You completed the conversation.";
+
 
       feedback.className =
         "feedback show correct";
 
+
       addXP(10);
 
+
       updateConversationButtons();
+
+
+      setTimeout(function(){
+
+        speak(
+          "Nice to meet you."
+        );
+
+      },300);
 
     }
 
@@ -1667,9 +2506,9 @@ function conversationAnswer(answer){
 }
 
 
-/* =====================================
-   BOTÕES DA CONVERSA
-===================================== */
+/* =========================================
+   ATUALIZAR OPÇÕES DA CONVERSA
+========================================= */
 
 function updateConversationButtons(){
 
@@ -1678,6 +2517,17 @@ function updateConversationButtons(){
       "conversationOptions"
     );
 
+
+  if(!container){
+
+    return;
+
+  }
+
+
+  /* ---------------------------------------
+     PASSO 1
+  --------------------------------------- */
 
   if(conversationStep === 0){
 
@@ -1691,6 +2541,7 @@ function updateConversationButtons(){
 
       </button>
 
+
       <button
         class="option"
         onclick="conversationAnswer('Nice to meet you.')">
@@ -1698,6 +2549,7 @@ function updateConversationButtons(){
         Nice to meet you.
 
       </button>
+
 
       <button
         class="option"
@@ -1712,6 +2564,10 @@ function updateConversationButtons(){
   }
 
 
+  /* ---------------------------------------
+     PASSO 2
+  --------------------------------------- */
+
   else if(conversationStep === 1){
 
     container.innerHTML = `
@@ -1724,6 +2580,7 @@ function updateConversationButtons(){
 
       </button>
 
+
       <button
         class="option"
         onclick="conversationAnswer('I'm Kelton.')">
@@ -1731,6 +2588,7 @@ function updateConversationButtons(){
         I'm Kelton.
 
       </button>
+
 
       <button
         class="option"
@@ -1745,6 +2603,10 @@ function updateConversationButtons(){
   }
 
 
+  /* ---------------------------------------
+     PASSO 3
+  --------------------------------------- */
+
   else if(conversationStep === 2){
 
     container.innerHTML = `
@@ -1757,6 +2619,7 @@ function updateConversationButtons(){
 
       </button>
 
+
       <button
         class="option"
         onclick="conversationAnswer('Hello!')">
@@ -1765,9 +2628,10 @@ function updateConversationButtons(){
 
       </button>
 
+
       <button
         class="option"
-        onclick="conversationAnswer('What is your name?')">
+        onclick="conversationAnswer('What's your name?')">
 
         What's your name?
 
@@ -1778,14 +2642,24 @@ function updateConversationButtons(){
   }
 
 
+  /* ---------------------------------------
+     FINAL
+  --------------------------------------- */
+
   else{
 
     container.innerHTML = `
 
       <div class="speech">
 
+        <div class="speech-label">
+          COMPLETE
+        </div>
+
         <div class="speech-text">
+
           Conversation complete! 🎉
+
         </div>
 
       </div>
@@ -1797,51 +2671,75 @@ function updateConversationButtons(){
 }
 
 
-/* =====================================
-   FINALIZAR
-===================================== */
+/* =========================================
+   FINALIZAR AULA
+========================================= */
 
 function finishLesson(){
 
   document
     .querySelectorAll(".screen")
-    .forEach(screen => {
+    .forEach(function(screen){
 
-      screen.classList.remove("active");
+      screen.classList.remove(
+        "active"
+      );
 
     });
 
 
-  document
-    .getElementById("resultScreen")
-    .classList.add("active");
+  const result =
+    document.getElementById(
+      "resultScreen"
+    );
 
 
-  document
-    .getElementById("finalXP")
-    .innerText = xp;
+  result.classList.add(
+    "active"
+  );
 
 
-  document
-    .getElementById("progressBar")
-    .style.width = "100%";
+  document.getElementById(
+    "finalXP"
+  ).innerText = xp;
 
 
-  document
-    .getElementById("continueButton")
-    .style.display = "none";
+  const bar =
+    document.getElementById(
+      "progressBar"
+    );
+
+
+  bar.style.width =
+    "100%";
+
+
+  const button =
+    document.getElementById(
+      "continueButton"
+    );
+
+
+  button.style.display =
+    "none";
 
 
   window.scrollTo({
+
     top:0,
+
     behavior:"smooth"
+
   });
 
+
+  /* GUARDAR PROGRESSO */
 
   localStorage.setItem(
     "englishMZ_lesson1_complete",
     "true"
   );
+
 
   localStorage.setItem(
     "englishMZ_lesson1_xp",
@@ -1851,16 +2749,30 @@ function finishLesson(){
 }
 
 
-/* =====================================
-   SAIR
-===================================== */
+/* =========================================
+   BOTÃO FINAL
+========================================= */
+
+function finishMessage(){
+
+  alert(
+    "🎉 Lesson 1 concluída! A próxima aula será liberada quando estiver pronta."
+  );
+
+}
+
+
+/* =========================================
+   SAIR DA AULA
+========================================= */
 
 function confirmExit(){
 
   const leave =
     confirm(
-      "Sair da aula? O seu progresso desta sessão pode ser perdido."
+      "Sair da aula? O progresso desta sessão pode ser perdido."
     );
+
 
   if(leave){
 
@@ -1871,28 +2783,16 @@ function confirmExit(){
 }
 
 
-/* =====================================
-   FINAL
-===================================== */
-
-function finishMessage(){
-
-  alert(
-    "Lesson 1 concluída! 🎉 A Lesson 2 será liberada quando estiver pronta."
-  );
-
-}
-
-
-/* =====================================
+/* =========================================
    INICIALIZAÇÃO
-===================================== */
+========================================= */
 
 updateProgress();
 
-updateButton();
+updateContinueButton();
 
 </script>
-   </body>
-</html>
-      
+
+
+</body>
+  </html>
