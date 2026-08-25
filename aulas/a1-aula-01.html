@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lesson 1 — Meet Someone | English MZ</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e8ebf0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #1d4ed8;
+    }
+
+    .lesson {
+      max-width: 750px;
+      margin: auto;
+      padding: 45px 20px;
+    }
+
+    .number {
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .intro {
+      color: #697386;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .card h2 {
+      margin-bottom: 18px;
+    }
+
+    .phrase {
+      background: #f1f5ff;
+      padding: 18px;
+      border-radius: 12px;
+      margin: 12px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .translation {
+      color: #697386;
+      font-size: 14px;
+      margin-top: 6px;
+      font-weight: normal;
+    }
+
+    .button {
+      display: inline-block;
+      background: #1d4ed8;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .mission {
+      background: #eef6ff;
+      border-left: 5px solid #1d4ed8;
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .result {
+      display: none;
+      text-align: center;
+    }
+
+    .success {
+      font-size: 55px;
+      margin: 20px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 30px;
+      }
+
+      header {
+        padding: 16px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    English <span>MZ</span> 🇲🇿
+  </div>
+
+  <div>A1</div>
+
+</header>
+
+
+<main class="lesson">
+
+  <!-- AULA -->
+
+  <div id="lessonContent">
+
+    <div class="number">
+      A1 • LESSON 1
+    </div>
+
+    <h1>Meet Someone 👋</h1>
+
+    <p class="intro">
+      Você acabou de conhecer alguém.
+      Vamos aprender a iniciar uma conversa em inglês.
+    </p>
+
+
+    <!-- CONTEXTO -->
+
+    <div class="card">
+
+      <h2>🎬 Imagine a situação</h2>
+
+      <p>
+        Duas pessoas estão se conhecendo pela primeira vez.
+      </p>
+
+      <div class="phrase">
+        Hello!
+        <div class="translation">
+          Olá!
+        </div>
+      </div>
+
+      <div class="phrase">
+        What's your name?
+        <div class="translation">
+          Qual é o seu nome?
+        </div>
+      </div>
+
+      <div class="phrase">
+        I'm Maria.
+        <div class="translation">
+          Eu sou Maria.
+        </div>
+      </div>
+
+      <div class="phrase">
+        Nice to meet you.
+        <div class="translation">
+          Prazer em conhecer você.
+        </div>
+      </div>
+
+      <div class="phrase">
+        Nice to meet you too.
+        <div class="translation">
+          Prazer em conhecer você também.
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- PRÁTICA -->
+
+    <div class="card">
+
+      <h2>🧠 Pratique</h2>
+
+      <p>
+        A pessoa pergunta:
+      </p>
+
+      <div class="phrase">
+        What's your name?
+      </div>
+
+      <p>
+        Como você responde?
+      </p>
+
+      <br>
+
+      <button class="button" onclick="showAnswer()">
+        Mostrar resposta
+      </button>
+
+      <div id="answer" style="display:none; margin-top:20px;">
+
+        <div class="phrase">
+          I'm ______.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MISSÃO -->
+
+    <div class="card">
+
+      <h2>🎯 Sua missão</h2>
+
+      <div class="mission">
+
+        Imagine que você acabou de conhecer alguém.
+
+        <br><br>
+
+        1. Cumprimente a pessoa.<br>
+        2. Pergunte o nome dela.<br>
+        3. Diga seu nome.<br>
+        4. Diga "Nice to meet you."
+
+      </div>
+
+      <br>
+
+      <button class="button" onclick="finishLesson()">
+        Concluir Lesson 1
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- RESULTADO -->
+
+  <div id="result" class="result">
+
+    <div class="number">
+      A1 • RESULT
+    </div>
+
+    <div class="success">
+      🎉
+    </div>
+
+    <h1>Lesson 1 Complete!</h1>
+
+    <p>
+      Parabéns! Você terminou sua primeira aula.
+    </p>
+
+
+    <div class="card">
+
+      <h2>🧠 O que você aprendeu?</h2>
+
+      <p>Hello!</p>
+      <p>What's your name?</p>
+      <p>I'm...</p>
+      <p>Nice to meet you.</p>
+      <p>Nice to meet you too.</p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>🔄 Isso não termina aqui</h2>
+
+      <p>
+        Essas expressões voltarão nas próximas aulas
+        para ajudar você a lembrar e usar o inglês.
+      </p>
+
+    </div>
+
+
+    <!-- PRÓXIMA AULA -->
+
+    <a href="a1-aula-02.html" class="button">
+      Start Lesson 2 →
+    </a>
+
+  </div>
+
+</main>
+
+
+<script>
+
+  function showAnswer() {
+
+    document.getElementById("answer").style.display = "block";
+
+  }
+
+
+  function finishLesson() {
+
+    document.getElementById("lessonContent").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    window.scrollTo(0, 0);
+
+  }
+
+</script>
+
+</body>
+  </html>
