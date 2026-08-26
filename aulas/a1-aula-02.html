@@ -9,1103 +9,431 @@
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>Lesson 2 — Meet Someone New | English MZ</title>
+<title>Lesson 2 — Where Are You From? | English MZ</title>
 
 <style>
 
-/* =====================================
-   ENGLISH MZ — LESSON 2
-   ESTILO
-===================================== */
-
-:root{
-
-  --bg:#0b0f19;
-
-  --card:#151b29;
-
-  --card2:#1b2333;
-
-  --blue:#3b82f6;
-
-  --blue2:#2563eb;
-
-  --green:#22c55e;
-
-  --red:#ef4444;
-
-  --yellow:#facc15;
-
-  --text:#ffffff;
-
-  --muted:#9ca3af;
-
-  --border:#273247;
-
-}
-
-
-/* =====================================
-   RESET
-===================================== */
-
 *{
-
-  margin:0;
-
-  padding:0;
-
   box-sizing:border-box;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  margin:0;
+  padding:0;
 }
-
-
-/* =====================================
-   BODY
-===================================== */
 
 body{
-
-  background:
-    radial-gradient(
-      circle at top,
-      #172554 0%,
-      #0b0f19 45%
-    );
-
-  color:var(--text);
-
+  font-family:Arial,sans-serif;
+  background:#111111;
+  color:#ffffff;
   min-height:100vh;
-
 }
 
-
-/* =====================================
+/* =========================
    HEADER
-===================================== */
+========================= */
 
-header{
-
+.header{
   position:sticky;
-
   top:0;
-
   z-index:100;
-
-  background:
-    rgba(11,15,25,.95);
-
-  backdrop-filter:
-    blur(12px);
-
-  border-bottom:
-    1px solid var(--border);
-
-  padding:
-    14px 18px;
-
+  background:#181818;
+  border-bottom:1px solid #292929;
+  padding:12px 16px;
 }
-
-
-/* =====================================
-   HEADER TOP
-===================================== */
 
 .header-top{
-
-  max-width:850px;
-
-  margin:auto;
-
   display:flex;
-
+  justify-content:space-between;
   align-items:center;
-
-  justify-content:
-    space-between;
-
-  gap:15px;
-
+  margin-bottom:10px;
 }
-
 
 .logo{
-
-  font-size:20px;
-
-  font-weight:800;
-
+  font-size:19px;
+  font-weight:900;
 }
-
 
 .logo span{
-
-  color:var(--blue);
-
+  color:#58cc02;
 }
-
-
-/* =====================================
-   XP
-===================================== */
 
 .xp{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  background:
-    #1c2434;
-
-  padding:
-    8px 12px;
-
+  background:#242424;
+  color:#ffc800;
+  padding:7px 11px;
   border-radius:20px;
-
+  font-size:14px;
   font-weight:bold;
-
-  color:var(--yellow);
-
 }
 
-
-/* =====================================
-   PROGRESS
-===================================== */
-
-.progress-container{
-
-  max-width:850px;
-
-  margin:
-    12px auto 0;
-
-}
-
-
-.progress-info{
-
+.progress-row{
   display:flex;
-
-  justify-content:
-    space-between;
-
-  font-size:12px;
-
-  color:var(--muted);
-
-  margin-bottom:6px;
-
+  align-items:center;
+  gap:10px;
 }
-
 
 .progress-bar{
-
-  width:100%;
-
-  height:8px;
-
-  background:#202938;
-
+  flex:1;
+  height:9px;
+  background:#303030;
   border-radius:20px;
-
   overflow:hidden;
-
 }
 
-
-.progress{
-
+.progress-fill{
+  width:0%;
   height:100%;
-
-  width:11%;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--blue),
-      #60a5fa
-    );
-
+  background:#58cc02;
   border-radius:20px;
+  transition:.4s;
+}
 
-  transition:
-    width .4s ease;
-
+.progress-text{
+  font-size:12px;
+  color:#aaa;
+  min-width:35px;
+  text-align:right;
 }
 
 
-/* =====================================
-   MAIN
-===================================== */
+/* =========================
+   APP
+========================= */
 
-main{
-
-  max-width:850px;
-
+.app{
+  max-width:600px;
   margin:auto;
-
-  padding:
-    28px 18px 120px;
-
+  padding:25px 16px 80px;
 }
 
 
-/* =====================================
-   SCREEN
-===================================== */
+/* =========================
+   TELAS
+========================= */
 
 .screen{
-
   display:none;
-
-  animation:
-    fadeIn .3s ease;
-
+  animation:fade .25s ease;
 }
-
 
 .screen.active{
-
   display:block;
-
 }
 
-
-@keyframes fadeIn{
-
+@keyframes fade{
   from{
-
     opacity:0;
-
-    transform:
-      translateY(12px);
-
+    transform:translateY(8px);
   }
 
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
-
 }
 
 
-/* =====================================
-   LESSON LABEL
-===================================== */
+/* =========================
+   TÍTULOS
+========================= */
 
 .lesson-label{
-
   display:inline-block;
-
-  color:#93c5fd;
-
-  font-size:13px;
-
-  font-weight:bold;
-
+  color:#58cc02;
+  font-size:12px;
+  font-weight:900;
   letter-spacing:1px;
-
   margin-bottom:12px;
-
 }
-
-
-/* =====================================
-   TITLES
-===================================== */
 
 h1{
-
-  font-size:
-    clamp(
-      30px,
-      6vw,
-      48px
-    );
-
-  line-height:1.1;
-
-  margin-bottom:15px;
-
+  font-size:31px;
+  line-height:1.15;
+  margin-bottom:12px;
 }
-
 
 h2{
-
-  font-size:24px;
-
+  font-size:21px;
   margin-bottom:12px;
-
 }
-
 
 .subtitle{
-
-  color:var(--muted);
-
+  color:#a7a7a7;
   line-height:1.6;
-
-  font-size:16px;
-
+  font-size:15px;
+  margin-bottom:20px;
 }
 
 
-/* =====================================
-   CARD
-===================================== */
+/* =========================
+   CARDS
+========================= */
 
 .card{
-
-  background:
-    linear-gradient(
-      145deg,
-      var(--card),
-      #111725
-    );
-
-  border:
-    1px solid var(--border);
-
-  border-radius:22px;
-
-  padding:24px;
-
-  margin-top:20px;
-
-  box-shadow:
-    0 12px 35px
-    rgba(0,0,0,.25);
-
+  background:#1c1c1c;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
 }
 
 
-/* =====================================
-   CONTEXT
-===================================== */
+/* =========================
+   CONTEXTO
+========================= */
 
 .context{
-
-  margin-top:18px;
-
-  background:
-    #101827;
-
-  border:
-    1px solid #263653;
-
-  border-radius:18px;
-
-  padding:20px;
-
+  background:#242424;
+  border-radius:16px;
+  padding:17px;
 }
-
 
 .dialogue{
-
-  padding:14px 0;
-
-  border-bottom:
-    1px solid #202b3d;
-
+  display:flex;
+  gap:10px;
+  padding:11px 0;
   line-height:1.5;
-
 }
-
-
-.dialogue:last-child{
-
-  border-bottom:none;
-
-}
-
 
 .dialogue strong{
-
-  color:#60a5fa;
-
+  color:#58cc02;
+  min-width:55px;
 }
-
 
 .dialogue.you strong{
-
-  color:#4ade80;
-
+  color:#ffc800;
 }
 
 
-/* =====================================
-   PHRASE
-===================================== */
+/* =========================
+   FRASES
+========================= */
 
 .phrase{
-
-  background:
-    var(--card2);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:16px;
-
-  padding:18px;
-
-  margin-top:14px;
-
+  background:#242424;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:12px;
 }
-
 
 .english{
-
-  font-size:21px;
-
-  font-weight:bold;
-
+  font-size:20px;
+  font-weight:800;
   line-height:1.4;
-
 }
-
 
 .meaning{
-
-  color:var(--muted);
-
+  color:#999;
   font-size:14px;
-
   margin-top:6px;
-
 }
 
 
-/* =====================================
-   AUDIO BUTTON
-===================================== */
-
-.audio-btn{
-
-  margin-top:13px;
-
-  border:none;
-
-  background:
-    #26354f;
-
-  color:white;
-
-  padding:
-    10px 14px;
-
-  border-radius:12px;
-
-  cursor:pointer;
-
-  font-weight:bold;
-
-}
-
-
-.audio-btn:hover{
-
-  background:
-    var(--blue2);
-
-}
-
-
-/* =====================================
-   BUTTON
-===================================== */
+/* =========================
+   BOTÕES
+========================= */
 
 .btn{
-
   width:100%;
-
-  border:none;
-
-  background:
-    var(--blue);
-
-  color:white;
-
-  padding:
-    16px 20px;
-
-  border-radius:15px;
-
-  cursor:pointer;
-
+  border:0;
+  background:#58cc02;
+  color:#101010;
+  padding:15px 18px;
+  border-radius:13px;
   font-size:16px;
-
-  font-weight:bold;
-
-  margin-top:18px;
-
-  transition:
-    transform .15s,
-    background .15s;
-
+  font-weight:900;
+  cursor:pointer;
+  margin-top:12px;
+  transition:.15s;
 }
-
-
-.btn:hover{
-
-  background:
-    var(--blue2);
-
-}
-
 
 .btn:active{
-
-  transform:
-    scale(.98);
-
+  transform:translateY(2px);
 }
-
 
 .btn:disabled{
-
-  opacity:.45;
-
+  opacity:.4;
   cursor:not-allowed;
-
 }
-
-
-/* =====================================
-   SECONDARY BUTTON
-===================================== */
 
 .btn-secondary{
+  background:#292929;
+  color:#fff;
+}
 
-  background:
-    #222c3f;
-
+.btn-yellow{
+  background:#ffc800;
+  color:#111;
 }
 
 
-.btn-secondary:hover{
+/* =========================
+   ÁUDIO
+========================= */
 
-  background:
-    #2e3a50;
-
-}
-
-
-/* =====================================
-   OPTION
-===================================== */
-
-.options{
-
-  display:grid;
-
-  gap:12px;
-
-  margin-top:18px;
-
-}
-
-
-.option{
-
+.audio-button{
   width:100%;
-
-  background:
-    #151e2e;
-
-  color:white;
-
-  border:
-    1px solid #344157;
-
-  padding:16px;
-
-  border-radius:14px;
-
-  text-align:left;
-
-  font-size:16px;
-
-  cursor:pointer;
-
-  transition:
-    .15s;
-
-}
-
-
-.option:hover{
-
-  border-color:
-    var(--blue);
-
-  transform:
-    translateY(-1px);
-
-}
-
-
-.option.correct{
-
-  background:
-    rgba(34,197,94,.14);
-
-  border-color:
-    var(--green);
-
-}
-
-
-.option.wrong{
-
-  background:
-    rgba(239,68,68,.12);
-
-  border-color:
-    var(--red);
-
-}
-
-
-/* =====================================
-   FEEDBACK
-===================================== */
-
-.feedback{
-
-  display:none;
-
-  margin-top:15px;
-
+  background:#292929;
+  border:1px solid #383838;
+  color:#fff;
   padding:14px;
+  border-radius:12px;
+  text-align:left;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:9px;
+}
 
-  border-radius:13px;
+.audio-button:active{
+  transform:scale(.98);
+}
 
-  line-height:1.5;
+.audio-button.correct{
+  background:#31551d;
+  border-color:#58cc02;
+}
 
+.audio-button.wrong{
+  background:#4a1919;
+  border-color:#ff4b4b;
 }
 
 
-.feedback.show{
-
-  display:block;
-
-}
-
-
-.feedback.correct{
-
-  background:
-    rgba(34,197,94,.1);
-
-  color:#86efac;
-
-}
-
-
-.feedback.wrong{
-
-  background:
-    rgba(239,68,68,.1);
-
-  color:#fca5a5;
-
-}
-
-
-/* =====================================
+/* =========================
    INPUT
-===================================== */
+========================= */
 
 .input{
-
   width:100%;
-
+  background:#111;
+  border:2px solid #333;
+  color:#fff;
   padding:16px;
-
-  background:
-    #0f1725;
-
-  color:white;
-
-  border:
-    1px solid #344157;
-
-  border-radius:14px;
-
-  font-size:17px;
-
+  border-radius:13px;
+  font-size:16px;
   outline:none;
-
-  margin-top:14px;
-
+  margin-top:8px;
 }
-
 
 .input:focus{
-
-  border-color:
-    var(--blue);
-
+  border-color:#58cc02;
 }
 
 
-/* =====================================
-   PERSONAL BOX
-===================================== */
+/* =========================
+   FEEDBACK
+========================= */
 
-.personal-box{
-
-  background:
-    linear-gradient(
-      145deg,
-      #111c31,
-      #16233b
-    );
-
-  border:
-    1px solid #29466f;
-
-  border-radius:18px;
-
-  padding:20px;
-
-  margin-top:18px;
-
-}
-
-
-.personal-title{
-
-  color:#93c5fd;
-
+.feedback{
+  min-height:24px;
+  margin-top:14px;
   font-weight:bold;
+  line-height:1.5;
+}
 
-  margin-bottom:8px;
+.success{
+  color:#58cc02;
+}
 
+.error{
+  color:#ff6b6b;
 }
 
 
-/* =====================================
-   REPEAT BOX
-===================================== */
-
-.repeat-box{
-
-  text-align:center;
-
-  background:
-    #101827;
-
-  border:
-    1px solid #263653;
-
-  padding:26px 20px;
-
-  border-radius:20px;
-
-  margin-top:20px;
-
-}
-
-
-.repeat-text{
-
-  font-size:
-    clamp(
-      27px,
-      7vw,
-      40px
-    );
-
-  font-weight:800;
-
-  margin:
-    15px 0 22px;
-
-}
-
-
-/* =====================================
-   MASTERY
-===================================== */
-
-.mastery{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      1fr
-    );
-
-  gap:10px;
-
-  margin-top:20px;
-
-}
-
-
-.mastery-item{
-
-  background:
-    #111827;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:14px;
-
-  padding:13px 8px;
-
-  text-align:center;
-
-  font-size:12px;
-
-  color:var(--muted);
-
-}
-
-
-.mastery-dot{
-
-  width:30px;
-
-  height:30px;
-
-  border-radius:50%;
-
-  margin:
-    0 auto 7px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:
-    #263043;
-
-  color:#718096;
-
-  font-weight:bold;
-
-}
-
-
-.mastery-dot.on{
-
-  background:
-    var(--green);
-
-  color:#052e16;
-
-}
-
-
-/* =====================================
+/* =========================
    XP POPUP
-===================================== */
+========================= */
 
-#xpPopup{
-
+.xp-popup{
   position:fixed;
-
-  left:50%;
-
-  top:85px;
-
-  transform:
-    translate(-50%,-10px);
-
-  opacity:0;
-
-  pointer-events:none;
-
-  background:
-    var(--yellow);
-
-  color:#422006;
-
-  font-weight:900;
-
-  padding:
-    10px 16px;
-
+  right:20px;
+  top:75px;
+  background:#ffc800;
+  color:#111;
+  padding:10px 15px;
   border-radius:20px;
-
+  font-weight:900;
+  opacity:0;
+  transform:translateY(-10px);
+  pointer-events:none;
   z-index:500;
-
 }
 
-
-#xpPopup.show{
-
-  animation:
-    xpAnimation
-    1s ease;
-
+.xp-popup.show{
+  animation:xpPop 1.2s ease;
 }
 
-
-@keyframes xpAnimation{
+@keyframes xpPop{
 
   0%{
-
     opacity:0;
-
-    transform:
-      translate(-50%,10px);
-
+    transform:translateY(-10px);
   }
 
   20%{
-
     opacity:1;
-
-    transform:
-      translate(-50%,0);
-
+    transform:translateY(0);
   }
 
-  75%{
-
+  70%{
     opacity:1;
-
   }
 
   100%{
-
     opacity:0;
-
-    transform:
-      translate(-50%,-20px);
-
+    transform:translateY(-10px);
   }
 
 }
 
 
-/* =====================================
-   RESULT
-===================================== */
+/* =========================
+   HERO
+========================= */
 
-.result{
-
+.hero{
   text-align:center;
-
+  padding:25px 5px;
 }
 
-
-.result-icon{
-
+.hero-icon{
   font-size:70px;
+  margin-bottom:15px;
+}
 
-  margin:
-    15px 0;
+.hero h1{
+  font-size:35px;
+}
 
+.check-list{
+  list-style:none;
+}
+
+.check-list li{
+  padding:10px 0;
+  border-bottom:1px solid #292929;
+}
+
+.check-list li:last-child{
+  border-bottom:0;
 }
 
 
-.final-xp{
+/* =========================
+   RESPONSIVO
+========================= */
 
-  font-size:52px;
+@media(max-width:400px){
 
-  font-weight:900;
-
-  color:var(--yellow);
-
-  margin:15px 0;
-
-}
-
-
-/* =====================================
-   EXIT
-===================================== */
-
-.exit{
-
-  position:fixed;
-
-  bottom:20px;
-
-  left:20px;
-
-  z-index:200;
-
-  background:
-    #202938;
-
-  color:#cbd5e1;
-
-  border:none;
-
-  padding:
-    10px 13px;
-
-  border-radius:12px;
-
-  cursor:pointer;
-
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media(max-width:600px){
-
-  header{
-
-    padding:
-      12px 14px;
-
+  h1{
+    font-size:27px;
   }
-
-
-  main{
-
-    padding:
-      24px 14px 120px;
-
-  }
-
 
   .card{
-
-    padding:19px;
-
-    border-radius:18px;
-
+    padding:17px;
   }
 
-
-  .mastery{
-
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-
+  .english{
+    font-size:18px;
   }
 
 }
@@ -1114,64 +442,42 @@ h2{
 
 </head>
 
-
 <body>
 
 
-<!-- =====================================
+<!-- =========================
      HEADER
-===================================== -->
+========================= -->
 
-<header>
+<header class="header">
 
   <div class="header-top">
 
     <div class="logo">
-
-      English
-      <span>MZ</span>
-      🇲🇿
-
+      English <span>MZ</span> 🇲🇿
     </div>
 
-
     <div class="xp">
-
-      ⭐
-
-      <span id="xp">
-        0
-      </span>
-
-      XP
-
+      ⭐ <span id="xp">0</span> XP
     </div>
 
   </div>
 
 
-  <div class="progress-container">
-
-    <div class="progress-info">
-
-      <span>
-        A1 • Lesson 2
-      </span>
-
-      <span id="progressText">
-        1 / 8
-      </span>
-
-    </div>
-
+  <div class="progress-row">
 
     <div class="progress-bar">
-
       <div
-        id="progress"
-        class="progress"
+        id="progressFill"
+        class="progress-fill"
       ></div>
+    </div>
 
+    <div
+      id="progressText"
+      class="progress-text"
+    >
+      1/8
     </div>
 
   </div>
@@ -1181,130 +487,100 @@ h2{
 
 <!-- XP POPUP -->
 
-<div id="xpPopup">
+<div
+  id="xpPopup"
+  class="xp-popup"
+>
   +5 XP ⭐
 </div>
 
 
-<!-- =====================================
-     MAIN
-===================================== -->
-
-<main>
+<main class="app">
 
 
-<!-- =====================================
-     TELA 1
-===================================== -->
+<!-- =================================
+     TELA 1 — INTRODUÇÃO
+================================= -->
 
 <section
   id="screen1"
   class="screen active"
 >
 
-  <span class="lesson-label">
-    A1 • LESSON 2
-  </span>
+  <div class="hero">
 
+    <div class="hero-icon">
+      🌍
+    </div>
 
-  <h1>
-    Meet Someone New 🌍
-  </h1>
+    <span class="lesson-label">
+      A1 • LESSON 2
+    </span>
 
+    <h1>
+      Where are you from?
+    </h1>
 
-  <p class="subtitle">
+    <p class="subtitle">
+      Hoje você vai aprender a falar
+      sobre de onde você é e onde mora.
+    </p>
 
-    Você já sabe começar uma conversa.
-    Agora vamos aprender a descobrir
-    de onde a pessoa é e onde ela mora.
-
-  </p>
+  </div>
 
 
   <div class="card">
 
     <h2>
-      🎯 Seu objetivo
+      🎯 Nesta aula você vai aprender:
     </h2>
 
+    <ul class="check-list">
+
+      <li>
+        ✅ Where are you from?
+      </li>
+
+      <li>
+        ✅ I'm from...
+      </li>
+
+      <li>
+        ✅ Where do you live?
+      </li>
+
+      <li>
+        ✅ I live in...
+      </li>
+
+      <li>
+        ✅ Usar essas frases numa conversa
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>
+      🧠 Como vamos aprender?
+    </h2>
 
     <p class="subtitle">
-
-      No final desta aula, você deverá
-      conseguir falar sobre a sua origem
-      e onde vive — em inglês.
-
+      Você primeiro vai ouvir,
+      depois compreender, repetir,
+      lembrar e finalmente usar
+      as frases falando sobre a
+      sua própria realidade.
     </p>
 
-
-    <div class="mastery">
-
-      <div class="mastery-item">
-
-        <div
-          id="dot1"
-          class="mastery-dot"
-        >
-          1
-        </div>
-
-        Where are you from?
-
-      </div>
-
-
-      <div class="mastery-item">
-
-        <div
-          id="dot2"
-          class="mastery-dot"
-        >
-          2
-        </div>
-
-        I'm from...
-
-      </div>
-
-
-      <div class="mastery-item">
-
-        <div
-          id="dot3"
-          class="mastery-dot"
-        >
-          3
-        </div>
-
-        Where do you live?
-
-      </div>
-
-
-      <div class="mastery-item">
-
-        <div
-          id="dot4"
-          class="mastery-dot"
-        >
-          4
-        </div>
-
-        I live in...
-
-      </div>
-
-    </div>
-
-
     <button
-      id="continueButton"
       class="btn"
-      onclick="continueLesson()"
+      onclick="startLesson()"
     >
-
-      COMEÇAR
-
+      COMEÇAR AULA →
     </button>
 
   </div>
@@ -1312,10 +588,12 @@ h2{
 </section>
 
 
-<!-- =====================================
-     TELA 2
-     CONTEXTO
-===================================== -->
+<!-- =================================
+     TELA 2 SERÁ PARTE 2
+================================= -->
+  <!-- =================================
+     TELA 2 — CONTEXTO
+================================= -->
 
 <section
   id="screen2"
@@ -1323,20 +601,16 @@ h2{
 >
 
   <span class="lesson-label">
-    1 • CONTEXTO
+    1 • CONTEXT
   </span>
 
-
   <h1>
-    Continue the conversation 💬
+    Meet someone new 👋
   </h1>
 
-
   <p class="subtitle">
-
-    Você acabou de conhecer alguém.
-    Veja como a conversa continua.
-
+    Imagine que você acabou de conhecer
+    alguém pela primeira vez.
   </p>
 
 
@@ -1344,127 +618,127 @@ h2{
 
     <div class="context">
 
-
       <div class="dialogue">
 
-        <strong>
-          Anna:
-        </strong>
+        <strong>Anna:</strong>
 
-        Hello!
+        <span>
+          Hello!
+        </span>
 
       </div>
 
 
       <div class="dialogue you">
 
-        <strong>
-          You:
-        </strong>
+        <strong>You:</strong>
 
-        Hello!
-
-      </div>
-
-
-      <div class="dialogue">
-
-        <strong>
-          Anna:
-        </strong>
-
-        What's your name?
-
-      </div>
-
-
-      <div class="dialogue you">
-
-        <strong>
-          You:
-        </strong>
-
-        I'm Kelton.
+        <span>
+          Hello!
+        </span>
 
       </div>
 
 
       <div class="dialogue">
 
-        <strong>
-          Anna:
-        </strong>
+        <strong>Anna:</strong>
 
-        Nice to meet you.
+        <span>
+          What's your name?
+        </span>
 
       </div>
 
 
       <div class="dialogue you">
 
-        <strong>
-          You:
-        </strong>
+        <strong>You:</strong>
 
-        Nice to meet you.
+        <span>
+          I'm Kelton.
+        </span>
 
       </div>
 
 
       <div class="dialogue">
 
-        <strong>
-          Anna:
-        </strong>
+        <strong>Anna:</strong>
 
-        Where are you from?
-
-      </div>
-
-
-      <div class="dialogue you">
-
-        <strong>
-          You:
-        </strong>
-
-        I'm from Mozambique. 🇲🇿
-
-      </div>
-
-
-      <div class="dialogue">
-
-        <strong>
-          Anna:
-        </strong>
-
-        Where do you live?
+        <span>
+          Nice to meet you!
+        </span>
 
       </div>
 
 
       <div class="dialogue you">
 
-        <strong>
-          You:
-        </strong>
+        <strong>You:</strong>
 
-        I live in Maputo.
+        <span>
+          Nice to meet you too!
+        </span>
 
       </div>
-
 
     </div>
 
 
     <button
-      class="btn"
-      onclick="continueLesson()"
+      class="audio-button"
+      onclick="speak('Hello!')"
     >
+      🔊 Hello!
+    </button>
 
-      CONTINUAR →
 
+    <button
+      class="audio-button"
+      onclick="speak('What is your name?')"
+    >
+      🔊 What's your name?
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('I am Kelton.')"
+    >
+      🔊 I'm Kelton.
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('Nice to meet you!')"
+    >
+      🔊 Nice to meet you!
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('Nice to meet you too!')"
+    >
+      🔊 Nice to meet you too!
+    </button>
+
+
+    <button
+      class="btn btn-yellow"
+      onclick="playConversationAudio()"
+    >
+      ▶️ OUVIR CONVERSA COMPLETA
+    </button>
+
+
+    <button
+      class="btn"
+      onclick="completeContext()"
+    >
+      JÁ OUVI → CONTINUAR
     </button>
 
   </div>
@@ -1472,10 +746,10 @@ h2{
 </section>
 
 
-<!-- =====================================
-     TELA 3
-     NOVAS FRASES
-===================================== -->
+
+<!-- =================================
+     TELA 3 — COMPREENSÃO
+================================= -->
 
 <section
   id="screen3"
@@ -1488,16 +762,13 @@ h2{
 
 
   <h1>
-    Four useful phrases 🧠
+    Understand the phrases 🧠
   </h1>
 
 
   <p class="subtitle">
-
-    Agora vamos entender as quatro
-    novas estruturas que apareceram
-    na conversa.
-
+    Agora vamos entender as frases
+    que apareceram na conversa.
   </p>
 
 
@@ -1507,134 +778,112 @@ h2{
     <div class="phrase">
 
       <div class="english">
-
-        Where are you from?
-
+        Hello!
       </div>
 
       <div class="meaning">
-
-        De onde você é?
-
+        Olá!
       </div>
 
       <button
-        class="audio-btn"
-        onclick="speakText('Where are you from?')"
+        class="audio-button"
+        onclick="speak('Hello!')"
       >
-
-        🔊 Listen
-
+        🔊 Ouvir
       </button>
 
     </div>
+
 
 
     <div class="phrase">
 
       <div class="english">
-
-        I'm from Mozambique.
-
+        What's your name?
       </div>
 
       <div class="meaning">
-
-        Eu sou de Moçambique.
-
+        Qual é o seu nome?
       </div>
 
       <button
-        class="audio-btn"
-        onclick="speakText('I am from Mozambique.')"
+        class="audio-button"
+        onclick="speak('What is your name?')"
       >
-
-        🔊 Listen
-
+        🔊 Ouvir
       </button>
 
     </div>
+
 
 
     <div class="phrase">
 
       <div class="english">
-
-        Where do you live?
-
+        I'm Kelton.
       </div>
 
       <div class="meaning">
-
-        Onde você mora?
-
+        Eu sou Kelton.
       </div>
 
       <button
-        class="audio-btn"
-        onclick="speakText('Where do you live?')"
+        class="audio-button"
+        onclick="speak('I am Kelton.')"
       >
-
-        🔊 Listen
-
+        🔊 Ouvir
       </button>
 
     </div>
+
 
 
     <div class="phrase">
 
       <div class="english">
-
-        I live in Maputo.
-
+        Nice to meet you.
       </div>
 
       <div class="meaning">
-
-        Eu moro em Maputo.
-
+        Prazer em conhecer você.
       </div>
 
       <button
-        class="audio-btn"
-        onclick="speakText('I live in Maputo.')"
+        class="audio-button"
+        onclick="speak('Nice to meet you.')"
       >
-
-        🔊 Listen
-
+        🔊 Ouvir
       </button>
 
     </div>
 
 
-    <div class="personal-box">
 
-      <div class="personal-title">
+    <div class="phrase">
 
-        🌍 Agora pense em você
-
+      <div class="english">
+        Nice to meet you too.
       </div>
 
+      <div class="meaning">
+        Prazer em conhecer você também.
+      </div>
 
-      <p class="subtitle">
-
-        Você não precisa usar Maputo.
-        Na próxima etapa poderá colocar
-        a cidade onde realmente mora.
-
-      </p>
+      <button
+        class="audio-button"
+        onclick="speak('Nice to meet you too.')"
+      >
+        🔊 Ouvir
+      </button>
 
     </div>
 
 
     <button
       class="btn"
-      onclick="continueLesson()"
+      onclick="completeUnderstanding()"
     >
-
-      CONTINUAR →
-
+      ENTENDI → CONTINUAR
     </button>
 
   </div>
@@ -1642,10 +891,10 @@ h2{
 </section>
 
 
-<!-- =====================================
-     TELA 4
-     REPETIR
-===================================== -->
+
+<!-- =================================
+     TELA 4 — OUVIR E REPETIR
+================================= -->
 
 <section
   id="screen4"
@@ -1658,63 +907,78 @@ h2{
 
 
   <h1>
-    Listen. Repeat. 🗣️
+    Listen and repeat 🗣️
   </h1>
 
 
   <p class="subtitle">
-
-    Ouça a frase e diga-a em voz alta.
-    Não precisa ser perfeito.
-    Tente imitar o ritmo.
-
+    Ouça cada frase e repita em voz alta.
+    Tente copiar o ritmo da voz.
   </p>
 
 
   <div class="card">
 
 
-    <div class="repeat-box">
+    <div
+      id="repeatCounter"
+      class="lesson-label"
+    >
+      PHRASE 1 / 5
+    </div>
+
+
+    <div
+      class="phrase"
+      style="
+        text-align:center;
+        padding:30px 15px;
+      "
+    >
 
       <div
         id="repeatText"
-        class="repeat-text"
+        class="english"
+        style="
+          font-size:25px;
+        "
       >
-
-        Where are you from?
-
+        Hello!
       </div>
-
-
-      <button
-        class="btn"
-        onclick="playRepeat()"
-      >
-
-        🔊 OUVIR
-
-      </button>
-
-
-      <button
-        class="btn btn-secondary"
-        onclick="nextRepeat()"
-      >
-
-        JÁ REPETI →
-
-      </button>
 
     </div>
 
 
     <button
-      class="btn"
-      onclick="continueLesson()"
+      class="btn btn-yellow"
+      onclick="playRepeatAudio()"
     >
+      🔊 OUVIR FRASE
+    </button>
 
+
+    <button
+      id="repeatButton"
+      class="btn"
+      onclick="nextRepeat()"
+    >
+      🗣️ JÁ REPETI →
+    </button>
+
+
+    <div
+      id="repeatFeedback"
+      class="feedback"
+    ></div>
+
+
+    <button
+      id="repeatContinue"
+      class="btn"
+      style="display:none;"
+      onclick="goToRecall()"
+    >
       CONTINUAR →
-
     </button>
 
   </div>
@@ -1722,10 +986,13 @@ h2{
 </section>
 
 
-<!-- =====================================
-     TELA 5
-     RECUPERAÇÃO
-===================================== -->
+
+<!-- =================================
+     FIM DA PARTE 2
+================================= -->
+  <!-- =================================
+     TELA 5 — RECUPERAÇÃO
+================================= -->
 
 <section
   id="screen5"
@@ -1736,98 +1003,91 @@ h2{
     4 • REMEMBER
   </span>
 
-
   <h1>
-    Can you remember? 🧠
+    Do you remember? 🧠
   </h1>
+
+  <p class="subtitle">
+    Agora vamos testar se você consegue
+    lembrar sem depender da tradução.
+  </p>
 
 
   <div class="card">
 
-    <p class="subtitle">
-
-      Anna pergunta:
-
-    </p>
-
-
     <div class="phrase">
 
-      <div class="english">
+      <div class="meaning">
+        ALGUÉM PERGUNTA:
+      </div>
 
-        Where are you from?
-
+      <div
+        class="english"
+        style="margin-top:8px;"
+      >
+        What's your name?
       </div>
 
     </div>
 
 
     <p class="subtitle">
-
-      Qual resposta faz sentido?
-
+      Qual é a melhor resposta?
     </p>
 
 
-    <div
-      id="rememberOptions"
-      class="options"
-    >
+    <div id="recallOptions">
 
       <button
-        class="option"
-        onclick="rememberAnswer(this,false)"
+        class="audio-button"
+        onclick="checkRecall(this,false)"
       >
-
-        I live in Maputo.
-
+        Hello!
       </button>
 
 
       <button
-        class="option"
-        onclick="rememberAnswer(this,true)"
+        class="audio-button"
+        onclick="checkRecall(this,true)"
       >
-
-        I'm from Mozambique.
-
+        I'm Kelton.
       </button>
 
 
       <button
-        class="option"
-        onclick="rememberAnswer(this,false)"
+        class="audio-button"
+        onclick="checkRecall(this,false)"
       >
-
-        What's your name?
-
+        Nice to meet you.
       </button>
 
     </div>
 
 
     <div
-      id="rememberFeedback"
+      id="recallFeedback"
       class="feedback"
     ></div>
 
 
     <button
+      id="recallContinue"
       class="btn"
-      onclick="continueLesson()"
+      style="display:none;"
+      onclick="goToPersonal()"
     >
-
       CONTINUAR →
-
     </button>
 
   </div>
 
-  </section>
-  <!-- =====================================
-     TELA 6
-     PRODUÇÃO PERSONALIZADA
-===================================== -->
+</section>
+
+
+
+<!-- =================================
+     TELA 6 — SUA REALIDADE
+================================= -->
 
 <section
   id="screen6"
@@ -1840,223 +1100,99 @@ h2{
 
 
   <h1>
-    Now talk about you 🌍
+    Now make it yours 🌍
   </h1>
 
 
   <p class="subtitle">
-
-    Agora não existe apenas uma resposta certa.
-    Use informações da sua própria vida.
-
+    Inglês não deve ser apenas sobre
+    personagens fictícios.
+    Vamos falar sobre você.
   </p>
 
 
-  <!-- ORIGEM -->
-
   <div class="card">
 
     <h2>
-      1️⃣ Where are you from?
+      🌍 Where are you from?
     </h2>
 
-
     <p class="subtitle">
-
-      Complete a frase:
-
+      Escreva o país onde você é.
     </p>
 
 
-    <div class="phrase">
-
-      <div class="english">
-
-        I'm from...
-
-      </div>
-
-    </div>
-
-
     <input
-      id="fromInput"
+      id="countryInput"
       class="input"
       type="text"
-      placeholder="Ex.: Mozambique"
+      placeholder="Example: Mozambique"
       autocomplete="off"
     >
 
 
-    <button
-      class="btn"
-      onclick="checkFromAnswer()"
-    >
-
-      CHECK ✓
-
-    </button>
-
-
-    <div
-      id="fromFeedback"
-      class="feedback"
-    ></div>
-
-  </div>
-
-
-  <!-- CIDADE -->
-
-  <div class="card">
-
-    <h2>
-      2️⃣ Where do you live?
+    <h2 style="margin-top:25px;">
+      🏙️ Where do you live?
     </h2>
 
 
     <p class="subtitle">
-
-      Agora diga onde você mora.
-
+      Escreva a cidade onde você mora.
     </p>
 
 
-    <div class="phrase">
-
-      <div class="english">
-
-        I live in...
-
-      </div>
-
-    </div>
-
-
     <input
-      id="liveInput"
-      class="input"
-      type="text"
-      placeholder="Ex.: Maputo"
-      autocomplete="off"
-    >
-
-
-    <button
-      class="btn"
-      onclick="checkLiveAnswer()"
-    >
-
-      CHECK ✓
-
-    </button>
-
-
-    <div
-      id="liveFeedback"
-      class="feedback"
-    ></div>
-
-  </div>
-
-
-  <button
-    id="productionContinue"
-    class="btn"
-    onclick="continueLesson()"
-  >
-
-    CONTINUAR →
-
-  </button>
-
-</section>
-
-
-
-<!-- =====================================
-     TELA 7
-     CONVERSAÇÃO
-===================================== -->
+      id="
+      <!-- =================================
+     TELA 8 — CONVERSAÇÃO
+================================= -->
 
 <section
-  id="screen7"
+  id="screen8"
   class="screen"
 >
 
   <span class="lesson-label">
-    6 • CONVERSATION
+    7 • CONVERSATION
   </span>
 
 
   <h1>
-    Let's have a conversation 💬
+    Let's talk! 💬
   </h1>
 
 
   <p class="subtitle">
-
-    Agora vamos juntar o que você aprendeu
-    na Lesson 1 e na Lesson 2.
-
+    Agora você vai participar de uma
+    conversa. Escolha a resposta correta.
   </p>
 
 
   <div class="card">
 
-
-    <div class="context">
-
-
-      <div class="dialogue">
-
-        <strong>
-          Anna:
-        </strong>
-
-        <span id="conversationQuestion">
-
-          Hello!
-
-        </span>
-
-      </div>
-
-
-      <div
-        class="dialogue you"
-        id="conversationYou"
-      >
-
-        <strong>
-          You:
-        </strong>
-
-        <span id="conversationAnswer">
-
-          ?
-
-        </span>
-
-      </div>
-
-
+    <div
+      id="conversationProgress"
+      class="lesson-label"
+    >
+      CONVERSATION 1 / 3
     </div>
 
 
-    <button
-      class="audio-btn"
-      onclick="playConversationAudio()"
-    >
+    <div
+      id="conversationMessages"
+      class="context"
+    ></div>
 
-      🔊 Ouvir Anna
 
-    </button>
+    <div
+      id="conversationQuestion"
+      style="margin-top:20px;"
+    ></div>
 
 
     <div
       id="conversationOptions"
-      class="options"
+      style="margin-top:15px;"
     ></div>
 
 
@@ -2066,38 +1202,14 @@ h2{
     ></div>
 
 
-    <div
-      class="personal-box"
-      id="personalConversationBox"
-      style="display:none;"
-    >
-
-      <div class="personal-title">
-
-        🌍 Sua resposta
-
-      </div>
-
-
-      <p
-        id="personalConversationText"
-        class="subtitle"
-      ></p>
-
-    </div>
-
-
     <button
-      id="conversationNext"
+      id="conversationContinue"
       class="btn"
       style="display:none;"
-      onclick="nextConversationStep()"
+      onclick="nextConversation()"
     >
-
       CONTINUAR →
-
     </button>
-
 
   </div>
 
@@ -2105,561 +1217,525 @@ h2{
 
 
 
-<!-- =====================================
-     TELA 8
-     DESAFIO FINAL
-===================================== -->
+<!-- =================================
+     TELA 9 — DESAFIO FINAL
+================================= -->
 
 <section
-  id="screen8"
+  id="screen9"
   class="screen"
 >
 
   <span class="lesson-label">
-    7 • FINAL CHALLENGE
+    8 • FINAL CHALLENGE
   </span>
 
 
   <h1>
-    Your challenge 🎯
+    Final challenge 🎯
   </h1>
 
 
   <p class="subtitle">
-
-    Agora tente fazer a conversa completa
-    usando o que você aprendeu.
-
+    Último desafio.
+    Agora tente responder em inglês
+    usando o que acabou de aprender.
   </p>
 
 
   <div class="card">
 
-
-    <h2>
-      Sem olhar a tradução.
-    </h2>
-
-
     <div class="context">
 
+      <div class="dialogue">
 
-      <p style="margin-bottom:15px;">
+        <strong>
+          Anna:
+        </strong>
 
-        👋 Cumprimente a pessoa.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        ❓ Pergunte o nome.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        🙋 Diga seu nome.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        🤝 Diga que foi um prazer conhecê-la.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        🌍 Pergunte de onde ela é.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        🇲🇿 Diga de onde você é.
-
-      </p>
-
-
-      <p style="margin-bottom:15px;">
-
-        🏠 Pergunte onde ela mora.
-
-      </p>
-
-
-      <p>
-
-        🏙️ Diga onde você mora.
-
-      </p>
-
-
-    </div>
-
-
-    <div class="personal-box">
-
-      <div class="personal-title">
-
-        💡 Dica
+        <span>
+          Hello!
+        </span>
 
       </div>
 
 
-      <p class="subtitle">
+      <div class="dialogue">
 
-        Tente falar tudo em voz alta.
-        Não traduza palavra por palavra.
-        Pense nas frases que praticou.
+        <strong>
+          Anna:
+        </strong>
 
-      </p>
+        <span>
+          What's your name?
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>
+          You:
+        </strong>
+
+        <span>
+          I'm ______.
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>
+          Anna:
+        </strong>
+
+        <span>
+          Nice to meet you!
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>
+          Anna:
+        </strong>
+
+        <span>
+          Where are you from?
+        </span>
+
+      </div>
 
     </div>
 
 
-    <button
-      class="btn"
-      onclick="completeChallenge()"
+    <h2 style="margin-top:22px;">
+      What's your name?
+    </h2>
+
+
+    <input
+      id="finalName"
+      class="input"
+      type="text"
+      placeholder="I'm..."
+      autocomplete="off"
     >
 
-      CONCLUIR DESAFIO ✓
 
+    <h2 style="margin-top:22px;">
+      Where are you from?
+    </h2>
+
+
+    <input
+      id="finalCountry"
+      class="input"
+      type="text"
+      placeholder="I'm from..."
+      autocomplete="off"
+    >
+
+
+    <h2 style="margin-top:22px;">
+      Where do you live?
+    </h2>
+
+
+    <input
+      id="finalCity"
+      class="input"
+      type="text"
+      placeholder="I live in..."
+      autocomplete="off"
+    >
+
+
+    <button
+      class="btn"
+      onclick="checkFinalChallenge()"
+    >
+      CHECK MY ANSWERS ✓
     </button>
 
 
     <div
-      id="challengeFeedback"
+      id="finalFeedback"
       class="feedback"
     ></div>
 
 
+    <button
+      id="finishButton"
+      class="btn btn-yellow"
+      style="display:none;"
+      onclick="finishLesson()"
+    >
+      🎉 CONCLUIR LESSON
+    </button>
+
   </div>
 
 </section>
 
 
 
-<!-- =====================================
-     RESULTADO
-===================================== -->
+<!-- =================================
+     TELA FINAL
+================================= -->
 
 <section
-  id="result"
+  id="resultScreen"
   class="screen"
 >
 
-  <div class="result">
+  <div class="hero">
 
-    <span class="lesson-label">
-
-      A1 • LESSON 2 COMPLETE
-
-    </span>
-
-
-    <div class="result-icon">
-
-      🎉
-
+    <div class="hero-icon">
+      🏆
     </div>
 
 
+    <span class="lesson-label">
+      LESSON COMPLETE
+    </span>
+
+
     <h1>
-
-      You did it!
-
+      You did it! 🎉
     </h1>
 
 
     <p class="subtitle">
-
-      Você terminou a Lesson 2.
-
+      Parabéns! Você terminou a Lesson 2.
     </p>
 
+  </div>
 
-    <div class="final-xp">
 
-      ⭐
-      <span id="finalXP">
-        0
-      </span>
-      XP
+  <div class="card">
 
-    </div>
-
-
-    <!-- MASTERY FINAL -->
-
-    <div class="card">
-
-      <h2>
-        🎯 Your Mastery
-      </h2>
-
-
-      <div class="mastery">
-
-
-        <div class="mastery-item">
-
-          <div
-            id="finalDot1"
-            class="mastery-dot"
-          >
-            ✓
-          </div>
-
-          Where are you from?
-
-        </div>
-
-
-        <div class="mastery-item">
-
-          <div
-            id="finalDot2"
-            class="mastery-dot"
-          >
-            ✓
-          </div>
-
-          I'm from...
-
-        </div>
-
-
-        <div class="mastery-item">
-
-          <div
-            id="finalDot3"
-            class="mastery-dot"
-          >
-            ✓
-          </div>
-
-          Where do you live?
-
-        </div>
-
-
-        <div class="mastery-item">
-
-          <div
-            id="finalDot4"
-            class="mastery-dot"
-          >
-            ✓
-          </div>
-
-          I live in...
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-
-    <!-- O QUE APRENDEU -->
-
-    <div class="card">
-
-      <h2>
-        🧠 O que você consegue fazer agora?
-      </h2>
-
-
-      <p
-        class="subtitle"
-        style="margin-bottom:10px;"
-      >
-
-        ✓ Perguntar de onde alguém é
-
-      </p>
-
-
-      <p
-        class="subtitle"
-        style="margin-bottom:10px;"
-      >
-
-        ✓ Dizer de onde você é
-
-      </p>
-
-
-      <p
-        class="subtitle"
-        style="margin-bottom:10px;"
-      >
-
-        ✓ Perguntar onde alguém mora
-
-      </p>
-
-
-      <p class="subtitle">
-
-        ✓ Dizer onde você mora
-
-      </p>
-
-    </div>
-
-
-    <!-- FRASES -->
-
-    <div class="card">
-
-      <h2>
-        💬 Your English
-      </h2>
-
-
-      <div class="phrase">
-
-        <div class="english">
-
-          Where are you from?
-
-        </div>
-
-      </div>
-
-
-      <div class="phrase">
-
-        <div class="english">
-
-          I'm from...
-
-        </div>
-
-      </div>
-
-
-      <div class="phrase">
-
-        <div class="english">
-
-          Where do you live?
-
-        </div>
-
-      </div>
-
-
-      <div class="phrase">
-
-        <div class="english">
-
-          I live in...
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="btn"
-      onclick="goToNextLesson()"
+    <div
+      style="
+        text-align:center;
+        font-size:50px;
+        font-weight:900;
+        color:#ffc800;
+      "
     >
-
-      🔒 Lesson 3
-
-    </button>
-
+      ⭐ <span id="finalXP">0</span> XP
+    </div>
 
   </div>
+
+
+  <div class="card">
+
+    <h2>
+      🧠 What you learned
+    </h2>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        What's your name?
+      </div>
+
+      <div class="meaning">
+        Qual é o seu nome?
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        I'm...
+      </div>
+
+      <div class="meaning">
+        Eu sou...
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        Nice to meet you.
+      </div>
+
+      <div class="meaning">
+        Prazer em conhecer você.
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        Where are you from?
+      </div>
+
+      <div class="meaning">
+        De onde você é?
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        I'm from...
+      </div>
+
+      <div class="meaning">
+        Eu sou de...
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        Where do you live?
+      </div>
+
+      <div class="meaning">
+        Onde você mora?
+      </div>
+
+    </div>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        I live in...
+      </div>
+
+      <div class="meaning">
+        Eu moro em...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>
+      🔥 Keep learning
+    </h2>
+
+    <p class="subtitle">
+      O inglês que você aprendeu aqui
+      será usado novamente nas próximas
+      aulas. A repetição vai ajudar essas
+      frases a ficarem automáticas.
+    </p>
+
+  </div>
+
+
+  <button
+    class="btn"
+    onclick="goBackToLessons()"
+  >
+    ← VOLTAR PARA LESSONS
+  </button>
 
 </section>
 
 
 
-<!-- =====================================
-     BOTÃO SAIR
-===================================== -->
+<!-- =================================
+     FIM DA PARTE 4
+================================= -->
+  <script>
 
-<button
-  class="exit"
-  onclick="exitLesson()"
->
+/* =========================================
+   ENGLISH MZ — LESSON 2
+   SISTEMA PRINCIPAL
+========================================= */
 
-  ← Sair
 
-</button>
-  <!-- =====================================
-     JAVASCRIPT — ENGLISH MZ LESSON 2
-===================================== -->
-
-<script>
-
-/* =====================================
+/* =========================================
    ESTADO DA AULA
-===================================== */
+========================================= */
 
 let currentScreen = 1;
 
-const totalScreens = 8;
+let xp = Number(
+  localStorage.getItem("englishMZ_xp") || 0
+);
 
-let xp = 0;
-
-let lessonXP = 0;
+let country = "";
+let city = "";
 
 let repeatIndex = 0;
 
-let rememberCompleted = false;
+let conversationIndex = 0;
 
-let fromCompleted = false;
+let contextCompleted = false;
 
-let liveCompleted = false;
+let understandingCompleted = false;
 
-let conversationStep = 0;
+let recallCompleted = false;
 
-let challengeCompleted = false;
+let personalCompleted = false;
 
+let countryCompleted = false;
 
-/* =====================================
-   ELEMENTOS
-===================================== */
+let cityCompleted = false;
 
-const progress =
-  document.getElementById("progress");
+let conversationCompleted = false;
 
-const progressText =
-  document.getElementById("progressText");
-
-const xpElement =
-  document.getElementById("xp");
-
-const xpPopup =
-  document.getElementById("xpPopup");
+let finalCompleted = false;
 
 
-/* =====================================
-   CARREGAR STORAGE
-===================================== */
+/* =========================================
+   FRASES PARA REPETIÇÃO
+========================================= */
 
-function loadProgress(){
+const repeatPhrases = [
 
-  const savedXP =
-    localStorage.getItem("englishMZ_XP");
+  "Hello!",
 
-  if(savedXP){
+  "What's your name?",
 
-    xp =
-      parseInt(savedXP);
+  "I'm Kelton.",
 
+  "Nice to meet you.",
+
+  "Nice to meet you too."
+
+];
+
+
+/* =========================================
+   CONVERSA
+========================================= */
+
+const conversations = [
+
+  {
+    question: "Anna: Hello! 👋",
+
+    options: [
+
+      {
+        text: "Goodbye!",
+        correct: false
+      },
+
+      {
+        text: "Hello!",
+        correct: true
+      },
+
+      {
+        text: "I live in Maputo.",
+        correct: false
+      }
+
+    ]
+  },
+
+
+  {
+    question: "Anna: What's your name?",
+
+    options: [
+
+      {
+        text: "I'm Kelton.",
+        correct: true
+      },
+
+      {
+        text: "I'm from Mozambique.",
+        correct: false
+      },
+
+      {
+        text: "Goodbye.",
+        correct: false
+      }
+
+    ]
+  },
+
+
+  {
+    question: "Anna: Where are you from?",
+
+    options: [
+
+      {
+        text: "Nice to meet you.",
+        correct: false
+      },
+
+      {
+        text: "What's your name?",
+        correct: false
+      },
+
+      {
+        text: "I'm from Mozambique.",
+        correct: true
+      }
+
+    ]
   }
 
-  updateXP();
-
-}
+];
 
 
-/* =====================================
-   SALVAR STORAGE
-===================================== */
+/* =========================================
+   INICIAR AULA
+========================================= */
 
-function saveProgress(){
+function startLesson(){
 
-  localStorage.setItem(
-    "englishMZ_XP",
-    xp
+  showScreen(2);
+
+  updateProgress();
+
+  speak(
+    "Hello! Welcome to English MZ."
   );
 
 }
 
 
-/* =====================================
-   XP
-===================================== */
-
-function addXP(amount){
-
-  xp += amount;
-
-  lessonXP += amount;
-
-  updateXP();
-
-  saveProgress();
-
-  showXPPopup(amount);
-
-}
-
-
-function updateXP(){
-
-  if(xpElement){
-
-    xpElement.innerText =
-      xp;
-
-  }
-
-}
-
-
-function showXPPopup(amount){
-
-  xpPopup.innerText =
-    "+" + amount + " XP ⭐";
-
-  xpPopup.classList.remove("show");
-
-  void xpPopup.offsetWidth;
-
-  xpPopup.classList.add("show");
-
-}
-
-
-/* =====================================
-   PROGRESSO
-===================================== */
-
-function updateProgress(){
-
-  const percentage =
-    (currentScreen / totalScreens) * 100;
-
-  progress.style.width =
-    percentage + "%";
-
-  progressText.innerText =
-    currentScreen +
-    " / " +
-    totalScreens;
-
-}
-
-
-/* =====================================
-   NAVEGAÇÃO
-===================================== */
+/* =========================================
+   MUDAR DE TELA
+========================================= */
 
 function showScreen(number){
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(screen => {
+  const screens =
+    document.querySelectorAll(".screen");
 
-      screen.classList.remove("active");
+  screens.forEach(function(screen){
 
-    });
+    screen.classList.remove("active");
+
+  });
 
 
   const target =
@@ -2672,78 +1748,90 @@ function showScreen(number){
 
     target.classList.add("active");
 
+    currentScreen = number;
+
+    updateProgress();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
   }
-
-
-  currentScreen =
-    number;
-
-  updateProgress();
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-  });
 
 }
 
 
-/* =====================================
-   CONTINUAR
-===================================== */
+/* =========================================
+   PROGRESSO
+========================================= */
 
-function continueLesson(){
+function updateProgress(){
 
-  if(currentScreen < totalScreens){
-
-    if(currentScreen === 1){
-
-      addXP(5);
-
-    }
-
-    if(currentScreen === 2){
-
-      addXP(5);
-
-    }
-
-    if(currentScreen === 3){
-
-      addXP(5);
-
-    }
-
-    if(currentScreen === 4){
-
-      addXP(5);
-
-    }
-
-    showScreen(
-      currentScreen + 1
+  const progressFill =
+    document.getElementById(
+      "progressFill"
     );
 
+  const progressText =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  /*
+    9 etapas:
+    1 intro
+    2 contexto
+    3 compreensão
+    4 repetição
+    5 recuperação
+    6 realidade
+    7 produção
+    8 conversa
+    9 desafio
+  */
+
+  let percentage =
+    ((currentScreen - 1) / 8) * 100;
+
+
+  if(percentage < 0){
+
+    percentage = 0;
+
   }
+
+
+  if(percentage > 100){
+
+    percentage = 100;
+
+  }
+
+
+  progressFill.style.width =
+    percentage + "%";
+
+
+  progressText.innerText =
+    Math.min(currentScreen,9) + "/9";
 
 }
 
 
-/* =====================================
+/* =========================================
    ÁUDIO
-===================================== */
+========================================= */
 
-function speakText(text){
+function speak(text){
 
   if(
     !("speechSynthesis" in window)
   ){
 
     alert(
-      "O seu navegador não suporta áudio automático."
+      "O seu navegador não suporta áudio automático. Tente abrir a aula no Google Chrome."
     );
 
     return;
@@ -2754,64 +1842,191 @@ function speakText(text){
   window.speechSynthesis.cancel();
 
 
-  const speech =
-    new SpeechSynthesisUtterance(
-      text
-    );
+  const utterance =
+    new SpeechSynthesisUtterance(text);
 
 
-  speech.lang =
-    "en-US";
+  utterance.lang = "en-US";
 
-  speech.rate =
-    0.82;
+  utterance.rate = 0.82;
 
-  speech.pitch =
-    1;
+  utterance.pitch = 1;
+
+
+  /*
+    Algumas versões do Android
+    precisam que a voz seja escolhida.
+  */
+
+  const voices =
+    window.speechSynthesis.getVoices();
+
+
+  const englishVoice =
+    voices.find(function(voice){
+
+      return (
+        voice.lang === "en-US" ||
+        voice.lang.startsWith("en-US")
+      );
+
+    });
+
+
+  if(englishVoice){
+
+    utterance.voice =
+      englishVoice;
+
+  }
 
 
   window.speechSynthesis.speak(
-    speech
+    utterance
   );
 
 }
 
 
-/* =====================================
+/* =========================================
+   CONVERSA COMPLETA — ÁUDIO
+========================================= */
+
+function playConversationAudio(){
+
+  const phrases = [
+
+    "Hello!",
+
+    "Hello!",
+
+    "What's your name?",
+
+    "I'm Kelton.",
+
+    "Nice to meet you!",
+
+    "Nice to meet you too!"
+
+  ];
+
+
+  let index = 0;
+
+
+  function nextPhrase(){
+
+    if(index >= phrases.length){
+
+      return;
+
+    }
+
+
+    speak(phrases[index]);
+
+    index++;
+
+
+    setTimeout(
+      nextPhrase,
+      1800
+    );
+
+  }
+
+
+  nextPhrase();
+
+}
+
+
+/* =========================================
+   CONTEXTO
+========================================= */
+
+function completeContext(){
+
+  if(!contextCompleted){
+
+    contextCompleted = true;
+
+    addXP(5);
+
+  }
+
+
+  showScreen(3);
+
+}
+
+
+/* =========================================
+   COMPREENSÃO
+========================================= */
+
+function completeUnderstanding(){
+
+  if(!understandingCompleted){
+
+    understandingCompleted = true;
+
+    addXP(5);
+
+  }
+
+
+  showScreen(4);
+
+}
+
+
+/* =========================================
    REPETIÇÃO
-===================================== */
+========================================= */
 
-const repeatPhrases = [
+function playRepeatAudio(){
 
-  "Where are you from?",
-
-  "I'm from Mozambique.",
-
-  "Where do you live?",
-
-  "I live in Maputo."
-
-];
-
-
-function playRepeat(){
-
-  const phrase =
-    repeatPhrases[
-      repeatIndex
-    ];
-
-
-  speakText(
-    phrase
+  speak(
+    repeatPhrases[repeatIndex]
   );
 
 }
 
+
+/* =========================================
+   PRÓXIMA REPETIÇÃO
+========================================= */
 
 function nextRepeat(){
 
-  addXP(3);
+  const text =
+    document.getElementById(
+      "repeatText"
+    );
+
+  const counter =
+    document.getElementById(
+      "repeatCounter"
+    );
+
+  const button =
+    document.getElementById(
+      "repeatButton"
+    );
+
+  const continueButton =
+    document.getElementById(
+      "repeatContinue"
+    );
+
+
+  /*
+    Adiciona XP somente
+    uma vez por frase.
+  */
+
+  addXP(2);
 
 
   repeatIndex++;
@@ -2822,22 +2037,20 @@ function nextRepeat(){
     repeatPhrases.length
   ){
 
-    repeatIndex = 0;
-
-    document.getElementById(
-      "repeatText"
-    ).innerText =
+    text.innerText =
       "Great job! 🎉";
 
 
-    setTimeout(() => {
+    counter.innerText =
+      "ALL PHRASES COMPLETE";
 
-      document.getElementById(
-        "repeatText"
-      ).innerText =
-        repeatPhrases[0];
 
-    },1500);
+    button.style.display =
+      "none";
+
+
+    continueButton.style.display =
+      "block";
 
 
     return;
@@ -2845,51 +2058,72 @@ function nextRepeat(){
   }
 
 
-  document.getElementById(
-    "repeatText"
-  ).innerText =
-    repeatPhrases[
-      repeatIndex
-    ];
+  text.innerText =
+    repeatPhrases[repeatIndex];
 
 
-  speakText(
-    repeatPhrases[
-      repeatIndex
-    ]
+  counter.innerText =
+    "PHRASE " +
+    (repeatIndex + 1) +
+    " / " +
+    repeatPhrases.length;
+
+
+  speak(
+    repeatPhrases[repeatIndex]
   );
 
 }
 
 
-/* =====================================
-   REMEMBER
-===================================== */
+/* =========================================
+   IR PARA RECUPERAÇÃO
+========================================= */
 
-function rememberAnswer(
+function goToRecall(){
+
+  showScreen(5);
+
+}
+
+
+/* =========================================
+   RECUPERAÇÃO
+========================================= */
+
+function checkRecall(
   button,
   correct
 ){
 
-  if(
-    rememberCompleted
-  ){
+  const feedback =
+    document.getElementById(
+      "recallFeedback"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "recallContinue"
+    );
+
+
+  const buttons =
+    document.querySelectorAll(
+      "#recallOptions button"
+    );
+
+
+  /*
+    Se já acertou,
+    não deixa responder novamente.
+  */
+
+  if(recallCompleted){
 
     return;
 
   }
-
-
-  const feedback =
-    document.getElementById(
-      "rememberFeedback"
-    );
-
-
-  const options =
-    document.querySelectorAll(
-      "#rememberOptions .option"
-    );
 
 
   if(correct){
@@ -2899,404 +2133,390 @@ function rememberAnswer(
     );
 
 
-    feedback.className =
-      "feedback show correct";
-
-
     feedback.innerText =
-      "✓ Correct! “Where are you from?” pergunta de onde a pessoa é.";
+      "✓ Correct! 'I'm Kelton.' responde à pergunta 'What's your name?'";
 
 
-    rememberCompleted =
-      true;
+    feedback.className =
+      "feedback success";
+
+
+    recallCompleted = true;
 
 
     addXP(10);
 
 
-    options.forEach(
-      option => {
+    buttons.forEach(
+      function(btn){
 
-        option.disabled =
-          true;
+        btn.disabled = true;
 
       }
     );
 
 
-    document.getElementById(
-      "dot1"
-    ).classList.add("on");
+    continueButton.style.display =
+      "block";
 
 
-  }else{
+    speak(
+      "Correct! I'm Kelton."
+    );
+
+  }
+
+  else{
 
     button.classList.add(
       "wrong"
     );
 
 
-    feedback.className =
-      "feedback show wrong";
-
-
     feedback.innerText =
-      "Not quite. Pense na diferença entre “from” e “live”.";
+      "❌ Not quite. A pergunta foi: What's your name? Tente novamente.";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    speak(
+      "Try again."
+    );
 
   }
 
 }
 
 
-/* =====================================
-   NORMALIZAR TEXTO
-===================================== */
+/* =========================================
+   IR PARA DADOS PESSOAIS
+========================================= */
 
-function normalizeText(text){
+function goToPersonal(){
 
-  return text
-    .trim()
-    .toLowerCase()
-    .replace(
-      /[.,!?]/g,
+  showScreen(6);
+
+}
+
+
+/* =========================================
+   GUARDAR PAÍS E CIDADE
+========================================= */
+
+function savePersonalInfo(){
+
+  const countryInput =
+    document.getElementById(
+      "countryInput"
+    );
+
+  const cityInput =
+    document.getElementById(
+      "cityInput"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "personalFeedback"
+    );
+
+
+  country =
+    countryInput.value.trim();
+
+
+  city =
+    cityInput.value.trim();
+
+
+  if(
+    country === "" ||
+    city === ""
+  ){
+
+    feedback.innerText =
+      "⚠️ Preencha o país e a cidade para continuar.";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    return;
+
+  }
+
+
+  /*
+    Guardamos os dados
+    no navegador.
+  */
+
+  localStorage.setItem(
+    "englishMZ_country",
+    country
+  );
+
+
+  localStorage.setItem(
+    "englishMZ_city",
+    city
+  );
+
+
+  feedback.innerText =
+    "✓ Perfeito! Agora vamos usar a sua realidade em inglês.";
+
+
+  feedback.className =
+    "feedback success";
+
+
+  if(!personalCompleted){
+
+    personalCompleted = true;
+
+    addXP(5);
+
+  }
+
+
+  setTimeout(
+    function(){
+
+      showScreen(7);
+
+    },
+    600
+  );
+
+}
+
+
+/* =========================================
+   CHECK — PAÍS
+========================================= */
+
+function checkCountry(){
+
+  const input =
+    document.getElementById(
+      "countryAnswer"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "countryFeedback"
+    );
+
+
+  let answer =
+    input.value.trim();
+
+
+  let normalized =
+    answer.toLowerCase();
+
+
+  let expected =
+    "i'm from " +
+    country.toLowerCase();
+
+
+  let expected2 =
+    "i am from " +
+    country.toLowerCase();
+
+
+  let expected3 =
+    "im from " +
+    country.toLowerCase();
+
+
+  /*
+    Remove ponto final
+  */
+
+  normalized =
+    normalized.replace(
+      /\.$/,
       ""
-    )
-    .replace(
-      /\s+/g,
-      " "
     );
+
+
+  if(
+    normalized === expected ||
+    normalized === expected2 ||
+    normalized === expected3
+  ){
+
+    feedback.innerText =
+      "✓ Excellent! That's your real English. 🌍";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    if(!countryCompleted){
+
+      countryCompleted = true;
+
+      addXP(10);
+
+    }
+
+
+    document.getElementById(
+      "cityCard"
+    ).style.display =
+      "block";
+
+
+    speak(answer);
+
+  }
+
+  else{
+
+    feedback.innerText =
+      "❌ Tente usar: I'm from " +
+      country +
+      ".";
+
+
+    feedback.className =
+      "feedback error";
+
+  }
 
 }
 
 
-/* =====================================
-   VERIFICAR ORIGEM
-===================================== */
+/* =========================================
+   CHECK — CIDADE
+========================================= */
 
-function checkFromAnswer(){
+function checkCity(){
 
   const input =
     document.getElementById(
-      "fromInput"
+      "cityAnswer"
     );
 
 
   const feedback =
     document.getElementById(
-      "fromFeedback"
+      "cityFeedback"
     );
 
 
-  const value =
-    normalizeText(
-      input.value
+  let answer =
+    input.value.trim();
+
+
+  let normalized =
+    answer.toLowerCase();
+
+
+  let expected =
+    "i live in " +
+    city.toLowerCase();
+
+
+  let expected2 =
+    "i live in " +
+    city.toLowerCase();
+
+
+  normalized =
+    normalized.replace(
+      /\.$/,
+      ""
     );
-
-
-  if(value === ""){
-
-    feedback.className =
-      "feedback show wrong";
-
-
-    feedback.innerText =
-      "Digite um país ou lugar. Ex.: Mozambique";
-
-    return;
-
-  }
 
 
   if(
-    fromCompleted
+    normalized === expected ||
+    normalized === expected2
   ){
 
-    return;
+    feedback.innerText =
+      "✓ Perfect! You can talk about where you live.";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    if(!cityCompleted){
+
+      cityCompleted = true;
+
+      addXP(10);
+
+    }
+
+
+    document.getElementById(
+      "cityContinue"
+    ).style.display =
+      "block";
+
+
+    speak(answer);
 
   }
 
+  else{
 
-  fromCompleted =
-    true;
-
-
-  feedback.className =
-    "feedback show correct";
-
-
-  feedback.innerText =
-    "✓ Great! Your sentence is: “I'm from " +
-    input.value.trim() +
-    ".”";
+    feedback.innerText =
+      "❌ Tente usar: I live in " +
+      city +
+      ".";
 
 
-  input.style.borderColor =
-    "#22c55e";
+    feedback.className =
+      "feedback error";
 
-
-  addXP(10);
-
-
-  document.getElementById(
-    "dot2"
-  ).classList.add("on");
-
-
-  speakText(
-    "I'm from " +
-    input.value.trim()
-  );
+  }
 
 }
 
 
-/* =====================================
-   VERIFICAR CIDADE
-===================================== */
-
-function checkLiveAnswer(){
-
-  const input =
-    document.getElementById(
-      "liveInput"
-    );
-
-
-  const feedback =
-    document.getElementById(
-      "liveFeedback"
-    );
-
-
-  const value =
-    normalizeText(
-      input.value
-    );
-
-
-  if(value === ""){
-
-    feedback.className =
-      "feedback show wrong";
-
-
-    feedback.innerText =
-      "Digite uma cidade. Ex.: Maputo";
-
-    return;
-
-  }
-
-
-  if(
-    liveCompleted
-  ){
-
-    return;
-
-  }
-
-
-  liveCompleted =
-    true;
-
-
-  feedback.className =
-    "feedback show correct";
-
-
-  feedback.innerText =
-    "✓ Excellent! Your sentence is: “I live in " +
-    input.value.trim() +
-    ".”";
-
-
-  input.style.borderColor =
-    "#22c55e";
-
-
-  addXP(10);
-
-
-  document.getElementById(
-    "dot4"
-  ).classList.add("on");
-
-
-  speakText(
-    "I live in " +
-    input.value.trim()
-  );
-
-}
-
-
-/* =====================================
+/* =========================================
    CONVERSAÇÃO
-===================================== */
+========================================= */
 
-const conversation = [
+function goToConversation(){
 
-  {
+  showScreen(8);
 
-    question:
-      "Hello!",
+  loadConversation();
 
-    audio:
-      "Hello!",
-
-    answers:[
-      {
-        text:"Hello!",
-        correct:true
-      },
-
-      {
-        text:"I live in Maputo.",
-        correct:false
-      },
-
-      {
-        text:"Where are you from?",
-        correct:false
-      }
-    ]
-
-  },
+}
 
 
-  {
-
-    question:
-      "What's your name?",
-
-    audio:
-      "What's your name?",
-
-    answers:[
-      {
-        text:"I'm Kelton.",
-        correct:true
-      },
-
-      {
-        text:"I'm from Mozambique.",
-        correct:false
-      },
-
-      {
-        text:"I live in Maputo.",
-        correct:false
-      }
-    ]
-
-  },
-
-
-  {
-
-    question:
-      "Nice to meet you.",
-
-    audio:
-      "Nice to meet you.",
-
-    answers:[
-      {
-        text:"Nice to meet you.",
-        correct:true
-      },
-
-      {
-        text:"Where are you from?",
-        correct:false
-      },
-
-      {
-        text:"I'm from Mozambique.",
-        correct:false
-      }
-    ]
-
-  },
-
-
-  {
-
-    question:
-      "Where are you from?",
-
-    audio:
-      "Where are you from?",
-
-    answers:[
-      {
-        text:"I'm from Mozambique.",
-        correct:true
-      },
-
-      {
-        text:"I live in Maputo.",
-        correct:false
-      },
-
-      {
-        text:"What's your name?",
-        correct:false
-      }
-    ]
-
-  },
-
-
-  {
-
-    question:
-      "Where do you live?",
-
-    audio:
-      "Where do you live?",
-
-    answers:[
-      {
-        text:"I live in Maputo.",
-        correct:true
-      },
-
-      {
-        text:"I'm from Mozambique.",
-        correct:false
-      },
-
-      {
-        text:"Nice to meet you.",
-        correct:false
-      }
-    ]
-
-  }
-
-];
-
+/* =========================================
+   CARREGAR CONVERSA
+========================================= */
 
 function loadConversation(){
 
-  const current =
-    conversation[
-      conversationStep
+  const data =
+    conversations[
+      conversationIndex
     ];
 
 
-  document.getElementById(
-    "conversationQuestion"
-  ).innerText =
-    current.question;
-
-
-  document.getElementById(
-    "conversationAnswer"
-  ).innerText =
-    "?";
+  const question =
+    document.getElementById(
+      "conversationQuestion"
+    );
 
 
   const options =
@@ -3311,26 +2531,47 @@ function loadConversation(){
     );
 
 
-  const next =
+  const continueButton =
     document.getElementById(
-      "conversationNext"
+      "conversationContinue"
     );
+
+
+  const progress =
+    document.getElementById(
+      "conversationProgress"
+    );
+
+
+  question.innerHTML =
+    `
+      <div class="phrase">
+        <div class="english">
+          ${data.question}
+        </div>
+      </div>
+    `;
 
 
   options.innerHTML = "";
 
-  feedback.className =
-    "feedback";
 
-  feedback.innerText =
-    "";
+  feedback.innerText = "";
 
-  next.style.display =
+
+  continueButton.style.display =
     "none";
 
 
-  current.answers.forEach(
-    answer => {
+  progress.innerText =
+    "CONVERSATION " +
+    (conversationIndex + 1) +
+    " / " +
+    conversations.length;
+
+
+  data.options.forEach(
+    function(option){
 
       const button =
         document.createElement(
@@ -3339,19 +2580,20 @@ function loadConversation(){
 
 
       button.className =
-        "option";
+        "audio-button";
 
 
       button.innerText =
-        answer.text;
+        option.text;
 
 
       button.onclick =
         function(){
 
-          selectConversationAnswer(
+          checkConversation(
             button,
-            answer.correct
+            option.correct,
+            option.text
           );
 
         };
@@ -3362,15 +2604,19 @@ function loadConversation(){
       );
 
     }
-
   );
 
 }
 
 
-function selectConversationAnswer(
+/* =========================================
+   CHECK CONVERSA
+========================================= */
+
+function checkConversation(
   button,
-  correct
+  correct,
+  text
 ){
 
   const feedback =
@@ -3379,9 +2625,15 @@ function selectConversationAnswer(
     );
 
 
+  const continueButton =
+    document.getElementById(
+      "conversationContinue"
+    );
+
+
   const buttons =
     document.querySelectorAll(
-      "#conversationOptions .option"
+      "#conversationOptions button"
     );
 
 
@@ -3392,25 +2644,18 @@ function selectConversationAnswer(
     );
 
 
-    feedback.className =
-      "feedback show correct";
-
-
     feedback.innerText =
-      "✓ Correct! Muito bem.";
+      "✓ Correct! " + text;
 
 
-    document.getElementById(
-      "conversationAnswer"
-    ).innerText =
-      button.innerText;
+    feedback.className =
+      "feedback success";
 
 
     buttons.forEach(
-      b => {
+      function(btn){
 
-        b.disabled =
-          true;
+        btn.disabled = true;
 
       }
     );
@@ -3419,70 +2664,59 @@ function selectConversationAnswer(
     addXP(5);
 
 
-    document.getElementById(
-      "conversationNext"
-    ).style.display =
+    speak(text);
+
+
+    continueButton.style.display =
       "block";
 
+  }
 
-  }else{
+  else{
 
     button.classList.add(
       "wrong"
     );
 
 
-    feedback.className =
-      "feedback show wrong";
-
-
     feedback.innerText =
-      "Not quite. Tente novamente.";
+      "❌ Try again. Pense no que faria sentido nesta conversa.";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    speak(
+      "Try again."
+    );
 
   }
 
 }
 
 
-function nextConversationStep(){
+/* =========================================
+   PRÓXIMA CONVERSA
+========================================= */
 
-  conversationStep++;
+function nextConversation(){
+
+  conversationIndex++;
 
 
   if(
-    conversationStep >=
-    conversation.length
+    conversationIndex >=
+    conversations.length
   ){
 
-    conversationStep = 0;
+    conversationCompleted = true;
 
 
-    document.getElementById(
-      "personalConversationBox"
-    ).style.display =
-      "block";
+    addXP(10);
 
 
-    document.getElementById(
-      "personalConversationText"
-    ).innerText =
-      "Agora tente responder usando a sua própria origem e cidade.";
-
-
-    document.getElementById(
-      "conversationNext"
-    ).innerText =
-      "CONTINUAR →";
-
-
-    document.getElementById(
-      "conversationNext"
-    ).onclick =
-      function(){
-
-        showScreen(8);
-
-      };
+    showScreen(9);
 
 
     return;
@@ -3495,193 +2729,519 @@ function nextConversationStep(){
 }
 
 
-/* =====================================
-   ÁUDIO DA CONVERSA
-===================================== */
-
-function playConversationAudio(){
-
-  const current =
-    conversation[
-      conversationStep
-    ];
-
-
-  speakText(
-    current.audio
-  );
-
-}
-
-
-/* =====================================
+/* =========================================
    DESAFIO FINAL
-===================================== */
+========================================= */
 
-function completeChallenge(){
+function checkFinalChallenge(){
+
+  const name =
+    document.getElementById(
+      "finalName"
+    ).value.trim();
+
+
+  const countryAnswer =
+    document.getElementById(
+      "finalCountry"
+    ).value.trim();
+
+
+  const cityAnswer =
+    document.getElementById(
+      "finalCity"
+    ).value.trim();
+
 
   const feedback =
     document.getElementById(
-      "challengeFeedback"
+      "finalFeedback"
     );
 
 
   if(
-    challengeCompleted
+    name === "" ||
+    countryAnswer === "" ||
+    cityAnswer === ""
   ){
+
+    feedback.innerText =
+      "⚠️ Responda às três perguntas.";
+
+
+    feedback.className =
+      "feedback error";
+
 
     return;
 
   }
 
 
-  challengeCompleted =
-    true;
+  let correctCount = 0;
 
 
-  feedback.className =
-    "feedback show correct";
+  /*
+    Nome
+  */
+
+  const nameNormalized =
+    name
+      .toLowerCase()
+      .replace(/\.$/,"");
 
 
-  feedback.innerText =
-    "✓ Desafio concluído! Você completou a sequência da conversa.";
+  if(
+    nameNormalized.startsWith(
+      "i'm "
+    ) ||
+    nameNormalized.startsWith(
+      "i am "
+    ) ||
+    nameNormalized.startsWith(
+      "im "
+    )
+  ){
+
+    correctCount++;
+
+  }
 
 
-  addXP(20);
+  /*
+    País
+  */
+
+  const countryNormalized =
+    countryAnswer
+      .toLowerCase()
+      .replace(/\.$/,"");
 
 
-  document.getElementById(
-    "dot3"
-  ).classList.add("on");
+  if(
+    countryNormalized ===
+    (
+      "i'm from " +
+      country.toLowerCase()
+    )
+    ||
+    countryNormalized ===
+    (
+      "i am from " +
+      country.toLowerCase()
+    )
+    ||
+    countryNormalized ===
+    (
+      "im from " +
+      country.toLowerCase()
+    )
+  ){
+
+    correctCount++;
+
+  }
 
 
-  saveLessonMastery();
+  /*
+    Cidade
+  */
+
+  const cityNormalized =
+    cityAnswer
+      .toLowerCase()
+      .replace(/\.$/,"");
 
 
-  setTimeout(
-    finishLesson,
-    900
-  );
+  if(
+    cityNormalized ===
+    (
+      "i live in " +
+      city.toLowerCase()
+    )
+  ){
 
-}
+    correctCount++;
 
-
-/* =====================================
-   FINALIZAR AULA
-===================================== */
-
-function finishLesson(){
-
-  saveLessonMastery();
+  }
 
 
-  document.getElementById(
-    "finalXP"
-  ).innerText =
-    lessonXP;
+  if(correctCount === 3){
+
+    feedback.innerText =
+      "🎉 Excellent! You completed the challenge perfectly!";
 
 
-  document.getElementById(
-    "finalDot1"
-  ).classList.add("on");
+    feedback.className =
+      "feedback success";
 
 
-  document.getElementById(
-    "finalDot2"
-  ).classList.add("on");
+    if(!finalCompleted){
+
+      finalCompleted = true;
+
+      addXP(20);
+
+    }
 
 
-  document.getElementById(
-    "finalDot3"
-  ).classList.add("on");
+    document.getElementById(
+      "finishButton"
+    ).style.display =
+      "block";
 
 
-  document.getElementById(
-    "finalDot4"
-  ).classList.add("on");
-
-
-  showScreen("result");
-
-}
-
-
-/* =====================================
-   MASTERy
-===================================== */
-
-function saveLessonMastery(){
-
-  localStorage.setItem(
-
-    "englishMZ_Lesson2_MasterY",
-
-    JSON.stringify({
-
-      completed:true,
-
-      xp:lessonXP,
-
-      from:fromCompleted,
-
-      live:liveCompleted,
-
-      remember:rememberCompleted,
-
-      challenge:challengeCompleted
-
-    })
-
-  );
-
-}
-
-
-/* =====================================
-   PRÓXIMA AULA
-===================================== */
-
-function goToNextLesson(){
-
-  alert(
-    "Lesson 3 será liberada depois da revisão da Lesson 2."
-  );
-
-}
-
-
-/* =====================================
-   SAIR
-===================================== */
-
-function exitLesson(){
-
-  const confirmExit =
-    confirm(
-      "Tem certeza que deseja sair da Lesson 2?"
+    speak(
+      "Excellent! You completed the challenge."
     );
 
+  }
 
-  if(confirmExit){
+  else{
 
-    window.history.back();
+    feedback.innerText =
+      "Você acertou " +
+      correctCount +
+      " de 3. Revise suas respostas e tente novamente.";
+
+
+    feedback.className =
+      "feedback error";
 
   }
 
 }
 
 
-/* =====================================
+/* =========================================
+   FINALIZAR AULA
+========================================= */
+
+function finishLesson(){
+
+  /*
+    Garante que a aula
+    seja registrada como concluída.
+  */
+
+  localStorage.setItem(
+    "englishMZ_lesson2_completed",
+    "true"
+  );
+
+
+  localStorage.setItem(
+    "englishMZ_lesson2_xp",
+    xp
+  );
+
+
+  const finalXP =
+    document.getElementById(
+      "finalXP"
+    );
+
+
+  finalXP.innerText =
+    xp;
+
+
+  showResultScreen();
+
+}
+
+
+/* =========================================
+   MOSTRAR RESULTADO
+========================================= */
+
+function showResultScreen(){
+
+  const screens =
+    document.querySelectorAll(
+      ".screen"
+    );
+
+
+  screens.forEach(
+    function(screen){
+
+      screen.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  document
+    .getElementById(
+      "resultScreen"
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  const progressFill =
+    document.getElementById(
+      "progressFill"
+    );
+
+
+  const progressText =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  progressFill.style.width =
+    "100%";
+
+
+  progressText.innerText =
+    "✓";
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================
+   XP
+========================================= */
+
+function addXP(amount){
+
+  xp += amount;
+
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+
+  document.getElementById(
+    "xp"
+  ).innerText =
+    xp;
+
+
+  showXPPopup(amount);
+
+}
+
+
+/* =========================================
+   POPUP XP
+========================================= */
+
+function showXPPopup(amount){
+
+  const popup =
+    document.getElementById(
+      "xpPopup"
+    );
+
+
+  popup.innerText =
+    "+" + amount + " XP ⭐";
+
+
+  popup.classList.remove(
+    "show"
+  );
+
+
+  /*
+    força reinício da animação
+  */
+
+  void popup.offsetWidth;
+
+
+  popup.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================
+   VOLTAR PARA LESSONS
+========================================= */
+
+function goBackToLessons(){
+
+  /*
+    Tentativa de voltar
+    para a página principal.
+  */
+
+  if(
+    document.referrer &&
+    document.referrer !==
+    window.location.href
+  ){
+
+    window.history.back();
+
+  }
+
+  else{
+
+    window.location.href =
+      "../index.html";
+
+  }
+
+}
+
+
+/* =========================================
+   CARREGAR DADOS SALVOS
+========================================= */
+
+function loadSavedData(){
+
+  const savedCountry =
+    localStorage.getItem(
+      "englishMZ_country"
+    );
+
+
+  const savedCity =
+    localStorage.getItem(
+      "englishMZ_city"
+    );
+
+
+  if(savedCountry){
+
+    country =
+      savedCountry;
+
+    const input =
+      document.getElementById(
+        "countryInput"
+      );
+
+
+    if(input){
+
+      input.value =
+        savedCountry;
+
+    }
+
+  }
+
+
+  if(savedCity){
+
+    city =
+      savedCity;
+
+    const input =
+      document.getElementById(
+        "cityInput"
+      );
+
+
+    if(input){
+            input.value =
+        savedCity;
+
+    }
+
+  }
+
+
+  /* ================================
+     ATUALIZAR XP
+  ================================= */
+
+  const xpElement =
+    document.getElementById(
+      "xp"
+    );
+
+
+  if(xpElement){
+
+    xpElement.innerText =
+      xp;
+
+  }
+
+
+  /* ================================
+     ATUALIZAR PROGRESSO
+  ================================= */
+
+  updateProgress();
+
+}
+
+
+/* =========================================
+   CARREGAR VOZES DO NAVEGADOR
+========================================= */
+
+if(
+  "speechSynthesis" in window
+){
+
+  window.speechSynthesis.onvoiceschanged =
+    function(){
+
+      window.speechSynthesis
+        .getVoices();
+
+    };
+
+}
+
+
+/* =========================================
    INICIALIZAÇÃO
-===================================== */
+========================================= */
 
-loadProgress();
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
 
-updateProgress();
+    loadSavedData();
 
-loadConversation();
+    updateProgress();
+
+  }
+);
+
+
+/* =========================================
+   GARANTIR QUE A PRIMEIRA TELA APAREÇA
+========================================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    showScreen(1);
+
+    updateProgress();
+
+  }
+);
 
 </script>
 
 </body>
-  </html>
+</html>
+
+   
