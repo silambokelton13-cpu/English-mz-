@@ -2085,55 +2085,69 @@ correct:1
 }
 
 ];
+      function loadChallenge(){
 
-function loadChallenge(){
+  const challenge =
+    challenges[challengeIndex];
 
-const challenge =
-challenges[
-challengeIndex
-];
+  document.getElementById(
+    "challengeSituation"
+  ).innerText =
+    challenge.question;
 
-document.getElementById(
-"challengeSituation"
-).innerText =
-challenge.question;
+  document.getElementById(
+    "challenge1"
+  ).innerText =
+    challenge.options[0];
 
-document.getElementById(
-"challenge1"
-).innerText =
-challenge.options[0];
+  document.getElementById(
+    "challenge2"
+  ).innerText =
+    challenge.options[1];
 
-document.getElementById(
-"challenge2"
-).innerText =
-challenge.options[1];
 
-document.getElementById(
-"challenge1"
-).classList.remove(
-"wrong",
-"correct"
-);
+  /* LIMPAR ESTADO ANTERIOR */
 
-document.getElementById(
-"challenge2"
-).classList.remove(
-"wrong",
-"correct"
-);
+  const option1 =
+    document.getElementById(
+      "challenge1"
+    );
 
-document.getElementById(
-"challengeFeedback"
-).innerText =
-"";
+  const option2 =
+    document.getElementById(
+      "challenge2"
+    );
 
-document.getElementById(
-"challengeScore"
-).innerText =
-challengeScore +
-" / 5";
 
-}
+  option1.classList.remove(
+    "wrong",
+    "correct"
+  );
+
+  option2.classList.remove(
+    "wrong",
+    "correct"
+  );
+
+
+  /* REATIVAR OS BOTÕES */
+
+  option1.disabled = false;
+  option2.disabled = false;
+
+
+  document.getElementById(
+    "challengeFeedback"
+  ).innerText = "";
+
+
+  document.getElementById(
+    "challengeScore"
+  ).innerText =
+    challengeScore +
+    " / 5";
+
+      }
 
 function speakChallenge(){
 
