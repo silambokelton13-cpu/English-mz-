@@ -1,1 +1,2283 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
+«»
+
+<title>Lesson 6 — How are you? | English MZ</title><style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#111;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  background:#181818;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#58cc02;
+}
+
+.xp{
+  background:#292929;
+  padding:7px 12px;
+  border-radius:20px;
+  color:#ffc800;
+  font-weight:bold;
+}
+
+.progress-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.progress-bar{
+  flex:1;
+  height:8px;
+  background:#333;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:.4s;
+}
+
+.progress-text{
+  font-size:12px;
+  color:#aaa;
+}
+
+.container{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding:25px 16px 60px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.label{
+  color:#58cc02;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+h1{
+  font-size:29px;
+  margin:15px 0;
+  line-height:1.2;
+}
+
+.subtitle{
+  color:#aaa;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#1c1c1c;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.explanation{
+  font-size:18px;
+  line-height:1.7;
+  color:#eee;
+}
+
+.highlight{
+  color:#58cc02;
+  font-weight:bold;
+}
+
+.phrase{
+  background:#242424;
+  border-radius:15px;
+  padding:17px;
+  margin-top:12px;
+}
+
+.english{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.meaning{
+  color:#999;
+  margin-top:7px;
+  line-height:1.4;
+}
+
+.audio-main{
+  width:100%;
+  padding:15px;
+  margin-top:14px;
+  border:0;
+  border-radius:14px;
+  background:#292929;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.audio-main:active{
+  transform:scale(.98);
+}
+
+.btn{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:14px;
+  background:#58cc02;
+  color:#111;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+.btn-dark{
+  background:#292929;
+  color:#fff;
+}
+
+.option{
+  width:100%;
+  padding:17px;
+  margin-top:10px;
+  border-radius:13px;
+  border:2px solid #333;
+  background:#242424;
+  color:#fff;
+  font-size:17px;
+  font-weight:bold;
+  text-align:left;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.option.correct{
+  border-color:#58cc02 !important;
+  background:#58cc02 !important;
+  color:#111 !important;
+  transform:scale(1.02);
+}
+
+.option.wrong{
+  border-color:#ff4b4b !important;
+  background:#ff4b4b !important;
+  color:#fff !important;
+}
+
+.option:disabled{
+  opacity:1;
+}
+
+.feedback{
+  min-height:30px;
+  margin-top:15px;
+  font-weight:bold;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.correct-text{
+  color:#58cc02;
+}
+
+.wrong-text{
+  color:#ff5c5c;
+}
+
+.situation{
+  font-size:19px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+.input{
+  width:100%;
+  padding:16px;
+  margin-top:10px;
+  border-radius:13px;
+  border:2px solid #333;
+  background:#242424;
+  color:#fff;
+  font-size:17px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#58cc02;
+}
+
+.input:disabled{
+  opacity:.7;
+}
+
+.mic{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:0;
+  background:#ff4b4b;
+  color:#fff;
+  font-size:32px;
+  display:block;
+  margin:25px auto 15px;
+  cursor:pointer;
+}
+
+.mic.recording{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+.status{
+  text-align:center;
+  color:#aaa;
+  line-height:1.5;
+}
+
+audio{
+  width:100%;
+  margin-top:15px;
+}
+
+.challenge-number{
+  text-align:center;
+  color:#aaa;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.score{
+  font-size:22px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.final{
+  text-align:center;
+}
+
+.final-icon{
+  font-size:65px;
+}
+
+.big-xp{
+  color:#ffc800;
+  font-size:30px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+.tip{
+  background:#242424;
+  border-left:4px solid #58cc02;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+</style></head><body><header class="header">  <div class="header-top"><div class="logo">
+  English <span>MZ</span> 🇲🇿
+</div>
+
+<div class="xp">
+  ⭐ <span id="xp">0</span> XP
+</div>
+
+  </div>  <div class="progress-row"><div class="progress-bar">
+
+  <div
+    id="progressFill"
+    class="progress-fill">
+  </div>
+
+</div>
+
+<div
+  id="progressText"
+  class="progress-text">
+  1/11
+</div>
+
+  </div></header><main class="container"><!-- =================================================
+     TELA 1
+================================================= --><section
+  id="screen1"
+  class="screen active"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    😊 How are you?
+  </h1>  <p class="subtitle">
+    Aprenda a perguntar como alguém está
+    e a responder em inglês.
+  </p>  <div class="card"><div class="explanation">
+
+  Nesta aula vamos aprender uma das
+  perguntas mais importantes para iniciar
+  uma conversa em inglês:
+
+  <br><br>
+
+  <span class="highlight">
+    How are you?
+  </span>
+
+  <br>
+
+  = Como você está?
+
+  <br><br>
+
+  Depois vamos aprender diferentes formas
+  de responder e como continuar a conversa
+  perguntando:
+
+  <br><br>
+
+  <span class="highlight">
+    And you?
+  </span>
+
+  <br>
+
+  = E você?
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakExplanation()"
+>
+  🔊 Ouvir explicação
+</button>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(2)"
+>
+  COMEÇAR A AULA →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 2
+================================================= --><section
+  id="screen2"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🗣️ The Question
+  </h1>  <p class="subtitle">
+    Primeiro vamos aprender a pergunta.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    How are you?
+  </div>
+
+  <div class="meaning">
+    Como você está?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('How are you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="tip">
+
+  💡 <strong>Pronúncia aproximada:</strong>
+
+  <br><br>
+
+  "Rau ar iu?"
+
+  <br><br>
+
+  Não precisa ser perfeito agora.
+  O mais importante é ouvir e repetir.
+
+</div>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(3)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 3
+================================================= --><section
+  id="screen3"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    💬 Basic Answers
+  </h1>  <p class="subtitle">
+    Existem várias maneiras de responder.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    I'm good.
+  </div>
+
+  <div class="meaning">
+    Estou bem.
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am good.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    I'm fine, thank you.
+  </div>
+
+  <div class="meaning">
+    Estou bem, obrigado(a).
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am fine, thank you.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    I'm great!
+  </div>
+
+  <div class="meaning">
+    Estou ótimo(a)!
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am great!')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    I'm okay.
+  </div>
+
+  <div class="meaning">
+    Estou bem / Estou mais ou menos.
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am okay.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    Not bad.
+  </div>
+
+  <div class="meaning">
+    Nada mal.
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('Not bad.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(4)"
+>
+  VAMOS PRATICAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 4
+================================================= --><section
+  id="screen4"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🎯 Exercise 1
+  </h1>  <p class="subtitle">
+    Escolha a resposta correta.
+  </p>  <div class="card"><div class="situation">
+
+  Alguém pergunta:
+
+  <br><br>
+
+  <strong>
+    How are you?
+  </strong>
+
+  <br><br>
+
+  Você quer dizer:
+
+  <br>
+
+  <strong>
+    "Estou bem."
+  </strong>
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakPT('Alguém pergunta: Como você está? Você quer dizer: Estou bem.')"
+>
+  🔊 Ouvir pergunta
+</button>
+
+
+<button
+  id="q1option1"
+  class="option"
+  onclick="checkQ1(1)"
+>
+  I'm good.
+</button>
+
+
+<button
+  id="q1option2"
+  class="option"
+  onclick="checkQ1(2)"
+>
+  Good night.
+</button>
+
+
+<div
+  id="q1feedback"
+  class="feedback">
+</div>
+
+
+<button
+  id="q1continue"
+  class="btn hidden"
+  onclick="goToScreen(5)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 5
+================================================= --><section
+  id="screen5"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🎯 Exercise 2
+  </h1>  <p class="subtitle">
+    Escolha a resposta correta.
+  </p>  <div class="card"><div class="situation">
+
+  Uma pessoa pergunta:
+
+  <br><br>
+
+  <strong>
+    How are you?
+  </strong>
+
+  <br><br>
+
+  Você quer dizer:
+
+  <br>
+
+  <strong>
+    "Estou ótimo!"
+  </strong>
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakPT('Uma pessoa pergunta: Como você está? Você quer dizer: Estou ótimo!')"
+>
+  🔊 Ouvir pergunta
+</button>
+
+
+<button
+  id="q2option1"
+  class="option"
+  onclick="checkQ2(1)"
+>
+  I'm great!
+</button>
+
+
+<button
+  id="q2option2"
+  class="option"
+  onclick="checkQ2(2)"
+>
+  Good morning.
+</button>
+
+
+<div
+  id="q2feedback"
+  class="feedback">
+</div>
+
+
+<button
+  id="q2continue"
+  class="btn hidden"
+  onclick="goToScreen(6)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 6
+================================================= --><section
+  id="screen6"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🔄 And you?
+  </h1>  <p class="subtitle">
+    Aprenda a continuar a conversa.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    How are you?
+  </div>
+
+  <div class="meaning">
+    Como você está?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('How are you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    I'm good. And you?
+  </div>
+
+  <div class="meaning">
+    Estou bem. E você?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am good. And you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    I'm fine, thank you. And you?
+  </div>
+
+  <div class="meaning">
+    Estou bem, obrigado(a). E você?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am fine, thank you. And you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="tip">
+
+  💡 <strong>Regra simples:</strong>
+
+  <br><br>
+
+  Responda primeiro:
+
+  <br>
+
+  <strong>
+    I'm good.
+  </strong>
+
+  <br><br>
+
+  Depois pergunte:
+
+  <br>
+
+  <strong>
+    And you?
+  </strong>
+
+</div>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(7)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 7
+================================================= --><section
+  id="screen7"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🎯 Exercise 3
+  </h1>  <p class="subtitle">
+    Agora use a conversa completa.
+  </p>  <div class="card"><div class="situation">
+
+  Seu amigo pergunta:
+
+  <br><br>
+
+  <strong>
+    How are you?
+  </strong>
+
+  <br><br>
+
+  Você está bem e quer perguntar:
+
+  <br>
+
+  <strong>
+    "E você?"
+  </strong>
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakPT('Seu amigo pergunta: Como você está? Você está bem e quer perguntar: E você?')"
+>
+  🔊 Ouvir pergunta
+</button>
+
+
+<button
+  id="q3option1"
+  class="option"
+  onclick="checkQ3(1)"
+>
+  I'm good. And you?
+</button>
+
+
+<button
+  id="q3option2"
+  class="option"
+  onclick="checkQ3(2)"
+>
+  Good night.
+</button>
+
+
+<div
+  id="q3feedback"
+  class="feedback">
+</div>
+
+
+<button
+  id="q3continue"
+  class="btn hidden"
+  onclick="goToScreen(8)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 8
+================================================= --><section
+  id="screen8"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    💬 Let's Talk
+  </h1>  <p class="subtitle">
+    Veja uma conversa simples do dia a dia.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    Person: Hello!
+  </div>
+
+  <div class="meaning">
+    Pessoa: Olá!
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('Hello!')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    Person: How are you?
+  </div>
+
+  <div class="meaning">
+    Pessoa: Como você está?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('How are you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    You: I'm good. And you?
+  </div>
+
+  <div class="meaning">
+    Você: Estou bem. E você?
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am good. And you?')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    Person: I'm great!
+  </div>
+
+  <div class="meaning">
+    Pessoa: Estou ótimo!
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speakEnglish('I am great!')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(9)"
+>
+  MINHA VEZ →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 9
+================================================= --><section
+  id="screen9"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    ✍️ Your Turn
+  </h1>  <p class="subtitle">
+    Escreva sua resposta em inglês.
+  </p>  <div class="card"><div class="situation">
+
+  Alguém pergunta:
+
+  <br><br>
+
+  <strong>
+    How are you?
+  </strong>
+
+  <br><br>
+
+  Responda:
+
+  <br>
+
+  <strong>
+    "Estou bem. E você?"
+  </strong>
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakPT('Alguém pergunta: Como você está? Responda em inglês: Estou bem. E você?')"
+>
+  🔊 Ouvir instrução
+</button>
+
+
+<input
+  id="conversationInput"
+  class="input"
+  type="text"
+  placeholder="Digite sua resposta em inglês..."
+  autocomplete="off"
+>
+
+
+<button
+  class="btn"
+  onclick="checkConversation()"
+>
+  RESPONDER
+</button>
+
+
+<div
+  id="conversationFeedback"
+  class="feedback">
+</div>
+
+
+<button
+  id="conversationContinue"
+  class="btn hidden"
+  onclick="goToScreen(10)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 10
+================================================= --><section
+  id="screen10"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 6
+  </div>  <h1>
+    🏆 Final Challenge
+  </h1>  <p class="subtitle">
+    Cinco perguntas. Mostre o que aprendeu!
+  </p>  <div class="card"><div
+  id="challengeNumber"
+  class="challenge-number">
+</div>
+
+
+<div
+  id="challengeSituation"
+  class="situation">
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakChallenge()"
+>
+  🔊 Ouvir pergunta
+</button>
+
+
+<button
+  id="challenge1"
+  class="option"
+  onclick="checkChallenge(1)"
+>
+</button>
+
+
+<button
+  id="challenge2"
+  class="option"
+  onclick="checkChallenge(2)"
+>
+</button>
+
+
+<div
+  id="challengeFeedback"
+  class="feedback">
+</div>
+
+
+<div
+  id="challengeScore"
+  class="score">
+  0 / 5
+</div>
+
+
+<button
+  id="challengeContinue"
+  class="btn hidden"
+  onclick="finishLesson()"
+>
+  VER RESULTADO →
+</button>
+
+  </div></section><!-- =================================================
+     TELA 11
+================================================= --><section
+  id="screen11"
+  class="screen"
+>  <div class="card final"><div class="final-icon">
+  🎉
+</div>
+
+
+<h1>
+  Lesson 6 Complete!
+</h1>
+
+
+<p class="subtitle">
+  Parabéns! Você terminou a Aula 6.
+</p>
+
+
+<div
+  id="finalScore"
+  class="score">
+</div>
+
+
+<div
+  id="finalXP"
+  class="big-xp">
+</div>
+
+
+<button
+  class="btn"
+  onclick="goBackToLessons()"
+>
+  📚 VOLTAR ÀS AULAS
+</button>
+
+  </div></section></main><script>
+
+/* =================================================
+   CONFIGURAÇÃO
+================================================= */
+
+let currentScreen = 1;
+
+const TOTAL_SCREENS = 11;
+
+
+/* =================================================
+   XP
+================================================= */
+
+let xp =
+  Number(
+    localStorage.getItem(
+      "englishMZ_xp"
+    )
+  ) || 0;
+
+
+function updateXP(){
+
+  const element =
+    document.getElementById(
+      "xp"
+    );
+
+  if(element){
+
+    element.innerText =
+      xp;
+
+  }
+
+}
+
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  updateXP();
+
+}
+
+
+/* =================================================
+   VOZ
+================================================= */
+
+function stopVoice(){
+
+  if(
+    "speechSynthesis" in window
+  ){
+
+    window.speechSynthesis.cancel();
+
+  }
+
+}
+
+
+function speakEnglish(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    return;
+
+  }
+
+  stopVoice();
+
+
+  const voice =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  voice.lang =
+    "en-US";
+
+  voice.rate =
+    0.85;
+
+  voice.pitch =
+    1;
+
+
+  window.speechSynthesis.speak(
+    voice
+  );
+
+}
+
+
+function speakPT(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    return;
+
+  }
+
+  stopVoice();
+
+
+  const voice =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  voice.lang =
+    "pt-PT";
+
+  voice.rate =
+    0.9;
+
+  voice.pitch =
+    1;
+
+
+  window.speechSynthesis.speak(
+    voice
+  );
+
+}
+
+
+/* =================================================
+   EXPLICAÇÃO
+================================================= */
+
+function speakExplanation(){
+
+  speakPT(
+    "Nesta aula vamos aprender a perguntar como alguém está. " +
+
+    "Em inglês dizemos: How are you? " +
+
+    "Isso significa: Como você está? " +
+
+    "Podemos responder: I'm good, que significa estou bem. " +
+
+    "Também podemos dizer: I'm fine, thank you, ou I'm great. " +
+
+    "E para continuar a conversa podemos perguntar: And you? " +
+
+    "Que significa: E você?"
+  );
+
+}
+
+
+/* =================================================
+   PROGRESSO
+================================================= */
+
+function updateProgress(){
+
+  const fill =
+    document.getElementById(
+      "progressFill"
+    );
+
+  const text =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  if(
+    !fill ||
+    !text
+  ){
+
+    return;
+
+  }
+
+
+  const percent =
+    ((currentScreen - 1) /
+    (TOTAL_SCREENS - 1)) *
+    100;
+
+
+  fill.style.width =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        percent
+      )
+    ) + "%";
+
+
+  text.innerText =
+    currentScreen +
+    "/" +
+    TOTAL_SCREENS;
+
+}
+
+
+/* =================================================
+   NAVEGAÇÃO
+================================================= */
+
+function goToScreen(number){
+
+  stopVoice();
+
+
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      function(screen){
+
+        screen.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+
+  if(!target){
+
+    return;
+
+  }
+
+
+  target.classList.add(
+    "active"
+  );
+currentScreen = number;
+
+updateProgress();
+
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+
+/* =========================================
+ABRIR FINAL CHALLENGE
+========================================= */
+
+if(number === 10){
+
+challengeIndex = 0;
+
+challengeScore = 0;
+
+loadChallenge();
+
+}
+
+}
+
+/* =========================================
+FEEDBACK CORRETO
+========================================= */
+
+function showCorrect(feedback){
+
+feedback.innerText =
+"✓ Correct!";
+
+feedback.className =
+"feedback correct-text";
+
+speakEnglish(
+"Correct!"
+);
+
+}
+
+/* =========================================
+FEEDBACK ERRADO
+========================================= */
+
+function showWrong(feedback){
+
+feedback.innerText =
+"✗ Incorrect. Try again!";
+
+feedback.className =
+"feedback wrong-text";
+
+speakEnglish(
+"Incorrect. Try again!"
+);
+
+}
+
+/* =========================================
+EXERCÍCIO 1
+========================================= */
+
+function checkQ1(answer){
+
+const option1 =
+document.getElementById(
+"q1option1"
+);
+
+const option2 =
+document.getElementById(
+"q1option2"
+);
+
+const feedback =
+document.getElementById(
+"q1feedback"
+);
+
+if(answer === 1){
+
+option1.classList.add(
+  "correct"
+);
+
+option1.disabled =
+  true;
+
+option2.disabled =
+  true;
+
+showCorrect(
+  feedback
+);
+
+addXP(10);
+
+document
+  .getElementById(
+    "q1continue"
+  )
+  .classList.remove(
+    "hidden"
+  );
+
+}else{
+
+option2.classList.add(
+  "wrong"
+);
+
+showWrong(
+  feedback
+);
+
+
+setTimeout(
+  function(){
+
+    option2.classList.remove(
+      "wrong"
+    );
+
+  },
+  700
+);
+
+}
+
+}
+
+/* =========================================
+EXERCÍCIO 2
+========================================= */
+
+function checkQ2(answer){
+
+const option1 =
+document.getElementById(
+"q2option1"
+);
+
+const option2 =
+document.getElementById(
+"q2option2"
+);
+
+const feedback =
+document.getElementById(
+"q2feedback"
+);
+
+if(answer === 1){
+
+option1.classList.add(
+  "correct"
+);
+
+option1.disabled =
+  true;
+
+option2.disabled =
+  true;
+
+showCorrect(
+  feedback
+);
+
+addXP(10);
+
+document
+  .getElementById(
+    "q2continue"
+  )
+  .classList.remove(
+    "hidden"
+  );
+
+}else{
+
+option2.classList.add(
+  "wrong"
+);
+
+showWrong(
+  feedback
+);
+
+
+setTimeout(
+  function(){
+
+    option2.classList.remove(
+      "wrong"
+    );
+
+  },
+  700
+);
+
+}
+
+}
+
+/* =========================================
+EXERCÍCIO 3
+========================================= */
+
+function checkQ3(answer){
+
+const option1 =
+document.getElementById(
+"q3option1"
+);
+
+const option2 =
+document.getElementById(
+"q3option2"
+);
+
+const feedback =
+document.getElementById(
+"q3feedback"
+);
+
+if(answer === 1){
+
+option1.classList.add(
+  "correct"
+);
+
+option1.disabled =
+  true;
+
+option2.disabled =
+  true;
+
+showCorrect(
+  feedback
+);
+
+addXP(10);
+
+document
+  .getElementById(
+    "q3continue"
+  )
+  .classList.remove(
+    "hidden"
+  );
+
+}else{
+
+option2.classList.add(
+  "wrong"
+);
+
+showWrong(
+  feedback
+);
+
+
+setTimeout(
+  function(){
+
+    option2.classList.remove(
+"wrong"
+);
+
+},
+700
+);
+
+}
+
+}
+
+/* =========================================
+CONVERSAÇÃO ESCRITA
+========================================= */
+
+function normalizeAnswer(text){
+
+return text
+.toLowerCase()
+.trim()
+.replace(
+/[!?.,]/g,
+""
+)
+.replace(
+/\s+/g,
+" "
+);
+
+}
+
+function checkConversation(){
+
+const input =
+document.getElementById(
+"conversationInput"
+);
+
+const feedback =
+document.getElementById(
+"conversationFeedback"
+);
+
+const answer =
+normalizeAnswer(
+input.value
+);
+
+const accepted = [
+
+"im good and you",
+
+"i am good and you",
+
+"im fine and you",
+
+"i am fine and you",
+
+"im fine thank you and you",
+
+"i am fine thank you and you"
+
+];
+
+if(
+accepted.includes(
+answer
+)
+){
+
+feedback.innerText =
+  "✓ Correct!";
+
+feedback.className =
+  "feedback correct-text";
+
+input.disabled =
+  true;
+
+addXP(15);
+
+speakEnglish(
+  "Correct!"
+);
+
+document
+  .getElementById(
+    "conversationContinue"
+  )
+  .classList.remove(
+    "hidden"
+  );
+
+}else{
+
+feedback.innerText =
+  "✗ Incorrect. Try again!";
+
+feedback.className =
+  "feedback wrong-text";
+
+speakEnglish(
+  "Incorrect. Try again!"
+);
+
+}
+
+}
+
+/* =========================================
+FINAL CHALLENGE
+========================================= */
+
+let challengeIndex = 0;
+
+let challengeScore = 0;
+
+const challenges = [
+
+{
+question:
+"Alguém pergunta: How are you? Você está bem. O que responde?",
+
+audio:
+  "Alguém pergunta: How are you? Você está bem. O que responde?",
+
+options:[
+  "I'm good.",
+  "Good night."
+],
+
+correct:1
+
+},
+
+{
+question:
+"Alguém pergunta: How are you? Você está ótimo. O que responde?",
+
+audio:
+  "Alguém pergunta: How are you? Você está ótimo. O que responde?",
+
+options:[
+  "Good morning.",
+  "I'm great!"
+],
+
+correct:2
+
+},
+
+{
+question:
+"Você quer dizer: Estou bem. E você?",
+
+audio:
+  "Você quer dizer: Estou bem. E você?",
+
+options:[
+  "I'm good. And you?",
+  "Good night."
+],
+
+correct:1
+
+},
+
+{
+question:
+"Qual expressão significa: Como você está?",
+
+audio:
+  "Qual expressão significa: Como você está?",
+
+options:[
+  "How are you?",
+  "See you later."
+],
+
+correct:1
+
+},
+
+{
+question:
+"Você quer dizer: Estou bem, obrigado.",
+
+audio:
+  "Você quer dizer: Estou bem, obrigado.",
+
+options:[
+  "I'm fine, thank you.",
+  "Good evening."
+],
+
+correct:1
+
+}
+
+];
+
+/* =========================================
+CARREGAR CHALLENGE
+========================================= */
+
+function loadChallenge(){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+const option1 =
+document.getElementById(
+"challenge1"
+);
+
+const option2 =
+document.getElementById(
+"challenge2"
+);
+
+option1.disabled =
+false;
+
+option2.disabled =
+false;
+
+option1.classList.remove(
+"correct",
+"wrong"
+);
+
+option2.classList.remove(
+"correct",
+"wrong"
+);
+
+document.getElementById(
+"challengeSituation"
+).innerText =
+challenge.question;
+
+option1.innerText =
+challenge.options[0];
+
+option2.innerText =
+challenge.options[1];
+
+document.getElementById(
+"challengeNumber"
+).innerText =
+"Questão " +
+(challengeIndex + 1) +
+" de " +
+challenges.length;
+
+const feedback =
+document.getElementById(
+"challengeFeedback"
+);
+
+feedback.innerText =
+"";
+
+feedback.className =
+"feedback";
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / " +
+challenges.length;
+
+}
+
+/* =========================================
+ÁUDIO DA PERGUNTA
+========================================= */
+
+function speakChallenge(){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+speakPT(
+challenge.audio
+);
+
+}
+
+/* =========================================
+VERIFICAR CHALLENGE
+========================================= */
+
+function checkChallenge(answer){
+
+const option1 =
+document.getElementById(
+"challenge1"
+);
+
+const option2 =
+document.getElementById(
+"challenge2"
+);
+
+const feedback =
+document.getElementById(
+"challengeFeedback"
+);
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+if(
+option1.disabled ||
+option2.disabled
+){
+
+return;
+
+}
+
+if(
+answer ===
+challenge.correct
+){
+
+const selected =
+  document.getElementById(
+    "challenge" + answer
+  );
+
+
+selected.classList.remove(
+  "wrong"
+);
+
+selected.classList.add(
+  "correct"
+);
+
+
+option1.disabled =
+  true;
+
+option2.disabled =
+  true;
+
+
+challengeScore++;
+
+
+feedback.innerText =
+  "✓ Correct!";
+
+feedback.className =
+  "feedback correct-text";
+
+
+addXP(5);
+
+
+speakEnglish(
+  "Correct!"
+);
+
+
+document.getElementById(
+  "challengeScore"
+).innerText =
+  challengeScore +
+  " / " +
+  challenges.length;
+
+
+setTimeout(
+  function(){
+
+    challengeIndex++;
+
+
+    if(
+      challengeIndex <
+      challenges.length
+    ){
+
+      loadChallenge();
+
+    }else{
+
+      finishChallenge();
+
+    }
+
+  },
+  900
+);
+
+}else{
+
+const wrongButton =
+  document.getElementById(
+    "challenge" + answer
+  );
+
+
+wrongButton.classList.add(
+  "wrong"
+);
+
+
+feedback.innerText =
+  "✗ Incorrect. Try again!";
+
+feedback.className =
+  "feedback wrong-text";
+
+
+speakEnglish(
+  "Incorrect. Try again!"
+);
+
+
+setTimeout(
+  function(){
+
+    wrongButton.classList.remove(
+      "wrong"
+    );
+
+  },
+  700
+);
+
+}
+
+}
+
+/* =========================================
+FINAL DO CHALLENGE
+========================================= */
+
+function finishChallenge(){
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / " +
+challenges.length;
+
+document.getElementById(
+"challengeFeedback"
+).innerText =
+"Challenge complete!";
+
+document.getElementById(
+"challengeFeedback"
+).className =
+"feedback correct-text";
+
+document
+.getElementById(
+"challengeContinue"
+)
+.classList.remove(
+"hidden"
+);
+
+localStorage.setItem(
+"englishMZ_lesson6_score",
+challengeScore
+);
+
+}
+
+/* =========================================
+RESULTADO FINAL
+========================================= */
+
+function finishLesson(){
+
+document.getElementById(
+"finalScore"
+).innerText =
+"Final score: " +
+challengeScore +
+" / " +
+challenges.length;
+
+document.getElementById(
+"finalXP"
+).innerText =
+"Total XP: " +
+xp +
+" ⭐";
+
+goToScreen(11);
+
+}
+
+/* =========================================
+VOLTAR ÀS AULAS
+========================================= */
+
+function goBackToLessons(){
+
+window.location.href =
+"../index.html";
+
+}
+
+/* =========================================
+INICIALIZAÇÃO
+========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+updateXP();
+
+updateProgress();
+
+loadChallenge();
+
+setTimeout(
+  function(){
+
+    speakExplanation();
+
+  },
+  700
+);
+
+}
+);
+
+</script>
+</body>
+</html>
+  
