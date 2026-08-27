@@ -1,0 +1,3682 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Lesson 3 | English MZ</title>
+
+
+<style>
+
+/* =================================
+   RESET
+================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+body{
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:#111;
+
+  color:#fff;
+
+  min-height:100vh;
+
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  background:#181818;
+
+  border-bottom:
+    1px solid #292929;
+
+  padding:13px 16px;
+
+}
+
+
+.header-top{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  margin-bottom:11px;
+
+}
+
+
+.logo{
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.logo span{
+
+  color:#58cc02;
+
+}
+
+
+.xp{
+
+  background:#252525;
+
+  padding:7px 12px;
+
+  border-radius:20px;
+
+  color:#ffc800;
+
+  font-weight:bold;
+
+  font-size:14px;
+
+}
+
+
+/* =================================
+   PROGRESSO
+================================= */
+
+.progress-row{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+
+.progress-bar{
+
+  flex:1;
+
+  height:9px;
+
+  background:#303030;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+}
+
+
+.progress-fill{
+
+  width:0%;
+
+  height:100%;
+
+  background:#58cc02;
+
+  border-radius:20px;
+
+  transition:.4s;
+
+}
+
+
+.progress-text{
+
+  font-size:12px;
+
+  color:#aaa;
+
+  width:30px;
+
+  text-align:right;
+
+}
+
+
+/* =================================
+   APP
+================================= */
+
+.app{
+
+  width:100%;
+
+  max-width:600px;
+
+  margin:auto;
+
+  padding:
+    25px 16px 80px;
+
+}
+
+
+/* =================================
+   TELAS
+================================= */
+
+.screen{
+
+  display:none;
+
+  animation:
+    fadeIn .25s ease;
+
+}
+
+
+.screen.active{
+
+  display:block;
+
+}
+
+
+@keyframes fadeIn{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateY(8px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+/* =================================
+   TEXTOS
+================================= */
+
+.lesson-label{
+
+  display:inline-block;
+
+  color:#58cc02;
+
+  font-size:12px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  margin-bottom:12px;
+
+}
+
+
+h1{
+
+  font-size:31px;
+
+  line-height:1.15;
+
+  margin-bottom:12px;
+
+}
+
+
+h2{
+
+  font-size:21px;
+
+  margin-bottom:13px;
+
+}
+
+
+.subtitle{
+
+  color:#a8a8a8;
+
+  font-size:15px;
+
+  line-height:1.6;
+
+  margin-bottom:20px;
+
+}
+
+
+/* =================================
+   CARDS
+================================= */
+
+.card{
+
+  background:#1c1c1c;
+
+  border:
+    1px solid #292929;
+
+  border-radius:20px;
+
+  padding:20px;
+
+  margin-bottom:18px;
+
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero{
+
+  text-align:center;
+
+  padding:
+    25px 5px;
+
+}
+
+
+.hero-icon{
+
+  font-size:70px;
+
+  margin-bottom:14px;
+
+}
+
+
+/* =================================
+   LISTA
+================================= */
+
+.check-list{
+
+  list-style:none;
+
+}
+
+
+.check-list li{
+
+  padding:12px 0;
+
+  border-bottom:
+    1px solid #292929;
+
+}
+
+
+.check-list li:last-child{
+
+  border-bottom:0;
+
+}
+
+
+/* =================================
+   BOTÕES
+================================= */
+
+.btn{
+
+  width:100%;
+
+  border:0;
+
+  background:#58cc02;
+
+  color:#111;
+
+  padding:15px 18px;
+
+  border-radius:13px;
+
+  font-size:16px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  margin-top:12px;
+
+}
+
+
+.btn:active{
+
+  transform:
+    translateY(2px);
+
+}
+
+
+.btn-yellow{
+
+  background:#ffc800;
+
+}
+
+
+.btn-dark{
+
+  background:#292929;
+
+  color:#fff;
+
+}
+
+
+/* =================================
+   CONTEXTO
+================================= */
+
+.context{
+
+  background:#242424;
+
+  border-radius:16px;
+
+  padding:15px;
+
+}
+
+
+.dialogue{
+
+  display:flex;
+
+  gap:10px;
+
+  padding:11px 0;
+
+  line-height:1.5;
+
+}
+
+
+.dialogue strong{
+
+  color:#58cc02;
+
+  min-width:55px;
+
+}
+
+
+.dialogue.you strong{
+
+  color:#ffc800;
+
+}
+
+
+/* =================================
+   FRASES
+================================= */
+
+.phrase{
+
+  background:#242424;
+
+  border-radius:15px;
+
+  padding:17px;
+
+  margin-bottom:12px;
+
+}
+
+
+.english{
+
+  font-size:20px;
+
+  font-weight:800;
+
+  line-height:1.4;
+
+}
+
+
+.meaning{
+
+  color:#999;
+
+  font-size:14px;
+
+  margin-top:6px;
+
+}
+
+
+/* =================================
+   ÁUDIO
+================================= */
+
+.audio-button{
+
+  width:100%;
+
+  background:#292929;
+
+  border:
+    1px solid #383838;
+
+  color:#fff;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  text-align:left;
+
+  font-size:15px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  margin-top:9px;
+
+}
+
+
+.audio-button:active{
+
+  transform:
+    scale(.98);
+
+}
+
+
+/* =================================
+   INPUT
+================================= */
+
+.input{
+
+  width:100%;
+
+  background:#111;
+
+  border:
+    2px solid #333;
+
+  color:#fff;
+
+  padding:16px;
+
+  border-radius:13px;
+
+  font-size:16px;
+
+  outline:none;
+
+  margin-top:7px;
+
+}
+
+
+.input:focus{
+
+  border-color:#58cc02;
+
+}
+
+
+/* =================================
+   FEEDBACK
+================================= */
+
+.feedback{
+
+  min-height:24px;
+
+  margin-top:13px;
+
+  font-weight:bold;
+
+  line-height:1.5;
+
+}
+
+
+.success{
+
+  color:#58cc02;
+
+}
+
+
+.error{
+
+  color:#ff6b6b;
+
+}
+
+
+/* =================================
+   XP POPUP
+================================= */
+
+.xp-popup{
+
+  position:fixed;
+
+  top:75px;
+
+  right:20px;
+
+  background:#ffc800;
+
+  color:#111;
+
+  padding:10px 15px;
+
+  border-radius:20px;
+
+  font-weight:900;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:500;
+
+}
+
+
+.xp-popup.show{
+
+  animation:
+    xpAnimation 1.2s ease;
+
+}
+
+
+@keyframes xpAnimation{
+
+  0%{
+
+    opacity:0;
+
+    transform:
+      translateY(-10px);
+
+  }
+
+  20%{
+
+    opacity:1;
+
+    transform:
+      translateY(0);
+
+  }
+
+  70%{
+
+    opacity:1;
+
+  }
+
+  100%{
+
+    opacity:0;
+
+    transform:
+      translateY(-10px);
+
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width:400px){
+
+  h1{
+
+    font-size:27px;
+
+  }
+
+
+  .card{
+
+    padding:17px;
+
+  }
+
+
+  .english{
+
+    font-size:18px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="header">
+
+
+  <div class="header-top">
+
+
+    <div class="logo">
+
+      English
+      <span>MZ</span>
+      🇲🇿
+
+    </div>
+
+
+    <div class="xp">
+
+      ⭐
+      <span id="xp">
+        0
+      </span>
+      XP
+
+    </div>
+
+
+  </div>
+
+
+  <div class="progress-row">
+
+
+    <div class="progress-bar">
+
+
+      <div
+        id="progressFill"
+        class="progress-fill">
+      </div>
+
+
+    </div>
+
+
+    <div
+      id="progressText"
+      class="progress-text">
+
+      1/9
+
+    </div>
+
+
+  </div>
+
+
+</header>
+
+
+<!-- =================================
+     XP POPUP
+================================= -->
+
+<div
+  id="xpPopup"
+  class="xp-popup">
+
+  +5 XP ⭐
+
+</div>
+
+
+<main class="app">
+
+
+<!-- =================================
+     TELA 1 — INTRODUÇÃO
+================================= -->
+
+<section
+  id="screen1"
+  class="screen active">
+
+
+  <div class="hero">
+
+
+    <div class="hero-icon">
+
+      🏠
+
+    </div>
+
+
+    <span class="lesson-label">
+
+      A1 • LESSON 3
+
+    </span>
+
+
+    <h1>
+
+      Where do you live?
+
+    </h1>
+
+
+    <p class="subtitle">
+
+      Aprenda a perguntar onde alguém
+      mora e a falar sobre o lugar onde
+      você vive.
+
+    </p>
+
+
+  </div>
+
+
+
+  <div class="card">
+
+
+    <h2>
+
+      🎯 Nesta aula
+
+    </h2>
+
+
+    <ul class="check-list">
+
+
+      <li>
+
+        💬 Where do you live?
+
+      </li>
+
+
+      <li>
+
+        🏠 I live in...
+
+      </li>
+
+
+      <li>
+
+        ❓ Do you live in...?
+
+      </li>
+
+
+      <li>
+
+        ✅ Yes, I do.
+
+      </li>
+
+
+      <li>
+
+        ❌ No, I don't.
+
+      </li>
+
+
+      <li>
+
+        🗣️ Conversação real
+
+      </li>
+
+
+    </ul>
+
+
+  </div>
+
+
+
+  <div class="card">
+
+
+    <h2>
+
+      🧠 O objetivo
+
+    </h2>
+
+
+    <p class="subtitle">
+
+      No final desta aula você será
+      capaz de perguntar e responder
+      onde alguém mora em inglês.
+
+    </p>
+
+
+    <button
+      class="btn"
+      onclick="startLesson()">
+
+      COMEÇAR AULA →
+
+    </button>
+
+
+  </div>
+
+
+</section>
+
+
+<!-- =================================
+     FIM DA PARTE 1
+================================= -->
+  <!-- =================================
+     TELA 2 — LISTEN
+================================= -->
+
+<section
+  id="screen2"
+  class="screen">
+
+  <span class="lesson-label">
+    1 • LISTEN
+  </span>
+
+  <h1>
+    Listen to the conversation 👂
+  </h1>
+
+  <p class="subtitle">
+    Ouça a conversa e observe como
+    duas pessoas falam sobre onde vivem.
+  </p>
+
+
+  <div class="card">
+
+    <div class="context">
+
+      <div class="dialogue">
+
+        <strong>Anna:</strong>
+
+        <span>
+          Hi! What's your name?
+        </span>
+
+      </div>
+
+
+      <div class="dialogue you">
+
+        <strong>You:</strong>
+
+        <span>
+          I'm Kelton.
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>Anna:</strong>
+
+        <span>
+          Nice to meet you!
+        </span>
+
+      </div>
+
+
+      <div class="dialogue you">
+
+        <strong>You:</strong>
+
+        <span>
+          Nice to meet you too!
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>Anna:</strong>
+
+        <span>
+          Where do you live?
+        </span>
+
+      </div>
+
+
+      <div class="dialogue you">
+
+        <strong>You:</strong>
+
+        <span>
+          I live in Maputo.
+        </span>
+
+      </div>
+
+
+      <div class="dialogue">
+
+        <strong>Anna:</strong>
+
+        <span>
+          Oh, nice!
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="btn btn-yellow"
+      onclick="playConversationAudio()">
+
+      ▶️ OUVIR CONVERSA
+
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('Where do you live?')">
+
+      🔊 Where do you live?
+
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('I live in Maputo.')">
+
+      🔊 I live in Maputo.
+
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('Oh, nice!')">
+
+      🔊 Oh, nice!
+
+    </button>
+
+
+    <button
+      class="btn"
+      onclick="completeListen()">
+
+      JÁ OUVI → CONTINUAR
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TELA 3 — UNDERSTAND
+================================= -->
+
+<section
+  id="screen3"
+  class="screen">
+
+  <span class="lesson-label">
+    2 • UNDERSTAND
+  </span>
+
+  <h1>
+    Understand the phrases 🧠
+  </h1>
+
+  <p class="subtitle">
+    Estas são as frases principais
+    que você precisa dominar.
+  </p>
+
+
+
+  <div class="card">
+
+
+    <div class="phrase">
+
+      <div class="english">
+
+        Where do you live?
+
+      </div>
+
+      <div class="meaning">
+
+        Onde você mora?
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('Where do you live?')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+
+
+    <div class="phrase">
+
+      <div class="english">
+
+        I live in Maputo.
+
+      </div>
+
+      <div class="meaning">
+
+        Eu moro em Maputo.
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('I live in Maputo.')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+
+
+    <div class="phrase">
+
+      <div class="english">
+
+        Do you live in Maputo?
+
+      </div>
+
+      <div class="meaning">
+
+        Você mora em Maputo?
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('Do you live in Maputo?')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+
+
+    <div class="phrase">
+
+      <div class="english">
+
+        Yes, I do.
+
+      </div>
+
+      <div class="meaning">
+
+        Sim, moro.
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('Yes, I do.')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+
+
+    <div class="phrase">
+
+      <div class="english">
+
+        No, I don't.
+
+      </div>
+
+      <div class="meaning">
+
+        Não, não moro.
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('No, I don’t.')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+
+
+    <button
+      class="btn"
+      onclick="completeUnderstanding()">
+
+      ENTENDI → CONTINUAR
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     FIM DA PARTE 2
+================================= -->
+  <!-- =================================
+     TELA 4 — LISTEN & REPEAT
+================================= -->
+
+<section
+  id="screen4"
+  class="screen">
+
+  <span class="lesson-label">
+    3 • LISTEN & REPEAT
+  </span>
+
+  <h1>
+    Listen and repeat 🗣️
+  </h1>
+
+  <p class="subtitle">
+    Ouça cada frase e repita em voz alta.
+    Não tenha pressa.
+  </p>
+
+
+  <div class="card">
+
+    <div
+      id="repeatCounter"
+      class="lesson-label">
+
+      PHRASE 1 / 5
+
+    </div>
+
+
+    <div
+      class="phrase"
+      style="
+        text-align:center;
+        padding:30px 15px;
+      ">
+
+      <div
+        id="repeatText"
+        class="english"
+        style="font-size:25px;">
+
+        Where do you live?
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="btn btn-yellow"
+      onclick="playRepeatAudio()">
+
+      🔊 OUVIR FRASE
+
+    </button>
+
+
+    <button
+      id="repeatButton"
+      class="btn"
+      onclick="nextRepeat()">
+
+      🗣️ JÁ REPETI →
+
+    </button>
+
+
+    <div
+      id="repeatFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      id="repeatContinue"
+      class="btn"
+      style="display:none;"
+      onclick="goToPractice()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TELA 5 — CHOOSE
+================================= -->
+
+<section
+  id="screen5"
+  class="screen">
+
+  <span class="lesson-label">
+    4 • PRACTICE
+  </span>
+
+  <h1>
+    Choose the correct answer 🧠
+  </h1>
+
+  <p class="subtitle">
+    Leia a pergunta e escolha a
+    resposta correta.
+  </p>
+
+
+  <div class="card">
+
+    <div class="phrase">
+
+      <div class="meaning">
+
+        ANNA ASKS:
+
+      </div>
+
+
+      <div
+        class="english"
+        style="margin-top:7px;">
+
+        Where do you live?
+
+      </div>
+
+    </div>
+
+
+    <p class="subtitle">
+
+      Qual resposta faz sentido?
+
+    </p>
+
+
+    <div id="practiceOptions">
+
+
+      <button
+        class="audio-button"
+        onclick="checkPractice(this,false)">
+
+        I'm from Mozambique.
+
+      </button>
+
+
+      <button
+        class="audio-button"
+        onclick="checkPractice(this,true)">
+
+        I live in Maputo.
+
+      </button>
+
+
+      <button
+        class="audio-button"
+        onclick="checkPractice(this,false)">
+
+        What's your name?
+
+      </button>
+
+
+    </div>
+
+
+    <div
+      id="practiceFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      id="practiceContinue"
+      class="btn"
+      style="display:none;"
+      onclick="goToReality()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TELA 6 — YOUR REALITY
+================================= -->
+
+<section
+  id="screen6"
+  class="screen">
+
+  <span class="lesson-label">
+    5 • MAKE IT YOURS
+  </span>
+
+
+  <h1>
+    Talk about your real life 🌍
+  </h1>
+
+
+  <p class="subtitle">
+
+    Agora use a sua própria cidade.
+    Não existe uma resposta decorada:
+    a frase será sobre você.
+
+  </p>
+
+
+
+  <!-- ==============================
+       PASSO 1
+  =============================== -->
+
+  <div
+    id="realityStep"
+    class="card">
+
+
+    <h2>
+
+      🏙️ Where do you live?
+
+    </h2>
+
+
+    <p class="subtitle">
+
+      Escreva o nome da cidade onde
+      você mora.
+
+    </p>
+
+
+    <input
+      id="realityCity"
+      class="input"
+      type="text"
+      placeholder="Example: Maputo"
+      autocomplete="off"
+    >
+
+
+    <div
+      id="realityFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      class="btn"
+      onclick="saveRealityCity()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+
+
+  <!-- ==============================
+       PASSO 2
+  =============================== -->
+
+  <div
+    id="realityComplete"
+    class="card"
+    style="display:none;">
+
+
+    <div
+      style="
+        text-align:center;
+        font-size:55px;
+        margin-bottom:10px;
+      ">
+
+      🏠
+
+    </div>
+
+
+    <h2
+      style="text-align:center;">
+
+      Your sentence
+
+    </h2>
+
+
+    <p
+      id="realitySentence"
+      class="subtitle"
+      style="text-align:center;">
+
+    </p>
+
+
+    <button
+      class="audio-button"
+      onclick="playRealitySentence()">
+
+      🔊 OUVIR A MINHA FRASE
+
+    </button>
+
+
+    <button
+      class="btn"
+      onclick="goToProduction()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     FIM DA PARTE 3
+================================= -->
+  <!-- =================================
+     TELA 7 — PRODUCE
+================================= -->
+
+<section
+  id="screen7"
+  class="screen">
+
+  <span class="lesson-label">
+    6 • PRODUCE
+  </span>
+
+  <h1>
+    Build your own sentences ✍️
+  </h1>
+
+  <p class="subtitle">
+    Agora transforme o que aprendeu
+    em frases sobre a sua própria vida.
+  </p>
+
+
+  <!-- ==============================
+       EXERCÍCIO 1
+  =============================== -->
+
+  <div class="card">
+
+    <h2>
+      1️⃣ Say where you live
+    </h2>
+
+    <p class="subtitle">
+      Escreva uma frase dizendo onde
+      você mora.
+    </p>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        I live in...
+      </div>
+
+    </div>
+
+
+    <input
+      id="productionCity"
+      class="input"
+      type="text"
+      placeholder="I live in Maputo."
+      autocomplete="off"
+    >
+
+
+    <button
+      class="btn"
+      onclick="checkProductionCity()">
+
+      CHECK ✓
+
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speakProductionExample()">
+
+      🔊 OUVIR EXEMPLO
+
+    </button>
+
+
+    <div
+      id="productionCityFeedback"
+      class="feedback">
+    </div>
+
+  </div>
+
+
+
+  <!-- ==============================
+       EXERCÍCIO 2
+  =============================== -->
+
+  <div
+    id="questionCard"
+    class="card"
+    style="display:none;">
+
+    <h2>
+      2️⃣ Ask someone
+    </h2>
+
+
+    <p class="subtitle">
+      Agora escreva a pergunta que
+      você faria para descobrir onde
+      alguém mora.
+    </p>
+
+
+    <div class="phrase">
+
+      <div class="english">
+        Where do you live?
+      </div>
+
+    </div>
+
+
+    <input
+      id="productionQuestion"
+      class="input"
+      type="text"
+      placeholder="Where do you live?"
+      autocomplete="off"
+    >
+
+
+    <button
+      class="btn"
+      onclick="checkProductionQuestion()">
+
+      CHECK ✓
+
+    </button>
+
+
+    <button
+      class="audio-button"
+      onclick="speak('Where do you live?')">
+
+      🔊 OUVIR EXEMPLO
+
+    </button>
+
+
+    <div
+      id="productionQuestionFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      id="productionContinue"
+      class="btn"
+      style="display:none;"
+      onclick="goToConversation()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TELA 8 — CONVERSATION
+================================= -->
+
+<section
+  id="screen8"
+  class="screen">
+
+  <span class="lesson-label">
+    7 • CONVERSATION
+  </span>
+
+
+  <h1>
+    Let's have a conversation! 💬
+  </h1>
+
+
+  <p class="subtitle">
+    Imagine que você acabou de conhecer
+    alguém. Responda corretamente.
+  </p>
+
+
+  <div class="card">
+
+    <div
+      id="conversationProgress"
+      class="lesson-label">
+
+      CONVERSATION 1 / 4
+
+    </div>
+
+
+    <div
+      id="conversationQuestion">
+    </div>
+
+
+    <div
+      id="conversationOptions"
+      style="margin-top:15px;">
+    </div>
+
+
+    <div
+      id="conversationFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      id="conversationContinue"
+      class="btn"
+      style="display:none;"
+      onclick="nextConversation()">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TELA 9 — FINAL CHALLENGE
+================================= -->
+
+<section
+  id="screen9"
+  class="screen">
+
+  <span class="lesson-label">
+    8 • FINAL CHALLENGE
+  </span>
+
+
+  <h1>
+    Final challenge 🎯
+  </h1>
+
+
+  <p class="subtitle">
+    Último desafio. Mostre que consegue
+    usar o inglês sem ajuda.
+  </p>
+
+
+  <div class="card">
+
+
+    <div class="phrase">
+
+      <div class="meaning">
+        QUESTION:
+      </div>
+
+      <div
+        class="english"
+        style="margin-top:7px;">
+
+        Where do you live?
+
+      </div>
+
+    </div>
+
+
+    <h2 style="margin-top:20px;">
+
+      1. Answer the question
+
+    </h2>
+
+
+    <input
+      id="finalCity"
+      class="input"
+      type="text"
+      placeholder="I live in Maputo."
+      autocomplete="off"
+    >
+
+
+    <h2 style="margin-top:22px;">
+
+      2. Ask the question
+
+    </h2>
+
+
+    <input
+      id="finalQuestion"
+      class="input"
+      type="text"
+      placeholder="Where do you live?"
+      autocomplete="off"
+    >
+
+
+    <h2 style="margin-top:22px;">
+
+      3. Say it aloud
+
+    </h2>
+
+
+    <button
+      class="audio-button"
+      onclick="speakFinalSentence()">
+
+      🔊 OUVIR A MINHA RESPOSTA
+
+    </button>
+
+
+    <button
+      class="btn"
+      onclick="checkFinalChallenge()">
+
+      CHECK MY ANSWERS ✓
+
+    </button>
+
+
+    <div
+      id="finalFeedback"
+      class="feedback">
+    </div>
+
+
+    <button
+      id="finishButton"
+      class="btn btn-yellow"
+      style="display:none;"
+      onclick="finishLesson()">
+
+      🎉 CONCLUIR LESSON 3
+
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     FIM DA PARTE 4
+================================= -->
+  <script>
+
+/* =========================================
+   ENGLISH MZ — LESSON 3
+   JAVASCRIPT
+========================================= */
+
+
+/* =========================================
+   ESTADO
+========================================= */
+
+let currentScreen = 1;
+
+let xp = Number(
+  localStorage.getItem("englishMZ_xp") || 0
+);
+
+let savedCity =
+  localStorage.getItem("englishMZ_city") || "";
+
+let repeatIndex = 0;
+
+let practiceCompleted = false;
+
+let realityCompleted = false;
+
+let productionCityCompleted = false;
+
+let productionQuestionCompleted = false;
+
+let finalCompleted = false;
+
+let conversationIndex = 0;
+
+
+/* =========================================
+   FRASES — LISTEN & REPEAT
+========================================= */
+
+const repeatPhrases = [
+
+  "Where do you live?",
+
+  "I live in Maputo.",
+
+  "Do you live in Maputo?",
+
+  "Yes, I do.",
+
+  "No, I don't."
+
+];
+
+
+/* =========================================
+   CONVERSAÇÃO
+========================================= */
+
+const conversations = [
+
+  {
+
+    question:
+      "Anna: Where do you live?",
+
+    options: [
+
+      {
+        text:
+          "I live in Maputo.",
+        correct:true
+      },
+
+      {
+        text:
+          "I'm fine, thank you.",
+        correct:false
+      },
+
+      {
+        text:
+          "What's your name?",
+        correct:false
+      }
+
+    ]
+
+  },
+
+
+  {
+
+    question:
+      "Anna: Do you live in Maputo?",
+
+    options: [
+
+      {
+        text:
+          "Yes, I do.",
+        correct:true
+      },
+
+      {
+        text:
+          "I'm from Mozambique.",
+        correct:false
+      },
+
+      {
+        text:
+          "Nice to meet you.",
+        correct:false
+      }
+
+    ]
+
+  },
+
+
+  {
+
+    question:
+      "Anna: Where do you live?",
+
+    options: [
+
+      {
+        text:
+          "I live in Beira.",
+        correct:true
+      },
+
+      {
+        text:
+          "My name is Anna.",
+        correct:false
+      },
+
+      {
+        text:
+          "Goodbye!",
+        correct:false
+      }
+
+    ]
+
+  },
+
+
+  {
+
+    question:
+      "Anna: Do you live in London?",
+
+    options: [
+
+      {
+        text:
+          "No, I don't.",
+        correct:true
+      },
+
+      {
+        text:
+          "I live in London.",
+        correct:false
+      },
+
+      {
+        text:
+          "What's your name?",
+        correct:false
+      }
+
+    ]
+
+  }
+
+];
+
+
+/* =========================================
+   MOSTRAR TELA
+========================================= */
+
+function showScreen(number){
+
+  const screens =
+    document.querySelectorAll(
+      ".screen"
+    );
+
+
+  screens.forEach(
+    function(screen){
+
+      screen.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+
+  if(!target){
+
+    return;
+
+  }
+
+
+  target.classList.add(
+    "active"
+  );
+
+
+  currentScreen =
+    number;
+
+
+  updateProgress();
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+function updateProgress(){
+
+  const fill =
+    document.getElementById(
+      "progressFill"
+    );
+
+
+  const text =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  if(!fill || !text){
+
+    return;
+
+  }
+
+
+  let percent =
+    ((currentScreen - 1) / 8) * 100;
+
+
+  if(percent < 0){
+
+    percent = 0;
+
+  }
+
+
+  if(percent > 100){
+
+    percent = 100;
+
+  }
+
+
+  fill.style.width =
+    percent + "%";
+
+
+  text.innerText =
+    currentScreen + "/9";
+
+}
+
+
+/* =========================================
+   ÁUDIO
+========================================= */
+
+function speak(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    alert(
+      "O seu navegador não suporta áudio. Use o Google Chrome."
+    );
+
+    return;
+
+  }
+
+
+  window.speechSynthesis.cancel();
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+
+  utterance.lang =
+    "en-US";
+
+
+  utterance.rate =
+    0.82;
+
+
+  utterance.pitch =
+    1;
+
+
+  const voices =
+    window.speechSynthesis.getVoices();
+
+
+  const englishVoice =
+    voices.find(
+      function(voice){
+
+        return (
+          voice.lang === "en-US" ||
+          voice.lang.startsWith("en-US")
+        );
+
+      }
+    );
+
+
+  if(englishVoice){
+
+    utterance.voice =
+      englishVoice;
+
+  }
+
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+
+}
+
+
+/* =========================================
+   INICIAR AULA
+========================================= */
+
+function startLesson(){
+
+  addXP(5);
+
+  showScreen(2);
+
+}
+
+
+/* =========================================
+   TELA 2
+========================================= */
+
+function playConversationAudio(){
+
+  const phrases = [
+
+    "Hi! What's your name?",
+
+    "I'm Kelton.",
+
+    "Nice to meet you!",
+
+    "Nice to meet you too!",
+
+    "Where do you live?",
+
+    "I live in Maputo.",
+
+    "Oh, nice!"
+
+  ];
+
+
+  let index = 0;
+
+
+  function next(){
+
+    if(
+      index >= phrases.length
+    ){
+
+      return;
+
+    }
+
+
+    speak(
+      phrases[index]
+    );
+
+
+    index++;
+
+
+    setTimeout(
+      next,
+      1900
+    );
+
+  }
+
+
+  next();
+
+}
+
+
+/* =========================================
+   COMPLETAR LISTEN
+========================================= */
+
+function completeListen(){
+
+  addXP(5);
+
+  showScreen(3);
+
+}
+
+
+/* =========================================
+   COMPLETAR UNDERSTANDING
+========================================= */
+
+function completeUnderstanding(){
+
+  addXP(5);
+
+  showScreen(4);
+
+}
+
+
+/* =========================================
+   LISTEN & REPEAT
+========================================= */
+
+function playRepeatAudio(){
+
+  speak(
+    repeatPhrases[
+      repeatIndex
+    ]
+  );
+
+}
+
+
+/* =========================================
+   PRÓXIMA FRASE
+========================================= */
+
+function nextRepeat(){
+
+  const text =
+    document.getElementById(
+      "repeatText"
+    );
+
+
+  const counter =
+    document.getElementById(
+      "repeatCounter"
+    );
+
+
+  const button =
+    document.getElementById(
+      "repeatButton"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "repeatContinue"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "repeatFeedback"
+    );
+
+
+  addXP(2);
+
+
+  repeatIndex++;
+
+
+  if(
+    repeatIndex >=
+    repeatPhrases.length
+  ){
+
+    text.innerText =
+      "Great job! 🎉";
+
+
+    counter.innerText =
+      "ALL PHRASES COMPLETE";
+
+
+    button.style.display =
+      "none";
+
+
+    feedback.innerText =
+      "✓ You repeated all the phrases.";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    continueButton.style.display =
+      "block";
+
+
+    return;
+
+  }
+
+
+  text.innerText =
+    repeatPhrases[
+      repeatIndex
+    ];
+
+
+  counter.innerText =
+    "PHRASE " +
+    (repeatIndex + 1) +
+    " / " +
+    repeatPhrases.length;
+
+
+  feedback.innerText =
+    "";
+
+
+  speak(
+    repeatPhrases[
+      repeatIndex
+    ]
+  );
+
+}
+
+
+/* =========================================
+   IR PARA PRACTICE
+========================================= */
+
+function goToPractice(){
+
+  showScreen(5);
+
+}
+
+
+/* =========================================
+   PRACTICE
+========================================= */
+
+function checkPractice(
+  button,
+  correct
+){
+
+  const feedback =
+    document.getElementById(
+      "practiceFeedback"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "practiceContinue"
+    );
+
+
+  if(
+    practiceCompleted
+  ){
+
+    return;
+
+  }
+
+
+  if(correct){
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    feedback.innerText =
+      "✓ Correct! I live in Maputo.";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    practiceCompleted =
+      true;
+
+
+    addXP(10);
+
+
+    const buttons =
+      document.querySelectorAll(
+        "#practiceOptions button"
+      );
+
+
+    buttons.forEach(
+      function(btn){
+
+        btn.disabled =
+          true;
+
+      }
+    );
+
+
+    continueButton.style.display =
+      "block";
+
+
+    speak(
+      "Correct! I live in Maputo."
+    );
+
+  }
+
+  else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    feedback.innerText =
+      "❌ Try again. What is the answer to Where do you live?";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    setTimeout(
+      function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+
+    speak(
+      "Try again."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   IR PARA SUA REALIDADE
+========================================= */
+
+function goToReality(){
+
+  showScreen(6);
+
+
+  const input =
+    document.getElementById(
+      "realityCity"
+    );
+
+
+  if(
+    savedCity &&
+    input &&
+    !input.value
+  ){
+
+    input.value =
+      savedCity;
+
+  }
+
+}
+
+
+/* =========================================
+   SALVAR CIDADE
+========================================= */
+
+function saveRealityCity(){
+
+  const input =
+    document.getElementById(
+      "realityCity"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "realityFeedback"
+    );
+
+
+  const value =
+    input.value.trim();
+
+
+  if(value === ""){
+
+    feedback.innerText =
+      "⚠️ Escreva a sua cidade.";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    return;
+
+  }
+
+
+  savedCity =
+    value;
+
+
+  localStorage.setItem(
+    "englishMZ_city",
+    savedCity
+  );
+
+
+  feedback.innerText =
+    "✓ Muito bem!";
+
+
+  feedback.className =
+    "feedback success";
+
+
+  addXP(5);
+
+
+  document.getElementById(
+    "realityStep"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "realityComplete"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "realitySentence"
+  ).innerHTML =
+    "I live in <strong>" +
+    savedCity +
+    ".</strong>";
+
+
+  speak(
+    "I live in " +
+    savedCity
+  );
+
+}
+
+
+/* =========================================
+   ÁUDIO DA REALIDADE
+========================================= */
+
+function playRealitySentence(){
+
+  if(savedCity){
+
+    speak(
+      "I live in " +
+      savedCity
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   PRODUÇÃO
+========================================= */
+
+function goToProduction(){
+
+  showScreen(7);
+
+}
+
+
+/* =========================================
+   PRODUÇÃO — CIDADE
+========================================= */
+
+function checkProductionCity(){
+
+  const input =
+    document.getElementById(
+      "productionCity"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "productionCityFeedback"
+    );
+
+
+  let answer =
+    input.value.trim();
+
+
+  let normalized =
+    answer
+      .toLowerCase()
+      .replace(/\.$/, "");
+
+
+  const expected =
+    "i live in " +
+    savedCity.toLowerCase();
+
+
+  if(
+    normalized === expected
+  ){
+
+    feedback.innerText =
+      "✓ Perfect! That's correct. 🎉";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    productionCityCompleted =
+      true;
+
+
+    addXP(10);
+
+
+    document.getElementById(
+      "questionCard"
+    ).style.display =
+      "block";
+
+
+    speak(answer);
+
+  }
+
+  else{
+
+    feedback.innerText =
+      "❌ Tente escrever: I live in " +
+      savedCity +
+      ".";
+
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+/* =========================================
+   EXEMPLO CIDADE
+========================================= */
+
+function speakProductionExample(){
+
+  if(savedCity){
+
+    speak(
+      "I live in " +
+      savedCity
+    );
+
+  }
+
+  else{
+
+    speak(
+      "I live in Maputo."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   PRODUÇÃO — PERGUNTA
+========================================= */
+
+function checkProductionQuestion(){
+
+  const input =
+    document.getElementById(
+      "productionQuestion"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "productionQuestionFeedback"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "productionContinue"
+    );
+
+
+  let answer =
+    input.value.trim()
+      .toLowerCase()
+      .replace(/\?$/, "");
+
+
+  if(
+    answer ===
+    "where do you live"
+  ){
+
+    feedback.innerText =
+      "✓ Excellent! That's the correct question.";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    productionQuestionCompleted =
+      true;
+
+
+    addXP(10);
+
+
+    continueButton.style.display =
+      "block";
+
+
+    speak(
+      "Where do you live?"
+    );
+
+  }
+
+  else{
+
+    feedback.innerText =
+      "❌ Tente: Where do you live?";
+
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+/* =========================================
+   CONVERSAÇÃO
+========================================= */
+
+function goToConversation(){
+
+  showScreen(8);
+
+  loadConversation();
+
+}
+
+
+/* =========================================
+   CARREGAR CONVERSA
+========================================= */
+
+function loadConversation(){
+
+  const data =
+    conversations[
+      conversationIndex
+    ];
+
+
+  const question =
+    document.getElementById(
+      "conversationQuestion"
+    );
+
+
+  const options =
+    document.getElementById(
+      "conversationOptions"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "conversationFeedback"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "conversationContinue"
+    );
+
+
+  const progress =
+    document.getElementById(
+      "conversationProgress"
+    );
+
+
+  question.innerHTML =
+    `
+      <div class="phrase">
+
+        <div class="english">
+
+          ${data.question}
+
+        </div>
+
+      </div>
+    `;
+
+
+  options.innerHTML =
+    "";
+
+
+  feedback.innerText =
+    "";
+
+
+  continueButton.style.display =
+    "none";
+
+
+  progress.innerText =
+    "CONVERSATION " +
+    (conversationIndex + 1) +
+    " / " +
+    conversations.length;
+
+
+  data.options.forEach(
+    function(option){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "audio-button";
+
+
+      button.innerText =
+        option.text;
+
+
+      button.onclick =
+        function(){
+
+          checkConversation(
+            button,
+            option.correct,
+            option.text
+          );
+
+        };
+
+
+      options.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   CHECK CONVERSAÇÃO
+========================================= */
+
+function checkConversation(
+  button,
+  correct,
+  text
+){
+
+  const feedback =
+    document.getElementById(
+      "conversationFeedback"
+    );
+
+
+  const continueButton =
+    document.getElementById(
+      "conversationContinue"
+    );
+
+
+  if(correct){
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    feedback.innerText =
+      "✓ Correct!";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    const buttons =
+      document.querySelectorAll(
+        "#conversationOptions button"
+      );
+
+
+    buttons.forEach(
+      function(btn){
+
+        btn.disabled =
+          true;
+
+      }
+    );
+
+
+    addXP(5);
+
+
+    speak(text);
+
+
+    continueButton.style.display =
+      "block";
+
+  }
+
+  else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    feedback.innerText =
+      "❌ Not quite. Try again.";
+
+
+    feedback.className =
+      "feedback error";
+
+
+    setTimeout(
+      function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+
+    speak(
+      "Try again."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   PRÓXIMA CONVERSA
+========================================= */
+
+function nextConversation(){
+
+  conversationIndex++;
+
+
+  if(
+    conversationIndex >=
+    conversations.length
+  ){
+
+    addXP(10);
+
+
+    showScreen(9);
+
+
+    return;
+
+  }
+
+
+  loadConversation();
+
+}
+
+
+/* =========================================
+   ÁUDIO DESAFIO FINAL
+========================================= */
+
+function speakFinalSentence(){
+
+  const input =
+    document.getElementById(
+      "finalCity"
+    );
+
+
+  const value =
+    input.value.trim();
+
+
+  if(value){
+
+    speak(value);
+
+  }
+
+  else if(savedCity){
+
+    speak(
+      "I live in " +
+      savedCity
+    );
+
+  }
+
+  else{
+
+    speak(
+      "I live in Maputo."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   DESAFIO FINAL
+========================================= */
+
+function checkFinalChallenge(){
+
+  const cityInput =
+    document.getElementById(
+      "finalCity"
+    );
+
+
+  const questionInput =
+    document.getElementById(
+      "finalQuestion"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "finalFeedback"
+    );
+
+
+  const cityAnswer =
+    cityInput.value
+      .trim()
+      .toLowerCase()
+      .replace(/\.$/, "");
+
+
+  const questionAnswer =
+    questionInput.value
+      .trim()
+      .toLowerCase()
+      .replace(/\?$/, "");
+
+
+  let score =
+    0;
+
+
+  const expectedCity =
+    "i live in " +
+    savedCity.toLowerCase();
+
+
+  if(
+    cityAnswer === expectedCity
+  ){
+
+    score++;
+
+  }
+
+
+  if(
+    questionAnswer ===
+    "where do you live"
+  ){
+
+    score++;
+
+  }
+
+
+  if(score === 2){
+
+    feedback.innerText =
+      "🎉 Excellent! 2 out of 2 correct!";
+
+
+    feedback.className =
+      "feedback success";
+
+
+    if(!finalCompleted){
+
+      finalCompleted =
+        true;
+
+
+      addXP(20);
+
+    }
+
+
+    document.getElementById(
+      "finishButton"
+    ).style.display =
+      "block";
+
+
+    speak(
+      "Excellent! You completed the final challenge."
+    );
+
+  }
+
+  else{
+
+    feedback.innerText =
+      "Você acertou " +
+      score +
+      " de 2. Corrija e tente novamente.";
+
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+/* =========================================
+   FINALIZAR LESSON 3
+========================================= */
+
+function finishLesson(){
+
+  localStorage.setItem(
+    "englishMZ_lesson3_completed",
+    "true"
+  );
+
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+
+  const fill =
+    document.getElementById(
+      "progressFill"
+    );
+
+
+  const progressText =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  if(fill){
+
+    fill.style.width =
+      "100%";
+
+  }
+
+
+  if(progressText){
+
+    progressText.innerText =
+      "✓";
+
+  }
+
+
+  const screens =
+    document.querySelectorAll(
+      ".screen"
+    );
+
+
+  screens.forEach(
+    function(screen){
+
+      screen.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const result =
+    document.getElementById(
+      "resultScreen"
+    );
+
+
+  if(result){
+
+    result.classList.add(
+      "active"
+    );
+
+  }
+
+  else{
+
+    alert(
+      "🎉 Lesson 3 concluída! Você ganhou XP e o progresso foi salvo."
+    );
+
+  }
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* =========================================
+   XP
+========================================= */
+
+function addXP(amount){
+
+  xp += amount;
+
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+
+  const xpElement =
+    document.getElementById(
+      "xp"
+    );
+
+
+  if(xpElement){
+
+    xpElement.innerText =
+      xp;
+
+  }
+
+
+  showXPPopup(amount);
+
+}
+
+
+/* =========================================
+   XP POPUP
+========================================= */
+
+function showXPPopup(amount){
+
+  const popup =
+    document.getElementById(
+      "xpPopup"
+    );
+
+
+  if(!popup){
+
+    return;
+
+  }
+
+
+  popup.innerText =
+    "+" +
+    amount +
+    " XP ⭐";
+
+
+  popup.classList.remove(
+    "show"
+  );
+
+
+  void popup.offsetWidth;
+
+
+  popup.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================
+   DADOS SALVOS
+========================================= */
+
+function loadSavedData(){
+
+  const city =
+    localStorage.getItem(
+      "englishMZ_city"
+    );
+
+
+  if(city){
+
+    savedCity =
+      city;
+
+
+    const input =
+      document.getElementById(
+        "realityCity"
+      );
+
+
+    if(input){
+
+      input.value =
+        city;
+
+    }
+
+  }
+
+
+  const xpElement =
+    document.getElementById(
+      "xp"
+    );
+
+
+  if(xpElement){
+
+    xpElement.innerText =
+      xp;
+
+  }
+
+}
+
+
+/* =========================================
+   VOZES
+========================================= */
+
+if(
+  "speechSynthesis" in window
+){
+
+  window.speechSynthesis.onvoiceschanged =
+    function(){
+
+      window.speechSynthesis
+        .getVoices();
+
+    };
+     INICIALIZAÇÃO
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    loadSavedData();
+
+    updateProgress();
+
+  }
+);
+
+
+/* =========================================
+   LOAD
+========================================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    loadSavedData();
+
+    showScreen(1);
+
+    updateProgress();
+
+  }
+);
+
+
+/* =========================================
+   FIM DA LESSON 3
+========================================= */
+
+</script>
+
+</body>
+
+</html>
