@@ -1,0 +1,2921 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Lesson 4 — What Do You Do? | English MZ</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#111;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#181818;
+  border-bottom:1px solid #292929;
+  padding:13px 16px;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.logo{
+  font-size:19px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#58cc02;
+}
+
+.xp{
+  background:#252525;
+  padding:7px 12px;
+  border-radius:20px;
+  color:#ffc800;
+  font-weight:bold;
+}
+
+.progress-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.progress-bar{
+  flex:1;
+  height:9px;
+  background:#303030;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:.3s;
+}
+
+.progress-text{
+  font-size:12px;
+  color:#aaa;
+}
+
+.app{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding:25px 16px 80px;
+}
+
+.screen{
+  display:none;
+  animation:fade .25s ease;
+}
+
+.screen.active{
+  display:block;
+}
+
+@keyframes fade{
+
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+.lesson-label{
+  display:inline-block;
+  color:#58cc02;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:30px;
+  line-height:1.15;
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#aaa;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#1c1c1c;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+}
+
+.hero{
+  text-align:center;
+  padding:25px 5px;
+}
+
+.hero-icon{
+  font-size:65px;
+  margin-bottom:12px;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  background:#58cc02;
+  color:#111;
+  padding:15px;
+  border-radius:13px;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.btn-yellow{
+  background:#ffc800;
+}
+
+.btn-dark{
+  background:#292929;
+  color:#fff;
+}
+
+.audio-button{
+  width:100%;
+  background:#292929;
+  border:1px solid #3a3a3a;
+  color:#fff;
+  padding:14px;
+  border-radius:12px;
+  text-align:left;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:9px;
+}
+
+.review-option{
+  width:100%;
+  background:#242424;
+  border:2px solid #333;
+  color:#fff;
+  padding:15px;
+  border-radius:13px;
+  margin-top:10px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  text-align:left;
+}
+
+.review-option:disabled{
+  opacity:.7;
+  cursor:default;
+}
+
+.phrase{
+  background:#242424;
+  border-radius:15px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.english{
+  font-size:20px;
+  font-weight:800;
+  line-height:1.4;
+}
+
+.meaning{
+  color:#999;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.input{
+  width:100%;
+  background:#111;
+  border:2px solid #333;
+  color:#fff;
+  padding:15px;
+  border-radius:13px;
+  font-size:16px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#58cc02;
+}
+
+.feedback{
+  min-height:25px;
+  margin-top:12px;
+  font-weight:bold;
+}
+
+.success{
+  color:#58cc02;
+}
+
+.error{
+  color:#ff6b6b;
+}
+
+.tip{
+  background:#202020;
+  border-left:4px solid #58cc02;
+  padding:14px;
+  border-radius:10px;
+  color:#bbb;
+  line-height:1.5;
+  margin-top:15px;
+}
+
+.dialogue{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+  padding:13px;
+  background:#242424;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+.dialogue strong{
+  color:#58cc02;
+  min-width:55px;
+}
+
+.xp-popup{
+  position:fixed;
+  top:75px;
+  right:20px;
+  background:#ffc800;
+  color:#111;
+  padding:10px 15px;
+  border-radius:20px;
+  font-weight:bold;
+  opacity:0;
+  pointer-events:none;
+  z-index:500;
+}
+
+.xp-popup.show{
+  animation:xp 1.2s ease;
+}
+
+@keyframes xp{
+
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  20%{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  70%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+}
+
+.choice{
+  width:100%;
+  background:#242424;
+  border:2px solid #333;
+  color:#fff;
+  padding:15px;
+  border-radius:13px;
+  margin-top:10px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  text-align:left;
+}
+
+.choice:hover,
+.review-option:hover,
+.audio-button:hover{
+  border-color:#58cc02;
+}
+
+.speaking-box{
+  text-align:center;
+  padding:10px 0;
+}
+
+.mic-button{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:0;
+  background:#ff4b4b;
+  color:#fff;
+  font-size:32px;
+  cursor:pointer;
+  margin:18px auto;
+  display:block;
+}
+
+.mic-button.recording{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+.status{
+  color:#aaa;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.recorded-audio{
+  width:100%;
+  margin-top:15px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.final-prompt{
+  background:#242424;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:10px;
+}
+
+.final-prompt strong{
+  color:#58cc02;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="header-top">
+
+    <div class="logo">
+      English <span>MZ</span> 🇲🇿
+    </div>
+
+    <div class="xp">
+      ⭐ <span id="xp">0</span> XP
+    </div>
+
+  </div>
+
+  <div class="progress-row">
+
+    <div class="progress-bar">
+
+      <div
+        id="progressFill"
+        class="progress-fill">
+      </div>
+
+    </div>
+
+    <div
+      id="progressText"
+      class="progress-text">
+
+      1/10
+
+    </div>
+
+  </div>
+
+</header>
+
+<div
+  id="xpPopup"
+  class="xp-popup">
+</div>
+
+<main class="app">
+
+
+<!-- =====================================
+     TELA 1 — REVISÃO
+===================================== -->
+
+<section
+  id="screen1"
+  class="screen active">
+
+  <div class="hero">
+
+    <div class="hero-icon">
+      🔄
+    </div>
+
+    <span class="lesson-label">
+      A1 • LESSON 4
+    </span>
+
+    <h1>
+      Quick Review
+    </h1>
+
+    <p class="subtitle">
+      Vamos rever o que você aprendeu
+      nas Lessons 1, 2 e 3.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h2>
+      🎯 Pergunta 1
+    </h2>
+
+    <div class="phrase">
+
+      <div
+        id="reviewQuestion"
+        class="english">
+
+        What's your name?
+
+      </div>
+
+      <div class="meaning">
+        Qual é o seu nome?
+      </div>
+
+    </div>
+
+    <div id="reviewOptions">
+
+      <button
+        class="review-option"
+        onclick="answerReview(this,false)">
+
+        I live in Maputo.
+
+      </button>
+
+      <button
+        class="review-option"
+        onclick="answerReview(this,true)">
+
+        My name is Kelton.
+
+      </button>
+
+      <button
+        class="review-option"
+        onclick="answerReview(this,false)">
+
+        I'm a student.
+
+      </button>
+
+    </div>
+
+    <div
+      id="reviewFeedback"
+      class="feedback">
+    </div>
+
+    <button
+      id="reviewNext"
+      class="btn hidden"
+      onclick="nextReview()">
+
+      PRÓXIMA → 
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 2 — NOVO CONTEÚDO
+===================================== -->
+
+<section
+  id="screen2"
+  class="screen">
+
+  <div class="hero">
+
+    <div class="hero-icon">
+      👨‍💼
+    </div>
+
+    <span class="lesson-label">
+      NEW SKILL
+    </span>
+
+    <h1>
+      What do you do?
+    </h1>
+
+    <p class="subtitle">
+      Agora você vai aprender a falar
+      sobre o que faz.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <div class="phrase">
+
+      <div class="english">
+        What do you do?
+      </div>
+
+      <div class="meaning">
+        O que você faz?
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('What do you do?')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+    <div class="phrase">
+
+      <div class="english">
+        I'm a student.
+      </div>
+
+      <div class="meaning">
+        Sou estudante.
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('I am a student.')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+    <div class="phrase">
+
+      <div class="english">
+        I work in a bank.
+      </div>
+
+      <div class="meaning">
+        Trabalho num banco.
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="speak('I work in a bank.')">
+
+        🔊 Ouvir
+
+      </button>
+
+    </div>
+
+    <div class="tip">
+
+      💡 <strong>Dica:</strong>
+      “What do you do?” normalmente pergunta
+      sobre o seu trabalho, estudo ou ocupação.
+
+    </div>
+
+    <button
+      class="btn"
+      onclick="goToScreen(3)">
+
+      ENTENDI → CONTINUAR
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 3 — LISTENING
+===================================== -->
+
+<section
+  id="screen3"
+  class="screen">
+
+  <span class="lesson-label">
+    1 • LISTEN
+  </span>
+
+  <h1>
+    Listen to the conversation 👂
+  </h1>
+
+  <p class="subtitle">
+    Ouça uma conversa curta e tente
+    compreender o contexto.
+  </p>
+
+  <div class="card">
+
+    <div class="dialogue">
+
+      <strong>Anna:</strong>
+
+      <span>
+        What do you do?
+      </span>
+
+    </div>
+
+    <div class="dialogue">
+
+      <strong>John:</strong>
+
+      <span>
+        I'm a student.
+      </span>
+
+    </div>
+
+    <div class="dialogue">
+
+      <strong>Anna:</strong>
+
+      <span>
+        Where do you study?
+      </span>
+
+    </div>
+
+    <div class="dialogue">
+
+      <strong>John:</strong>
+
+      <span>
+        I study at UCM.
+      </span>
+
+    </div>
+
+    <button
+      class="btn btn-yellow"
+      onclick="playConversation()">
+
+      ▶️ OUVIR CONVERSA
+
+    </button>
+
+    <button
+      class="btn"
+      onclick="goToScreen(4)">
+
+      JÁ OUVI → CONTINUAR
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 4 — LISTEN & REPEAT
+===================================== -->
+
+<section
+  id="screen4"
+  class="screen">
+
+  <span class="lesson-label">
+    2 • LISTEN & REPEAT
+  </span>
+
+  <h1>
+    Listen. Repeat. Speak. 🗣️
+  </h1>
+
+  <p class="subtitle">
+    Primeiro ouça. Depois repita em voz alta.
+  </p>
+
+  <div class="card">
+
+    <div
+      id="repeatNumber"
+      class="lesson-label">
+
+      PHRASE 1 / 4
+
+    </div>
+
+    <div class="phrase">
+
+      <div
+        id="repeatPhrase"
+        class="english"
+        style="font-size:25px;text-align:center;">
+
+        What do you do?
+
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-yellow"
+      onclick="playRepeat()">
+
+      🔊 OUVIR
+
+    </button>
+
+    <button
+      id="repeatNext"
+      class="btn"
+      onclick="nextRepeat()">
+
+      🗣️ JÁ REPETI →
+
+    </button>
+
+    <div
+      id="repeatFeedback"
+      class="feedback">
+    </div>
+
+    <button
+      id="repeatContinue"
+      class="btn hidden"
+      onclick="goToScreen(5)">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<script>
+  /* =========================================
+   VARIÁVEIS DA AULA
+========================================= */
+
+let currentScreen = 1;
+
+let xp = Number(
+  localStorage.getItem("englishMZ_xp") || 0
+);
+
+let savedJob =
+  localStorage.getItem("englishMZ_job") || "";
+
+let savedName =
+  localStorage.getItem("englishMZ_name") || "";
+
+let savedCountry =
+  localStorage.getItem("englishMZ_country") || "";
+
+let savedCity =
+  localStorage.getItem("englishMZ_city") || "";
+
+let reviewIndex = 0;
+
+let repeatIndex = 0;
+
+let conversationStep = 0;
+
+let recording = false;
+
+let mediaRecorder = null;
+
+let audioChunks = [];
+
+let practiceCompleted = false;
+
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+function goToScreen(number){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen){
+
+      screen.classList.remove("active");
+
+    });
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+  if(!target){
+    return;
+  }
+
+  target.classList.add("active");
+
+  currentScreen = number;
+
+  updateProgress();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+function updateProgress(){
+
+  const fill =
+    document.getElementById(
+      "progressFill"
+    );
+
+  const text =
+    document.getElementById(
+      "progressText"
+    );
+
+  if(!fill || !text){
+    return;
+  }
+
+  const percent =
+    ((currentScreen - 1) / 9) * 100;
+
+  fill.style.width =
+    Math.max(
+      0,
+      Math.min(100, percent)
+    ) + "%";
+
+  text.innerText =
+    currentScreen + "/10";
+
+}
+
+
+/* =========================================
+   XP
+========================================= */
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  const element =
+    document.getElementById("xp");
+
+  if(element){
+
+    element.innerText =
+      xp;
+
+  }
+
+  showXPPopup(amount);
+
+}
+
+
+function showXPPopup(amount){
+
+  const popup =
+    document.getElementById(
+      "xpPopup"
+    );
+
+  if(!popup){
+    return;
+  }
+
+  popup.innerText =
+    "+" + amount + " XP ⭐";
+
+  popup.classList.remove(
+    "show"
+  );
+
+  void popup.offsetWidth;
+
+  popup.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================
+   ÁUDIO
+========================================= */
+
+function speak(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    alert(
+      "O áudio não é suportado neste navegador."
+    );
+
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const voice =
+    new SpeechSynthesisUtterance(text);
+
+  voice.lang =
+    "en-US";
+
+  voice.rate =
+    0.82;
+
+  voice.pitch =
+    1;
+
+  window.speechSynthesis.speak(
+    voice
+  );
+
+}
+
+
+/* =========================================
+   REVISÃO AUTOMÁTICA
+========================================= */
+
+const reviewQuestions = [
+
+  {
+    question:
+      "What's your name?",
+
+    options:[
+      ["I live in Maputo.",false],
+      ["My name is Kelton.",true],
+      ["I'm a student.",false]
+    ]
+  },
+
+  {
+    question:
+      "Where do you live?",
+
+    options:[
+      ["I'm fine.",false],
+      ["I live in Maputo.",true],
+      ["I'm a student.",false]
+    ]
+  },
+
+  {
+    question:
+      "Do you live in Maputo?",
+
+    options:[
+      ["Yes, I do.",true],
+      ["My name is Kelton.",false],
+      ["I work in a bank.",false]
+    ]
+  }
+
+];
+
+
+function answerReview(
+  button,
+  correct
+){
+
+  const feedback =
+    document.getElementById(
+      "reviewFeedback"
+    );
+
+  const next =
+    document.getElementById(
+      "reviewNext"
+    );
+
+  if(correct){
+
+    feedback.innerText =
+      "✓ Correct! Muito bem! 🎉";
+
+    feedback.className =
+      "feedback success";
+
+    addXP(5);
+
+    document
+      .querySelectorAll(
+        "#reviewOptions button"
+      )
+      .forEach(function(btn){
+
+        btn.disabled = true;
+
+      });
+
+    next.classList.remove(
+      "hidden"
+    );
+
+    speak(
+      button.innerText
+    );
+
+  }else{
+
+    feedback.innerText =
+      "❌ Ainda não. Tente novamente.";
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+function nextReview(){
+
+  reviewIndex++;
+
+  if(
+    reviewIndex >=
+    reviewQuestions.length
+  ){
+
+    addXP(10);
+
+    goToScreen(2);
+
+    return;
+
+  }
+
+  const question =
+    reviewQuestions[
+      reviewIndex
+    ];
+
+  document.getElementById(
+    "reviewQuestion"
+  ).innerText =
+    question.question;
+
+  const options =
+    document.getElementById(
+      "reviewOptions"
+    );
+
+  options.innerHTML = "";
+
+  document.getElementById(
+    "reviewFeedback"
+  ).innerText = "";
+
+  document.getElementById(
+    "reviewNext"
+  ).classList.add(
+    "hidden"
+  );
+
+  question.options.forEach(
+    function(option){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "review-option";
+
+      button.innerText =
+        option[0];
+
+      button.onclick =
+        function(){
+
+          answerReview(
+            button,
+            option[1]
+          );
+
+        };
+
+      options.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   CONVERSA — ÁUDIO
+========================================= */
+
+function playConversation(){
+
+  const phrases = [
+
+    "What do you do?",
+
+    "I'm a student.",
+
+    "Where do you study?",
+
+    "I study at UCM."
+
+  ];
+
+  let index = 0;
+
+  function playNext(){
+
+    if(
+      index >=
+      phrases.length
+    ){
+
+      return;
+
+    }
+
+    speak(
+      phrases[index]
+    );
+
+    index++;
+
+    setTimeout(
+      playNext,
+      1800
+    );
+
+  }
+
+  playNext();
+
+  addXP(3);
+
+}
+
+
+/* =========================================
+   LISTEN & REPEAT
+========================================= */
+
+const repeatPhrases = [
+
+  "What do you do?",
+
+  "I'm a student.",
+
+  "Where do you study?",
+
+  "I study at UCM."
+
+];
+
+
+function playRepeat(){
+
+  speak(
+    repeatPhrases[
+      repeatIndex
+    ]
+  );
+
+}
+
+
+function nextRepeat(){
+
+  repeatIndex++;
+
+  addXP(2);
+
+  const feedback =
+    document.getElementById(
+      "repeatFeedback"
+    );
+
+  if(
+    repeatIndex >=
+    repeatPhrases.length
+  ){
+
+    document.getElementById(
+      "repeatPhrase"
+    ).innerText =
+      "Great job! 🎉";
+
+    document.getElementById(
+      "repeatNumber"
+    ).innerText =
+      "ALL PHRASES COMPLETE";
+
+    document.getElementById(
+      "repeatNext"
+    ).classList.add(
+      "hidden"
+    );
+
+    feedback.innerText =
+      "✓ Você repetiu todas as frases.";
+
+    feedback.className =
+      "feedback success";
+
+    document.getElementById(
+      "repeatContinue"
+    ).classList.remove(
+      "hidden"
+    );
+
+    return;
+
+  }
+
+  document.getElementById(
+    "repeatPhrase"
+  ).innerText =
+    repeatPhrases[
+      repeatIndex
+    ];
+
+  document.getElementById(
+    "repeatNumber"
+  ).innerText =
+    "PHRASE " +
+    (repeatIndex + 1) +
+    " / " +
+    repeatPhrases.length;
+
+}
+
+
+/* =========================================
+   TELA 5 — PRACTICE
+========================================= */
+
+function checkPractice(
+  button,
+  correct
+){
+
+  const feedback =
+    document.getElementById(
+      "practiceFeedback"
+    );
+
+  if(correct){
+
+    feedback.innerText =
+      "✓ Correct! 🎉";
+
+    feedback.className =
+      "feedback success";
+
+    if(!practiceCompleted){
+
+      practiceCompleted = true;
+
+      addXP(10);
+
+    }
+
+    document
+      .querySelectorAll(
+        "#practiceOptions button"
+      )
+      .forEach(function(btn){
+
+        btn.disabled = true;
+
+      });
+
+    const next =
+      document.getElementById(
+        "practiceContinue"
+      );
+
+    if(next){
+
+      next.classList.remove(
+        "hidden"
+      );
+
+    }
+
+    speak(
+      button.innerText
+    );
+
+  }else{
+
+    feedback.innerText =
+      "❌ Não é a melhor resposta. Tente novamente.";
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+/* =========================================
+   MY REALITY
+========================================= */
+
+function saveRealityJob(){
+
+  const input =
+    document.getElementById(
+      "realityJob"
+    );
+
+  const feedback =
+    document.getElementById(
+      "realityFeedback"
+    );
+
+  if(!input){
+    return;
+  }
+
+  const job =
+    input.value.trim();
+
+  if(!job){
+
+    feedback.innerText =
+      "⚠️ Escreva a sua profissão ou ocupação.";
+
+    feedback.className =
+      "feedback error";
+
+    return;
+
+  }
+
+  savedJob =
+    job;
+
+  localStorage.setItem(
+    "englishMZ_job",
+    job
+  );
+
+  addXP(10);
+
+  const form =
+    document.getElementById(
+      "realityForm"
+    );
+
+  const complete =
+    document.getElementById(
+      "realityComplete"
+    );
+
+  if(form){
+    form.classList.add(
+      "hidden"
+    );
+  }
+
+  if(complete){
+
+    complete.classList.remove(
+      "hidden"
+    );
+
+  }
+
+  const sentence =
+    document.getElementById(
+      "realitySentence"
+    );
+
+  if(sentence){
+
+    sentence.innerText =
+      "I am a " +
+      job +
+      ".";
+
+  }
+
+}
+
+
+function playRealityAudio(){
+
+  if(savedJob){
+
+    speak(
+      "I am a " +
+      savedJob
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   INICIAR GRAVAÇÃO
+========================================= */
+
+async function startRecording(){
+
+  if(recording){
+    return;
+  }
+
+  if(
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ){
+
+    setRecordStatus(
+      "⚠️ O seu navegador não permite gravação de áudio."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const stream =
+      await navigator.mediaDevices
+        .getUserMedia({
+          audio:true
+        });
+
+    audioChunks = [];
+
+    mediaRecorder =
+      new MediaRecorder(
+        stream
+      );
+
+    mediaRecorder.ondataavailable =
+      function(event){
+
+        if(
+          event.data &&
+          event.data.size > 0
+        ){
+
+          audioChunks.push(
+            event.data
+          );
+
+        }
+
+      };
+
+    mediaRecorder.onstop =
+      function(){
+
+        const blob =
+          new Blob(
+            audioChunks,
+            {
+              type:"audio/webm"
+            }
+          );
+
+        const audioURL =
+          URL.createObjectURL(
+            blob
+          );
+
+        const audio =
+          document.getElementById(
+            "recordedAudio"
+          );
+
+        if(audio){
+
+          audio.src =
+            audioURL;
+
+          audio.classList.remove(
+            "hidden"
+          );
+
+        }
+
+        setRecordStatus(
+          "✓ Gravação concluída! Ouça a sua voz abaixo."
+        );
+
+        const continueButton =
+          document.getElementById(
+            "recordContinue"
+          );
+
+        if(continueButton){
+
+          continueButton.classList.remove(
+            "hidden"
+          );
+
+        }
+
+        addXP(10);
+
+      };
+
+    mediaRecorder.start();
+
+    recording = true;
+
+    const button =
+      document.getElementById(
+        "recordButton"
+      );
+
+    if(button){
+
+      button.classList.add(
+        "recording"
+      );
+
+      button.innerText =
+        "⏹️";
+
+    }
+
+    setRecordStatus(
+      "🔴 Gravando... toque novamente para parar."
+    );
+
+  }catch(error){
+
+    setRecordStatus(
+      "⚠️ Permita o acesso ao microfone para gravar."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   PARAR GRAVAÇÃO
+========================================= */
+
+function stopRecording(){
+
+  if(
+    mediaRecorder &&
+    mediaRecorder.state !==
+    "inactive"
+  ){
+
+    mediaRecorder.stop();
+
+  }
+
+  recording = false;
+
+  const button =
+    document.getElementById(
+      "recordButton"
+    );
+
+  if(button){
+
+    button.classList.remove(
+      "recording"
+    );
+
+    button.innerText =
+      "🎙️";
+
+  }
+
+}
+
+
+function toggleRecording(){
+
+  if(recording){
+
+    stopRecording();
+
+  }else{
+
+    startRecording();
+
+  }
+
+}
+
+
+function setRecordStatus(text){
+
+  const status =
+    document.getElementById(
+      "recordStatus"
+    );
+
+  if(status){
+
+    status.innerText =
+      text;
+
+  }
+
+  }
+  <!-- =====================================
+     TELA 5 — PRACTICE
+===================================== -->
+
+<section id="screen5" class="screen">
+
+  <span class="lesson-label">
+    3 • PRACTICE
+  </span>
+
+  <h1>
+    Choose the correct answer 🎯
+  </h1>
+
+  <p class="subtitle">
+    Vamos testar se você consegue usar
+    o que acabou de aprender.
+  </p>
+
+  <div class="card">
+
+    <h2>
+      What do you do?
+    </h2>
+
+    <div id="practiceOptions">
+
+      <button
+        class="choice"
+        onclick="checkPractice(this,false)">
+
+        I live in Maputo.
+
+      </button>
+
+      <button
+        class="choice"
+        onclick="checkPractice(this,true)">
+
+        I'm a student.
+
+      </button>
+
+      <button
+        class="choice"
+        onclick="checkPractice(this,false)">
+
+        My name is John.
+
+      </button>
+
+    </div>
+
+    <div
+      id="practiceFeedback"
+      class="feedback">
+    </div>
+
+    <button
+      id="practiceContinue"
+      class="btn hidden"
+      onclick="goToScreen(6)">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 6 — MY REALITY
+===================================== -->
+
+<section id="screen6" class="screen">
+
+  <span class="lesson-label">
+    4 • MY REALITY
+  </span>
+
+  <h1>
+    Talk about yourself 🌍
+  </h1>
+
+  <p class="subtitle">
+    Agora vamos usar inglês para falar
+    sobre a sua própria realidade.
+  </p>
+
+  <div class="card">
+
+    <h2>
+      What do you do?
+    </h2>
+
+    <p class="subtitle">
+      Escreva a sua profissão,
+      ocupação ou diga que é estudante.
+    </p>
+
+    <div id="realityForm">
+
+      <input
+        id="realityJob"
+        class="input"
+        type="text"
+        placeholder="Ex: student"
+        autocomplete="off"
+      >
+
+      <button
+        class="btn"
+        onclick="saveRealityJob()">
+
+        SALVAR MINHA RESPOSTA
+
+      </button>
+
+      <div
+        id="realityFeedback"
+        class="feedback">
+      </div>
+
+    </div>
+
+    <div
+      id="realityComplete"
+      class="hidden">
+
+      <div class="phrase">
+
+        <div
+          id="realitySentence"
+          class="english">
+
+        </div>
+
+      </div>
+
+      <button
+        class="audio-button"
+        onclick="playRealityAudio()">
+
+        🔊 Ouvir minha frase
+
+      </button>
+
+      <button
+        class="btn"
+        onclick="goToScreen(7)">
+
+        CONTINUAR →
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 7 — RECORD
+===================================== -->
+
+<section id="screen7" class="screen">
+
+  <span class="lesson-label">
+    5 • SPEAKING
+  </span>
+
+  <h1>
+    🎙️ Gravar → Ouvir → Repetir
+  </h1>
+
+  <p class="subtitle">
+    Agora é a sua vez. Ouça o modelo,
+    fale em inglês e escute a sua própria voz.
+  </p>
+
+  <div class="card">
+
+    <div class="phrase">
+
+      <div class="english">
+        I am a student.
+      </div>
+
+      <div class="meaning">
+        Substitua “student” pela sua profissão
+        ou ocupação.
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-yellow"
+      onclick="playRealityAudio()">
+
+      🔊 OUVIR MODELO
+
+    </button>
+
+    <div class="speaking-box">
+
+      <button
+        id="recordButton"
+        class="mic-button"
+        onclick="toggleRecording()">
+
+        🎙️
+
+      </button>
+
+      <div
+        id="recordStatus"
+        class="status">
+
+        Toque no microfone para começar.
+
+      </div>
+
+    </div>
+
+    <audio
+      id="recordedAudio"
+      class="recorded-audio hidden"
+      controls>
+    </audio>
+
+    <div class="tip">
+
+      💡 <strong>Método English MZ:</strong><br>
+      Ouça → fale → grave → escute →
+      tente novamente.
+
+    </div>
+
+    <button
+      id="recordContinue"
+      class="btn hidden"
+      onclick="goToScreen(8)">
+
+      CONTINUAR →
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 8 — CONVERSAÇÃO
+===================================== -->
+
+<section id="screen8" class="screen">
+
+  <span class="lesson-label">
+    6 • CONVERSATION
+  </span>
+
+  <h1>
+    💬 Let's have a conversation
+  </h1>
+
+  <p class="subtitle">
+    Agora imagine que você está conversando
+    com alguém em inglês.
+  </p>
+
+  <div class="card">
+
+    <div
+      id="conversationArea">
+
+      <div class="dialogue">
+
+        <strong>English MZ:</strong>
+
+        <span>
+          Hi! What's your name?
+        </span>
+
+      </div>
+
+      <input
+        id="conversationAnswer"
+        class="input"
+        type="text"
+        placeholder="Type your answer..."
+        autocomplete="off"
+      >
+
+      <button
+        class="btn"
+        onclick="answerConversation()">
+
+        RESPONDER →
+
+      </button>
+
+      <div
+        id="conversationFeedback"
+        class="feedback">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     TELA 9 — FINAL CHALLENGE
+===================================== -->
+
+<section id="screen9" class="screen">
+
+  <span class="lesson-label">
+    FINAL CHALLENGE • LESSONS 1–4
+  </span>
+
+  <h1>
+    🏆 My Introduction
+  </h1>
+
+  <p class="subtitle">
+    Agora mostre tudo o que aprendeu
+    nas primeiras quatro aulas.
+  </p>
+
+  <div class="card">
+
+    <h2>
+      🎤 Apresente-se em inglês
+    </h2>
+
+    <p class="subtitle">
+      Use as pistas abaixo para criar
+      a sua própria apresentação.
+    </p>
+
+    <div class="final-prompt">
+      👤 <strong>Name:</strong><br>
+      My name is...
+    </div>
+
+    <div class="final-prompt">
+      🌍 <strong>Country:</strong><br>
+      I'm from...
+    </div>
+
+    <div class="final-prompt">
+      🏠 <strong>City:</strong><br>
+      I live in...
+    </div>
+
+    <div class="final-prompt">
+      🎓 <strong>Work / Study:</strong><br>
+      I'm a...
+    </div>
+
+    <div class="final-prompt">
+      👋 <strong>Ending:</strong><br>
+      Nice to meet you!
+    </div>
+
+    <textarea
+      id="finalAnswer"
+      class="input"
+      rows="6"
+      placeholder="Write your introduction here..."
+    ></textarea>
+
+    <button
+      class="btn"
+      onclick="saveFinalText()">
+
+      💾 SALVAR APRESENTAÇÃO
+
+    </button>
+
+    <div
+      id="finalFeedback"
+      class="feedback">
+    </div>
+
+    <div class="speaking-box">
+
+      <button
+        id="finalRecordButton"
+        class="mic-button"
+        onclick="toggleFinalRecording()">
+
+        🎙️
+
+      </button>
+
+      <div
+        id="finalRecordStatus"
+        class="status">
+
+        Grave a sua apresentação completa.
+
+      </div>
+
+    </div>
+
+    <audio
+      id="finalRecordedAudio"
+      class="recorded-audio hidden"
+      controls>
+    </audio>
+
+    <button
+      id="finishButton"
+      class="btn btn-yellow hidden"
+      onclick="finishLesson()">
+
+      🎉 CONCLUIR LESSON 4
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     RESULTADO
+===================================== -->
+
+<section
+  id="resultScreen"
+  class="screen">
+
+  <div class="hero">
+
+    <div class="hero-icon">
+      🎉
+    </div>
+
+    <span class="lesson-label">
+      LESSON COMPLETED
+    </span>
+
+    <h1>
+      Excellent!
+    </h1>
+
+    <p class="subtitle">
+      Você completou a Lesson 4!
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <div class="phrase">
+
+      <div
+        id="finalXP"
+        class="english"
+        style="text-align:center;">
+
+        0 XP ⭐
+
+      </div>
+
+    </div>
+
+    <p
+      class="subtitle"
+      style="text-align:center;">
+
+      Você praticou listening,
+      speaking, vocabulary e conversation.
+
+    </p>
+
+    <button
+      class="btn"
+      onclick="goBackToLessons()">
+
+      ← VOLTAR PARA LESSONS
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =========================================
+   CONVERSAÇÃO SIMULADA
+========================================= */
+
+const conversationSteps = [
+
+  {
+    question:
+      "Hi! What's your name?",
+
+    answers:[
+      "my name is",
+      "i'm",
+      "im"
+    ],
+
+    next:
+      "Nice to meet you! Where are you from?"
+  },
+
+  {
+    question:
+      "Nice to meet you! Where are you from?",
+
+    answers:[
+      "mozambique",
+      "i'm from mozambique",
+      "im from mozambique"
+    ],
+
+    next:
+      "Great! Where do you live?"
+  },
+
+  {
+    question:
+      "Great! Where do you live?",
+
+    answers:[
+      "maputo",
+      "i live in maputo",
+      "i'm in maputo",
+      "im in maputo"
+    ],
+
+    next:
+      "Nice! What do you do?"
+  },
+
+  {
+    question:
+      "Nice! What do you do?",
+
+    answers:[
+      "student",
+      "i'm a student",
+      "im a student"
+    ],
+
+    next:
+      "Excellent! It was nice talking to you!"
+  }
+
+];
+
+
+function normalizeText(text){
+
+  return text
+    .toLowerCase()
+    .replace(/[.!?,]/g,"")
+    .replace(/\s+/g," ")
+    .trim();
+
+}
+
+
+function answerConversation(){
+
+  const input =
+    document.getElementById(
+      "conversationAnswer"
+    );
+
+  const feedback =
+    document.getElementById(
+      "conversationFeedback"
+    );
+
+  const answer =
+    normalizeText(
+      input.value
+    );
+
+  if(!answer){
+
+    feedback.innerText =
+      "⚠️ Escreva uma resposta.";
+
+    feedback.className =
+      "feedback error";
+
+    return;
+
+  }
+
+  const step =
+    conversationSteps[
+      conversationStep
+    ];
+
+  let correct = false;
+
+  step.answers.forEach(
+    function(possible){
+
+      if(
+        answer.includes(
+          normalizeText(possible)
+        )
+      ){
+
+        correct = true;
+
+      }
+
+    }
+  );
+
+  if(correct){
+
+    feedback.innerText =
+      "✓ Great answer! 🎉";
+
+    feedback.className =
+      "feedback success";
+
+    addXP(10);
+
+    speak(
+      step.next
+    );
+
+    conversationStep++;
+
+    input.value = "";
+
+    if(
+      conversationStep >=
+      conversationSteps.length
+    ){
+
+      setTimeout(
+        function(){
+
+          document.getElementById(
+            "conversationArea"
+          ).innerHTML =
+
+          `
+          <div class="dialogue">
+
+            <strong>English MZ:</strong>
+
+            <span>
+              Excellent! It was nice talking to you!
+            </span>
+
+          </div>
+
+          <div class="feedback success">
+
+            🎉 Conversation completed!
+
+          </div>
+
+          <button
+            class="btn"
+            onclick="goToScreen(9)">
+
+            CONTINUAR PARA O DESAFIO FINAL →
+
+          </button>
+          `;
+
+        },
+        900
+      );
+
+      return;
+    }
+
+    setTimeout(
+      function(){
+
+        showNextConversationQuestion();
+
+      },
+      900
+    );
+
+  }else{
+
+    feedback.innerText =
+      "💡 Tente responder em inglês. Não tenha medo de errar.";
+
+    feedback.className =
+      "feedback error";
+
+  }
+
+}
+
+
+function showNextConversationQuestion(){
+
+  const step =
+    conversationSteps[
+      conversationStep
+    ];
+
+  const area =
+    document.getElementById(
+      "conversationArea"
+    );
+
+  area.innerHTML =
+
+  `
+  <div class="dialogue">
+
+    <strong>English MZ:</strong>
+
+    <span>
+      ${step.question}
+    </span>
+
+  </div>
+
+  <input
+    id="conversationAnswer"
+    class="input"
+    type="text"
+    placeholder="Type your answer..."
+    autocomplete="off"
+  >
+
+  <button
+    class="btn"
+    onclick="answerConversation()">
+
+    RESPONDER →
+
+  </button>
+
+  <div
+    id="conversationFeedback"
+    class="feedback">
+  </div>
+  `;
+
+}
+
+
+/* =========================================
+   APRESENTAÇÃO FINAL
+========================================= */
+
+function saveFinalText(){
+
+  const text =
+    document.getElementById(
+      "finalAnswer"
+    ).value.trim();
+
+  const feedback =
+    document.getElementById(
+      "finalFeedback"
+    );
+
+  if(!text){
+
+    feedback.innerText =
+      "⚠️ Primeiro escreva a sua apresentação.";
+
+    feedback.className =
+      "feedback error";
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    "englishMZ_finalIntroduction",
+    text
+  );
+
+  feedback.innerText =
+    "✓ Apresentação salva! Agora grave a sua voz. 🎙️";
+
+  feedback.className =
+    "feedback success";
+
+  addXP(10);
+
+}
+
+
+let finalRecording =
+  false;
+
+let finalRecorder =
+  null;
+
+let finalAudioChunks =
+  [];
+
+
+async function toggleFinalRecording(){
+
+  if(finalRecording){
+
+    stopFinalRecording();
+
+    return;
+
+  }
+
+  if(
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ){
+
+    setFinalStatus(
+      "⚠️ A gravação não está disponível neste navegador."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const stream =
+      await navigator.mediaDevices
+        .getUserMedia({
+          audio:true
+        });
+
+    finalAudioChunks = [];
+
+    finalRecorder =
+      new MediaRecorder(
+        stream
+      );
+
+    finalRecorder.ondataavailable =
+      function(event){
+
+        if(
+          event.data &&
+          event.data.size > 0
+        ){
+
+          finalAudioChunks.push(
+            event.data
+          );
+
+        }
+
+      };
+
+    finalRecorder.onstop =
+      function(){
+
+        const blob =
+          new Blob(
+            finalAudioChunks,
+            {
+              type:"audio/webm"
+            }
+          );
+
+        const url =
+          URL.createObjectURL(
+            blob
+          );
+
+        const audio =
+          document.getElementById(
+            "finalRecordedAudio"
+          );
+
+        audio.src =
+          url;
+
+        audio.classList.remove(
+          "hidden"
+        );
+
+        setFinalStatus(
+          "✓ Excelente! Agora pode ouvir a sua apresentação."
+        );
+
+        document.getElementById(
+          "finishButton"
+        ).classList.remove(
+          "hidden"
+        );
+
+        addXP(20);
+
+        stream
+          .getTracks()
+          .forEach(
+            function(track){
+
+              track.stop();
+
+            }
+          );
+
+      };
+
+    finalRecorder.start();
+
+    finalRecording =
+      true;
+
+    const button =
+      document.getElementById(
+        "finalRecordButton"
+      );
+
+    button.classList.add(
+      "recording"
+    );
+
+    button.innerText =
+      "⏹️";
+
+    setFinalStatus(
+      "🔴 Gravando a sua apresentação... toque novamente para parar."
+    );
+
+  }catch(error){
+
+    setFinalStatus(
+      "⚠️ Permita o acesso ao microfone."
+    );
+
+  }
+
+}
+
+
+function stopFinalRecording(){
+
+  if(
+    finalRecorder &&
+    finalRecorder.state !==
+    "inactive"
+  ){
+
+    finalRecorder.stop();
+
+  }
+
+  finalRecording =
+    false;
+
+  const button =
+    document.getElementById(
+      "finalRecordButton"
+    );
+
+  if(button){
+
+    button.classList.remove(
+      "recording"
+    );
+
+    button.innerText =
+      "🎙️";
+
+  }
+
+}
+
+
+function setFinalStatus(text){
+
+  const status =
+    document.getElementById(
+      "finalRecordStatus"
+    );
+
+  if(status){
+
+    status.innerText =
+      text;
+
+  }
+
+}
+
+
+/* =========================================
+   CARREGAR DADOS
+========================================= */
+
+function loadSavedData(){
+
+  const job =
+    localStorage.getItem(
+      "englishMZ_job"
+    );
+
+  if(job){
+
+    savedJob =
+      job;
+
+    const input =
+      document.getElementById(
+        "realityJob"
+      );
+
+    if(input){
+
+      input.value =
+        job;
+
+    }
+
+  }
+
+  const finalText =
+    localStorage.getItem(
+      "englishMZ_finalIntroduction"
+    );
+
+  if(finalText){
+
+    const input =
+      document.getElementById(
+        "finalAnswer"
+      );
+
+    if(input){
+
+      input.value =
+        finalText;
+
+    }
+
+  }
+
+  const xpElement =
+    document.getElementById(
+      "xp"
+    );
+
+  if(xpElement){
+
+    xpElement.innerText =
+      xp;
+
+  }
+
+}
+
+
+/* =========================================
+   CONCLUIR AULA
+========================================= */
+
+function finishLesson(){
+
+  localStorage.setItem(
+    "englishMZ_lesson4_completed",
+    "true"
+  );
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(
+      function(screen){
+
+        screen.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+  const result =
+    document.getElementById(
+      "resultScreen"
+    );
+
+  result.classList.add(
+    "active"
+  );
+
+  document.getElementById(
+    "finalXP"
+  ).innerText =
+    xp + " XP ⭐";
+
+  document.getElementById(
+    "progressFill"
+  ).style.width =
+    "100%";
+
+  document.getElementById(
+    "progressText"
+  ).innerText =
+    "✓";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================
+   VOLTAR PARA LESSONS
+========================================= */
+
+function goBackToLessons(){
+
+  if(
+    document.referrer &&
+    document.referrer !==
+    window.location.href
+  ){
+
+    window.history.back();
+
+  }else{
+
+    window.location.href =
+      "../index.html";
+
+  }
+
+}
+
+
+/* =========================================
+   INICIAR AULA
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    loadSavedData();
+
+    showScreen(1);
+
+    updateProgress();
+
+  }
+);
+
+</script>
+
+</body>
+</html>
