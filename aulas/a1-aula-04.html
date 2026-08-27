@@ -31,8 +31,8 @@ body{
   top:0;
   z-index:100;
   background:#181818;
-  border-bottom:1px solid #292929;
   padding:13px 16px;
+  border-bottom:1px solid #292929;
 }
 
 .header-top{
@@ -53,9 +53,9 @@ body{
 
 .xp{
   background:#252525;
+  color:#ffc800;
   padding:7px 12px;
   border-radius:20px;
-  color:#ffc800;
   font-weight:bold;
 }
 
@@ -86,7 +86,6 @@ body{
 }
 
 .app{
-  width:100%;
   max-width:600px;
   margin:auto;
   padding:25px 16px 80px;
@@ -155,7 +154,7 @@ h2{
 }
 
 .hero-icon{
-  font-size:65px;
+  font-size:62px;
   margin-bottom:12px;
 }
 
@@ -170,6 +169,11 @@ h2{
   font-weight:900;
   cursor:pointer;
   margin-top:12px;
+}
+
+.btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
 }
 
 .btn-yellow{
@@ -188,13 +192,13 @@ h2{
   color:#fff;
   padding:14px;
   border-radius:12px;
-  text-align:left;
   font-size:15px;
   font-weight:bold;
   cursor:pointer;
   margin-top:9px;
 }
 
+.choice,
 .review-option{
   width:100%;
   background:#242424;
@@ -209,9 +213,10 @@ h2{
   text-align:left;
 }
 
+.choice:disabled,
 .review-option:disabled{
-  opacity:.7;
-  cursor:default;
+  opacity:.55;
+  cursor:not-allowed;
 }
 
 .phrase{
@@ -233,25 +238,11 @@ h2{
   margin-top:6px;
 }
 
-.input{
-  width:100%;
-  background:#111;
-  border:2px solid #333;
-  color:#fff;
-  padding:15px;
-  border-radius:13px;
-  font-size:16px;
-  outline:none;
-}
-
-.input:focus{
-  border-color:#58cc02;
-}
-
 .feedback{
   min-height:25px;
   margin-top:12px;
   font-weight:bold;
+  line-height:1.5;
 }
 
 .success{
@@ -275,7 +266,7 @@ h2{
 .dialogue{
   display:flex;
   gap:10px;
-  margin-bottom:14px;
+  margin-bottom:12px;
   padding:13px;
   background:#242424;
   border-radius:12px;
@@ -284,7 +275,30 @@ h2{
 
 .dialogue strong{
   color:#58cc02;
-  min-width:55px;
+  min-width:70px;
+}
+
+.input{
+  width:100%;
+  background:#111;
+  border:2px solid #333;
+  color:#fff;
+  padding:15px;
+  border-radius:13px;
+  font-size:16px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#58cc02;
+}
+
+textarea.input{
+  resize:vertical;
+}
+
+.hidden{
+  display:none !important;
 }
 
 .xp-popup{
@@ -326,26 +340,6 @@ h2{
     transform:translateY(-10px);
   }
 
-}
-
-.choice{
-  width:100%;
-  background:#242424;
-  border:2px solid #333;
-  color:#fff;
-  padding:15px;
-  border-radius:13px;
-  margin-top:10px;
-  cursor:pointer;
-  font-size:15px;
-  font-weight:bold;
-  text-align:left;
-}
-
-.choice:hover,
-.review-option:hover,
-.audio-button:hover{
-  border-color:#58cc02;
 }
 
 .speaking-box{
@@ -397,15 +391,12 @@ h2{
   margin-top:15px;
 }
 
-.hidden{
-  display:none !important;
-}
-
 .final-prompt{
   background:#242424;
   border-radius:15px;
-  padding:17px;
+  padding:16px;
   margin-bottom:10px;
+  line-height:1.5;
 }
 
 .final-prompt strong{
@@ -447,7 +438,7 @@ h2{
       id="progressText"
       class="progress-text">
 
-      1/10
+      1/9
 
     </div>
 
@@ -486,8 +477,8 @@ h2{
     </h1>
 
     <p class="subtitle">
-      Vamos rever o que você aprendeu
-      nas Lessons 1, 2 e 3.
+      Antes de aprender algo novo,
+      vamos rever as Lessons 1–3.
     </p>
 
   </div>
@@ -495,7 +486,7 @@ h2{
   <div class="card">
 
     <h2>
-      🎯 Pergunta 1
+      🎯 Responda:
     </h2>
 
     <div class="phrase">
@@ -552,7 +543,7 @@ h2{
       class="btn hidden"
       onclick="nextReview()">
 
-      PRÓXIMA → 
+      CONTINUAR →
 
     </button>
 
@@ -569,26 +560,18 @@ h2{
   id="screen2"
   class="screen">
 
-  <div class="hero">
+  <span class="lesson-label">
+    NEW SKILL
+  </span>
 
-    <div class="hero-icon">
-      👨‍💼
-    </div>
+  <h1>
+    What do you do? 👨‍💼
+  </h1>
 
-    <span class="lesson-label">
-      NEW SKILL
-    </span>
-
-    <h1>
-      What do you do?
-    </h1>
-
-    <p class="subtitle">
-      Agora você vai aprender a falar
-      sobre o que faz.
-    </p>
-
-  </div>
+  <p class="subtitle">
+    Aprenda a perguntar e responder
+    sobre trabalho ou estudo.
+  </p>
 
   <div class="card">
 
@@ -620,7 +603,6 @@ h2{
 
       <div class="meaning">
         Sou estudante.
-
       </div>
 
       <button
@@ -641,7 +623,6 @@ h2{
 
       <div class="meaning">
         Trabalho num banco.
-
       </div>
 
       <button
@@ -657,8 +638,8 @@ h2{
     <div class="tip">
 
       💡 <strong>Dica:</strong>
-      “What do you do?” normalmente pergunta
-      sobre o seu trabalho, estudo ou ocupação.
+      “What do you do?” pode perguntar
+      sobre a profissão, trabalho ou estudo.
 
     </div>
 
@@ -666,7 +647,7 @@ h2{
       class="btn"
       onclick="goToScreen(3)">
 
-      ENTENDI → CONTINUAR
+      CONTINUAR →
 
     </button>
 
@@ -684,16 +665,16 @@ h2{
   class="screen">
 
   <span class="lesson-label">
-    1 • LISTEN
+    1 • LISTENING
   </span>
 
   <h1>
-    Listen to the conversation 👂
+    Listen 👂
   </h1>
 
   <p class="subtitle">
-    Ouça uma conversa curta e tente
-    compreender o contexto.
+    Ouça a conversa e tente compreender
+    o que as pessoas estão dizendo.
   </p>
 
   <div class="card">
@@ -740,7 +721,7 @@ h2{
 
     <button
       class="btn btn-yellow"
-      onclick="playConversation()">
+      onclick="playConversationAudio()">
 
       ▶️ OUVIR CONVERSA
 
@@ -750,7 +731,7 @@ h2{
       class="btn"
       onclick="goToScreen(4)">
 
-      JÁ OUVI → CONTINUAR
+      CONTINUAR →
 
     </button>
 
@@ -772,17 +753,17 @@ h2{
   </span>
 
   <h1>
-    Listen. Repeat. Speak. 🗣️
+    Listen → Repeat 🗣️
   </h1>
 
   <p class="subtitle">
-    Primeiro ouça. Depois repita em voz alta.
+    Ouça a frase e repita em voz alta.
   </p>
 
   <div class="card">
 
     <div
-      id="repeatNumber"
+      id="repeatCounter"
       class="lesson-label">
 
       PHRASE 1 / 4
@@ -794,7 +775,7 @@ h2{
       <div
         id="repeatPhrase"
         class="english"
-        style="font-size:25px;text-align:center;">
+        style="text-align:center;font-size:24px;">
 
         What do you do?
 
@@ -806,7 +787,7 @@ h2{
       class="btn btn-yellow"
       onclick="playRepeat()">
 
-      🔊 OUVIR
+      🔊 OUVIR FRASE
 
     </button>
 
@@ -815,7 +796,7 @@ h2{
       class="btn"
       onclick="nextRepeat()">
 
-      🗣️ JÁ REPETI →
+      🗣️ JÁ REPETI → 
 
     </button>
 
@@ -840,10 +821,12 @@ h2{
 
 <script>
   /* =========================================
-   VARIÁVEIS DA AULA
+   CONFIGURAÇÃO DA AULA
 ========================================= */
 
 let currentScreen = 1;
+
+const TOTAL_SCREENS = 9;
 
 let xp = Number(
   localStorage.getItem("englishMZ_xp") || 0
@@ -852,28 +835,15 @@ let xp = Number(
 let savedJob =
   localStorage.getItem("englishMZ_job") || "";
 
-let savedName =
-  localStorage.getItem("englishMZ_name") || "";
-
-let savedCountry =
-  localStorage.getItem("englishMZ_country") || "";
-
-let savedCity =
-  localStorage.getItem("englishMZ_city") || "";
-
 let reviewIndex = 0;
 
 let repeatIndex = 0;
 
-let conversationStep = 0;
+let conversationIndex = 0;
 
-let recording = false;
+let practiceDone = false;
 
-let mediaRecorder = null;
-
-let audioChunks = [];
-
-let practiceCompleted = false;
+let realityDone = false;
 
 
 /* =========================================
@@ -882,13 +852,14 @@ let practiceCompleted = false;
 
 function goToScreen(number){
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(function(screen){
+  const screens =
+    document.querySelectorAll(".screen");
 
-      screen.classList.remove("active");
+  screens.forEach(function(screen){
 
-    });
+    screen.classList.remove("active");
+
+  });
 
   const target =
     document.getElementById(
@@ -934,16 +905,19 @@ function updateProgress(){
   }
 
   const percent =
-    ((currentScreen - 1) / 9) * 100;
+    ((currentScreen - 1) /
+    (TOTAL_SCREENS - 1)) * 100;
 
   fill.style.width =
     Math.max(
       0,
-      Math.min(100, percent)
+      Math.min(100,percent)
     ) + "%";
 
   text.innerText =
-    currentScreen + "/10";
+    currentScreen +
+    "/" +
+    TOTAL_SCREENS;
 
 }
 
@@ -961,12 +935,12 @@ function addXP(amount){
     xp
   );
 
-  const element =
+  const xpElement =
     document.getElementById("xp");
 
-  if(element){
+  if(xpElement){
 
-    element.innerText =
+    xpElement.innerText =
       xp;
 
   }
@@ -1004,7 +978,7 @@ function showXPPopup(amount){
 
 
 /* =========================================
-   ÁUDIO
+   VOZ
 ========================================= */
 
 function speak(text){
@@ -1018,31 +992,34 @@ function speak(text){
     );
 
     return;
+
   }
 
   window.speechSynthesis.cancel();
 
-  const voice =
-    new SpeechSynthesisUtterance(text);
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
 
-  voice.lang =
+  utterance.lang =
     "en-US";
 
-  voice.rate =
+  utterance.rate =
     0.82;
 
-  voice.pitch =
+  utterance.pitch =
     1;
 
   window.speechSynthesis.speak(
-    voice
+    utterance
   );
 
 }
 
 
 /* =========================================
-   REVISÃO AUTOMÁTICA
+   REVIEW
 ========================================= */
 
 const reviewQuestions = [
@@ -1051,33 +1028,45 @@ const reviewQuestions = [
     question:
       "What's your name?",
 
+    meaning:
+      "Qual é o seu nome?",
+
     options:[
       ["I live in Maputo.",false],
       ["My name is Kelton.",true],
-      ["I'm a student.",false]
+      ["I'm from Mozambique.",false]
     ]
+
+  },
+
+  {
+    question:
+      "Where are you from?",
+
+    meaning:
+      "De onde você é?",
+
+    options:[
+      ["I'm from Mozambique.",true],
+      ["I'm a student.",false],
+      ["My name is Kelton.",false]
+    ]
+
   },
 
   {
     question:
       "Where do you live?",
 
+    meaning:
+      "Onde você mora?",
+
     options:[
       ["I'm fine.",false],
       ["I live in Maputo.",true],
-      ["I'm a student.",false]
+      ["I'm from Mozambique.",false]
     ]
-  },
 
-  {
-    question:
-      "Do you live in Maputo?",
-
-    options:[
-      ["Yes, I do.",true],
-      ["My name is Kelton.",false],
-      ["I work in a bank.",false]
-    ]
   }
 
 ];
@@ -1129,7 +1118,7 @@ function answerReview(
   }else{
 
     feedback.innerText =
-      "❌ Ainda não. Tente novamente.";
+      "❌ Ainda não. Leia a pergunta novamente e tente outra opção.";
 
     feedback.className =
       "feedback error";
@@ -1156,30 +1145,54 @@ function nextReview(){
 
   }
 
+  loadReviewQuestion();
+
+}
+
+
+function loadReviewQuestion(){
+
   const question =
     reviewQuestions[
       reviewIndex
     ];
 
-  document.getElementById(
-    "reviewQuestion"
-  ).innerText =
-    question.question;
+  const questionElement =
+    document.getElementById(
+      "reviewQuestion"
+    );
+
+  const meaningElement =
+    document.querySelector(
+      "#screen1 .meaning"
+    );
 
   const options =
     document.getElementById(
       "reviewOptions"
     );
 
+  const feedback =
+    document.getElementById(
+      "reviewFeedback"
+    );
+
+  const next =
+    document.getElementById(
+      "reviewNext"
+    );
+
+  questionElement.innerText =
+    question.question;
+
+  meaningElement.innerText =
+    question.meaning;
+
   options.innerHTML = "";
 
-  document.getElementById(
-    "reviewFeedback"
-  ).innerText = "";
+  feedback.innerText = "";
 
-  document.getElementById(
-    "reviewNext"
-  ).classList.add(
+  next.classList.add(
     "hidden"
   );
 
@@ -1218,10 +1231,10 @@ function nextReview(){
 
 
 /* =========================================
-   CONVERSA — ÁUDIO
+   LISTENING
 ========================================= */
 
-function playConversation(){
+function playConversationAudio(){
 
   const phrases = [
 
@@ -1256,14 +1269,12 @@ function playConversation(){
 
     setTimeout(
       playNext,
-      1800
+      1900
     );
 
   }
 
   playNext();
-
-  addXP(3);
 
 }
 
@@ -1298,13 +1309,33 @@ function playRepeat(){
 
 function nextRepeat(){
 
+  addXP(2);
+
   repeatIndex++;
 
-  addXP(2);
+  const phrase =
+    document.getElementById(
+      "repeatPhrase"
+    );
+
+  const counter =
+    document.getElementById(
+      "repeatCounter"
+    );
 
   const feedback =
     document.getElementById(
       "repeatFeedback"
+    );
+
+  const next =
+    document.getElementById(
+      "repeatNext"
+    );
+
+  const continueButton =
+    document.getElementById(
+      "repeatContinue"
     );
 
   if(
@@ -1312,31 +1343,23 @@ function nextRepeat(){
     repeatPhrases.length
   ){
 
-    document.getElementById(
-      "repeatPhrase"
-    ).innerText =
+    phrase.innerText =
       "Great job! 🎉";
 
-    document.getElementById(
-      "repeatNumber"
-    ).innerText =
-      "ALL PHRASES COMPLETE";
-
-    document.getElementById(
-      "repeatNext"
-    ).classList.add(
-      "hidden"
-    );
+    counter.innerText =
+      "COMPLETE ✓";
 
     feedback.innerText =
-      "✓ Você repetiu todas as frases.";
+      "Você repetiu todas as frases.";
 
     feedback.className =
       "feedback success";
 
-    document.getElementById(
-      "repeatContinue"
-    ).classList.remove(
+    next.classList.add(
+      "hidden"
+    );
+
+    continueButton.classList.remove(
       "hidden"
     );
 
@@ -1344,16 +1367,12 @@ function nextRepeat(){
 
   }
 
-  document.getElementById(
-    "repeatPhrase"
-  ).innerText =
+  phrase.innerText =
     repeatPhrases[
       repeatIndex
     ];
 
-  document.getElementById(
-    "repeatNumber"
-  ).innerText =
+  counter.innerText =
     "PHRASE " +
     (repeatIndex + 1) +
     " / " +
@@ -1363,7 +1382,7 @@ function nextRepeat(){
 
 
 /* =========================================
-   TELA 5 — PRACTICE
+   PRACTICE
 ========================================= */
 
 function checkPractice(
@@ -1376,17 +1395,23 @@ function checkPractice(
       "practiceFeedback"
     );
 
+  const continueButton =
+    document.getElementById(
+      "practiceContinue"
+    );
+
   if(correct){
 
     feedback.innerText =
-      "✓ Correct! 🎉";
+      "✓ Correct! Você entendeu a pergunta. 🎉";
 
     feedback.className =
       "feedback success";
 
-    if(!practiceCompleted){
+    if(!practiceDone){
 
-      practiceCompleted = true;
+      practiceDone =
+        true;
 
       addXP(10);
 
@@ -1402,27 +1427,14 @@ function checkPractice(
 
       });
 
-    const next =
-      document.getElementById(
-        "practiceContinue"
-      );
-
-    if(next){
-
-      next.classList.remove(
-        "hidden"
-      );
-
-    }
-
-    speak(
-      button.innerText
+    continueButton.classList.remove(
+      "hidden"
     );
 
   }else{
 
     feedback.innerText =
-      "❌ Não é a melhor resposta. Tente novamente.";
+      "❌ Tente novamente. “What do you do?” pergunta sobre o que você faz.";
 
     feedback.className =
       "feedback error";
@@ -1448,6 +1460,21 @@ function saveRealityJob(){
       "realityFeedback"
     );
 
+  const form =
+    document.getElementById(
+      "realityForm"
+    );
+
+  const complete =
+    document.getElementById(
+      "realityComplete"
+    );
+
+  const sentence =
+    document.getElementById(
+      "realitySentence"
+    );
+
   if(!input){
     return;
   }
@@ -1458,7 +1485,7 @@ function saveRealityJob(){
   if(!job){
 
     feedback.innerText =
-      "⚠️ Escreva a sua profissão ou ocupação.";
+      "⚠️ Escreva algo primeiro. Ex: student";
 
     feedback.className =
       "feedback error";
@@ -1475,45 +1502,27 @@ function saveRealityJob(){
     job
   );
 
-  addXP(10);
+  if(!realityDone){
 
-  const form =
-    document.getElementById(
-      "realityForm"
-    );
+    realityDone =
+      true;
 
-  const complete =
-    document.getElementById(
-      "realityComplete"
-    );
-
-  if(form){
-    form.classList.add(
-      "hidden"
-    );
-  }
-
-  if(complete){
-
-    complete.classList.remove(
-      "hidden"
-    );
+    addXP(10);
 
   }
 
-  const sentence =
-    document.getElementById(
-      "realitySentence"
-    );
+  sentence.innerText =
+    "I'm a " +
+    job +
+    ".";
 
-  if(sentence){
+  form.classList.add(
+    "hidden"
+  );
 
-    sentence.innerText =
-      "I am a " +
-      job +
-      ".";
-
-  }
+  complete.classList.remove(
+    "hidden"
+  );
 
 }
 
@@ -1523,8 +1532,15 @@ function playRealityAudio(){
   if(savedJob){
 
     speak(
-      "I am a " +
-      savedJob
+      "I'm a " +
+      savedJob +
+      "."
+    );
+
+  }else{
+
+    speak(
+      "I'm a student."
     );
 
   }
@@ -1533,14 +1549,34 @@ function playRealityAudio(){
 
 
 /* =========================================
-   INICIAR GRAVAÇÃO
+   GRAVAÇÃO — SPEAKING
 ========================================= */
 
-async function startRecording(){
+let recorder = null;
 
-  if(recording){
-    return;
+let recordingStream = null;
+
+let recordingChunks = [];
+
+let isRecording = false;
+
+
+async function toggleRecording(){
+
+  if(isRecording){
+
+    stopRecording();
+
+  }else{
+
+    startRecording();
+
   }
+
+}
+
+
+async function startRecording(){
 
   if(
     !navigator.mediaDevices ||
@@ -1548,7 +1584,7 @@ async function startRecording(){
   ){
 
     setRecordStatus(
-      "⚠️ O seu navegador não permite gravação de áudio."
+      "⚠️ O seu navegador não suporta gravação."
     );
 
     return;
@@ -1557,20 +1593,20 @@ async function startRecording(){
 
   try{
 
-    const stream =
+    recordingStream =
       await navigator.mediaDevices
         .getUserMedia({
           audio:true
         });
 
-    audioChunks = [];
+    recordingChunks = [];
 
-    mediaRecorder =
+    recorder =
       new MediaRecorder(
-        stream
+        recordingStream
       );
 
-    mediaRecorder.ondataavailable =
+    recorder.ondataavailable =
       function(event){
 
         if(
@@ -1578,7 +1614,7 @@ async function startRecording(){
           event.data.size > 0
         ){
 
-          audioChunks.push(
+          recordingChunks.push(
             event.data
           );
 
@@ -1586,12 +1622,12 @@ async function startRecording(){
 
       };
 
-    mediaRecorder.onstop =
+    recorder.onstop =
       function(){
 
         const blob =
           new Blob(
-            audioChunks,
+            recordingChunks,
             {
               type:"audio/webm"
             }
@@ -1607,57 +1643,57 @@ async function startRecording(){
             "recordedAudio"
           );
 
-        if(audio){
+        audio.src =
+          audioURL;
 
-          audio.src =
-            audioURL;
-
-          audio.classList.remove(
-            "hidden"
-          );
-
-        }
-
-        setRecordStatus(
-          "✓ Gravação concluída! Ouça a sua voz abaixo."
+        audio.classList.remove(
+          "hidden"
         );
 
-        const continueButton =
-          document.getElementById(
-            "recordContinue"
-          );
+        setRecordStatus(
+          "✓ Gravado! Agora ouça a sua voz."
+        );
 
-        if(continueButton){
-
-          continueButton.classList.remove(
-            "hidden"
-          );
-
-        }
+        document.getElementById(
+          "recordContinue"
+        ).classList.remove(
+          "hidden"
+        );
 
         addXP(10);
 
+        if(recordingStream){
+
+          recordingStream
+            .getTracks()
+            .forEach(
+              function(track){
+
+                track.stop();
+
+              }
+            );
+
+        }
+
       };
 
-    mediaRecorder.start();
+    recorder.start();
 
-    recording = true;
+    isRecording =
+      true;
 
     const button =
       document.getElementById(
         "recordButton"
       );
 
-    if(button){
+    button.classList.add(
+      "recording"
+    );
 
-      button.classList.add(
-        "recording"
-      );
-
-      button.innerText =
-        "⏹️";
-
-    }
+    button.innerText =
+      "⏹️";
 
     setRecordStatus(
       "🔴 Gravando... toque novamente para parar."
@@ -1666,7 +1702,7 @@ async function startRecording(){
   }catch(error){
 
     setRecordStatus(
-      "⚠️ Permita o acesso ao microfone para gravar."
+      "⚠️ Permita o acesso ao microfone."
     );
 
   }
@@ -1674,23 +1710,20 @@ async function startRecording(){
 }
 
 
-/* =========================================
-   PARAR GRAVAÇÃO
-========================================= */
-
 function stopRecording(){
 
   if(
-    mediaRecorder &&
-    mediaRecorder.state !==
+    recorder &&
+    recorder.state !==
     "inactive"
   ){
 
-    mediaRecorder.stop();
+    recorder.stop();
 
   }
 
-  recording = false;
+  isRecording =
+    false;
 
   const button =
     document.getElementById(
@@ -1705,21 +1738,6 @@ function stopRecording(){
 
     button.innerText =
       "🎙️";
-
-  }
-
-}
-
-
-function toggleRecording(){
-
-  if(recording){
-
-    stopRecording();
-
-  }else{
-
-    startRecording();
 
   }
 
@@ -1756,8 +1774,7 @@ function setRecordStatus(text){
   </h1>
 
   <p class="subtitle">
-    Vamos testar se você consegue usar
-    o que acabou de aprender.
+    Agora vamos usar o que você aprendeu.
   </p>
 
   <div class="card">
@@ -1828,8 +1845,8 @@ function setRecordStatus(text){
   </h1>
 
   <p class="subtitle">
-    Agora vamos usar inglês para falar
-    sobre a sua própria realidade.
+    Use o inglês para falar sobre
+    a sua própria realidade.
   </p>
 
   <div class="card">
@@ -1839,8 +1856,8 @@ function setRecordStatus(text){
     </h2>
 
     <p class="subtitle">
-      Escreva a sua profissão,
-      ocupação ou diga que é estudante.
+      Escreva uma profissão, ocupação
+      ou simplesmente “student”.
     </p>
 
     <div id="realityForm">
@@ -1857,7 +1874,7 @@ function setRecordStatus(text){
         class="btn"
         onclick="saveRealityJob()">
 
-        SALVAR MINHA RESPOSTA
+        SALVAR →
 
       </button>
 
@@ -1877,7 +1894,6 @@ function setRecordStatus(text){
         <div
           id="realitySentence"
           class="english">
-
         </div>
 
       </div>
@@ -1886,7 +1902,7 @@ function setRecordStatus(text){
         class="audio-button"
         onclick="playRealityAudio()">
 
-        🔊 Ouvir minha frase
+        🔊 OUVIR MINHA FRASE
 
       </button>
 
@@ -1906,7 +1922,7 @@ function setRecordStatus(text){
 
 
 <!-- =====================================
-     TELA 7 — RECORD
+     TELA 7 — GRAVAR
 ===================================== -->
 
 <section id="screen7" class="screen">
@@ -1920,28 +1936,33 @@ function setRecordStatus(text){
   </h1>
 
   <p class="subtitle">
-    Agora é a sua vez. Ouça o modelo,
-    fale em inglês e escute a sua própria voz.
+    Ouça o modelo, grave a sua voz
+    e depois escute a gravação.
   </p>
 
   <div class="card">
 
     <div class="phrase">
 
-      <div class="english">
-        I am a student.
+      <div
+        id="speakingPhrase"
+        class="english">
+
+        I'm a student.
+
       </div>
 
       <div class="meaning">
-        Substitua “student” pela sua profissão
-        ou ocupação.
+
+        Fale a sua profissão ou ocupação.
+
       </div>
 
     </div>
 
     <button
       class="btn btn-yellow"
-      onclick="playRealityAudio()">
+      onclick="playSpeakingModel()">
 
       🔊 OUVIR MODELO
 
@@ -1962,7 +1983,7 @@ function setRecordStatus(text){
         id="recordStatus"
         class="status">
 
-        Toque no microfone para começar.
+        Toque para começar a gravar.
 
       </div>
 
@@ -1974,11 +1995,20 @@ function setRecordStatus(text){
       controls>
     </audio>
 
+    <button
+      id="recordAgain"
+      class="btn btn-dark hidden"
+      onclick="resetRecording()">
+
+      🔄 GRAVAR NOVAMENTE
+
+    </button>
+
     <div class="tip">
 
-      💡 <strong>Método English MZ:</strong><br>
+      💡 <strong>Método:</strong><br>
       Ouça → fale → grave → escute →
-      tente novamente.
+      repita.
 
     </div>
 
@@ -2007,12 +2037,12 @@ function setRecordStatus(text){
   </span>
 
   <h1>
-    💬 Let's have a conversation
+    💬 Let's talk!
   </h1>
 
   <p class="subtitle">
-    Agora imagine que você está conversando
-    com alguém em inglês.
+    Agora vamos simular uma conversa
+    em inglês.
   </p>
 
   <div class="card">
@@ -2030,11 +2060,19 @@ function setRecordStatus(text){
 
       </div>
 
+      <button
+        class="audio-button"
+        onclick="speak('Hi! What is your name?')">
+
+        🔊 Ouvir pergunta
+
+      </button>
+
       <input
         id="conversationAnswer"
         class="input"
         type="text"
-        placeholder="Type your answer..."
+        placeholder="Type your answer in English..."
         autocomplete="off"
       >
 
@@ -2059,13 +2097,13 @@ function setRecordStatus(text){
 
 
 <!-- =====================================
-     TELA 9 — FINAL CHALLENGE
+     TELA 9 — DESAFIO FINAL
 ===================================== -->
 
 <section id="screen9" class="screen">
 
   <span class="lesson-label">
-    FINAL CHALLENGE • LESSONS 1–4
+    FINAL CHALLENGE
   </span>
 
   <h1>
@@ -2073,44 +2111,53 @@ function setRecordStatus(text){
   </h1>
 
   <p class="subtitle">
-    Agora mostre tudo o que aprendeu
-    nas primeiras quatro aulas.
+    Mostre tudo o que aprendeu
+    nas Lessons 1–4.
   </p>
 
   <div class="card">
 
     <h2>
-      🎤 Apresente-se em inglês
+      🎤 Introduce yourself
     </h2>
 
     <p class="subtitle">
-      Use as pistas abaixo para criar
-      a sua própria apresentação.
+      Você pode usar estas pistas:
     </p>
 
     <div class="final-prompt">
-      👤 <strong>Name:</strong><br>
+
+      👤 <strong>Name</strong><br>
       My name is...
+
     </div>
 
     <div class="final-prompt">
-      🌍 <strong>Country:</strong><br>
+
+      🌍 <strong>Country</strong><br>
       I'm from...
+
     </div>
 
     <div class="final-prompt">
-      🏠 <strong>City:</strong><br>
+
+      🏠 <strong>City</strong><br>
       I live in...
+
     </div>
 
     <div class="final-prompt">
-      🎓 <strong>Work / Study:</strong><br>
+
+      🎓 <strong>Study / Work</strong><br>
       I'm a...
+
     </div>
 
     <div class="final-prompt">
-      👋 <strong>Ending:</strong><br>
+
+      👋 <strong>Ending</strong><br>
       Nice to meet you!
+
     </div>
 
     <textarea
@@ -2124,7 +2171,7 @@ function setRecordStatus(text){
       class="btn"
       onclick="saveFinalText()">
 
-      💾 SALVAR APRESENTAÇÃO
+      💾 SALVAR TEXTO
 
     </button>
 
@@ -2132,6 +2179,19 @@ function setRecordStatus(text){
       id="finalFeedback"
       class="feedback">
     </div>
+
+    <hr
+      style="border:0;border-top:1px solid #333;margin:22px 0;"
+    >
+
+    <h2>
+      🎙️ Agora fale!
+    </h2>
+
+    <p class="subtitle">
+      Grave a sua apresentação completa.
+      Depois escute e, se quiser, grave novamente.
+    </p>
 
     <div class="speaking-box">
 
@@ -2148,7 +2208,7 @@ function setRecordStatus(text){
         id="finalRecordStatus"
         class="status">
 
-        Grave a sua apresentação completa.
+        Toque para gravar.
 
       </div>
 
@@ -2159,6 +2219,15 @@ function setRecordStatus(text){
       class="recorded-audio hidden"
       controls>
     </audio>
+
+    <button
+      id="finalRecordAgain"
+      class="btn btn-dark hidden"
+      onclick="resetFinalRecording()">
+
+      🔄 GRAVAR NOVAMENTE
+
+    </button>
 
     <button
       id="finishButton"
@@ -2189,7 +2258,7 @@ function setRecordStatus(text){
     </div>
 
     <span class="lesson-label">
-      LESSON COMPLETED
+      LESSON 4 COMPLETED
     </span>
 
     <h1>
@@ -2221,8 +2290,11 @@ function setRecordStatus(text){
       class="subtitle"
       style="text-align:center;">
 
-      Você praticou listening,
-      speaking, vocabulary e conversation.
+      👂 Listening<br>
+      🗣️ Speaking<br>
+      💬 Conversation<br>
+      🔄 Review<br>
+      🏆 Final Challenge
 
     </p>
 
@@ -2242,6 +2314,91 @@ function setRecordStatus(text){
 <script>
 
 /* =========================================
+   ÁUDIO DA TELA SPEAKING
+========================================= */
+
+function playSpeakingModel(){
+
+  if(savedJob){
+
+    speak(
+      "I'm a " +
+      savedJob +
+      "."
+    );
+
+  }else{
+
+    speak(
+      "I'm a student."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   RESET DA GRAVAÇÃO
+========================================= */
+
+function resetRecording(){
+
+  const audio =
+    document.getElementById(
+      "recordedAudio"
+    );
+
+  const again =
+    document.getElementById(
+      "recordAgain"
+    );
+
+  const continueButton =
+    document.getElementById(
+      "recordContinue"
+    );
+
+  if(audio){
+
+    audio.pause();
+
+    audio.removeAttribute(
+      "src"
+    );
+
+    audio.load();
+
+    audio.classList.add(
+      "hidden"
+    );
+
+  }
+
+  if(again){
+
+    again.classList.add(
+      "hidden"
+    );
+
+  }
+
+  if(continueButton){
+
+    continueButton.classList.add(
+      "hidden"
+    );
+
+  }
+
+  setRecordStatus(
+    "Toque para começar a gravar."
+  );
+
+}
+
+
+/* =========================================
    CONVERSAÇÃO SIMULADA
 ========================================= */
 
@@ -2251,57 +2408,75 @@ const conversationSteps = [
     question:
       "Hi! What's your name?",
 
-    answers:[
-      "my name is",
-      "i'm",
-      "im"
-    ],
+    audio:
+      "Hi! What is your name?",
+
+    answers:
+      [
+        "my name is",
+        "i'm",
+        "im"
+      ],
 
     next:
       "Nice to meet you! Where are you from?"
+
   },
 
   {
     question:
       "Nice to meet you! Where are you from?",
 
-    answers:[
-      "mozambique",
-      "i'm from mozambique",
-      "im from mozambique"
-    ],
+    audio:
+      "Nice to meet you! Where are you from?",
+
+    answers:
+      [
+        "mozambique",
+        "i'm from mozambique",
+        "im from mozambique"
+      ],
 
     next:
       "Great! Where do you live?"
+
   },
 
   {
     question:
       "Great! Where do you live?",
 
-    answers:[
-      "maputo",
-      "i live in maputo",
-      "i'm in maputo",
-      "im in maputo"
-    ],
+    audio:
+      "Great! Where do you live?",
+
+    answers:
+      [
+        "maputo",
+        "i live in maputo"
+      ],
 
     next:
       "Nice! What do you do?"
+
   },
 
   {
     question:
       "Nice! What do you do?",
 
-    answers:[
-      "student",
-      "i'm a student",
-      "im a student"
-    ],
+    audio:
+      "Nice! What do you do?",
+
+    answers:
+      [
+        "student",
+        "i'm a student",
+        "im a student"
+      ],
 
     next:
-      "Excellent! It was nice talking to you!"
+      "Excellent! You completed the conversation!"
+
   }
 
 ];
@@ -2330,6 +2505,10 @@ function answerConversation(){
       "conversationFeedback"
     );
 
+  if(!input || !feedback){
+    return;
+  }
+
   const answer =
     normalizeText(
       input.value
@@ -2338,7 +2517,7 @@ function answerConversation(){
   if(!answer){
 
     feedback.innerText =
-      "⚠️ Escreva uma resposta.";
+      "⚠️ Escreva uma resposta em inglês.";
 
     feedback.className =
       "feedback error";
@@ -2349,103 +2528,72 @@ function answerConversation(){
 
   const step =
     conversationSteps[
-      conversationStep
+      conversationIndex
     ];
 
-  let correct = false;
+  let correct =
+    false;
 
-  step.answers.forEach(
-    function(possible){
+  for(
+    let i = 0;
+    i < step.answers.length;
+    i++
+  ){
 
-      if(
-        answer.includes(
-          normalizeText(possible)
+    if(
+      answer.includes(
+        normalizeText(
+          step.answers[i]
         )
-      ){
+      )
+    ){
 
-        correct = true;
+      correct =
+        true;
 
-      }
+      break;
 
     }
-  );
+
+  }
 
   if(correct){
 
     feedback.innerText =
-      "✓ Great answer! 🎉";
+      "✓ Great! Muito bem! 🎉";
 
     feedback.className =
       "feedback success";
 
     addXP(10);
 
-    speak(
-      step.next
-    );
-
-    conversationStep++;
-
     input.value = "";
 
+    conversationIndex++;
+
     if(
-      conversationStep >=
+      conversationIndex >=
       conversationSteps.length
     ){
 
       setTimeout(
-        function(){
-
-          document.getElementById(
-            "conversationArea"
-          ).innerHTML =
-
-          `
-          <div class="dialogue">
-
-            <strong>English MZ:</strong>
-
-            <span>
-              Excellent! It was nice talking to you!
-            </span>
-
-          </div>
-
-          <div class="feedback success">
-
-            🎉 Conversation completed!
-
-          </div>
-
-          <button
-            class="btn"
-            onclick="goToScreen(9)">
-
-            CONTINUAR PARA O DESAFIO FINAL →
-
-          </button>
-          `;
-
-        },
-        900
+        finishConversation,
+        800
       );
 
       return;
+
     }
 
     setTimeout(
-      function(){
-
-        showNextConversationQuestion();
-
-      },
-      900
+      showConversationQuestion,
+      800
     );
 
   }else{
 
     feedback.innerText =
-      "💡 Tente responder em inglês. Não tenha medo de errar.";
+      "💡 Tente novamente. Você não precisa escrever perfeitamente.";
 
     feedback.className =
       "feedback error";
@@ -2455,11 +2603,11 @@ function answerConversation(){
 }
 
 
-function showNextConversationQuestion(){
+function showConversationQuestion(){
 
   const step =
     conversationSteps[
-      conversationStep
+      conversationIndex
     ];
 
   const area =
@@ -2480,11 +2628,19 @@ function showNextConversationQuestion(){
 
   </div>
 
+  <button
+    class="audio-button"
+    onclick="speak('${step.audio}')">
+
+    🔊 Ouvir pergunta
+
+  </button>
+
   <input
     id="conversationAnswer"
     class="input"
     type="text"
-    placeholder="Type your answer..."
+    placeholder="Type your answer in English..."
     autocomplete="off"
   >
 
@@ -2505,26 +2661,71 @@ function showNextConversationQuestion(){
 }
 
 
+function finishConversation(){
+
+  const area =
+    document.getElementById(
+      "conversationArea"
+    );
+
+  area.innerHTML =
+
+  `
+  <div class="dialogue">
+
+    <strong>English MZ:</strong>
+
+    <span>
+      Excellent! You completed the conversation! 🎉
+    </span>
+
+  </div>
+
+  <div class="feedback success">
+
+    ✓ Conversação concluída!
+
+  </div>
+
+  <button
+    class="btn"
+    onclick="goToScreen(9)">
+
+    🏆 DESAFIO FINAL →
+
+  </button>
+  `;
+
+}
+
+
 /* =========================================
    APRESENTAÇÃO FINAL
 ========================================= */
 
 function saveFinalText(){
 
-  const text =
+  const input =
     document.getElementById(
       "finalAnswer"
-    ).value.trim();
+    );
 
   const feedback =
     document.getElementById(
       "finalFeedback"
     );
 
+  if(!input){
+    return;
+  }
+
+  const text =
+    input.value.trim();
+
   if(!text){
 
     feedback.innerText =
-      "⚠️ Primeiro escreva a sua apresentação.";
+      "⚠️ Escreva a sua apresentação primeiro.";
 
     feedback.className =
       "feedback error";
@@ -2539,7 +2740,7 @@ function saveFinalText(){
   );
 
   feedback.innerText =
-    "✓ Apresentação salva! Agora grave a sua voz. 🎙️";
+    "✓ Salvo! Agora grave a sua apresentação. 🎙️";
 
   feedback.className =
     "feedback success";
@@ -2549,14 +2750,17 @@ function saveFinalText(){
 }
 
 
-let finalRecording =
-  false;
+/* =========================================
+   GRAVAÇÃO FINAL
+========================================= */
 
-let finalRecorder =
-  null;
+let finalRecorder = null;
 
-let finalAudioChunks =
-  [];
+let finalStream = null;
+
+let finalChunks = [];
+
+let finalRecording = false;
 
 
 async function toggleFinalRecording(){
@@ -2565,9 +2769,16 @@ async function toggleFinalRecording(){
 
     stopFinalRecording();
 
-    return;
+  }else{
+
+    startFinalRecording();
 
   }
+
+}
+
+
+async function startFinalRecording(){
 
   if(
     !navigator.mediaDevices ||
@@ -2584,17 +2795,17 @@ async function toggleFinalRecording(){
 
   try{
 
-    const stream =
+    finalStream =
       await navigator.mediaDevices
         .getUserMedia({
           audio:true
         });
 
-    finalAudioChunks = [];
+    finalChunks = [];
 
     finalRecorder =
       new MediaRecorder(
-        stream
+        finalStream
       );
 
     finalRecorder.ondataavailable =
@@ -2605,7 +2816,7 @@ async function toggleFinalRecording(){
           event.data.size > 0
         ){
 
-          finalAudioChunks.push(
+          finalChunks.push(
             event.data
           );
 
@@ -2618,7 +2829,7 @@ async function toggleFinalRecording(){
 
         const blob =
           new Blob(
-            finalAudioChunks,
+            finalChunks,
             {
               type:"audio/webm"
             }
@@ -2641,8 +2852,10 @@ async function toggleFinalRecording(){
           "hidden"
         );
 
-        setFinalStatus(
-          "✓ Excelente! Agora pode ouvir a sua apresentação."
+        document.getElementById(
+          "finalRecordAgain"
+        ).classList.remove(
+          "hidden"
         );
 
         document.getElementById(
@@ -2651,17 +2864,25 @@ async function toggleFinalRecording(){
           "hidden"
         );
 
+        setFinalStatus(
+          "✓ Gravação concluída! Ouça e repita se quiser."
+        );
+
         addXP(20);
 
-        stream
-          .getTracks()
-          .forEach(
-            function(track){
+        if(finalStream){
 
-              track.stop();
+          finalStream
+            .getTracks()
+            .forEach(
+              function(track){
 
-            }
-          );
+                track.stop();
+
+              }
+            );
+
+        }
 
       };
 
@@ -2683,7 +2904,7 @@ async function toggleFinalRecording(){
       "⏹️";
 
     setFinalStatus(
-      "🔴 Gravando a sua apresentação... toque novamente para parar."
+      "🔴 Gravando... toque novamente para parar."
     );
 
   }catch(error){
@@ -2731,6 +2952,62 @@ function stopFinalRecording(){
 }
 
 
+function resetFinalRecording(){
+
+  const audio =
+    document.getElementById(
+      "finalRecordedAudio"
+    );
+
+  const again =
+    document.getElementById(
+      "finalRecordAgain"
+    );
+
+  const finish =
+    document.getElementById(
+      "finishButton"
+    );
+
+  if(audio){
+
+    audio.pause();
+
+    audio.removeAttribute(
+      "src"
+    );
+
+    audio.load();
+
+    audio.classList.add(
+      "hidden"
+    );
+
+  }
+
+  if(again){
+
+    again.classList.add(
+      "hidden"
+    );
+
+  }
+
+  if(finish){
+
+    finish.classList.add(
+      "hidden"
+    );
+
+  }
+
+  setFinalStatus(
+    "Toque para gravar novamente."
+  );
+
+}
+
+
 function setFinalStatus(text){
 
   const status =
@@ -2749,7 +3026,7 @@ function setFinalStatus(text){
 
 
 /* =========================================
-   CARREGAR DADOS
+   CARREGAR DADOS SALVOS
 ========================================= */
 
 function loadSavedData(){
@@ -2815,7 +3092,7 @@ function loadSavedData(){
 
 
 /* =========================================
-   CONCLUIR AULA
+   CONCLUIR LESSON 4
 ========================================= */
 
 function finishLesson(){
@@ -2899,7 +3176,7 @@ function goBackToLessons(){
 
 
 /* =========================================
-   INICIAR AULA
+   INICIALIZAÇÃO
 ========================================= */
 
 document.addEventListener(
@@ -2908,7 +3185,7 @@ document.addEventListener(
 
     loadSavedData();
 
-    showScreen(1);
+    goToScreen(1);
 
     updateProgress();
 
