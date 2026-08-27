@@ -1,1 +1,2378 @@
+<!DOCTYPE html><html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lesson 5 — Greetings | English MZ</title><style>
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#111;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  background:#181818;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#58cc02;
+}
+
+.xp{
+  background:#292929;
+  padding:7px 12px;
+  border-radius:20px;
+  color:#ffc800;
+  font-weight:bold;
+}
+
+.progress-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.progress-bar{
+  flex:1;
+  height:8px;
+  background:#333;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:.3s;
+}
+
+.progress-text{
+  font-size:12px;
+  color:#aaa;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:25px 16px 60px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.label{
+  color:#58cc02;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+h1{
+  font-size:29px;
+  margin:15px 0;
+  line-height:1.2;
+}
+
+h2{
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#aaa;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#1c1c1c;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.explanation{
+  font-size:18px;
+  line-height:1.7;
+  color:#eee;
+}
+
+.highlight{
+  color:#58cc02;
+  font-weight:bold;
+}
+
+.audio-main{
+  width:100%;
+  padding:16px;
+  margin-top:20px;
+  border:0;
+  border-radius:14px;
+  background:#292929;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:14px;
+  background:#58cc02;
+  color:#111;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+.btn-dark{
+  background:#292929;
+  color:#fff;
+}
+
+.phrase{
+  background:#242424;
+  border-radius:15px;
+  padding:17px;
+  margin-top:12px;
+}
+
+.english{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.meaning{
+  color:#999;
+  margin-top:7px;
+}
+
+.option{
+  width:100%;
+  padding:16px;
+  margin-top:10px;
+  border-radius:13px;
+  border:2px solid #333;
+  background:#242424;
+  color:#fff;
+  font-size:17px;
+  font-weight:bold;
+  text-align:left;
+  cursor:pointer;
+}
+
+.option.correct{
+  border-color:#58cc02;
+}
+
+.option.wrong{
+  border-color:#ff4b4b;
+}
+
+.option:disabled{
+  opacity:1;
+}
+
+.feedback{
+  min-height:30px;
+  margin-top:15px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.correct-text{
+  color:#58cc02;
+}
+
+.wrong-text{
+  color:#ff5c5c;
+}
+
+.situation{
+  font-size:20px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.mic{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:0;
+  background:#ff4b4b;
+  color:#fff;
+  font-size:32px;
+  display:block;
+  margin:25px auto 15px;
+  cursor:pointer;
+}
+
+.mic.recording{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
+
+.status{
+  text-align:center;
+  color:#aaa;
+  line-height:1.5;
+}
+
+audio{
+  width:100%;
+  margin-top:15px;
+}
+
+.final{
+  text-align:center;
+}
+
+.final-icon{
+  font-size:65px;
+}
+
+.big-xp{
+  color:#ffc800;
+  font-size:30px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+.score{
+  font-size:22px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+</style></head><body><header class="header">  <div class="header-top"><div class="logo">
+  English <span>MZ</span> 🇲🇿
+</div>
+
+<div class="xp">
+  ⭐ <span id="xp">0</span> XP
+</div>
+
+  </div>  <div class="progress-row"><div class="progress-bar">
+  <div
+    id="progressFill"
+    class="progress-fill">
+  </div>
+</div>
+
+<div
+  id="progressText"
+  class="progress-text">
+  1/10
+</div>
+
+  </div></header><main class="container"><!-- =====================================
+     TELA 1 — EXPLICAÇÃO
+===================================== --><section
+  id="screen1"
+  class="screen active"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🌆 Good Evening vs Good Night
+  </h1>  <p class="subtitle">
+    Uma diferença muito importante para quem está começando inglês.
+  </p>  <div class="card"><div class="explanation">
+
+  <strong>
+    Muita gente confunde o Good Night e o Good Evening.
+  </strong>
+
+  <br><br>
+
+  <span class="highlight">
+    Good Evening
+  </span>
+  usamos para cumprimentar alguém à noite.
+
+  <br><br>
+
+  <span class="highlight">
+    Good Night
+  </span>
+  usamos principalmente quando nos despedimos
+  ou quando vamos dormir.
+
+  <br><br>
+
+  🌆
+  <strong>Good Evening</strong>
+  = cumprimento à noite.
+
+  <br><br>
+
+  🌙
+  <strong>Good Night</strong>
+  = despedida ou antes de dormir.
+
+</div>
+
+<button
+  class="audio-main"
+  type="button"
+  onclick="speakExplanation()"
+>
+  🔊 Ouvir explicação novamente
+</button>
+
+<button
+  class="btn"
+  type="button"
+  onclick="goToScreen(2)"
+>
+  ENTENDI — CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 2 — VOCABULÁRIO
+===================================== --><section
+  id="screen2"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🕐 Greetings
+  </h1>  <p class="subtitle">
+    Ouça e aprenda as expressões.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    Good morning
+  </div>
+
+  <div class="meaning">
+    Bom dia
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good morning.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+<div class="phrase">
+
+  <div class="english">
+    Good afternoon
+  </div>
+
+  <div class="meaning">
+    Boa tarde
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good afternoon.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+<div class="phrase">
+
+  <div class="english">
+    Good evening
+  </div>
+
+  <div class="meaning">
+    Boa noite — cumprimento
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good evening.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+<div class="phrase">
+
+  <div class="english">
+    Good night
+  </div>
+
+  <div class="meaning">
+    Boa noite — despedida
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good night.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+<button
+  class="btn"
+  onclick="goToScreen(3)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 3 — EXERCÍCIO 1
+===================================== --><section
+  id="screen3"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🧠 Choose the correct expression
+  </h1>  <p class="subtitle">
+    Ouça a situação em português e escolha a resposta em inglês.
+  </p>  <div class="card"><div class="situation">
+
+  Você encontra o seu professor às 19 horas.
+  O que você deve dizer?
+
+</div>
+
+<button
+  class="audio-main"
+  onclick="speakQuestion1()"
+>
+  🔊 Ouvir situação
+</button>
+
+<button
+  id="q1option1"
+  class="option"
+  onclick="checkQuestion1(1)"
+>
+  🌙 Good night
+</button>
+
+<button
+  id="q1option2"
+  class="option"
+  onclick="checkQuestion1(2)"
+>
+  🌆 Good evening
+</button>
+
+<div
+  id="q1feedback"
+  class="feedback">
+</div>
+
+<button
+  id="q1continue"
+  class="btn hidden"
+  onclick="goToScreen(4)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 4 — EXERCÍCIO 2
+===================================== --><section
+  id="screen4"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🌙 Try again
+  </h1>  <p class="subtitle">
+    Pense na situação antes de responder.
+  </p>  <div class="card"><div class="situation">
+
+  Você está indo dormir e se despede
+  da sua mãe. O que você diz?
+
+</div>
+
+<button
+  class="audio-main"
+  onclick="speakQuestion2()"
+>
+  🔊 Ouvir situação
+</button>
+
+<button
+  id="q2option1"
+  class="option"
+  onclick="checkQuestion2(1)"
+>
+  🌆 Good evening
+</button>
+
+<button
+  id="q2option2"
+  class="option"
+  onclick="checkQuestion2(2)"
+>
+  🌙 Good night
+</button>
+
+<div
+  id="q2feedback"
+  class="feedback">
+</div>
+
+<button
+  id="q2continue"
+  class="btn hidden"
+  onclick="goToScreen(5)"
+>
+  CONTINUAR →
+</button>
+
+  </div>
+</section>
+    <!-- =====================================
+     TELA 5 — EXERCÍCIO 3
+===================================== --><section
+  id="screen5"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🎯 Real Life
+  </h1>  <p class="subtitle">
+    Agora vamos usar o inglês em situações reais.
+  </p>  <div class="card"><div class="situation">
+
+  Você chega a uma reunião às 20 horas.
+  Como cumprimenta as pessoas?
+
+</div>
+
+<button
+  class="audio-main"
+  onclick="speakQuestion3()"
+>
+  🔊 Ouvir situação
+</button>
+
+<button
+  id="q3option1"
+  class="option"
+  onclick="checkQuestion3(1)"
+>
+  🌙 Good night
+</button>
+
+<button
+  id="q3option2"
+  class="option"
+  onclick="checkQuestion3(2)"
+>
+  🌆 Good evening
+</button>
+
+<div
+  id="q3feedback"
+  class="feedback">
+</div>
+
+<button
+  id="q3continue"
+  class="btn hidden"
+  onclick="goToScreen(6)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 6 — EXERCÍCIO 4
+===================================== --><section
+  id="screen6"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🌙 Good Night
+  </h1>  <p class="subtitle">
+    Última situação antes da conversação.
+  </p>  <div class="card"><div class="situation">
+
+  Você está na casa de um amigo.
+  São 22 horas e você está indo embora.
+  O que você diz?
+
+</div>
+
+<button
+  class="audio-main"
+  onclick="speakQuestion4()"
+>
+  🔊 Ouvir situação
+</button>
+
+<button
+  id="q4option1"
+  class="option"
+  onclick="checkQuestion4(1)"
+>
+  🌆 Good evening
+</button>
+
+<button
+  id="q4option2"
+  class="option"
+  onclick="checkQuestion4(2)"
+>
+  🌙 Good night
+</button>
+
+<div
+  id="q4feedback"
+  class="feedback">
+</div>
+
+<button
+  id="q4continue"
+  class="btn hidden"
+  onclick="goToScreen(7)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 7 — NOVAS DESPEDIDAS
+===================================== --><section
+  id="screen7"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    👋 Saying Goodbye
+  </h1>  <p class="subtitle">
+    Além de Good Night, existem outras formas
+    de se despedir.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    Goodbye
+  </div>
+
+  <div class="meaning">
+    Adeus
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Goodbye.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    See you later
+  </div>
+
+  <div class="meaning">
+    Até logo
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('See you later.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    See you tomorrow
+  </div>
+
+  <div class="meaning">
+    Até amanhã
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('See you tomorrow.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    See you soon
+  </div>
+
+  <div class="meaning">
+    Até breve
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('See you soon.')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<button
+  class="btn"
+  onclick="goToScreen(8)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 8 — CONVERSAÇÃO
+===================================== --><section
+  id="screen8"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    💬 Simulated Conversation
+  </h1>  <p class="subtitle">
+    Agora você vai usar o que aprendeu em uma conversa.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    Person: Good evening!
+  </div>
+
+  <div class="meaning">
+    Pessoa: Boa noite!
+  </div>
+
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakConversation()"
+>
+  🔊 Ouvir conversa
+</button>
+
+
+<p
+  class="subtitle"
+  style="margin-top:20px;"
+>
+
+  A pessoa cumprimentou você à noite.
+  Responda em inglês.
+
+</p>
+
+
+<input
+  id="conversationInput"
+  class="input"
+  type="text"
+  placeholder="Digite sua resposta em inglês..."
+  autocomplete="off"
+>
+
+
+<button
+  class="btn"
+  onclick="checkConversation()"
+>
+  RESPONDER
+</button>
+
+
+<div
+  id="conversationFeedback"
+  class="feedback">
+</div>
+
+
+<button
+  id="conversationContinue"
+  class="btn hidden"
+  onclick="goToScreen(9)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 9 — SUA VOZ
+===================================== --><section
+  id="screen9"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🎙️ Your Voice
+  </h1>  <p class="subtitle">
+    Ouça, grave sua voz e repita.
+  </p>  <div class="card"><div class="phrase">
+
+  <div class="english">
+    Good evening!
+  </div>
+
+  <div class="meaning">
+    Boa noite — cumprimento.
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good evening!')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<div class="phrase">
+
+  <div class="english">
+    Good night!
+  </div>
+
+  <div class="meaning">
+    Boa noite — despedida.
+  </div>
+
+  <button
+    class="audio-main"
+    onclick="speak('Good night!')"
+  >
+    🔊 Ouvir
+  </button>
+
+</div>
+
+
+<button
+  id="recordButton"
+  class="mic"
+  onclick="toggleRecording()"
+>
+  🎙️
+</button>
+
+
+<div
+  id="recordStatus"
+  class="status"
+>
+
+  Toque no microfone para gravar.
+
+</div>
+
+
+<audio
+  id="recordedAudio"
+  controls
+  class="hidden">
+</audio>
+
+
+<button
+  id="recordAgain"
+  class="btn btn-dark hidden"
+  onclick="resetRecording()"
+>
+  🔄 Gravar novamente
+</button>
+
+
+<button
+  id="voiceContinue"
+  class="btn hidden"
+  onclick="goToScreen(10)"
+>
+  CONTINUAR →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 10 — DESAFIO FINAL
+===================================== --><section
+  id="screen10"
+  class="screen"
+>  <div class="label">
+    A1 • LESSON 5
+  </div>  <h1>
+    🏆 Final Challenge
+  </h1>  <p class="subtitle">
+    Acerte pelo menos 4 de 5 situações.
+  </p>  <div class="card"><div
+  id="challengeSituation"
+  class="situation">
+</div>
+
+
+<button
+  class="audio-main"
+  onclick="speakChallenge()"
+>
+  🔊 Ouvir situação
+</button>
+
+
+<button
+  id="challenge1"
+  class="option"
+  onclick="checkChallenge(1)"
+>
+</button>
+
+
+<button
+  id="challenge2"
+  class="option"
+  onclick="checkChallenge(2)"
+>
+</button>
+
+
+<div
+  id="challengeFeedback"
+  class="feedback">
+</div>
+
+
+<div
+  id="challengeScore"
+  class="score">
+</div>
+
+
+<button
+  id="challengeContinue"
+  class="btn hidden"
+  onclick="finishLesson()"
+>
+  VER RESULTADO →
+</button>
+
+  </div></section><!-- =====================================
+     TELA 11 — RESULTADO
+===================================== --><section
+  id="screen11"
+  class="screen"
+>  <div class="card final"><div class="final-icon">
+  🎉
+</div>
+
+<h1>
+  Lesson 5 Complete!
+</h1>
+
+<p class="subtitle">
+  Você terminou a Aula 5.
+</p>
+
+
+<div
+  id="finalScore"
+  class="score">
+</div>
+
+
+<div
+  id="finalXP"
+  class="big-xp">
+</div>
+
+
+<button
+  class="btn"
+  onclick="goBackToLessons()"
+>
+  📚 VOLTAR ÀS AULAS
+</button>
+
+  </div>
+</section>
+    <script>
+
+/* =========================================
+   CONFIGURATION
+========================================= */
+
+let currentScreen = 1;
+
+const TOTAL_SCREENS = 11;
+
+let xp =
+  Number(
+    localStorage.getItem("englishMZ_xp")
+  ) || 0;
+
+/* =========================================
+   TEXT-TO-SPEECH
+========================================= */
+
+function speak(text){
+
+  if(!("speechSynthesis" in window)){
+
+    return;
+
+  }
+
+  window.speechSynthesis.cancel();
+
+  const voice =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  /*
+    The explanation is in Portuguese.
+    English phrases are also pronounced
+    using the same speech synthesis system.
+  */
+
+  voice.lang = "pt-PT";
+  voice.rate = 0.85;
+  voice.pitch = 1;
+
+  window.speechSynthesis.speak(
+    voice
+  );
+
+}
+
+/* =========================================
+   INITIAL EXPLANATION
+========================================= */
+
+function speakExplanation(){
+
+  speak(
+    "Muita gente confunde Good Night e Good Evening. " +
+    "Usamos Good Evening para cumprimentar alguém à noite. " +
+    "Usamos Good Night principalmente ao nos despedirmos " +
+    "ou quando vamos dormir. " +
+    "Portanto, lembre-se: Good Evening é usado para cumprimentar. " +
+    "Good Night é usado para se despedir ou antes de dormir."
+  );
+
+}
+
+/* =========================================
+   EXPERIENCE POINTS
+========================================= */
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  const xpElement =
+    document.getElementById(
+      "xp"
+    );
+
+  if(xpElement){
+
+    xpElement.innerText =
+      xp;
+
+  }
+
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+function updateProgress(){
+
+  const fill =
+    document.getElementById(
+      "progressFill"
+    );
+
+  const text =
+    document.getElementById(
+      "progressText"
+    );
+
+  if(!fill || !text){
+
+    return;
+
+  }
+
+  const percent =
+    ((currentScreen - 1) /
+    (TOTAL_SCREENS - 1)) * 100;
+
+  fill.style.width =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        percent
+      )
+    ) + "%";
+
+  text.innerText =
+    currentScreen +
+    "/" +
+    TOTAL_SCREENS;
+
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function goToScreen(number){
+
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      function(screen){
+
+        screen.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+  if(!target){
+
+    return;
+
+  }
+
+  target.classList.add(
+    "active"
+  );
+
+  currentScreen =
+    number;
+
+  updateProgress();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  /*
+    When the initial screen is displayed,
+    attempt to play the explanation.
+  */
+
+  if(number === 1){
+
+    setTimeout(
+      function(){
+
+        speakExplanation();
+
+      },
+      500
+    );
+
+  }
+
+}
+
+/* =========================================
+   QUESTION 1
+========================================= */
+
+function speakQuestion1(){
+
+  speak(
+    "Você encontra o seu professor às dezenove horas. " +
+    "O que você deve dizer?"
+  );
+
+}
+
+function checkQuestion1(answer){
+
+  const feedback =
+    document.getElementById(
+      "q1feedback"
+    );
+
+  if(answer === 2){
+
+    feedback.innerText =
+      "✓ Correct!";
+
+    feedback.className =
+      "feedback correct-text";
+
+    document
+      .getElementById(
+        "q1option2"
+      )
+      .classList.add(
+        "correct"
+      );
+
+    document
+      .getElementById(
+        "q1option1"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q1option2"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q1continue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+    addXP(10);
+
+    speak(
+      "Correct!"
+    );
+
+  }else{
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    document
+      .getElementById(
+        "q1option1"
+      )
+      .classList.add(
+        "wrong"
+      );
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById(
+            "q1option1"
+          )
+          .classList.remove(
+            "wrong"
+          );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+/* =========================================
+   QUESTION 2
+========================================= */
+
+function speakQuestion2(){
+
+  speak(
+    "Você está indo dormir e se despede da sua mãe. " +
+    "O que você diz?"
+  );
+
+}
+
+function checkQuestion2(answer){
+
+  const feedback =
+    document.getElementById(
+      "q2feedback"
+    );
+
+  if(answer === 2){
+
+    feedback.innerText =
+      "✓ Correct!";
+
+    feedback.className =
+      "feedback correct-text";
+
+    document
+      .getElementById(
+        "q2option2"
+      )
+      .classList.add(
+        "correct"
+      );
+
+    document
+      .getElementById(
+        "q2option1"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q2option2"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q2continue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+    addXP(10);
+
+    speak(
+      "Correct!"
+    );
+
+  }else{
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    document
+      .getElementById(
+        "q2option1"
+      )
+      .classList.add(
+        "wrong"
+      );
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById(
+            "q2option1"
+          )
+          .classList.remove(
+            "wrong"
+          );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+/* =========================================
+   QUESTION 3
+========================================= */
+
+function speakQuestion3(){
+
+  speak(
+    "Você chega a uma reunião às vinte horas. " +
+    "Como cumprimenta as pessoas?"
+  );
+
+}
+
+function checkQuestion3(answer){
+
+  const feedback =
+    document.getElementById(
+      "q3feedback"
+    );
+
+  if(answer === 2){
+
+    feedback.innerText =
+      "✓ Correct!";
+
+    feedback.className =
+      "feedback correct-text";
+
+    document
+      .getElementById(
+        "q3option2"
+      )
+      .classList.add(
+        "correct"
+      );
+
+    document
+      .getElementById(
+        "q3option1"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q3option2"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q3continue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+    addXP(10);
+
+    speak(
+      "Correct!"
+    );
+
+  }else{
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    document
+      .getElementById(
+        "q3option1"
+      )
+      .classList.add(
+        "wrong"
+      );
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById(
+            "q3option1"
+          )
+          .classList.remove(
+            "wrong"
+          );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+/* =========================================
+   QUESTION 4
+========================================= */
+
+function speakQuestion4(){
+
+  speak(
+    "Você está na casa de um amigo. " +
+    "São vinte e duas horas e você está indo embora. " +
+    "O que você diz?"
+  );
+
+}
+
+function checkQuestion4(answer){
+
+  const feedback =
+    document.getElementById(
+      "q4feedback"
+    );
+
+  if(answer === 2){
+
+    feedback.innerText =
+      "✓ Correct!";
+
+    feedback.className =
+      "feedback correct-text";
+
+    document
+      .getElementById(
+        "q4option2"
+      )
+      .classList.add(
+        "correct"
+      );
+
+    document
+      .getElementById(
+        "q4option1"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q4option2"
+      )
+      .disabled = true;
+
+    document
+      .getElementById(
+        "q4continue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+    addXP(10);
+
+    speak(
+      "Correct!"
+    );
+
+  }else{
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    document
+      .getElementById(
+        "q4option1"
+      )
+      .classList.add(
+        "wrong"
+      );
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById(
+            "q4option1"
+          )
+          .classList.remove(
+            "wrong"
+          );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+/* =========================================
+   CONVERSATION
+========================================= */
+
+function speakConversation(){
+
+  speak(
+    "Good evening!"
+  );
+
+}
+
+function checkConversation(){
+
+  const input =
+    document.getElementById(
+      "conversationInput"
+    );
+
+  const feedback =
+    document.getElementById(
+      "conversationFeedback"
+    );
+
+  const value =
+    input.value
+      .toLowerCase()
+      .trim();
+
+  if(!value){
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+    return;
+
+  }
+
+  if(
+    value.includes(
+      "good evening"
+    )
+  ){
+
+    feedback.innerText =
+      "✓ Correct!";
+
+    feedback.className =
+      "feedback correct-text";
+
+    document
+      .getElementById(
+        "conversationContinue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+    input.disabled = true;
+
+    addXP(15);
+
+    speak(
+      "Correct!"
+    );
+
+  }else{
+
+    feedback.innerText =
+      "✗ Incorrect. Try again!";
+
+    feedback.className =
+      "feedback wrong-text";
+
+    speak(
+      "Incorrect. Try again!"
+    );
+
+  }
+
+}
+      /* =========================================
+GRAVAÇÃO DE VOZ
+========================================= */
+
+let recorder = null;
+let recordingStream = null;
+let audioChunks = [];
+let isRecording = false;
+
+async function toggleRecording(){
+
+if(isRecording){
+
+stopRecording();
+
+return;
+
+}
+
+if(
+!navigator.mediaDevices ||
+!navigator.mediaDevices.getUserMedia
+){
+
+document.getElementById(
+  "recordStatus"
+).innerText =
+  "Microphone recording is not supported.";
+
+return;
+
+}
+
+try{
+
+recordingStream =
+  await navigator.mediaDevices.getUserMedia({
+    audio:true
+  });
+
+
+audioChunks = [];
+
+
+recorder =
+  new MediaRecorder(
+    recordingStream
+  );
+
+
+recorder.ondataavailable =
+  function(event){
+
+    if(
+      event.data.size > 0
+    ){
+
+      audioChunks.push(
+        event.data
+      );
+
+    }
+
+  };
+
+
+recorder.onstop =
+  function(){
+
+    const audioBlob =
+      new Blob(
+        audioChunks,
+        {
+          type:"audio/webm"
+        }
+      );
+
+
+    const audioURL =
+      URL.createObjectURL(
+        audioBlob
+      );
+
+
+    const audio =
+      document.getElementById(
+        "recordedAudio"
+      );
+
+
+    audio.src =
+      audioURL;
+
+
+    audio.classList.remove(
+      "hidden"
+    );
+
+
+    document
+      .getElementById(
+        "recordAgain"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+
+    document
+      .getElementById(
+        "voiceContinue"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+
+    document.getElementById(
+      "recordStatus"
+    ).innerText =
+      "✓ Recording complete! Listen and repeat.";
+
+
+    addXP(10);
+
+
+    if(recordingStream){
+
+      recordingStream
+        .getTracks()
+        .forEach(
+          function(track){
+
+            track.stop();
+
+          }
+        );
+
+    }
+
+  };
+
+
+recorder.start();
+
+isRecording = true;
+
+
+const button =
+  document.getElementById(
+    "recordButton"
+  );
+
+
+button.classList.add(
+  "recording"
+);
+
+
+button.innerText =
+  "⏹️";
+
+
+document.getElementById(
+  "recordStatus"
+).innerText =
+  "🔴 Recording... Tap again to stop.";
+
+}catch(error){
+
+document.getElementById(
+  "recordStatus"
+).innerText =
+  "Please allow microphone access.";
+
+}
+
+}
+
+function stopRecording(){
+
+if(
+recorder &&
+recorder.state !==
+"inactive"
+){
+
+recorder.stop();
+
+}
+
+isRecording = false;
+
+const button =
+document.getElementById(
+"recordButton"
+);
+
+if(button){
+
+button.classList.remove(
+  "recording"
+);
+
+button.innerText =
+  "🎙️";
+
+}
+
+}
+
+function resetRecording(){
+
+const audio =
+document.getElementById(
+"recordedAudio"
+);
+
+audio.pause();
+
+audio.removeAttribute(
+"src"
+);
+
+audio.load();
+
+audio.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"recordAgain"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"voiceContinue"
+)
+.classList.add(
+"hidden"
+);
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"Grave novamente e depois escute a sua voz.";
+
+}
+
+/* =========================================
+DESAFIO FINAL
+========================================= */
+
+let challengeIndex = 0;
+
+let challengeScore = 0;
+
+const challenges = [
+
+{
+question:
+"Você encontra alguém às 19 horas. O que diz?",
+
+audio:
+  "Você encontra alguém às dezenove horas. O que diz?",
+
+options:[
+  "Good night",
+  "Good evening"
+],
+
+correct:2
+
+},
+
+{
+question:
+"Você vai dormir e se despede da sua mãe. O que diz?",
+
+audio:
+  "Você vai dormir e se despede da sua mãe. O que diz?",
+
+options:[
+  "Good evening",
+  "Good night"
+],
+
+correct:2
+
+},
+
+{
+question:
+"Você encontra seu professor às 8 horas da manhã. O que diz?",
+
+audio:
+  "Você encontra seu professor às oito horas da manhã. O que diz?",
+
+options:[
+  "Good morning",
+  "Good night"
+],
+
+correct:1
+
+},
+
+{
+question:
+"Você encontra um amigo às 14 horas. O que diz?",
+
+audio:
+  "Você encontra um amigo às quatorze horas. O que diz?",
+
+options:[
+  "Good afternoon",
+  "Good evening"
+],
+
+correct:1
+
+},
+
+{
+question:
+"Você está indo embora de uma festa à noite. O que diz?",
+
+audio:
+  "Você está indo embora de uma festa à noite. O que diz?",
+
+options:[
+  "Good night",
+  "Good evening"
+],
+
+correct:1
+
+}
+
+];
+
+function loadChallenge(){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+document.getElementById(
+"challengeSituation"
+).innerText =
+challenge.question;
+
+document.getElementById(
+"challenge1"
+).innerText =
+challenge.options[0];
+
+document.getElementById(
+"challenge2"
+).innerText =
+challenge.options[1];
+
+document.getElementById(
+"challenge1"
+).classList.remove(
+"wrong",
+"correct"
+);
+
+document.getElementById(
+"challenge2"
+).classList.remove(
+"wrong",
+"correct"
+);
+
+document.getElementById(
+"challengeFeedback"
+).innerText =
+"";
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / 5";
+
+}
+
+function speakChallenge(){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+speak(
+challenge.audio
+);
+
+}
+
+function checkChallenge(answer){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+const feedback =
+document.getElementById(
+"challengeFeedback"
+);
+
+if(
+answer ===
+challenge.correct
+){
+
+feedback.innerText =
+  "✓ Correct!";
+
+feedback.className =
+  "feedback correct-text";
+
+
+document
+  .getElementById(
+    "challenge" + answer
+  )
+  .classList.add(
+    "correct"
+  );
+
+
+document
+  .getElementById(
+    "challenge1"
+  ).disabled = true;
+
+
+document
+  .getElementById(
+    "challenge2"
+  ).disabled = true;
+
+
+challengeScore++;
+
+
+addXP(5);
+
+
+speak(
+  "Correct!"
+);
+
+
+setTimeout(
+  function(){
+
+    challengeIndex++;
+
+
+    if(
+      challengeIndex >=
+      challenges.length
+    ){
+
+      finishChallenge();
+
+    }else{
+
+      loadChallenge();
+
+    }
+
+  },
+  900
+);
+
+}else{
+
+feedback.innerText =
+  "✗ Incorrect. Try again!";
+
+feedback.className =
+  "feedback wrong-text";
+
+
+document
+  .getElementById(
+    "challenge" + answer
+  )
+  .classList.add(
+    "wrong"
+  );
+
+
+speak(
+  "Incorrect. Try again!"
+);
+
+
+setTimeout(
+  function(){
+
+    document
+      .getElementById(
+        "challenge" + answer
+      )
+      .classList.remove(
+        "wrong"
+      );
+
+  },
+  700
+);
+
+}
+
+}
+
+/* =========================================
+FINALIZAÇÃO DO DESAFIO
+========================================= */
+
+function finishChallenge(){
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / 5";
+
+document.getElementById(
+"challengeContinue"
+).classList.remove(
+"hidden"
+);
+
+localStorage.setItem(
+"englishMZ_lesson5_score",
+challengeScore
+);
+
+}
+
+function finishLesson(){
+
+document.getElementById(
+"finalScore"
+).innerText =
+"Final score: " +
+challengeScore +
+" / 5";
+
+document.getElementById(
+"finalXP"
+).innerText =
+"+" +
+xp +
+" XP ⭐";
+
+goToScreen(11);
+
+}
+
+/* =========================================
+VOLTAR À LISTA DE AULAS
+========================================= */
+
+function goBackToLessons(){
+
+window.location.href =
+"../index.html";
+
+}
+
+/* =========================================
+INICIALIZAÇÃO
+========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+const xpElement =
+  document.getElementById(
+    "xp"
+  );
+
+
+if(xpElement){
+
+  xpElement.innerText =
+    xp;
+
+}
+
+
+updateProgress();
+
+loadChallenge();
+
+
+/*
+  O navegador pode bloquear
+  áudio automático.
+
+  Por isso também existe
+  o botão para ouvir novamente.
+*/
+
+setTimeout(
+  function(){
+
+    speakExplanation();
+
+  },
+  700
+);
+
+}
+);
+
+</script>
+  </main>
+</body>
+</html>
