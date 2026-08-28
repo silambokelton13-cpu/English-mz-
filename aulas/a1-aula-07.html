@@ -1,1 +1,2889 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Aula 7 — Where are you from? | English MZ</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#111;
+  color:white;
+  min-height:100vh;
+}
+
+header{
+  background:#181818;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#58cc02;
+}
+
+.xp{
+  background:#292929;
+  padding:8px 13px;
+  border-radius:20px;
+  color:#ffc800;
+  font-weight:bold;
+}
+
+.progressRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.progressBar{
+  height:8px;
+  background:#333;
+  border-radius:20px;
+  flex:1;
+  overflow:hidden;
+}
+
+.progressFill{
+  height:100%;
+  width:0%;
+  background:#58cc02;
+  transition:.3s;
+}
+
+.progressText{
+  color:#aaa;
+  font-size:12px;
+}
+
+main{
+  max-width:600px;
+  margin:auto;
+  padding:25px 16px 60px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.label{
+  color:#58cc02;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+h1{
+  font-size:29px;
+  margin:15px 0;
+  line-height:1.2;
+}
+
+.subtitle{
+  color:#aaa;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#1c1c1c;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.phrase{
+  background:#252525;
+  border-radius:15px;
+  padding:16px;
+  margin:12px 0;
+}
+
+.english{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.meaning{
+  color:#aaa;
+  margin-top:7px;
+}
+
+button{
+  cursor:pointer;
+}
+
+.audioButton,
+.mainButton{
+  width:100%;
+  border:none;
+  border-radius:14px;
+  padding:15px;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.audioButton{
+  background:#292929;
+  color:white;
+}
+
+.mainButton{
+  background:#58cc02;
+  color:#111;
+}
+
+.option{
+  display:block;
+  width:100%;
+  padding:16px;
+  margin-top:10px;
+  border-radius:13px;
+  border:2px solid #333;
+  background:#242424;
+  color:white;
+  text-align:left;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.option.correct{
+  background:#58cc02 !important;
+  color:#111 !important;
+  border-color:#58cc02 !important;
+}
+
+.option.wrong{
+  background:#ff4b4b !important;
+  border-color:#ff4b4b !important;
+  color:white !important;
+}
+
+.feedback{
+  min-height:28px;
+  margin-top:14px;
+  font-weight:bold;
+}
+
+.correctText{
+  color:#58cc02;
+}
+
+.wrongText{
+  color:#ff5c5c;
+}
+
+.tip{
+  background:#242424;
+  border-left:4px solid #58cc02;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+.countryGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+
+.country{
+  background:#242424;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+}
+
+.flag{
+  font-size:40px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.countryName{
+  font-weight:bold;
+}
+
+.countryPT{
+  color:#aaa;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.country button{
+  font-size:13px;
+  padding:10px;
+}
+
+.wordGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.wordButton{
+  background:#292929;
+  color:white;
+  border:2px solid #333;
+  padding:15px;
+  border-radius:13px;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.answerBox{
+  background:#242424;
+  padding:18px;
+  border-radius:15px;
+  margin-top:15px;
+  min-height:55px;
+}
+
+.input{
+  width:100%;
+  padding:15px;
+  border-radius:13px;
+  border:2px solid #333;
+  background:#242424;
+  color:white;
+  font-size:17px;
+  margin-top:10px;
+}
+
+.mic{
+  display:block;
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  border:none;
+  background:#ff4b4b;
+  color:white;
+  font-size:30px;
+  margin:22px auto 12px;
+}
+
+.recording{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+.status{
+  text-align:center;
+  color:#aaa;
+  line-height:1.5;
+}
+
+.score{
+  font-size:21px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.final{
+  text-align:center;
+}
+
+.trophy{
+  font-size:65px;
+}
+
+.bigXP{
+  color:#ffc800;
+  font-size:30px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.center{
+  text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="top">
+
+<div class="logo">
+English <span>MZ</span> 🇲🇿
+</div>
+
+<div class="xp">
+⭐ <span id="xp">0</span> XP
+</div>
+
+</div>
+
+<div class="progressRow">
+
+<div class="progressBar">
+<div id="progressFill" class="progressFill"></div>
+</div>
+
+<div id="progressText" class="progressText">
+1/11
+</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- ==============================
+TELA 1
+============================== -->
+
+<section id="screen1" class="screen active">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🌍 Where are you from?
+</h1>
+
+<p class="subtitle">
+De onde você é?
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+Where are you from?
+</div>
+
+<div class="meaning">
+De onde você é?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Where are you from?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+<div class="tip">
+
+Nesta aula você vai aprender a perguntar de onde uma pessoa é e a dizer de onde você é.
+
+</div>
+
+<button
+class="audioButton"
+onclick="speakPT('Nesta aula você vai aprender a perguntar de onde uma pessoa é e a dizer de onde você é.')">
+
+🔊 Ouvir explicação
+
+</button>
+
+<button
+class="mainButton"
+onclick="goToScreen(2)">
+
+COMEÇAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 2
+============================== -->
+
+<section id="screen2" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🗣️ Where are you from?
+</h1>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+Where are you from?
+</div>
+
+<div class="meaning">
+De onde você é?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Where are you from?')">
+
+🔊 Ouvir inglês
+
+</button>
+
+</div>
+
+<div class="tip">
+
+💡 Você pode usar esta pergunta quando quiser saber a origem de uma pessoa.
+
+</div>
+
+<button
+class="audioButton"
+onclick="speakPT('Where are you from? significa De onde você é?')">
+
+🔊 Ouvir explicação
+
+</button>
+
+<button
+class="mainButton"
+onclick="goToScreen(3)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 3
+============================== -->
+
+<section id="screen3" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+📍 Como responder
+</h1>
+
+<p class="subtitle">
+Aprenda esta estrutura:
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+I'm from Mozambique.
+</div>
+
+<div class="meaning">
+Eu sou de Moçambique.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('I am from Mozambique.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+<div class="phrase">
+
+<div class="english">
+I'm from Maputo.
+</div>
+
+<div class="meaning">
+Eu sou de Maputo.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('I am from Maputo.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+<div class="tip">
+
+<b>Estrutura:</b>
+
+<br>
+
+<span class="english">
+I'm from + lugar
+</span>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(4)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 4
+============================== -->
+
+<section id="screen4" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🌍 Countries
+</h1>
+
+<p class="subtitle">
+Aprenda os países e observe as bandeiras.
+</p>
+
+<div class="card">
+
+<div id="countriesGrid" class="countryGrid">
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(5)">
+
+PRATICAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 5
+============================== -->
+
+<section id="screen5" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🎧 Ouça e identifique
+</h1>
+
+<p class="subtitle">
+Ouça o nome do país e escolha a opção correta.
+</p>
+
+<div class="card">
+
+<div class="center">
+
+<h2 id="listenTitle">
+🔊 Ouça o país
+</h2>
+
+</div>
+
+<button
+class="audioButton"
+onclick="playListenCountry()">
+
+🔊 OUVIR PAÍS
+
+</button>
+
+<div id="listenOptions">
+</div>
+
+<div
+id="listenFeedback"
+class="feedback">
+</div>
+
+<button
+id="listenNext"
+class="mainButton hidden"
+onclick="goToScreen(6)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 6
+============================== -->
+
+<section id="screen6" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🎯 Escolha a frase
+</h1>
+
+<p class="subtitle">
+Observe a bandeira e escolha a frase correta.
+</p>
+
+<div class="card">
+
+<div
+id="flagQuestion"
+class="center"
+style="font-size:70px">
+
+🇲🇿
+
+</div>
+
+<button
+id="flagOption1"
+class="option"
+onclick="checkFlagAnswer(1)">
+</button>
+
+<button
+id="flagOption2"
+class="option"
+onclick="checkFlagAnswer(2)">
+</button>
+
+<div
+id="flagFeedback"
+class="feedback">
+</div>
+
+<button
+id="flagNext"
+class="mainButton hidden"
+onclick="goToScreen(7)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 7
+============================== -->
+
+<section id="screen7" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🧩 Construa a frase
+</h1>
+
+<p class="subtitle">
+Toque nas palavras na ordem correta.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+🇲🇿
+
+<br><br>
+
+<b>
+Eu sou de Moçambique.
+</b>
+
+</div>
+
+<div
+id="wordGrid"
+class="wordGrid">
+</div>
+
+<div class="answerBox">
+
+Sua frase:
+
+<br>
+
+<b id="sentenceAnswer">
+...
+</b>
+
+</div>
+
+<button
+class="mainButton"
+onclick="checkSentence()">
+
+VERIFICAR
+
+</button>
+
+<div
+id="sentenceFeedback"
+class="feedback">
+</div>
+
+<button
+id="sentenceNext"
+class="mainButton hidden"
+onclick="goToScreen(8)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 8
+============================== -->
+
+<section id="screen8" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+💬 Mini Dialogue
+</h1>
+
+<p class="subtitle">
+Agora vamos juntar as frases das aulas anteriores.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+A: Hello! What's your name?
+</div>
+
+<div class="meaning">
+Olá! Qual é o seu nome?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Hello! What is your name?')">
+
+🔊
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+B: My name is Alex.
+</div>
+
+<div class="meaning">
+O meu nome é Alex.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('My name is Alex.')">
+
+🔊
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+A: Where are you from?
+</div>
+
+<div class="meaning">
+De onde você é?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Where are you from?')">
+
+🔊
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+B: I'm from Mozambique.
+</div>
+
+<div class="meaning">
+Eu sou de Moçambique.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('I am from Mozambique.')">
+
+🔊
+
+</button>
+
+</div>
+
+
+<button
+class="mainButton"
+onclick="goToScreen(9)">
+
+MINHA VEZ 🎙️
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 9 — SPEAKING
+============================== -->
+
+<section id="screen9" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🎙️ Speaking Challenge
+</h1>
+
+<p class="subtitle">
+Agora é a sua vez de falar em inglês.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<b>
+Question:
+</b>
+
+<br><br>
+
+<span class="english">
+Where are you from?
+</span>
+
+<button
+class="audioButton"
+onclick="speakEN('Where are you from?')">
+
+🔊 Ouvir pergunta
+
+</button>
+
+</div>
+
+<div class="tip">
+
+Responda em inglês:
+
+<br><br>
+
+<b>
+I'm from Mozambique.
+</b>
+
+</div>
+
+<button
+id="recordButton"
+class="mic"
+onclick="toggleRecording()">
+
+🎙️
+
+</button>
+
+<div
+id="recordStatus"
+class="status">
+
+Toque no microfone para começar.
+
+</div>
+
+<audio
+id="recordedAudio"
+controls
+class="hidden">
+</audio>
+
+<button
+id="recordAgain"
+class="mainButton hidden"
+onclick="resetRecording()">
+
+🔄 GRAVAR NOVAMENTE
+
+</button>
+
+<button
+id="voiceContinue"
+class="mainButton hidden"
+onclick="goToScreen(10)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 10 — FINAL CHALLENGE
+============================== -->
+
+<section id="screen10" class="screen">
+
+<div class="label">
+A1 • LESSON 7
+</div>
+
+<h1>
+🏆 Final Challenge
+</h1>
+
+<p class="subtitle">
+Mostre tudo o que aprendeu nesta aula.
+</p>
+
+<div class="card">
+
+<div
+id="challengeNumber"
+class="center">
+
+Questão 1 de 5
+
+</div>
+
+<br>
+
+<div
+id="challengeQuestion"
+class="phrase">
+</div>
+
+<button
+class="audioButton"
+onclick="speakChallenge()">
+
+🔊 Ouvir pergunta
+
+</button>
+
+<div
+id="challengeOptions">
+</div>
+
+<div
+id="challengeFeedback"
+class="feedback">
+</div>
+
+<div
+id="challengeScore"
+class="score">
+
+0 / 5
+
+</div>
+
+<button
+id="finishButton"
+class="mainButton hidden"
+onclick="finishLesson()">
+
+VER RESULTADO →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+TELA 11 — RESULTADO
+============================== -->
+
+<section id="screen11" class="screen">
+
+<div class="card final">
+
+<div class="trophy">
+🎉
+</div>
+
+<h1>
+Lesson 7 Complete!
+</h1>
+
+<p class="subtitle">
+Parabéns! Você terminou a Aula 7.
+</p>
+
+<div
+id="finalScore"
+class="score">
+</div>
+
+<div
+id="finalXP"
+class="bigXP">
+</div>
+
+<div class="tip">
+
+🇲🇿 Agora você já consegue perguntar:
+
+<br><br>
+
+<b>
+Where are you from?
+</b>
+
+<br><br>
+
+E responder:
+
+<br><br>
+
+<b>
+I'm from Mozambique.
+</b>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goBackToLessons()">
+
+📚 VOLTAR ÀS AULAS
+
+</button>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   DADOS DOS PAÍSES
+========================================= */
+
+const countries = [
+
+{
+flag:"🇲🇿",
+en:"Mozambique",
+pt:"Moçambique"
+},
+
+{
+flag:"🇿🇦",
+en:"South Africa",
+pt:"África do Sul"
+},
+
+{
+flag:"🇿🇼",
+en:"Zimbabwe",
+pt:"Zimbábue"
+},
+
+{
+flag:"🇦🇴",
+en:"Angola",
+pt:"Angola"
+},
+
+{
+flag:"🇵🇹",
+en:"Portugal",
+pt:"Portugal"
+},
+
+{
+flag:"🇧🇷",
+en:"Brazil",
+pt:"Brasil"
+},
+
+{
+flag:"🇺🇸",
+en:"United States",
+pt:"Estados Unidos"
+},
+
+{
+flag:"🇬🇧",
+en:"United Kingdom",
+pt:"Reino Unido"
+},
+
+{
+flag:"🇫🇷",
+en:"France",
+pt:"França"
+},
+
+{
+flag:"🇨🇳",
+en:"China",
+pt:"China"
+}
+
+];
+
+
+/* =========================================
+   VARIÁVEIS
+========================================= */
+
+let currentScreen = 1;
+
+let xp =
+Number(
+localStorage.getItem(
+"englishMZ_xp"
+)
+) || 0;
+
+let listenIndex = 0;
+
+let flagIndex = 0;
+
+let sentenceWords = [];
+
+let challengeIndex = 0;
+
+let challengeScore = 0;
+
+let recorder = null;
+
+let audioStream = null;
+
+let audioChunks = [];
+
+
+/* =========================================
+   XP
+========================================= */
+
+function updateXP(){
+
+document.getElementById(
+"xp"
+).innerText = xp;
+
+}
+
+
+function addXP(amount){
+
+xp += amount;
+
+localStorage.setItem(
+"englishMZ_xp",
+xp
+);
+
+updateXP();
+
+}
+
+
+/* =========================================
+   SISTEMA DE VOZ
+========================================= */
+
+function stopVoice(){
+
+if(
+"speechSynthesis"
+in window
+){
+
+speechSynthesis.cancel();
+
+}
+
+}
+
+
+function speak(text,language){
+
+if(
+!("speechSynthesis"
+in window)
+){
+
+return;
+
+}
+
+stopVoice();
+
+const voice =
+new SpeechSynthesisUtterance(
+text
+);
+
+voice.lang =
+language;
+
+voice.rate =
+0.88;
+
+speechSynthesis.speak(
+voice
+);
+
+}
+
+
+function speakEN(text){
+
+speak(
+text,
+"en-US"
+);
+
+}
+
+
+function speakPT(text){
+
+speak(
+text,
+"pt-PT"
+);
+
+}
+
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+function goToScreen(number){
+
+stopVoice();
+
+document
+.querySelectorAll(
+".screen"
+)
+.forEach(
+function(screen){
+
+screen.classList.remove(
+"active"
+);
+
+}
+);
+
+
+const target =
+document.getElementById(
+"screen" + number
+);
+
+
+if(!target){
+
+return;
+
+}
+
+
+target.classList.add(
+"active"
+);
+
+
+currentScreen =
+number;
+
+
+const percentage =
+((number - 1) / 10) * 100;
+
+
+document.getElementById(
+"progressFill"
+).style.width =
+percentage + "%";
+
+
+document.getElementById(
+"progressText"
+).innerText =
+number + "/11";
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+
+if(number === 4){
+
+loadCountries();
+
+}
+
+
+if(number === 5){
+
+prepareListening();
+
+}
+
+
+if(number === 6){
+
+prepareFlagQuestion();
+
+}
+
+
+if(number === 7){
+
+prepareSentence();
+
+}
+
+
+if(number === 10){
+
+challengeIndex = 0;
+
+challengeScore = 0;
+
+loadChallenge();
+
+}
+
+}
+
+
+/* =========================================
+   PAÍSES
+========================================= */
+
+function loadCountries(){
+
+const grid =
+document.getElementById(
+"countriesGrid"
+);
+
+
+grid.innerHTML = "";
+
+
+countries.forEach(
+function(country){
+
+const div =
+document.createElement(
+"div"
+);
+
+
+div.className =
+"country";
+
+
+div.innerHTML = `
+
+<span class="flag">
+${country.flag}
+</span>
+
+<div class="countryName">
+${country.en}
+</div>
+
+<div class="countryPT">
+${country.pt}
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('${country.en}')">
+
+🔊 Ouvir
+
+</button>
+
+`;
+
+
+grid.appendChild(
+div
+);
+
+}
+);
+
+}
+
+
+/* =========================================
+   LISTENING
+========================================= */
+
+function prepareListening(){
+
+listenIndex =
+Math.floor(
+Math.random() *
+countries.length
+);
+
+
+const correct =
+countries[
+listenIndex
+];
+
+
+const wrongCountries =
+countries
+.filter(
+function(_,index){
+
+return index !==
+listenIndex;
+
+}
+)
+.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+)
+.slice(0,2);
+
+
+const options =
+[
+correct,
+...wrongCountries
+]
+.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+);
+
+
+const container =
+document.getElementById(
+"listenOptions"
+);
+
+
+container.innerHTML = "";
+
+
+options.forEach(
+function(country){
+
+const button =
+document.createElement(
+"button"
+);
+
+
+button.className =
+"option";
+
+
+button.innerText =
+country.flag +
+" " +
+country.en;
+
+
+button.onclick =
+function(){
+
+checkListening(
+country.en,
+button
+);
+
+};
+
+
+container.appendChild(
+button
+);
+
+}
+);
+
+
+document.getElementById(
+"listenFeedback"
+).innerText = "";
+
+
+document.getElementById(
+"listenNext"
+).classList.add(
+"hidden"
+);
+
+}
+
+
+function playListenCountry(){
+
+speakEN(
+countries[
+listenIndex
+].en
+);
+
+}
+
+
+function checkListening(
+answer,
+button
+){
+
+const correct =
+countries[
+listenIndex
+].en;
+
+
+if(
+answer === correct
+){
+
+document
+.querySelectorAll(
+"#listenOptions .option"
+)
+.forEach(
+function(option){
+
+option.disabled =
+true;
+
+}
+);
+
+
+button.classList.add(
+"correct"
+);
+
+
+document.getElementById(
+"listenFeedback"
+).innerText =
+"✓ Correct!";
+
+
+document.getElementById(
+"listenFeedback"
+).className =
+"feedback correctText";
+
+
+speakEN(
+"Correct!"
+);
+
+
+addXP(5);
+
+
+document.getElementById(
+"listenNext"
+).classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+
+document.getElementById(
+"listenFeedback"
+).innerText =
+"✗ Incorrect. Try again!";
+
+
+document.getElementById(
+"listenFeedback"
+).className =
+"feedback wrongText";
+
+
+speakEN(
+"Incorrect. Try again!"
+);
+
+
+setTimeout(
+function(){
+
+button.classList.remove(
+"wrong"
+);
+
+},
+700
+);
+
+}
+
+}
+
+
+/* =========================================
+   BANDEIRA
+========================================= */
+
+function prepareFlagQuestion(){
+
+flagIndex =
+Math.floor(
+Math.random() *
+countries.length
+);
+
+
+const correct =
+countries[
+flagIndex
+];
+
+
+let wrong =
+countries.filter(
+function(_,index){
+
+return index !==
+flagIndex;
+
+}
+);
+
+
+wrong =
+wrong[
+Math.floor(
+Math.random() *
+wrong.length
+)
+];
+
+
+document.getElementById(
+"flagQuestion"
+).innerText =
+correct.flag;
+
+
+const options =
+[
+correct,
+wrong
+]
+.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+);
+
+
+document.getElementById(
+"flagOption1"
+).innerText =
+"I'm from " +
+options[0].en +
+".";
+
+
+document.getElementById(
+"flagOption2"
+).innerText =
+"I'm from " +
+options[1].en +
+".";
+
+
+document.getElementById(
+"flagOption1"
+).dataset.country =
+options[0].en;
+
+
+document.getElementById(
+"flagOption2"
+).dataset.country =
+options[1].en;
+
+
+document.getElementById(
+"flagOption1"
+).className =
+"option";
+
+
+document.getElementById(
+"flagOption2"
+).className =
+"option";
+
+
+document.getElementById(
+"flagOption1"
+).disabled =
+false;
+
+
+document.getElementById(
+"flagOption2"
+).disabled =
+false;
+
+
+document.getElementById(
+"flagFeedback"
+).innerText = "";
+
+
+document.getElementById(
+"flagNext"
+).classList.add(
+"hidden"
+);
+
+}
+
+
+function checkFlagAnswer(
+optionNumber
+){
+
+const button =
+document.getElementById(
+"flagOption" +
+optionNumber
+);
+
+
+const answer =
+button.dataset.country;
+
+
+const correct =
+countries[
+flagIndex
+].en;
+
+
+if(
+answer === correct
+){
+
+button.classList.add(
+"correct"
+);
+
+
+document.getElementById(
+"flagOption1"
+).disabled =
+true;
+
+
+document.getElementById(
+"flagOption2"
+).disabled =
+true;
+
+
+document.getElementById(
+"flagFeedback"
+).innerText =
+"✓ Correct!";
+
+
+document.getElementById(
+"flagFeedback"
+).className =
+"feedback correctText";
+
+
+speakEN(
+"Correct!"
+);
+
+
+addXP(10);
+
+
+document.getElementById(
+"flagNext"
+).classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+
+document.getElementById(
+"flagFeedback"
+).innerText =
+"✗ Incorrect. Try again!";
+
+
+document.getElementById(
+"flagFeedback"
+).className =
+"feedback wrongText";
+
+
+speakEN(
+"Incorrect. Try again!"
+);
+
+
+setTimeout(
+function(){
+
+button.classList.remove(
+"wrong"
+);
+
+},
+700
+);
+
+}
+
+}
+
+
+/* =========================================
+   CONSTRUIR FRASE
+========================================= */
+
+function prepareSentence(){
+
+sentenceWords = [];
+
+
+const words =
+[
+"I'm",
+"from",
+"Mozambique."
+]
+.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+);
+
+
+const grid =
+document.getElementById(
+"wordGrid"
+);
+
+
+grid.innerHTML = "";
+
+
+words.forEach(
+function(word){
+
+const button =
+document.createElement(
+"button"
+);
+
+
+button.className =
+"wordButton";
+
+
+button.innerText =
+word;
+
+
+button.onclick =
+function(){
+
+sentenceWords.push(
+word
+);
+
+
+button.disabled =
+true;
+
+
+document.getElementById(
+"sentenceAnswer"
+).innerText =
+sentenceWords.join(
+" "
+);
+
+};
+
+
+grid.appendChild(
+button
+);
+
+}
+);
+
+
+document.getElementById(
+"sentenceAnswer"
+).innerText =
+"...";
+
+
+document.getElementById(
+"sentenceFeedback"
+).innerText = "";
+
+
+document.getElementById(
+"sentenceNext"
+).classList.add(
+"hidden"
+);
+
+}
+
+
+function checkSentence(){
+
+const answer =
+sentenceWords.join(
+" "
+);
+
+
+if(
+answer ===
+"I'm from Mozambique."
+){
+
+document.getElementById(
+"sentenceFeedback"
+).innerText =
+"✓ Correct!";
+
+
+document.getElementById(
+"sentenceFeedback"
+).className =
+"feedback correctText";
+
+
+speakEN(
+"Correct!"
+);
+
+
+addXP(15);
+
+
+document.getElementById(
+"sentenceNext"
+).classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+document.getElementById(
+"sentenceFeedback"
+).innerText =
+"✗ Incorrect. Try again!";
+
+
+document.getElementById(
+"sentenceFeedback"
+).className =
+"feedback wrongText";
+
+
+speakEN(
+"Incorrect. Try again!"
+);
+
+}
+
+}
+
+
+/* =========================================
+   GRAVAÇÃO DE VOZ
+========================================= */
+
+async function toggleRecording(){
+
+if(
+recorder &&
+recorder.state !==
+"inactive"
+){
+
+stopRecording();
+
+return;
+
+}
+
+
+if(
+!navigator.mediaDevices ||
+!navigator.mediaDevices.getUserMedia
+){
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"Microphone recording is not supported.";
+
+return;
+
+}
+
+
+try{
+
+audioStream =
+await navigator.mediaDevices
+.getUserMedia({
+audio:true
+});
+
+
+audioChunks = [];
+
+
+recorder =
+new MediaRecorder(
+audioStream
+);
+
+
+recorder.ondataavailable =
+function(event){
+
+if(
+event.data.size > 0
+){
+
+audioChunks.push(
+event.data
+);
+
+}
+
+};
+
+
+recorder.onstop =
+function(){
+
+const blob =
+new Blob(
+audioChunks,
+{
+type:"audio/webm"
+}
+);
+
+
+const url =
+URL.createObjectURL(
+blob
+);
+
+
+const audio =
+document.getElementById(
+"recordedAudio"
+);
+
+
+audio.src =
+url;
+
+
+audio.classList.remove(
+"hidden"
+);
+
+
+document.getElementById(
+"recordAgain"
+).classList.remove(
+"hidden"
+);
+
+
+document.getElementById(
+"voiceContinue"
+).classList.remove(
+"hidden"
+);
+
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"✓ Recording complete!";
+
+
+addXP(10);
+
+
+if(audioStream){
+
+audioStream
+.getTracks()
+.forEach(
+function(track){
+
+track.stop();
+
+}
+);
+
+}
+
+};
+
+
+recorder.start();
+
+
+document.getElementById(
+"recordButton"
+).classList.add(
+"recording"
+);
+
+
+document.getElementById(
+"recordButton"
+).innerText =
+"⏹️";
+
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"🔴 Recording... toque novamente para parar.";
+
+}
+
+catch(error){
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"Permita o acesso ao microfone para gravar.";
+
+}
+
+}
+
+
+function stopRecording(){
+
+if(
+recorder &&
+recorder.state !==
+"inactive"
+){
+
+recorder.stop();
+
+}
+
+
+document.getElementById(
+"recordButton"
+).classList.remove(
+"recording"
+);
+
+
+document.getElementById(
+"recordButton"
+).innerText =
+"🎙️";
+
+}
+
+
+function resetRecording(){
+
+const audio =
+document.getElementById(
+"recordedAudio"
+);
+
+
+audio.pause();
+
+audio.removeAttribute(
+"src"
+);
+
+
+audio.classList.add(
+"hidden"
+);
+
+
+document.getElementById(
+"recordAgain"
+).classList.add(
+"hidden"
+);
+
+
+document.getElementById(
+"voiceContinue"
+).classList.add(
+"hidden"
+);
+
+
+document.getElementById(
+"recordStatus"
+).innerText =
+"Toque no microfone para gravar novamente.";
+
+}
+
+
+/* =========================================
+   FINAL CHALLENGE
+========================================= */
+
+const challenges = [
+
+{
+
+question:
+"Qual frase significa: De onde você é?",
+
+audio:
+"Qual frase significa: De onde você é?",
+
+options:
+[
+"Where are you from?",
+"How are you?"
+],
+
+correct:0
+
+},
+
+{
+
+question:
+"🇲🇿 Qual frase está correta?",
+
+audio:
+"Qual frase está correta para Moçambique?",
+
+options:
+[
+"I'm from Mozambique.",
+"I'm from Brazil."
+],
+
+correct:0
+
+},
+
+{
+
+question:
+"🇿🇦 Qual frase está correta?",
+
+audio:
+"Qual frase está correta para a África do Sul?",
+
+options:
+[
+"I'm from Angola.",
+"I'm from South Africa."
+],
+
+correct:1
+
+},
+
+{
+
+question:
+"Complete: I'm ___ Mozambique.",
+
+audio:
+"Complete a frase: I'm espaço Mozambique.",
+
+options:
+[
+"from",
+"fine"
+],
+
+correct:0
+
+},
+
+{
+
+question:
+"Você quer dizer: Eu sou de Angola.",
+
+audio:
+"Você quer dizer: Eu sou de Angola.",
+
+options:
+[
+"I'm from Angola.",
+"Where are you from?"
+],
+
+correct:0
+
+}
+
+];
+
+
+/* =========================================
+   CARREGAR CHALLENGE
+========================================= */
+
+function loadChallenge(){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+
+document.getElementById(
+"challengeNumber"
+).innerText =
+"Questão " +
+(challengeIndex + 1) +
+" de " +
+challenges.length;
+
+
+document.getElementById(
+"challengeQuestion"
+).innerText =
+challenge.question;
+
+
+const container =
+document.getElementById(
+"challengeOptions"
+);
+
+
+container.innerHTML = "";
+
+
+challenge.options.forEach(
+function(option,index){
+
+const button =
+document.createElement(
+"button"
+);
+
+
+button.className =
+"option";
+
+
+button.innerText =
+option;
+
+
+button.onclick =
+function(){
+
+answerChallenge(
+index,
+button
+);
+
+};
+
+
+container.appendChild(
+button
+);
+
+}
+);
+
+
+document.getElementById(
+"challengeFeedback"
+).innerText = "";
+
+
+document.getElementById(
+"challengeFeedback"
+).className =
+"feedback";
+
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / " +
+challenges.length;
+
+
+document.getElementById(
+"finishButton"
+).classList.add(
+"hidden"
+);
+
+}
+
+
+/* =========================================
+   ÁUDIO DA PERGUNTA
+========================================= */
+
+function speakChallenge(){
+
+speakPT(
+challenges[
+challengeIndex
+].audio
+);
+
+}
+
+
+/* =========================================
+   RESPONDER CHALLENGE
+========================================= */
+
+function answerChallenge(
+answer,
+button
+){
+
+const challenge =
+challenges[
+challengeIndex
+];
+
+
+if(
+answer ===
+challenge.correct
+){
+
+button.classList.add(
+"correct"
+);
+
+
+document
+.querySelectorAll(
+"#challengeOptions .option"
+)
+.forEach(
+function(option){
+
+option.disabled =
+true;
+
+}
+);
+
+
+challengeScore++;
+
+
+document.getElementById(
+"challengeFeedback"
+).innerText =
+"✓ Correct!";
+
+
+document.getElementById(
+"challengeFeedback"
+).className =
+"feedback correctText";
+
+
+speakEN(
+"Correct!"
+);
+
+
+addXP(5);
+
+
+document.getElementById(
+"challengeScore"
+).innerText =
+challengeScore +
+" / " +
+challenges.length;
+
+
+setTimeout(
+function(){
+
+challengeIndex++;
+
+
+if(
+challengeIndex <
+challenges.length
+){
+
+loadChallenge();
+
+}
+
+else{
+
+finishChallenge();
+
+}
+
+},
+900
+);
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+
+document.getElementById(
+"challengeFeedback"
+).innerText =
+"✗ Incorrect. Try again!";
+
+
+document.getElementById(
+"challengeFeedback"
+).className =
+"feedback wrongText";
+
+
+speakEN(
+"Incorrect. Try again!"
+);
+
+
+/*
+IMPORTANTE:
+
+A resposta correta NÃO
+é mostrada quando o aluno
+erra.
+*/
+
+setTimeout(
+function(){
+
+button.classList.remove(
+"wrong"
+);
+
+},
+700
+);
+
+}
+
+}
+
+
+/* =========================================
+   TERMINOU O CHALLENGE
+========================================= */
+
+function finishChallenge(){
+
+document.getElementById(
+"challengeNumber"
+).innerText =
+"Challenge complete!";
+
+
+document.getElementById(
+"challengeFeedback"
+).innerText =
+"You finished the Final Challenge!";
+
+
+document.getElementById(
+"challengeFeedback"
+).className =
+"feedback correctText";
+
+
+localStorage.setItem(
+"englishMZ_lesson7_score",
+challengeScore
+);
+
+
+document.getElementById(
+"finishButton"
+).classList.remove(
+"hidden"
+);
+
+}
+
+
+/* =========================================
+   RESULTADO FINAL
+========================================= */
+
+function finishLesson(){
+
+document.getElementById(
+"finalScore"
+).innerText =
+"Final score: " +
+challengeScore +
+" / " +
+challenges.length;
+
+
+document.getElementById(
+"finalXP"
+).innerText =
+"Total XP: " +
+xp +
+" ⭐";
+
+
+goToScreen(11);
+
+}
+
+
+/* =========================================
+   VOLTAR ÀS AULAS
+========================================= */
+
+function goBackToLessons(){
+
+window.location.href =
+"../index.html";
+
+}
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+updateXP();
+
+
+document.getElementById(
+"progressFill"
+).style.width =
+"0%";
+
+
+setTimeout(
+function(){
+
+speakPT(
+"Bem-vindo à Aula 7. Nesta aula você vai aprender a perguntar de onde uma pessoa é e a dizer de onde você é."
+);
+
+},
+700
+);
+
+</script>
+
+</body>
+  </html>
