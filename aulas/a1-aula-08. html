@@ -1,1 +1,3050 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Lesson 8 — Meeting Someone | English MZ</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111;
+color:#fff;
+min-height:100vh;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:20;
+background:#181818;
+padding:14px 18px;
+border-bottom:1px solid #292929;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+}
+
+.xp{
+font-weight:bold;
+}
+
+.progressBox{
+margin-top:10px;
+height:8px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
+}
+
+#progressFill{
+height:100%;
+width:0%;
+background:#58cc02;
+transition:.3s;
+}
+
+.progressText{
+font-size:12px;
+color:#aaa;
+margin-top:5px;
+text-align:right;
+}
+
+main{
+max-width:600px;
+margin:auto;
+padding:25px 18px 60px;
+}
+
+.screen{
+display:none;
+animation:fade .25s ease;
+}
+
+.screen.active{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(8px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.label{
+color:#58cc02;
+font-size:13px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+h1{
+font-size:30px;
+margin-bottom:10px;
+}
+
+h2{
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#bbb;
+line-height:1.5;
+margin-bottom:22px;
+}
+
+.card{
+background:#1c1c1c;
+border:1px solid #303030;
+border-radius:18px;
+padding:20px;
+margin-bottom:18px;
+}
+
+.phrase{
+background:#242424;
+padding:18px;
+border-radius:14px;
+margin-bottom:14px;
+}
+
+.english{
+font-size:20px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.meaning{
+color:#aaa;
+}
+
+.audioButton{
+margin-top:12px;
+background:#333;
+color:white;
+border:0;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.mainButton{
+width:100%;
+padding:15px;
+margin-top:14px;
+border:0;
+border-radius:12px;
+background:#58cc02;
+color:#111;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+.secondaryButton{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:1px solid #444;
+border-radius:12px;
+background:#242424;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.option{
+width:100%;
+padding:15px;
+margin-top:10px;
+border-radius:12px;
+border:2px solid #383838;
+background:#242424;
+color:white;
+font-size:16px;
+cursor:pointer;
+text-align:left;
+}
+
+.option:hover{
+border-color:#666;
+}
+
+.option.correct{
+border-color:#58cc02;
+background:#183d0c;
+}
+
+.option.wrong{
+border-color:#ff4b4b;
+background:#3b1010;
+}
+
+.option:disabled{
+cursor:default;
+}
+
+.feedback{
+min-height:28px;
+margin-top:14px;
+font-weight:bold;
+}
+
+.correctText{
+color:#58cc02;
+}
+
+.wrongText{
+color:#ff6969;
+}
+
+.hidden{
+display:none !important;
+}
+
+.center{
+text-align:center;
+}
+
+.big{
+font-size:50px;
+text-align:center;
+margin:15px;
+}
+
+.conversationLine{
+padding:14px;
+border-bottom:1px solid #333;
+}
+
+.speaker{
+font-weight:bold;
+color:#58cc02;
+}
+
+.countryGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+.country{
+background:#252525;
+border-radius:14px;
+padding:14px;
+text-align:center;
+}
+
+.flag{
+font-size:40px;
+display:block;
+margin-bottom:5px;
+}
+
+.countryName{
+font-weight:bold;
+}
+
+.countryPT{
+font-size:13px;
+color:#999;
+margin-top:3px;
+}
+
+.wordGrid{
+display:flex;
+flex-wrap:wrap;
+gap:9px;
+margin-top:15px;
+}
+
+.wordButton{
+background:#292929;
+color:white;
+border:2px solid #444;
+padding:12px 15px;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+
+.wordButton:disabled{
+opacity:.35;
+}
+
+.sentenceAnswer{
+min-height:55px;
+background:#111;
+border:2px dashed #444;
+border-radius:12px;
+padding:15px;
+margin-top:15px;
+font-size:19px;
+line-height:1.5;
+}
+
+.mission{
+padding:12px 0;
+border-bottom:1px solid #333;
+}
+
+.mission:last-child{
+border-bottom:0;
+}
+
+.recordButton{
+width:90px;
+height:90px;
+border-radius:50%;
+border:0;
+background:#58cc02;
+font-size:35px;
+display:block;
+margin:20px auto;
+cursor:pointer;
+}
+
+.recording{
+background:#ff4b4b;
+}
+
+.score{
+font-size:25px;
+font-weight:bold;
+text-align:center;
+margin:15px;
+}
+
+.xpResult{
+font-size:22px;
+font-weight:bold;
+text-align:center;
+margin:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="top">
+
+<div class="logo">
+🇬🇧 English MZ
+</div>
+
+<div class="xp">
+⭐ <span id="xp">0</span> XP
+</div>
+
+</div>
+
+<div class="progressBox">
+<div id="progressFill"></div>
+</div>
+
+<div class="progressText">
+<span id="progressText">1/12</span>
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- SCREEN 1 -->
+
+<section id="screen1" class="screen active">
+
+<div class="label">
+A1 • LESSON 8
+</div>
+
+<h1>
+💬 Meeting Someone
+</h1>
+
+<p class="subtitle">
+Hoje você vai aprender a conhecer alguém pela primeira vez e conversar sobre nomes, países e amigos.
+</p>
+
+<div class="card">
+
+<div class="big">
+👋
+</div>
+
+<h2>
+Real Life Mission
+</h2>
+
+<p class="subtitle">
+Imagine que você acabou de conhecer alguém na universidade.
+</p>
+
+<p>
+🎯 Sua missão:
+</p>
+
+<br>
+
+<p>
+Conhecer o nome da pessoa, descobrir de onde ela é e falar sobre uma pessoa que você conhece.
+</p>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(2)">
+
+COMEÇAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 2 -->
+
+<section id="screen2" class="screen">
+
+<div class="label">
+STEP 1
+</div>
+
+<h1>
+👋 Meet Someone
+</h1>
+
+<p class="subtitle">
+Primeiro, vamos aprender como iniciar uma conversa.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+Hi!
+</div>
+
+<div class="meaning">
+Olá!
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Hi!')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+What's your name?
+</div>
+
+<div class="meaning">
+Qual é o seu nome?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('What is your name?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+My name is Maryloyd.
+</div>
+
+<div class="meaning">
+O meu nome é Maryloyd.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('My name is Maryloyd.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+Nice to meet you.
+</div>
+
+<div class="meaning">
+Prazer em conhecer você.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Nice to meet you.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+Nice to meet you too.
+</div>
+
+<div class="meaning">
+Prazer em conhecer você também.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Nice to meet you too.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(3)">
+
+CONTINUAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 3 -->
+
+<section id="screen3" class="screen">
+
+<div class="label">
+STEP 2
+</div>
+
+<h1>
+🌍 Where are you from?
+</h1>
+
+<p class="subtitle">
+Agora vamos descobrir de onde a pessoa é.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+Where are you from?
+</div>
+
+<div class="meaning">
+De onde você é?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Where are you from?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+I'm from Mozambique.
+</div>
+
+<div class="meaning">
+Eu sou de Moçambique.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('I am from Mozambique.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(4)">
+
+OUVIR A CONVERSA →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 4 -->
+
+<section id="screen4" class="screen">
+
+<div class="label">
+REAL LIFE
+</div>
+
+<h1>
+🎧 Full Conversation
+</h1>
+
+<p class="subtitle">
+Ouça a situação completa.
+</p>
+
+<div class="card">
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+Hi! What's your name?
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+My name is Maryloyd.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+Nice to meet you.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+Nice to meet you too.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+Where are you from?
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+I'm from Mozambique.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+Is she your friend?
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+Yes, she is.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+What's her name?
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+Her name is Vanessa.
+</div>
+
+<div class="conversationLine">
+<span class="speaker">A:</span>
+Where is she from?
+</div>
+
+<div class="conversationLine">
+<span class="speaker">B:</span>
+She's from South Africa.
+</div>
+
+</div>
+
+
+<button
+class="mainButton"
+onclick="playFullConversation()">
+
+▶️ OUVIR TUDO
+
+</button>
+
+
+<button
+class="secondaryButton"
+onclick="goToScreen(5)">
+
+CONTINUAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 5 -->
+
+<section id="screen5" class="screen">
+
+<div class="label">
+STEP 3
+</div>
+
+<h1>
+👩 Talking About Her
+</h1>
+
+<p class="subtitle">
+Agora vamos aprender a falar sobre outra pessoa.
+</p>
+
+<div class="card">
+
+<div class="phrase">
+
+<div class="english">
+Is she your friend?
+</div>
+
+<div class="meaning">
+Ela é sua amiga?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Is she your friend?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+Yes, she is.
+</div>
+
+<div class="meaning">
+Sim, ela é.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Yes, she is.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+What's her name?
+</div>
+
+<div class="meaning">
+Qual é o nome dela?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('What is her name?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+Her name is Vanessa.
+</div>
+
+<div class="meaning">
+O nome dela é Vanessa.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Her name is Vanessa.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+Where is she from?
+</div>
+
+<div class="meaning">
+De onde ela é?
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('Where is she from?')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+
+<div class="phrase">
+
+<div class="english">
+She's from South Africa.
+</div>
+
+<div class="meaning">
+Ela é da África do Sul.
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('She is from South Africa.')">
+
+🔊 Ouvir
+
+</button>
+
+</div>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goToScreen(6)">
+
+CONTINUAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 6 -->
+
+<section id="screen6" class="screen">
+
+<div class="label">
+COUNTRIES
+</div>
+
+<h1>
+🌍 Countries
+</h1>
+
+<p class="subtitle">
+Conheça alguns países em inglês.
+</p>
+
+<div id="countriesGrid" class="countryGrid"></div>
+
+<button
+class="mainButton"
+onclick="goToScreen(7)">
+
+CONTINUAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 7 -->
+
+<section id="screen7" class="screen">
+
+<div class="label">
+LISTENING
+</div>
+
+<h1>
+🎧 Listen & Choose
+</h1>
+
+<p class="subtitle">
+Ouça o país e escolha a bandeira correta.
+</p>
+
+<div class="card">
+
+<div class="big">
+🌍
+</div>
+
+<button
+class="mainButton"
+onclick="playListeningCountry()">
+
+🔊 OUVIR
+
+</button>
+
+<div id="listenOptions"></div>
+
+<div
+id="listenFeedback"
+class="feedback">
+</div>
+
+<button
+id="listenNext"
+class="mainButton hidden"
+onclick="goToScreen(8)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SCREEN 8 -->
+
+<section id="screen8" class="screen">
+
+<div class="label">
+BUILD
+</div>
+
+<h1>
+🧩 Build the Sentence
+</h1>
+
+<p class="subtitle">
+Construa a frase correta. As palavras estão baralhadas.
+</p>
+
+<div class="card">
+
+<p>
+🇵🇹 <b>De onde você é?</b>
+</p>
+
+<div
+id="sentenceAnswer"
+class="sentenceAnswer">
+...
+</div>
+
+<div
+id="wordGrid"
+class="wordGrid">
+</div>
+
+<button
+class="mainButton"
+onclick="checkSentence()">
+
+VERIFICAR
+
+</button>
+
+<div
+id="sentenceFeedback"
+class="feedback">
+</div>
+
+<button
+id="sentenceNext"
+class="mainButton hidden"
+onclick="goToScreen(9)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SCREEN 9 -->
+
+<section id="screen9" class="screen">
+
+<div class="label">
+CHOOSE
+</div>
+
+<h1>
+💬 Choose Your Conversation
+</h1>
+
+<p class="subtitle">
+Você acabou de conhecer alguém. O que você faz?
+</p>
+
+<div class="card">
+
+<p>
+👤 A pessoa acabou de se apresentar.
+</p>
+
+<br>
+
+<p>
+<b>O que você pergunta agora?</b>
+</p>
+
+<div id="chooseOptions"></div>
+
+<div
+id="chooseFeedback"
+class="feedback">
+</div>
+
+<button
+id="chooseNext"
+class="mainButton hidden"
+onclick="goToScreen(10)">
+
+CONTINUAR →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SCREEN 10 -->
+
+<section id="screen10" class="screen">
+
+<div class="label">
+SPEAK
+</div>
+
+<h1>
+🗣️ Your Turn
+</h1>
+
+<p class="subtitle">
+Agora fale sobre a sua própria vida. Não existe apenas uma resposta.
+</p>
+
+<div class="card">
+
+<h2>
+1️⃣ Your name
+</h2>
+
+<p>
+Diga seu próprio nome:
+</p>
+
+<br>
+
+<b>
+My name is ______.
+</b>
+
+<button
+class="recordButton"
+onclick="toggleRecording(1)">
+
+🎙️
+</button>
+
+<div
+id="recordStatus1"
+class="center">
+
+Toque para gravar.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+2️⃣ Your country
+</h2>
+
+<p>
+Diga de onde você é:
+</p>
+
+<br>
+
+<b>
+I'm from ______.
+</b>
+
+<button
+class="recordButton"
+onclick="toggleRecording(2)">
+
+🎙️
+</button>
+
+<div
+id="recordStatus2"
+class="center">
+
+Toque para gravar.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+3️⃣ A friend
+</h2>
+
+<p>
+Pense em uma pessoa real que você conhece.
+</p>
+
+<br>
+
+<p>
+Diga o nome dela e de onde ela é.
+</p>
+
+<br>
+
+<b>
+Her name is ______.<br>
+She's from ______.
+</b>
+
+<button
+class="recordButton"
+onclick="toggleRecording(3)">
+
+🎙️
+</button>
+
+<div
+id="recordStatus3"
+class="center">
+
+Toque para gravar.
+</div>
+
+</div>
+
+
+<button
+class="mainButton"
+onclick="goToScreen(11)">
+
+CONTINUAR →
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 11 -->
+
+<section id="screen11" class="screen">
+
+<div class="label">
+THINK IN ENGLISH
+</div>
+
+<h1>
+🧠 Think in English
+</h1>
+
+<p class="subtitle">
+Não traduza. Pense na situação.
+</p>
+
+<div class="card">
+
+<p>
+Você quer saber de onde uma pessoa é.
+</p>
+
+<br>
+
+<p>
+<b>What do you say?</b>
+</p>
+
+<div id="thinkOptions"></div>
+
+<div
+id="thinkFeedback"
+class="feedback">
+</div>
+
+<button
+id="thinkNext"
+class="mainButton hidden"
+onclick="goToScreen(12)">
+
+FINAL CHALLENGE →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SCREEN 12 -->
+
+<section id="screen12" class="screen">
+
+<div class="label">
+FINAL CHALLENGE
+</div>
+
+<h1>
+🏆 Real Life Challenge
+</h1>
+
+<p class="subtitle">
+Mostre que consegue usar o inglês.
+</p>
+
+<div class="card">
+
+<div
+id="challengeNumber"
+class="center">
+Questão 1 de 6
+</div>
+
+<br>
+
+<div
+id="challengeQuestion"
+class="phrase">
+</div>
+
+<button
+class="audioButton"
+onclick="speakChallenge()">
+
+🔊 Ouvir pergunta
+
+</button>
+
+<div id="challengeOptions"></div>
+
+<div
+id="challengeFeedback"
+class="feedback">
+</div>
+
+<div
+id="challengeScore"
+class="score">
+0 / 6
+</div>
+
+<button
+id="finishButton"
+class="mainButton hidden"
+onclick="finishLesson()">
+
+VER RESULTADO →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RESULT -->
+
+<section id="screen13" class="screen">
+
+<div class="card">
+
+<div class="big">
+🎉
+</div>
+
+<h1 class="center">
+Lesson 8 Complete!
+</h1>
+
+<p class="subtitle center">
+Você terminou a Aula 8.
+</p>
+
+<div
+id="finalScore"
+class="score">
+</div>
+
+<div
+id="finalXP"
+class="xpResult">
+</div>
+
+<div class="phrase">
+
+<b>
+English Independence
+</b>
+
+<br><br>
+
+<div id="independence">
+Building...
+</div>
+
+</div>
+
+<button
+class="mainButton"
+onclick="goBackToLessons()">
+
+📚 VOLTAR ÀS AULAS
+
+</button>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* ===============================
+   XP
+================================ */
+
+let xp =
+Number(
+localStorage.getItem("englishMZ_xp")
+) || 0;
+
+
+function updateXP(){
+
+document.getElementById(
+"xp"
+).innerText = xp;
+
+}
+
+
+function addXP(amount){
+
+xp += amount;
+
+localStorage.setItem(
+"englishMZ_xp",
+xp
+);
+
+updateXP();
+
+}
+
+
+/* ===============================
+   VOICE
+================================ */
+
+function stopVoice(){
+
+if(
+window.speechSynthesis
+){
+
+speechSynthesis.cancel();
+
+}
+
+}
+
+
+function speak(text,lang){
+
+if(
+!window.speechSynthesis
+){
+
+return;
+
+}
+
+stopVoice();
+
+const voice =
+new SpeechSynthesisUtterance(
+text
+);
+
+voice.lang =
+lang;
+
+voice.rate =
+0.88;
+
+speechSynthesis.speak(
+voice
+);
+
+}
+
+
+function speakEN(text){
+
+speak(
+text,
+"en-US"
+);
+
+}
+
+
+function speakPT(text){
+
+speak(
+text,
+"pt-PT"
+);
+
+}
+
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+function goToScreen(number){
+
+stopVoice();
+
+document
+.querySelectorAll(".screen")
+.forEach(
+function(screen){
+
+screen.classList.remove(
+"active"
+);
+
+}
+);
+
+const target =
+document.getElementById(
+"screen" + number
+);
+
+if(!target){
+
+return;
+
+}
+
+target.classList.add(
+"active"
+);
+
+const progress =
+Math.min(
+((number - 1) / 12) * 100,
+100
+);
+
+document.getElementById(
+"progressFill"
+).style.width =
+progress + "%";
+
+document.getElementById(
+"progressText"
+).innerText =
+number + "/13";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+
+if(number === 6){
+
+loadCountries();
+
+}
+
+if(number === 7){
+
+prepareListening();
+
+}
+
+if(number === 8){
+
+prepareSentence();
+
+}
+
+if(number === 9){
+
+prepareChoose();
+
+}
+
+if(number === 11){
+
+prepareThink();
+
+}
+
+if(number === 12){
+
+challengeIndex = 0;
+
+challengeScore = 0;
+
+loadChallenge();
+
+}
+
+}
+
+
+/* ===============================
+   COUNTRIES
+================================ */
+
+const countries = [
+
+{
+flag:"🇲🇿",
+en:"Mozambique",
+pt:"Moçambique"
+},
+
+{
+flag:"🇿🇦",
+en:"South Africa",
+pt:"África do Sul"
+},
+
+{
+flag:"🇿🇼",
+en:"Zimbabwe",
+pt:"Zimbábue"
+},
+
+{
+flag:"🇦🇴",
+en:"Angola",
+pt:"Angola"
+},
+
+{
+flag:"🇧🇷",
+en:"Brazil",
+pt:"Brasil"
+},
+
+{
+flag:"🇵🇹",
+en:"Portugal",
+pt:"Portugal"
+},
+
+{
+flag:"🇺🇸",
+en:"United States",
+pt:"Estados Unidos"
+},
+
+{
+flag:"🇬🇧",
+en:"United Kingdom",
+pt:"Reino Unido"
+}
+
+];
+
+
+function loadCountries(){
+
+const grid =
+document.getElementById(
+"countriesGrid"
+);
+
+grid.innerHTML = "";
+
+countries.forEach(
+function(country){
+
+const div =
+document.createElement(
+"div"
+);
+
+div.className =
+"country";
+
+div.innerHTML = `
+
+<span class="flag">
+${country.flag}
+</span>
+
+<div class="countryName">
+${country.en}
+</div>
+
+<div class="countryPT">
+${country.pt}
+</div>
+
+<button
+class="audioButton"
+onclick="speakEN('${country.en}')">
+
+🔊
+
+</button>
+
+`;
+
+grid.appendChild(
+div
+);
+
+}
+
+);
+
+}
+
+
+/* ===============================
+   LISTENING
+================================ */
+
+let listeningIndex = 0;
+
+
+function prepareListening(){
+
+listeningIndex =
+Math.floor(
+Math.random() *
+countries.length
+);
+
+const correct =
+countries[
+listeningIndex
+];
+
+let others =
+countries.filter(
+function(_,index){
+
+return index !==
+listeningIndex;
+
+}
+);
+
+others.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+);
+
+const options =
+[
+correct,
+others[0],
+others[1]
+];
+
+options.sort(
+function(){
+
+return Math.random() - .5;
+
+}
+);
+
+const container =
+document.getElementById(
+"listenOptions"
+);
+
+container.innerHTML = "";
+
+options.forEach(
+function(country){
+
+const button =
+document.createElement(
+"button"
+);
+
+button.className =
+"option";
+
+button.innerText =
+country.flag +
+" " +
+country.en;
+
+button.onclick =
+function(){
+
+checkListening(
+country.en,
+button
+);
+
+};
+
+container.appendChild(
+button
+);
+
+}
+);
+
+document.getElementById(
+"listenFeedback"
+).innerText = "";
+
+document.getElementById(
+"listenNext"
+).classList.add(
+"hidden"
+);
+
+}
+
+
+function playListeningCountry(){
+
+speakEN(
+countries[
+listeningIndex
+].en
+);
+
+}
+
+
+function checkListening(
+answer,
+button
+){
+
+const correct =
+countries[
+listeningIndex
+].en;
+
+if(
+answer === correct
+){
+
+button.classList.add(
+"correct"
+);
+
+document
+.querySelectorAll(
+"#listenOptions .option"
+)
+.forEach(
+function(option){
+
+option.disabled =
+true;
+
+}
+);
+
+document.getElementById(
+"listenFeedback"
+).innerText =
+"✓ Correct!";
+
+document.getElementById(
+"listenFeedback"
+).className =
+"feedback correctText";
+
+speakEN("Correct!");
+
+addXP(5);
+
+document.getElementById(
+"listenNext"
+).classList.remove(
+"hidden"
+);
+
+}else{
+
+button.classList.add(
+"wrong"
+);
+
+document.getElementById(
+"listenFeedback"
+).innerText =
+"✗ Incorrect. Try again!";
+
+document.getElementById(
+"listenFeedback"
+).className =
+"feedback wrongText";
+
+speakEN(
+"Incorrect. Try again!"
+);
+
+setTimeout(
+function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+
+/* ===============================
+   FULL CONVERSATION
+================================ */
+
+function playFullConversation(){
+
+  const lines = [
+
+    "Hi! What's your name?",
+
+    "My name is Maryloyd.",
+
+    "Nice to meet you.",
+
+    "Nice to meet you too.",
+
+    "Where are you from?",
+
+    "I'm from Mozambique.",
+
+    "Is she your friend?",
+
+    "Yes, she is.",
+
+    "What's her name?",
+
+    "Her name is Vanessa.",
+
+    "Where is she from?",
+
+    "She's from South Africa.",
+
+    "Oh, nice!",
+
+    "Thank you!"
+
+  ];
+
+  let index = 0;
+
+
+  function next(){
+
+    if(index >= lines.length){
+
+      return;
+
+    }
+
+    const text =
+      lines[index];
+
+    speakEN(text);
+
+    index++;
+
+    setTimeout(
+      next,
+      Math.max(
+        1800,
+        text.length * 75
+      )
+    );
+
+  }
+
+  next();
+
+}
+
+
+/* ===============================
+   BUILD SENTENCE
+================================ */
+
+let sentenceWords = [];
+
+
+function prepareSentence(){
+
+  sentenceWords = [];
+
+  const words = [
+
+    "Where",
+    "are",
+    "you",
+    "from?"
+
+  ];
+
+  words.sort(
+    function(){
+
+      return Math.random() - .5;
+
+    }
+  );
+
+
+  const grid =
+    document.getElementById(
+      "wordGrid"
+    );
+
+  grid.innerHTML = "";
+
+
+  words.forEach(
+    function(word){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "wordButton";
+
+      button.innerText =
+        word;
+
+      button.onclick =
+        function(){
+
+          sentenceWords.push(
+            word
+          );
+
+          button.disabled =
+            true;
+
+          document.getElementById(
+            "sentenceAnswer"
+          ).innerText =
+            sentenceWords.join(
+              " "
+            );
+
+        };
+
+      grid.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "sentenceAnswer"
+  ).innerText =
+    "...";
+
+  document.getElementById(
+    "sentenceFeedback"
+  ).innerText = "";
+
+  document.getElementById(
+    "sentenceNext"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+function checkSentence(){
+
+  const answer =
+    sentenceWords.join(
+      " "
+    );
+
+  if(
+    answer ===
+    "Where are you from?"
+  ){
+
+    document.getElementById(
+      "sentenceFeedback"
+    ).innerText =
+      "✓ Correct!";
+
+    document.getElementById(
+      "sentenceFeedback"
+    ).className =
+      "feedback correctText";
+
+    speakEN(
+      "Correct!"
+    );
+
+    addXP(10);
+
+    document.getElementById(
+      "sentenceNext"
+    ).classList.remove(
+      "hidden"
+    );
+
+  }else{
+
+    document.getElementById(
+      "sentenceFeedback"
+    ).innerText =
+      "✗ Incorrect. Try again!";
+
+    document.getElementById(
+      "sentenceFeedback"
+    ).className =
+      "feedback wrongText";
+
+    speakEN(
+      "Incorrect. Try again!"
+    );
+
+  }
+
+}
+
+
+/* ===============================
+   CHOOSE YOUR CONVERSATION
+================================ */
+
+function prepareChoose(){
+
+  const container =
+    document.getElementById(
+      "chooseOptions"
+    );
+
+  container.innerHTML = "";
+
+  const options = [
+
+    "What's your name?",
+
+    "Good night.",
+
+    "How old is your phone?"
+
+  ];
+
+  options.sort(
+    function(){
+
+      return Math.random() - .5;
+
+    }
+  );
+
+
+  options.forEach(
+    function(option){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "option";
+
+      button.innerText =
+        option;
+
+      button.onclick =
+        function(){
+
+          checkChoose(
+            option,
+            button
+          );
+
+        };
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "chooseFeedback"
+  ).innerText = "";
+
+  document.getElementById(
+    "chooseNext"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+function checkChoose(
+  answer,
+  button
+){
+
+  if(
+    answer ===
+    "What's your name?"
+  ){
+
+    button.classList.add(
+      "correct"
+    );
+
+    document
+      .querySelectorAll(
+        "#chooseOptions .option"
+      )
+      .forEach(
+        function(option){
+
+          option.disabled =
+            true;
+
+        }
+      );
+
+    document.getElementById(
+      "chooseFeedback"
+    ).innerText =
+      "✓ Correct!";
+
+    document.getElementById(
+      "chooseFeedback"
+    ).className =
+      "feedback correctText";
+
+    speakEN(
+      "Correct!"
+    );
+
+    addXP(10);
+
+    document.getElementById(
+      "chooseNext"
+    ).classList.remove(
+      "hidden"
+    );
+
+  }else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+    document.getElementById(
+      "chooseFeedback"
+    ).innerText =
+      "✗ Incorrect. Try again!";
+
+    document.getElementById(
+      "chooseFeedback"
+    ).className =
+      "feedback wrongText";
+
+    speakEN(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+
+/* ===============================
+   YOUR TURN — RECORDING
+================================ */
+
+let recorders = {};
+
+
+async function toggleRecording(
+  number
+){
+
+  const status =
+    document.getElementById(
+      "recordStatus" + number
+    );
+
+
+  if(
+    recorders[number] &&
+    recorders[number].state !==
+    "inactive"
+  ){
+
+    recorders[number].stop();
+
+    return;
+
+  }
+
+
+  if(
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ){
+
+    status.innerText =
+      "Microphone recording is not supported.";
+
+    return;
+
+  }
+
+
+  try{
+
+    const stream =
+      await navigator.mediaDevices
+        .getUserMedia({
+          audio:true
+        });
+
+
+    const recorder =
+      new MediaRecorder(
+        stream
+      );
+
+    recorders[number] =
+      recorder;
+
+
+    let chunks = [];
+
+
+    recorder.ondataavailable =
+      function(event){
+
+        if(
+          event.data.size > 0
+        ){
+
+          chunks.push(
+            event.data
+          );
+
+        }
+
+      };
+
+
+    recorder.onstop =
+      function(){
+
+        stream
+          .getTracks()
+          .forEach(
+            function(track){
+
+              track.stop();
+
+            }
+          );
+
+        status.innerText =
+          "✓ Recording complete!";
+
+        addXP(5);
+
+      };
+
+
+    recorder.start();
+
+
+    status.innerText =
+      "🔴 Recording... toque novamente para parar.";
+
+  }catch(error){
+
+    status.innerText =
+      "Permita o acesso ao microfone.";
+
+  }
+
+}
+
+
+/* ===============================
+   THINK IN ENGLISH
+================================ */
+
+function prepareThink(){
+
+  const container =
+    document.getElementById(
+      "thinkOptions"
+    );
+
+  container.innerHTML = "";
+
+
+  const options = [
+
+    "Where are you from?",
+
+    "What's your name?",
+
+    "Nice to meet you."
+
+  ];
+
+
+  options.sort(
+    function(){
+
+      return Math.random() - .5;
+
+    }
+  );
+
+
+  options.forEach(
+    function(option){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "option";
+
+      button.innerText =
+        option;
+
+      button.onclick =
+        function(){
+
+          checkThink(
+            option,
+            button
+          );
+
+        };
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+function checkThink(
+  answer,
+  button
+){
+
+  if(
+    answer ===
+    "Where are you from?"
+  ){
+
+    button.classList.add(
+      "correct"
+    );
+
+    document
+      .querySelectorAll(
+        "#thinkOptions .option"
+      )
+      .forEach(
+        function(option){
+
+          option.disabled =
+            true;
+
+        }
+      );
+
+    document.getElementById(
+      "thinkFeedback"
+    ).innerText =
+      "✓ Correct!";
+
+    document.getElementById(
+      "thinkFeedback"
+    ).className =
+      "feedback correctText";
+
+    speakEN(
+      "Correct!"
+    );
+
+    addXP(10);
+
+    document.getElementById(
+      "thinkNext"
+    ).classList.remove(
+      "hidden"
+    );
+
+  }else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+    document.getElementById(
+      "thinkFeedback"
+    ).innerText =
+      "✗ Incorrect. Try again!";
+
+    document.getElementById(
+      "thinkFeedback"
+    ).className =
+      "feedback wrongText";
+
+    speakEN(
+      "Incorrect. Try again!"
+    );
+
+    setTimeout(
+      function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+
+/* ===============================
+   FINAL CHALLENGE
+================================ */
+
+const challenges = [
+
+  {
+    question:
+      "Você acabou de conhecer alguém. Pergunte o nome dela.",
+
+    audio:
+      "Você acabou de conhecer alguém. Pergunte o nome dela.",
+
+    options:[
+      "What's your name?",
+      "Where are you from?",
+      "Good night."
+    ],
+
+    correct:0
+
+  },
+
+  {
+    question:
+      "Você quer saber de onde uma pessoa é.",
+
+    audio:
+      "Você quer saber de onde uma pessoa é.",
+
+    options:[
+      "Nice to meet you.",
+      "Where are you from?",
+      "What's her name?"
+    ],
+
+    correct:1
+
+  },
+
+  {
+    question:
+      "Complete: I'm ___ Mozambique.",
+
+    audio:
+      "Complete: I'm espaço Mozambique.",
+
+    options:[
+      "from",
+      "friend",
+      "name"
+    ],
+
+    correct:0
+
+  },
+
+  {
+    question:
+      "🇿🇦 Vanessa é da África do Sul. Escolha a frase correta.",
+
+    audio:
+      "Vanessa é da África do Sul. Escolha a frase correta.",
+
+    options:[
+      "She's from South Africa.",
+      "She's from Mozambique.",
+      "She's my name."
+    ],
+
+    correct:0
+
+  },
+
+  {
+    question:
+      "Alguém pergunta: Is she your friend?",
+
+    audio:
+      "Alguém pergunta: Is she your friend?",
+
+    options:[
+      "Yes, she is.",
+      "Where are you from?",
+      "My name is Vanessa."
+    ],
+
+    correct:0
+
+  },
+
+  {
+    question:
+      "Você quer perguntar de onde ela é.",
+
+    audio:
+      "Você quer perguntar de onde ela é.",
+
+    options:[
+      "Where is she from?",
+      "What's your name?",
+      "Nice to meet you."
+    ],
+
+    correct:0
+
+  }
+
+];
+
+
+let challengeIndex = 0;
+
+let challengeScore = 0;
+
+
+function loadChallenge(){
+
+  const challenge =
+    challenges[
+      challengeIndex
+    ];
+
+
+  document.getElementById(
+    "challengeNumber"
+  ).innerText =
+    "Questão " +
+    (challengeIndex + 1) +
+    " de " +
+    challenges.length;
+
+
+  document.getElementById(
+    "challengeQuestion"
+  ).innerText =
+    challenge.question;
+
+
+  const container =
+    document.getElementById(
+      "challengeOptions"
+    );
+
+  container.innerHTML = "";
+
+
+  const indexedOptions =
+    challenge.options.map(
+      function(option,index){
+
+        return {
+          text:option,
+          index:index
+        };
+
+      }
+    );
+
+
+  indexedOptions.sort(
+    function(){
+
+      return Math.random() - .5;
+
+    }
+  );
+
+
+  indexedOptions.forEach(
+    function(item){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "option";
+
+      button.innerText =
+        item.text;
+
+      button.onclick =
+        function(){
+
+          answerChallenge(
+            item.index,
+            button
+          );
+
+        };
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "challengeFeedback"
+  ).innerText = "";
+
+  document.getElementById(
+    "challengeFeedback"
+  ).className =
+    "feedback";
+
+
+  document.getElementById(
+    "challengeScore"
+  ).innerText =
+    challengeScore +
+    " / " +
+    challenges.length;
+
+
+  document.getElementById(
+    "finishButton"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+function speakChallenge(){
+
+  speakPT(
+    challenges[
+      challengeIndex
+    ].audio
+  );
+
+}
+
+
+function answerChallenge(
+  answer,
+  button
+){
+
+  const challenge =
+    challenges[
+      challengeIndex
+    ];
+
+
+  if(
+    answer ===
+    challenge.correct
+  ){
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    document
+      .querySelectorAll(
+        "#challengeOptions .option"
+      )
+      .forEach(
+        function(option){
+
+          option.disabled =
+            true;
+
+        }
+      );
+
+
+    challengeScore++;
+
+
+    document.getElementById(
+      "challengeFeedback"
+    ).innerText =
+      "✓ Correct!";
+
+
+    document.getElementById(
+      "challengeFeedback"
+    ).className =
+      "feedback correctText";
+
+
+    speakEN(
+      "Correct!"
+    );
+
+
+    addXP(5);
+
+
+    document.getElementById(
+      "challengeScore"
+    ).innerText =
+      challengeScore +
+      " / " +
+      challenges.length;
+
+
+    setTimeout(
+      function(){
+
+        challengeIndex++;
+
+
+        if(
+          challengeIndex <
+          challenges.length
+        ){
+
+          loadChallenge();
+
+        }else{
+
+          finishChallenge();
+
+        }
+
+      },
+      900
+    );
+
+
+  }else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    document.getElementById(
+      "challengeFeedback"
+    ).innerText =
+      "✗ Incorrect. Try again!";
+
+
+    document.getElementById(
+      "challengeFeedback"
+    ).className =
+      "feedback wrongText";
+
+
+    speakEN(
+      "Incorrect. Try again!"
+    );
+
+
+    setTimeout(
+      function(){
+
+        button.classList.remove(
+          "wrong"
+        );
+
+      },
+      700
+    );
+
+  }
+
+}
+
+
+/* ===============================
+   FINISH CHALLENGE
+================================ */
+
+function finishChallenge(){
+
+  document.getElementById(
+    "challengeNumber"
+  ).innerText =
+    "Challenge complete!";
+
+
+  document.getElementById(
+    "challengeFeedback"
+  ).innerText =
+    "You finished the Final Challenge!";
+
+
+  document.getElementById(
+    "challengeFeedback"
+  ).className =
+    "feedback correctText";
+
+
+  document.getElementById(
+    "finishButton"
+  ).classList.remove(
+    "hidden"
+  );
+
+}
+
+
+/* ===============================
+   FINISH LESSON
+================================ */
+
+function finishLesson(){
+
+  localStorage.setItem(
+    "englishMZ_lesson8_score",
+    challengeScore
+  );
+
+
+  document.getElementById(
+    "finalScore"
+  ).innerText =
+    "Final Score: " +
+    challengeScore +
+    " / " +
+    challenges.length;
+
+
+  document.getElementById(
+    "finalXP"
+  ).innerText =
+    "⭐ Total XP: " +
+    xp;
+
+
+  let independence =
+    "Growing 🌱";
+
+
+  if(
+    challengeScore >= 5
+  ){
+
+    independence =
+      "Strong progress! 🚀";
+
+  }else if(
+    challengeScore >= 3
+  ){
+
+    independence =
+      "Keep practicing! 💪";
+
+  }
+
+
+  document.getElementById(
+    "independence"
+  ).innerText =
+    independence;
+
+
+  goToScreen(13);
+
+}
+
+
+/* ===============================
+   BACK TO LESSONS
+================================ */
+
+function goBackToLessons(){
+
+  window.location.href =
+    "../index.html";
+
+}
+
+
+/* ===============================
+   START
+================================ */
+
+updateXP();
+
+</script>
+
+</body>
+</html>
+
+ 
