@@ -4,77 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lesson 8 — Meeting Someone | English MZ</title>
+<title>Lesson 8 — Where Are You From? | English MZ</title>
 
 <style>
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
   font-family:Arial,sans-serif;
 }
 
 body{
-  background:#111;
-  color:#fff;
+  background:#0b0b0b;
+  color:white;
   min-height:100vh;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#181818;
-  padding:14px 18px;
-  border-bottom:1px solid #292929;
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
 }
 
 .top{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  margin-bottom:20px;
 }
 
-.logo{
-  font-size:20px;
-  font-weight:bold;
+.back{
+  background:#222;
+  border:none;
+  color:white;
+  padding:10px 15px;
+  border-radius:12px;
+  cursor:pointer;
 }
 
 .xp{
+  background:#191919;
+  padding:10px 14px;
+  border-radius:15px;
+  color:#ffd43b;
   font-weight:bold;
 }
 
-.progressBox{
-  margin-top:10px;
+.progress{
+  width:100%;
   height:8px;
-  background:#333;
-  border-radius:20px;
+  background:#292929;
+  border-radius:10px;
   overflow:hidden;
+  margin-bottom:30px;
 }
 
-#progressFill{
+.progress-bar{
   height:100%;
   width:0%;
-  background:#58cc02;
+  background:#00d084;
   transition:.3s;
-}
-
-.progressText{
-  font-size:12px;
-  color:#aaa;
-  margin-top:5px;
-  text-align:right;
-}
-
-main{
-  max-width:600px;
-  margin:auto;
-  padding:25px 18px 60px;
 }
 
 .screen{
   display:none;
-  animation:fade .25s ease;
+  animation:fade .3s ease;
 }
 
 .screen.active{
@@ -82,1139 +76,775 @@ main{
 }
 
 @keyframes fade{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.label{
-  color:#58cc02;
-  font-size:13px;
+.tag{
+  color:#00d084;
   font-weight:bold;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 h1{
-  font-size:30px;
-  margin-bottom:10px;
+  font-size:32px;
+  margin-bottom:15px;
 }
 
 h2{
-  margin-bottom:10px;
+  font-size:25px;
+  margin-bottom:15px;
 }
 
-.subtitle{
-  color:#bbb;
-  line-height:1.5;
-  margin-bottom:22px;
+p{
+  color:#cfcfcf;
+  line-height:1.6;
+  margin-bottom:20px;
 }
 
 .card{
-  background:#1c1c1c;
-  border:1px solid #303030;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:18px;
-}
-
-.phrase{
-  background:#242424;
-  padding:18px;
-  border-radius:14px;
-  margin-bottom:14px;
+  background:#171717;
+  border:1px solid #292929;
+  padding:22px;
+  border-radius:20px;
+  margin:20px 0;
 }
 
 .english{
-  font-size:20px;
+  font-size:25px;
   font-weight:bold;
   margin-bottom:8px;
 }
 
-.meaning{
-  color:#aaa;
+.translation{
+  color:#999;
 }
 
-.audioButton{
-  margin-top:12px;
-  background:#333;
-  color:white;
-  border:0;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.mainButton{
+button.option{
   width:100%;
-  padding:15px;
-  margin-top:14px;
-  border:0;
-  border-radius:12px;
-  background:#58cc02;
-  color:#111;
-  font-weight:bold;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.secondaryButton{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  border:1px solid #444;
-  border-radius:12px;
-  background:#242424;
+  padding:17px;
+  margin:8px 0;
+  border:none;
+  border-radius:15px;
+  background:#202020;
   color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.option{
-  width:100%;
-  padding:15px;
-  margin-top:10px;
-  border-radius:12px;
-  border:2px solid #383838;
-  background:#242424;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
+  font-size:17px;
   text-align:left;
+  cursor:pointer;
 }
 
-.option:hover{
-  border-color:#666;
+button.option:hover{
+  background:#2b2b2b;
 }
 
-.option.correct{
-  border-color:#58cc02;
-  background:#183d0c;
+.correct{
+  background:#075c3e !important;
 }
 
-.option.wrong{
-  border-color:#ff4b4b;
-  background:#3b1010;
+.wrong{
+  background:#692525 !important;
 }
 
-.option:disabled{
-  cursor:default;
+.main-btn{
+  width:100%;
+  padding:17px;
+  border:none;
+  border-radius:15px;
+  background:#00d084;
+  color:#00150d;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.main-btn:hover{
+  transform:scale(1.01);
 }
 
 .feedback{
-  min-height:28px;
-  margin-top:14px;
+  margin-top:15px;
+  min-height:25px;
   font-weight:bold;
-}
-
-.correctText{
-  color:#58cc02;
-}
-
-.wrongText{
-  color:#ff6969;
-}
-
-.hidden{
-  display:none !important;
-}
-
-.center{
-  text-align:center;
 }
 
 .big{
-  font-size:50px;
+  font-size:55px;
   text-align:center;
-  margin:15px;
+  margin:20px;
 }
 
-.conversationLine{
-  padding:14px;
-  border-bottom:1px solid #333;
-}
-
-.speaker{
-  font-weight:bold;
-  color:#58cc02;
-}
-
-.countryGrid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:15px;
-}
-
-.country{
-  background:#252525;
-  border-radius:14px;
-  padding:14px;
+.xp-earned{
   text-align:center;
-}
-
-.flag{
-  font-size:40px;
-  display:block;
-  margin-bottom:5px;
-}
-
-.countryName{
+  color:#ffd43b;
+  font-size:24px;
   font-weight:bold;
+  margin:20px;
 }
 
-.countryPT{
-  font-size:13px;
-  color:#999;
-  margin-top:3px;
-}
-
-.wordGrid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:15px;
-}
-
-.wordButton{
-  background:#292929;
-  color:white;
-  border:2px solid #444;
-  padding:12px 15px;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-.wordButton:disabled{
-  opacity:.35;
-}
-
-.sentenceAnswer{
-  min-height:55px;
+textarea{
+  width:100%;
+  min-height:120px;
   background:#111;
-  border:2px dashed #444;
-  border-radius:12px;
+  border:1px solid #333;
+  border-radius:15px;
   padding:15px;
-  margin-top:15px;
-  font-size:19px;
-  line-height:1.5;
+  color:white;
+  font-size:17px;
+  resize:none;
 }
 
-.mission{
-  padding:12px 0;
-  border-bottom:1px solid #333;
+.speak-box{
+  text-align:center;
+  background:#171717;
+  padding:25px;
+  border-radius:20px;
+  margin:20px 0;
 }
 
-.mission:last-child{
-  border-bottom:0;
-}
-
-.recordButton{
-  width:90px;
-  height:90px;
+.mic{
+  width:75px;
+  height:75px;
   border-radius:50%;
-  border:0;
-  background:#58cc02;
-  font-size:35px;
-  display:block;
-  margin:20px auto;
+  border:none;
+  background:#00d084;
+  font-size:30px;
   cursor:pointer;
 }
 
-.score{
-  font-size:25px;
-  font-weight:bold;
-  text-align:center;
-  margin:15px;
+.small{
+  font-size:14px;
+  color:#777;
 }
 
-.xpResult{
-  font-size:22px;
-  font-weight:bold;
-  text-align:center;
-  margin:15px;
+.lesson-list{
+  margin-top:20px;
 }
+
+.badge{
+  display:inline-block;
+  background:#222;
+  padding:7px 12px;
+  border-radius:20px;
+  margin:4px;
+  color:#bbb;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="container">
 
 <div class="top">
-
-<div class="logo">
-🇬🇧 English MZ
+  <button class="back" onclick="goBack()">←</button>
+  <div class="xp">⭐ <span id="xp">0</span> XP</div>
 </div>
 
-<div class="xp">
-⭐ <span id="xp">0</span> XP
+<div class="progress">
+  <div class="progress-bar" id="progress"></div>
 </div>
 
-</div>
-
-<div class="progressBox">
-<div id="progressFill"></div>
-</div>
-
-<div class="progressText">
-<span id="progressText">1/13</span>
-</div>
-
-</header>
-
-<main>
 
 <!-- SCREEN 1 -->
 
-<section id="screen1" class="screen active">
+<div class="screen active" id="screen1">
 
-<div class="label">
-A1 • LESSON 8
-</div>
+<div class="tag">A1 • LESSON 8</div>
 
-<h1>
-💬 Meeting Someone
-</h1>
+<h1>Where are you from?</h1>
 
-<p class="subtitle">
-Hoje você vai aprender a conhecer alguém pela primeira vez e conversar sobre nomes, países e amigos.
+<p>
+Hoje você vai aprender a dizer de onde você é,
+perguntar a origem de outra pessoa e responder
+naturalmente em inglês.
 </p>
 
 <div class="card">
 
-<div class="big">
-👋
-</div>
-
-<h2>
-Real Life Mission
-</h2>
-
-<p class="subtitle">
-Imagine que você acabou de conhecer alguém na universidade.
-</p>
-
-<p>
-🎯 Sua missão:
-</p>
+<div class="english">Where are you from?</div>
+<div class="translation">De onde você é?</div>
 
 <br>
 
-<p>
-Conhecer o nome da pessoa, descobrir de onde ela é e falar sobre uma pessoa que você conhece.
-</p>
+<div class="english">I'm from Mozambique.</div>
+<div class="translation">Eu sou de Moçambique.</div>
 
 </div>
 
-<button
-class="mainButton"
-onclick="goToScreen(2)">
+<button class="main-btn" onclick="next()">Start Lesson →</button>
 
-COMEÇAR →
-
-</button>
-
-</section>
+</div>
 
 
 <!-- SCREEN 2 -->
 
-<section id="screen2" class="screen">
+<div class="screen" id="screen2">
 
-<div class="label">
-STEP 1
-</div>
+<div class="tag">STEP 1 • LISTEN</div>
 
-<h1>
-👋 Meet Someone
-</h1>
+<h2>Listen & Understand</h2>
 
-<p class="subtitle">
-Primeiro, vamos aprender como iniciar uma conversa.
-</p>
+<p>Toque no botão e ouça a frase.</p>
 
 <div class="card">
 
-<div class="phrase">
+<div class="english">Where are you from?</div>
 
-<div class="english">
-Hi!
-</div>
-
-<div class="meaning">
-Olá!
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Hi!')">
-
-🔊 Ouvir
-
+<button class="main-btn" onclick="speak('Where are you from?')">
+🔊 Listen
 </button>
 
 </div>
 
+<div class="card">
 
-<div class="phrase">
+<div class="english">I'm from Mozambique.</div>
 
-<div class="english">
-What's your name?
-</div>
-
-<div class="meaning">
-Qual é o seu nome?
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('What is your name?')">
-
-🔊 Ouvir
-
+<button class="main-btn" onclick="speak('I am from Mozambique.')">
+🔊 Listen
 </button>
 
 </div>
 
-
-<div class="phrase">
-
-<div class="english">
-My name is Maryloyd.
-</div>
-
-<div class="meaning">
-O meu nome é Maryloyd.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('My name is Maryloyd.')">
-
-🔊 Ouvir
-
-</button>
+<button class="main-btn" onclick="next()">I understand →</button>
 
 </div>
-
-
-<div class="phrase">
-
-<div class="english">
-Nice to meet you.
-</div>
-
-<div class="meaning">
-Prazer em conhecer você.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Nice to meet you.')">
-
-🔊 Ouvir
-
-</button>
-
-</div>
-
-
-<div class="phrase">
-
-<div class="english">
-Nice to meet you too.
-</div>
-
-<div class="meaning">
-Prazer em conhecer você também.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Nice to meet you too.')">
-
-🔊 Ouvir
-
-</button>
-
-</div>
-
-</div>
-
-<button
-class="mainButton"
-onclick="goToScreen(3)">
-
-CONTINUAR →
-
-</button>
-
-</section>
 
 
 <!-- SCREEN 3 -->
 
-<section id="screen3" class="screen">
+<div class="screen" id="screen3">
 
-<div class="label">
-STEP 2
-</div>
+<div class="tag">STEP 2 • REPEAT</div>
 
-<h1>
-🌍 Where are you from?
-</h1>
+<h2>Say it</h2>
 
-<p class="subtitle">
-Agora vamos descobrir de onde a pessoa é.
+<p>
+Ouça. Depois repita em voz alta.
+Não precisa ter medo de errar.
 </p>
 
-<div class="card">
+<div class="speak-box">
 
-<div class="phrase">
+<div class="big">🎧</div>
 
-<div class="english">
-Where are you from?
-</div>
+<div class="english">Where are you from?</div>
 
-<div class="meaning">
-De onde você é?
-</div>
+<button class="main-btn" onclick="speak('Where are you from?')">
+🔊 Hear
+</button>
 
-<button
-class="audioButton"
-onclick="speakEN('Where are you from?')">
+<br><br>
 
-🔊 Ouvir
+<div class="english">I'm from Mozambique.</div>
 
+<button class="main-btn" onclick="speak('I am from Mozambique.')">
+🔊 Hear
 </button>
 
 </div>
 
-
-<div class="phrase">
-
-<div class="english">
-I'm from Mozambique.
-</div>
-
-<div class="meaning">
-Eu sou de Moçambique.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('I am from Mozambique.')">
-
-🔊 Ouvir
-
-</button>
+<button class="main-btn" onclick="next()">I repeated it →</button>
 
 </div>
-
-</div>
-
-<button
-class="mainButton"
-onclick="goToScreen(4)">
-
-OUVIR A CONVERSA →
-
-</button>
-
-</section>
 
 
 <!-- SCREEN 4 -->
 
-<section id="screen4" class="screen">
+<div class="screen" id="screen4">
 
-<div class="label">
-REAL LIFE
-</div>
+<div class="tag">STEP 3 • CHOOSE</div>
 
-<h1>
-🎧 Full Conversation
-</h1>
-
-<p class="subtitle">
-Uma situação real: duas pessoas se encontram pela primeira vez.
-</p>
+<h2>What does this mean?</h2>
 
 <div class="card">
 
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Hi! What's your name?
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-My name is Maryloyd.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Nice to meet you.
-</div>
-<div class="conversationLine">
-<span class="speaker">B:</span>
-Nice to meet you too.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Where are you from?
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-I'm from Mozambique.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Is she your friend?
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-Yes, she is.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-What's her name?
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-Her name is Vanessa.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Where is she from?
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-She's from South Africa.
-</div>
-
-<div class="conversationLine">
-<span class="speaker">A:</span>
-Oh, nice!
-</div>
-
-<div class="conversationLine">
-<span class="speaker">B:</span>
-Thank you!
-</div>
+<div class="english">Where are you from?</div>
 
 </div>
 
-<button
-class="mainButton"
-onclick="playFullConversation()">
-
-▶️ OUVIR TUDO
-
+<button class="option" onclick="answer(this,false)">
+A. Qual é o seu nome?
 </button>
 
-<button
-class="secondaryButton"
-onclick="goToScreen(5)">
-
-CONTINUAR →
-
+<button class="option" onclick="answer(this,true)">
+B. De onde você é?
 </button>
 
-</section>
+<button class="option" onclick="answer(this,false)">
+C. Onde você mora?
+</button>
+
+<div class="feedback" id="feedback4"></div>
+
+</div>
 
 
 <!-- SCREEN 5 -->
 
-<section id="screen5" class="screen">
+<div class="screen" id="screen5">
 
-<div class="label">
-STEP 3
-</div>
+<div class="tag">STEP 4 • CHOOSE</div>
 
-<h1>
-👩 Talking About Her
-</h1>
-
-<p class="subtitle">
-Agora vamos aprender a falar sobre outra pessoa.
-</p>
+<h2>Complete the conversation</h2>
 
 <div class="card">
 
-<div class="phrase">
+<div class="english">
+A: Where are you from?
+</div>
+
+<br>
 
 <div class="english">
-Is she your friend?
+B: ______
 </div>
 
-<div class="meaning">
-Ela é sua amiga?
 </div>
 
-<button
-class="audioButton"
-onclick="speakEN('Is she your friend?')">
-
-🔊 Ouvir
-
+<button class="option" onclick="answer(this,false)">
+A. My name is Junior.
 </button>
 
-</div>
-
-<div class="phrase">
-
-<div class="english">
-Yes, she is.
-</div>
-
-<div class="meaning">
-Sim, ela é.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Yes, she is.')">
-
-🔊 Ouvir
-
+<button class="option" onclick="answer(this,true)">
+B. I'm from Mozambique.
 </button>
 
-</div>
-
-<div class="phrase">
-
-<div class="english">
-What's her name?
-</div>
-
-<div class="meaning">
-Qual é o nome dela?
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('What is her name?')">
-
-🔊 Ouvir
-
+<button class="option" onclick="answer(this,false)">
+C. Good night.
 </button>
 
-</div>
-
-<div class="phrase">
-
-<div class="english">
-Her name is Vanessa.
-</div>
-
-<div class="meaning">
-O nome dela é Vanessa.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Her name is Vanessa.')">
-
-🔊 Ouvir
-
-</button>
+<div class="feedback" id="feedback5"></div>
 
 </div>
 
-<div class="phrase">
 
-<div class="english">
-Where is she from?
-</div>
-
-<div class="meaning">
-De onde ela é?
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('Where is she from?')">
-
-🔊 Ouvir
-
-</button>
-
-</div>
-
-<div class="phrase">
-
-<div class="english">
-She's from South Africa.
-</div>
-
-<div class="meaning">
-Ela é da África do Sul.
-</div>
-
-<button
-class="audioButton"
-onclick="speakEN('She is from South Africa.')">
-
-🔊 Ouvir
-
-</button>
-
-</div>
-
-</div>
-
-<button
-class="mainButton"
-onclick="goToScreen(6)">
-
-CONTINUAR →
-
-</button>
 <!-- SCREEN 6 -->
 
-<section id="screen6" class="screen">
+<div class="screen" id="screen6">
 
-<div class="label">
-COUNTRIES
-</div>
+<div class="tag">STEP 5 • REAL ENGLISH</div>
 
-<h1>
-🌍 Countries
-</h1>
+<h2>Listen to a real conversation</h2>
 
-<p class="subtitle">
-Aprenda alguns países em inglês e associe-os às suas bandeiras.
-</p>
+<div class="card">
 
-<div
-id="countriesGrid"
-class="countryGrid">
-</div>
+<div class="english">A: Hi! What's your name?</div>
 
-<button
-class="mainButton"
-onclick="goToScreen(7)">
-
-CONTINUAR →
-
+<button class="main-btn" onclick="speak(\"Hi! What's your name?\")">
+🔊 Listen
 </button>
 
-</section>
+<br><br>
+
+<div class="english">B: My name is Ana.</div>
+
+<button class="main-btn" onclick="speak('My name is Ana.')">
+🔊 Listen
+</button>
+
+<br><br>
+
+<div class="english">A: Where are you from?</div>
+
+<button class="main-btn" onclick="speak('Where are you from?')">
+🔊 Listen
+</button>
+
+<br><br>
+
+<div class="english">B: I'm from Mozambique.</div>
+
+<button class="main-btn" onclick="speak('I am from Mozambique.')">
+🔊 Listen
+</button>
+
+</div>
+
+<button class="main-btn" onclick="next()">Continue →</button>
+
+</div>
 
 
 <!-- SCREEN 7 -->
 
-<section id="screen7" class="screen">
+<div class="screen" id="screen7">
 
-<div class="label">
-LISTENING
-</div>
+<div class="tag">STEP 6 • YOUR TURN</div>
 
-<h1>
-🎧 Listen & Choose
-</h1>
+<h2>Build your answer</h2>
 
-<p class="subtitle">
-Ouça o país e escolha a bandeira correta.
+<p>
+Imagine que alguém pergunta:
 </p>
 
 <div class="card">
 
-<div class="big">
-🌍
+<div class="english">Where are you from?</div>
+
 </div>
 
-<button
-class="mainButton"
-onclick="playListeningCountry()">
+<p>Escolha a resposta correta:</p>
 
-🔊 OUVIR
-
+<button class="option" onclick="answer(this,false)">
+I'm fine.
 </button>
 
-<div id="listenOptions"></div>
-
-<div
-id="listenFeedback"
-class="feedback">
-</div>
-
-<button
-id="listenNext"
-class="mainButton hidden"
-onclick="goToScreen(8)">
-
-CONTINUAR →
-
+<button class="option" onclick="answer(this,true)">
+I'm from Mozambique.
 </button>
 
-</div>
+<button class="option" onclick="answer(this,false)">
+My name is...
+</button>
 
-</section>
+<div class="feedback" id="feedback7"></div>
+
+</div>
 
 
 <!-- SCREEN 8 -->
 
-<section id="screen8" class="screen">
+<div class="screen" id="screen8">
 
-<div class="label">
-BUILD
-</div>
+<div class="tag">STEP 7 • SPEAK</div>
 
-<h1>
-🧩 Build the Sentence
-</h1>
-
-<p class="subtitle">
-Construa a frase correta. As palavras estão baralhadas.
-</p>
-
-<div class="card">
+<h2>English Mode 🎤</h2>
 
 <p>
-🇵🇹 <b>De onde você é?</b>
+Agora tente falar sem olhar para a tradução.
 </p>
 
-<div
-id="sentenceAnswer"
-class="sentenceAnswer">
-...
-</div>
+<div class="speak-box">
 
-<div
-id="wordGrid"
-class="wordGrid">
-</div>
+<div class="english">Where are you from?</div>
 
-<button
-class="secondaryButton"
-onclick="resetSentence()">
-
-↻ LIMPAR
-
+<button class="mic" onclick="speak('Where are you from?')">
+🎤
 </button>
 
-<button
-class="mainButton"
-onclick="checkSentence()">
-
-VERIFICAR
-
-</button>
-
-<div
-id="sentenceFeedback"
-class="feedback">
-</div>
-
-<button
-id="sentenceNext"
-class="mainButton hidden"
-onclick="goToScreen(9)">
-
-CONTINUAR →
-
-</button>
+<p class="small">
+Ouça a pergunta e responda em voz alta:
+<br>
+"I'm from Mozambique."
+</p>
 
 </div>
 
-</section>
+<button class="main-btn" onclick="next()">I spoke →</button>
+
+</div>
 
 
 <!-- SCREEN 9 -->
 
-<section id="screen9" class="screen">
+<div class="screen" id="screen9">
 
-<div class="label">
-CHOOSE YOUR CONVERSATION
-</div>
+<div class="tag">STEP 8 • WRITE</div>
 
-<h1>
-💬 Your Choice
-</h1>
-
-<p class="subtitle">
-Você acabou de conhecer alguém. Escolha o próximo passo da conversa.
-</p>
-
-<div class="card">
+<h2>Write your sentence</h2>
 
 <p>
-👤 A pessoa acabou de se apresentar.
-</p>
-
+Escreva em inglês:
 <br>
-
-<p>
-<b>O que você pergunta agora?</b>
+<strong>"Eu sou de Moçambique."</strong>
 </p>
 
-<div id="chooseOptions"></div>
+<textarea id="writing" placeholder="Type your answer in English..."></textarea>
 
-<div
-id="chooseFeedback"
-class="feedback">
-</div>
-
-<button
-id="chooseNext"
-class="mainButton hidden"
-onclick="goToScreen(10)">
-
-CONTINUAR →
-
+<button class="main-btn" onclick="checkWriting()">
+Check answer
 </button>
 
-</div>
+<div class="feedback" id="writingFeedback"></div>
 
-</section>
+</div>
 
 
 <!-- SCREEN 10 -->
 
-<section id="screen10" class="screen">
+<div class="screen" id="screen10">
 
-<div class="label">
-SPEAK
-</div>
+<div class="tag">FINAL CHALLENGE</div>
 
-<h1>
-🗣️ Your Turn
-</h1>
-
-<p class="subtitle">
-Agora fale sobre a sua própria vida. Sua resposta pode ser diferente da de outros alunos.
-</p>
+<h2>Conversation Challenge 🔥</h2>
 
 <div class="card">
 
-<h2>
-1️⃣ Your Name
-</h2>
-
-<p>
-Diga seu próprio nome.
-</p>
+<div class="english">Someone asks:</div>
 
 <br>
 
-<b>
-My name is ______.
-</b>
+<div class="english">"Where are you from?"</div>
 
-<button
-class="recordButton"
-onclick="toggleRecording(1)">
+</div>
 
-🎙️
+<p>
+Agora responda sozinho, sem escolher uma opção.
+</p>
 
+<textarea id="finalAnswer" placeholder="Type your answer..."></textarea>
+
+<button class="main-btn" onclick="finishLesson()">
+Finish Lesson
 </button>
 
-<div
-id="recordStatus1"
-class="center">
-
-Toque para gravar.
-
 </div>
 
-</div>
 
+<!-- SCREEN 11 -->
+
+<div class="screen" id="screen11">
+
+<div class="big">🎉</div>
+
+<h1>Lesson Complete!</h1>
+
+<p>
+Muito bem! Você terminou a Aula 8.
+</p>
+
+<div class="xp-earned">
++50 XP ⭐
+</div>
 
 <div class="card">
 
-<h2>
-2️⃣ Your Country
-</h2>
+<h2>Today you learned:</h2>
 
-<p>
-Diga de onde você é.
-</p>
+<div class="badge">Where are you from?</div>
 
-<br>
+<div class="badge">I'm from Mozambique.</div>
 
-<b>
-I'm from ______.
-</b>
+<div class="badge">Conversation</div>
 
-<button
-class="recordButton"
-onclick="toggleRecording(2)">
+<div class="badge">Speaking</div>
 
-🎙️
+<div class="badge">Listening</div>
 
+</div>
+
+<button class="main-btn" onclick="goBack()">
+← Back to Lessons
 </button>
 
-<div
-id="recordStatus2"
-class="center">
-
-Toque para gravar.
-
 </div>
 
 </div>
 
 
-<div class="card">
+<script>
 
-<h2>
-3️⃣ Talk About a Friend
-</h2>
+let current=1;
+const total=11;
 
-<p>
-Pense em uma pessoa real que você conhece.
-</p>
+let xp=Number(localStorage.getItem("englishMZ_xp")) || 0;
 
-<br>
+document.getElementById("xp").textContent=xp;
 
-<b>
-Her name is ______.<br>
-She's from ______.
-</b>
+function updateProgress(){
 
-<button
-class="recordButton"
-onclick="toggleRecording(3)">
+let percent=((current-1)/(total-1))*100;
 
-🎙️
+document.getElementById("progress").style.width=percent+"%";
 
-</button>
+}
 
-<div
-id="recordStatus3"
-class="center">
-
-Toque para gravar.
-
-</div>
-
-</div>
+updateProgress();
 
 
-<button
-class="mainButton"
-onclick="goToScreen(11)">
+function showScreen(n){
 
-CONTINUAR →
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.remove("active");
+});
 
-</button>
+document.getElementById("screen"+n).classList.add("active");
 
-</section>
+current=n;
+
+updateProgress();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function next(){
+
+if(current<total){
+
+showScreen(current+1);
+
+}
+
+}
+
+
+function addXP(amount){
+
+xp+=amount;
+
+localStorage.setItem("englishMZ_xp",xp);
+
+document.getElementById("xp").textContent=xp;
+
+}
+
+
+function speak(text){
+
+if(!("speechSynthesis" in window)){
+
+alert("O seu navegador não suporta áudio.");
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+let voice=new SpeechSynthesisUtterance(text);
+
+voice.lang="en-US";
+
+voice.rate=0.85;
+
+speechSynthesis.speak(voice);
+
+}
+
+
+function answer(button,correct){
+
+let screen=button.closest(".screen");
+
+let feedback=screen.querySelector(".feedback");
+
+let options=screen.querySelectorAll(".option");
+
+options.forEach(o=>{
+o.disabled=true;
+});
+
+if(correct){
+
+button.classList.add("correct");
+
+feedback.textContent="✓ Correct!";
+
+feedback.style.color="#00d084";
+
+addXP(10);
+
+setTimeout(()=>{
+
+if(current<10){
+next();
+}
+
+},900);
+
+}else{
+
+button.classList.add("wrong");
+
+feedback.textContent="✗ Wrong. Try again.";
+
+feedback.style.color="#ff6666";
+
+options.forEach(o=>{
+o.disabled=false;
+});
+
+}
+
+}
+
+
+function checkWriting(){
+
+let text=document.getElementById("writing").value
+.toLowerCase()
+.trim();
+
+let feedback=document.getElementById("writingFeedback");
+
+let accepted=[
+"i'm from mozambique.",
+"i'm from mozambique",
+"im from mozambique.",
+"im from mozambique",
+"i am from mozambique.",
+"i am from mozambique"
+];
+
+if(accepted.includes(text)){
+
+feedback.textContent="✓ Correct!";
+
+feedback.style.color="#00d084";
+
+addXP(15);
+
+setTimeout(next,800);
+
+}else{
+
+feedback.textContent="✗ Try again. Start with: I'm from...";
+
+feedback.style.color="#ff6666";
+
+}
+
+}
+
+
+function finishLesson(){
+
+let text=document.getElementById("finalAnswer")
+.value
+.toLowerCase();
+
+let feedback=document.createElement("p");
+
+if(
+text.includes("mozambique") &&
+(text.includes("from") || text.includes("sou"))
+){
+
+addXP(15);
+
+showScreen(11);
+
+}else{
+
+feedback.textContent="Try to answer: I'm from Mozambique.";
+
+feedback.style.color="#ff6666";
+
+document.getElementById("finalAnswer")
+.parentNode.appendChild(feedback);
+
+}
+
+}
+
+
+function goBack(){
+
+window.location.href="../index.html";
+
+}
+
+</script>
+
+</body>
+  </html>
 
  
