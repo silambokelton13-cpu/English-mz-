@@ -1,1 +1,2597 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Lesson 10 — My Daily Routine | English MZ</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f7f7f7;
+  color:#222;
+}
+
+.app{
+  max-width:520px;
+  min-height:100vh;
+  margin:auto;
+  background:#fff;
+}
+
+.top{
+  height:65px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 16px;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:10;
+}
+
+.close{
+  border:0;
+  background:none;
+  font-size:28px;
+  color:#777;
+}
+
+.progress-area{
+  flex:1;
+}
+
+.progress-bg{
+  height:10px;
+  background:#e5e5e5;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:.3s;
+}
+
+.xp{
+  color:#ff9600;
+  font-weight:bold;
+}
+
+.content{
+  padding:25px 20px 100px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+  animation:fade .25s ease;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.emoji{
+  text-align:center;
+  font-size:55px;
+  margin:10px 0 18px;
+}
+
+h1{
+  font-size:30px;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.card{
+  background:#f1f1f1;
+  padding:18px;
+  border-radius:18px;
+  margin:14px 0;
+}
+
+.english{
+  font-size:23px;
+  font-weight:bold;
+  text-align:center;
+  line-height:1.4;
+}
+
+.translation{
+  text-align:center;
+  color:#777;
+  margin-top:7px;
+}
+
+.audio{
+  display:block;
+  width:62px;
+  height:62px;
+  border:0;
+  border-radius:50%;
+  background:#58cc02;
+  color:#fff;
+  font-size:25px;
+  margin:15px auto;
+}
+
+.primary{
+  width:100%;
+  border:0;
+  background:#58cc02;
+  color:white;
+  padding:16px;
+  border-radius:15px;
+  font-size:17px;
+  font-weight:bold;
+  margin-top:15px;
+  box-shadow:0 4px 0 #46a800;
+}
+
+.primary:active{
+  transform:translateY(3px);
+  box-shadow:0 1px 0 #46a800;
+}
+
+.secondary{
+  width:100%;
+  background:white;
+  border:2px solid #ddd;
+  padding:14px;
+  border-radius:15px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.practice{
+  margin-top:20px;
+}
+
+.practice-box{
+  border:2px solid #e2e2e2;
+  border-radius:17px;
+  padding:16px;
+  margin:14px 0;
+}
+
+.practice-title{
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.option{
+  width:100%;
+  padding:14px;
+  background:#fff;
+  border:2px solid #ddd;
+  border-radius:13px;
+  margin-top:8px;
+  text-align:left;
+  font-size:16px;
+}
+
+.option.correct{
+  background:#e1f8d1;
+  border-color:#58cc02;
+}
+
+.option.wrong{
+  background:#ffe1e1;
+  border-color:#ff4b4b;
+}
+
+.feedback{
+  display:none;
+  padding:12px;
+  border-radius:12px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.good{
+  background:#e1f8d1;
+  color:#318000;
+}
+
+.bad{
+  background:#ffe1e1;
+  color:#b00000;
+}
+
+.word-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:12px 0;
+}
+
+.word{
+  padding:12px;
+  border:2px solid #ddd;
+  border-radius:12px;
+  background:white;
+  font-weight:bold;
+}
+
+.word.selected{
+  background:#e1f8d1;
+  border-color:#58cc02;
+}
+
+.answer{
+  min-height:52px;
+  padding:14px;
+  background:#f3f3f3;
+  border-radius:13px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:2px solid #ccc;
+  border-radius:13px;
+  font-size:17px;
+  margin-top:10px;
+}
+
+.sentence{
+  background:#eef8ff;
+  border:2px solid #c9e5f5;
+  border-radius:16px;
+  padding:17px;
+  margin:12px 0;
+  font-size:19px;
+  text-align:center;
+}
+
+.chat{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin:20px 0;
+}
+
+.bubble{
+  padding:14px 16px;
+  border-radius:18px;
+  max-width:88%;
+  line-height:1.4;
+}
+
+.left{
+  align-self:flex-start;
+  background:#eee;
+}
+
+.right{
+  align-self:flex-end;
+  background:#e1f8d1;
+}
+
+.mic{
+  display:block;
+  width:95px;
+  height:95px;
+  margin:25px auto 15px;
+  border:0;
+  border-radius:50%;
+  background:#58cc02;
+  color:#fff;
+  font-size:38px;
+}
+
+.mic.recording{
+  background:#ff4b4b;
+}
+
+.speech{
+  min-height:65px;
+  background:#f1f1f1;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+}
+
+.kit{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.kit-item{
+  background:#f4f4f4;
+  border-radius:15px;
+  padding:16px;
+}
+
+.kit-item strong{
+  display:block;
+  margin-bottom:8px;
+}
+
+.independence{
+  margin-top:22px;
+  padding:18px;
+  background:#f1f1f1;
+  border-radius:18px;
+}
+
+.bar{
+  height:14px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:#58cc02;
+  transition:1s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="top">
+
+<button class="close" onclick="exitLesson()">×</button>
+
+<div class="progress-area">
+<div class="progress-bg">
+<div class="progress" id="progress"></div>
+</div>
+</div>
+
+<div class="xp">
+⭐ <span id="xp">0</span>
+</div>
+
+</div>
+
+<div class="content">
+
+
+<!-- 1 -->
+
+<section class="screen active" id="screen1">
+
+<div class="emoji">🧠</div>
+
+<h1>My Daily Routine</h1>
+
+<p class="subtitle">
+Hoje você vai aprender a falar sobre o seu dia.
+</p>
+
+<div class="card">
+
+<div class="english">
+I study English.
+</div>
+
+<div class="translation">
+Eu estudo inglês.
+</div>
+
+<p style="margin-top:15px;line-height:1.5">
+
+<strong>S</strong> = Subject → I<br>
+<strong>V</strong> = Verb → study<br>
+<strong>O</strong> = Object → English
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="english">
+I study English every day.
+</div>
+
+<div class="translation">
+Eu estudo inglês todos os dias.
+</div>
+
+<p style="margin-top:15px;line-height:1.5">
+
+<strong>every</strong> = cada / todos os
+
+<br><br>
+
+every day = todos os dias<br>
+every morning = todas as manhãs<br>
+every night = todas as noites<br>
+every week = todas as semanas
+
+</p>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Start
+</button>
+
+</section>
+
+
+<!-- 2 -->
+
+<section class="screen" id="screen2">
+
+<div class="emoji">🌅</div>
+
+<h2>Daily Routine</h2>
+
+<p class="subtitle">
+Aprenda as ações mais importantes.
+Toque no 🔊 para ouvir.
+</p>
+
+<div class="card">
+<strong>wake up</strong> — acordar
+<button class="audio" onclick="speak('wake up')">🔊</button>
+</div>
+
+<div class="card">
+<strong>brush my teeth</strong> — escovar os dentes
+<button class="audio" onclick="speak('brush my teeth')">🔊</button>
+</div>
+
+<div class="card">
+<strong>take a shower</strong> — tomar banho
+<button class="audio" onclick="speak('take a shower')">🔊</button>
+</div>
+
+<div class="card">
+<strong>eat breakfast</strong> — tomar café da manhã
+<button class="audio" onclick="speak('eat breakfast')">🔊</button>
+</div>
+
+<div class="card">
+<strong>go to school</strong> — ir à escola
+<button class="audio" onclick="speak('go to school')">🔊</button>
+</div>
+
+<div class="card">
+<strong>study</strong> — estudar
+<button class="audio" onclick="speak('study')">🔊</button>
+</div>
+
+<div class="card">
+<strong>work</strong> — trabalhar
+<button class="audio" onclick="speak('work')">🔊</button>
+</div>
+
+<div class="card">
+<strong>go home</strong> — ir para casa
+<button class="audio" onclick="speak('go home')">🔊</button>
+</div>
+
+<div class="card">
+<strong>watch TV</strong> — assistir TV
+<button class="audio" onclick="speak('watch TV')">🔊</button>
+</div>
+
+<div class="card">
+<strong>go to bed</strong> — ir para a cama
+<button class="audio" onclick="speak('go to bed')">🔊</button>
+</div>
+
+<button class="primary" onclick="nextScreen()">
+I’m ready
+</button>
+
+</section>
+
+
+<!-- 3 -->
+
+<section class="screen" id="screen3">
+
+<div class="emoji">🔥</div>
+
+<h2>Practice Lab 1</h2>
+
+<p class="subtitle">
+6 desafios diferentes. Pratique antes de avançar.
+</p>
+
+<div class="practice-box">
+
+<div class="practice-title">1. What means "wake up"?</div>
+
+<button class="option" onclick="answer(this,true)">
+Acordar
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Dormir
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">2. Choose the correct sentence.</div>
+
+<button class="option" onclick="answer(this,true)">
+I eat breakfast.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I breakfast eat.
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">3. Complete.</div>
+
+<p>I ___ English.</p>
+
+<button class="option" onclick="answer(this,true)">
+study
+</button>
+
+<button class="option" onclick="answer(this,false)">
+wake
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">4. What means "go home"?</div>
+
+<button class="option" onclick="answer(this,true)">
+Ir para casa
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Ir para escola
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">5. Complete.</div>
+
+<p>I ___ TV.</p>
+
+<button class="option" onclick="answer(this,true)">
+watch
+</button>
+
+<button class="option" onclick="answer(this,false)">
+brush
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">6. Choose.</div>
+
+<p>Which is correct?</p>
+
+<button class="option" onclick="answer(this,true)">
+I go to school.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I school go to.
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 4 -->
+
+<section class="screen" id="screen4">
+
+<div class="emoji">🧠</div>
+
+<h2>SVO Practice</h2>
+
+<p class="subtitle">
+Agora identifique Subject, Verb e Object.
+</p>
+
+<div class="sentence">
+I drink water.
+</div>
+
+<div class="practice-box">
+
+<p><strong>I</strong> is...</p>
+
+<button class="option" onclick="answer(this,true)">Subject</button>
+<button class="option" onclick="answer(this,false)">Verb</button>
+
+</div>
+
+<div class="practice-box">
+
+<p><strong>drink</strong> is...</p>
+
+<button class="option" onclick="answer(this,false)">Subject</button>
+<button class="option" onclick="answer(this,true)">Verb</button>
+
+</div>
+
+<div class="practice-box">
+
+<p><strong>water</strong> is...</p>
+
+<button class="option" onclick="answer(this,true)">Object</button>
+<button class="option" onclick="answer(this,false)">Subject</button>
+
+</div>
+
+<div class="sentence">
+I play basketball.
+</div>
+
+<div class="practice-box">
+
+<p>Which word is the verb?</p>
+
+<button class="option" onclick="answer(this,true)">play</button>
+<button class="option" onclick="answer(this,false)">basketball</button>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 5 -->
+
+<section class="screen" id="screen5">
+
+<div class="emoji">🧩</div>
+
+<h2>Practice Lab 2</h2>
+
+<p class="subtitle">
+Construa frases. Não traduza palavra por palavra.
+Pense no padrão.
+</p>
+
+<div class="practice-box">
+
+<div class="practice-title">
+1. Put the words in order.
+</div>
+
+<div class="word-grid" id="words1">
+<button class="word" onclick="selectWord(this,'I')">I</button>
+<button class="word" onclick="selectWord(this,'study')">study</button>
+<button class="word" onclick="selectWord(this,'English')">English</button>
+</div>
+
+<div class="answer" id="answer1"></div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+2. Choose the correct sentence.
+</div>
+
+<button class="option" onclick="answer(this,true)">
+I play basketball.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I basketball play.
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+3. Complete.
+</div>
+
+<p>I ___ water.</p>
+
+<button class="option" onclick="answer(this,true)">drink</button>
+<button class="option" onclick="answer(this,false)">go</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+4. Complete.
+</div>
+
+<p>I ___ movies.</p>
+
+<button class="option" onclick="answer(this,true)">watch</button>
+<button class="option" onclick="answer(this,false)">wake</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+5. Choose the SVO sentence.</div>
+
+<button class="option" onclick="answer(this,true)">
+I eat breakfast.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Breakfast I eat.
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+6. Build your own idea.</div>
+
+<input id="ownSentence"
+placeholder="I like... / I study... / I play...">
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 6 -->
+
+<section class="screen" id="screen6">
+
+<div class="emoji">🌅</div>
+
+<h2>My Morning</h2>
+
+<p class="subtitle">
+Veja uma rotina simples.
+</p>
+
+<div class="sentence">I wake up.</div>
+<div class="sentence">I get up.</div>
+<div class="sentence">I brush my teeth.</div>
+<div class="sentence">I take a shower.</div>
+<div class="sentence">I eat breakfast.</div>
+
+<h3 style="margin-top:20px">
+Put the morning in order:
+</h3>
+
+<div class="practice-box">
+
+<button class="option" onclick="answer(this,true)">
+I wake up → I brush my teeth → I eat breakfast.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I eat breakfast → I wake up → I sleep.
+</button>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 7 -->
+
+<section class="screen" id="screen7">
+
+<div class="emoji">🔥</div>
+
+<h2>Practice Lab 3</h2>
+
+<p class="subtitle">
+Agora vamos misturar tudo.
+</p>
+
+<div class="practice-box">
+
+<div class="practice-title">1. Complete:</div>
+
+<p>I ___ up at 6.</p>
+
+<button class="option" onclick="answer(this,true)">wake</button>
+<button class="option" onclick="answer(this,false)">watch</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">2. Choose:</div>
+
+<p>Which means "escovar os dentes"?</p>
+
+<button class="option" onclick="answer(this,true)">
+brush my teeth
+</button>
+
+<button class="option" onclick="answer(this,false)">
+go to bed
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">3. Choose SVO:</div>
+
+<button class="option" onclick="answer(this,true)">
+I drink water.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Water drink I.
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">4. Complete:</div>
+
+<p>I ___ breakfast.</p>
+
+<button class="option" onclick="answer(this,true)">eat</button>
+<button class="option" onclick="answer(this,false)">sleep</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">5. Choose:</div>
+
+<p>What comes after morning?</p>
+
+<button class="option" onclick="answer(this,true)">afternoon</button>
+<button class="option" onclick="answer(this,false)">night</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">6. Choose:</div>
+
+<p>At night I...</p>
+
+<button class="option" onclick="answer(this,true)">
+go to bed.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+eat breakfast.
+</button>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 8 -->
+
+<section class="screen" id="screen8">
+
+<div class="emoji">⏰</div>
+
+<h2>Every + Time</h2>
+
+<p class="subtitle">
+<strong>Every</strong> mostra que algo acontece
+regularmente.
+</p>
+
+<div class="card">
+
+<div class="english">every day</div>
+<div class="translation">todos os dias</div>
+
+<br>
+
+<div class="english">every morning</div>
+<div class="translation">todas as manhãs</div>
+
+<br>
+
+<div class="english">every night</div>
+<div class="translation">todas as noites</div>
+
+<br>
+
+<div class="english">every week</div>
+<div class="translation">todas as semanas</div>
+
+</div>
+
+<div class="sentence">
+I study English every day.
+</div>
+
+<div class="sentence">
+I play basketball every week.
+</div>
+
+<div class="sentence">
+I watch TV every night.
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Practice
+</button>
+
+</section>
+
+
+<!-- 9 -->
+
+<section class="screen" id="screen9">
+
+<div class="emoji">🔥</div>
+
+<h2>Practice Lab 4</h2>
+
+<p class="subtitle">
+Mesmo conceito. Frases diferentes.
+</p>
+
+<div class="practice-box">
+
+<div class="practice-title">1.</div>
+
+<p>I study English ___ day.</p>
+
+<button class="option" onclick="answer(this,true)">every</button>
+<button class="option" onclick="answer(this,false)">one</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">2.</div>
+
+<p>I play football ___ week.</p>
+
+<button class="option" onclick="answer(this,true)">every</button>
+<button class="option" onclick="answer(this,false)">English</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">3. Choose the correct sentence.</div>
+
+<button class="option" onclick="answer(this,true)">
+I work every morning.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I every morning work.
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">4. Complete.</div>
+
+<p>I sleep ___ night.</p>
+
+<button class="option" onclick="answer(this,true)">every</button>
+<button class="option" onclick="answer(this,false)">study</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">5. What means "every week"?</div>
+
+<button class="option" onclick="answer(this,true)">
+Todas as semanas
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Todas as manhãs
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">6. Create.</div>
+
+<input placeholder="I ______ every day.">
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 10 -->
+
+<section class="screen" id="screen10">
+
+<div class="emoji">🗣️</div>
+
+<h2>Mini Conversation — Answer</h2>
+
+<p class="subtitle">
+Agora você vai praticar apenas respostas.
+</p>
+
+<div class="chat">
+
+<div class="bubble left">
+What do you do every morning?
+</div>
+
+</div>
+
+<button class="option" onclick="answer(this,true)">
+I study.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+What about you?
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Nice to meet you.
+</button>
+
+<div class="chat">
+
+<div class="bubble left">
+What time do you wake up?
+</div>
+
+</div>
+
+<button class="option" onclick="answer(this,true)">
+I wake up at 6.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I like basketball.
+</button>
+
+<div class="chat">
+
+<div class="bubble left">
+What do you do at night?
+</div>
+
+</div>
+
+<button class="option" onclick="answer(this,true)">
+I watch TV.
+</button>
+
+<button class="option" onclick="answer(this,false)">
+I am from Mozambique.
+</button>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 11 -->
+
+<section class="screen" id="screen11">
+
+<div class="emoji">❓</div>
+
+<h2>Mini Conversation — Ask</h2>
+
+<p class="subtitle">
+Agora é diferente: você precisa fazer a pergunta.
+</p>
+
+<div class="chat">
+
+<div class="bubble right">
+I wake up at 6.
+</div>
+
+</div>
+
+<p><strong>Which question matches?</strong></p>
+
+<button class="option" onclick="answer(this,true)">
+What time do you wake up?
+</button>
+
+<button class="option" onclick="answer(this,false)">
+What do you like?
+</button>
+
+<div class="chat">
+
+<div class="bubble right">
+I study every morning.
+</div>
+
+</div>
+
+<button class="option" onclick="answer(this,true)">
+What do you do every morning?
+</button>
+
+<button class="option" onclick="answer(this,false)">
+Where are you from?
+</button>
+
+<div class="chat">
+
+<div class="bubble right">
+I go to school at 7.
+</div>
+
+</div>
+
+<button class="option" onclick="answer(this,true)">
+What time do you go to school?
+</button>
+
+<button class="option" onclick="answer(this,false)">
+What music do you like?
+</button>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 12 -->
+
+<section class="screen" id="screen12">
+
+<div class="emoji">💬</div>
+
+<h2>Conversation Builder</h2>
+
+<p class="subtitle">
+Agora vamos misturar responder e perguntar.
+</p>
+
+<div class="chat">
+
+<div class="bubble left">
+What time do you wake up?
+</div>
+
+<div class="bubble right">
+I wake up at 6.
+</div>
+
+<div class="bubble left">
+What do you do every morning?
+</div>
+
+<div class="bubble right">
+I study English.
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+Now it's your turn 👇
+</div>
+
+<p>
+Choose a question to ask:
+</p>
+
+<button class="option"
+onclick="answer(this,true)">
+What do you do every day?
+</button>
+
+<button class="option"
+onclick="answer(this,false)">
+I wake up at 6.
+</button>
+
+<button class="option"
+onclick="answer(this,false)">
+I study English.
+</button>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+Now answer:
+</div>
+
+<div class="chat">
+
+<div class="bubble left">
+What do you do every day?
+</div>
+
+</div>
+
+<input
+id="conversationAnswer"
+placeholder="I..."
+>
+
+<button
+class="secondary"
+onclick="checkTextAnswer('conversationAnswer','conversationFeedback')">
+Check
+</button>
+
+<div
+id="conversationFeedback"
+class="feedback">
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<div class="practice-title">
+Your turn to ask ❓
+</div>
+
+<p>
+Your friend says:
+</p>
+
+<div class="bubble right">
+I wake up at 7.
+</div>
+
+<p style="margin-top:15px">
+What question can you ask?
+</p>
+
+<input
+id="conversationQuestion"
+placeholder="What time...?"
+>
+
+<button
+class="secondary"
+onclick="checkQuestion()">
+Check question
+</button>
+
+<div
+id="questionFeedback"
+class="feedback">
+</div>
+
+</div>
+
+<button
+class="primary"
+onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 13 -->
+
+<section class="screen" id="screen13">
+
+<div class="emoji">🎭</div>
+
+<h2>Real Life</h2>
+
+<p class="subtitle">
+Imagine that you meet a new friend.
+Agora a conversa depende de você.
+</p>
+
+<div class="chat">
+
+<div class="bubble left">
+Hi! What do you do every day?
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<p>
+Your answer:
+</p>
+
+<input
+id="realAnswer"
+placeholder="I study... / I work..."
+>
+
+</div>
+
+<div class="chat">
+
+<div class="bubble left">
+What time do you wake up?
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<input
+id="timeAnswer"
+placeholder="I wake up at..."
+>
+
+</div>
+
+<div class="chat">
+
+<div class="bubble left">
+What do you do in the evening?
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<input
+id="eveningAnswer"
+placeholder="I..."
+>
+
+</div>
+
+<div class="chat">
+
+<div class="bubble left">
+What about you?
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<p>
+Agora faça uma pergunta de volta.
+</p>
+
+<input
+id="realQuestion"
+placeholder="What do you...?"
+>
+
+</div>
+
+<button
+class="secondary"
+onclick="checkRealConversation()">
+Check my conversation
+</button>
+
+<div
+id="realFeedback"
+class="feedback">
+</div>
+
+<button
+class="primary"
+onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 14 -->
+
+<section class="screen" id="screen14">
+
+<div class="emoji">🎤</div>
+
+<h2>My Day</h2>
+
+<p class="subtitle">
+Agora fale sobre o seu próprio dia.
+Você pode usar informações verdadeiras sobre você.
+</p>
+
+<div class="card">
+
+<strong>Try to say 3–5 sentences:</strong>
+
+<br><br>
+
+I wake up at...<br>
+I...<br>
+I...<br>
+I...<br>
+I go to bed at...
+
+</div>
+
+<button
+class="mic"
+id="mic"
+onclick="startSpeaking()">
+🎤
+</button>
+
+<p
+id="speechStatus"
+style="text-align:center;color:#777">
+Toque no microfone e fale em inglês.
+</p>
+
+<div
+class="speech"
+id="speechResult">
+Sua fala aparecerá aqui.
+</div>
+
+<button
+class="secondary"
+onclick="speak('I wake up at six. I study in the morning. I work in the afternoon. I watch TV at night. I go to bed at ten.')">
+🔊 Hear example
+</button>
+
+<button
+class="primary"
+onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- 15 -->
+
+<section class="screen" id="screen15">
+
+<div class="emoji">🇬🇧</div>
+
+<h2>English Mode</h2>
+
+<p class="subtitle">
+Agora quase não usamos português.
+Pense diretamente em inglês.
+</p>
+
+<div class="card">
+
+<div class="english">
+Tell me about your day.
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<strong>Use these ideas:</strong>
+
+<div
+class="word-grid"
+style="margin-top:15px">
+
+<div class="word">morning</div>
+<div class="word">afternoon</div>
+<div class="word">evening</div>
+<div class="word">night</div>
+
+</div>
+
+</div>
+
+<div class="practice-box">
+
+<p>
+Write 3 sentences about your day:
+</p>
+
+<input
+placeholder="I wake up..."
+>
+
+<input
+placeholder="I..."
+>
+
+<input
+placeholder="I..."
+>
+
+</div>
+
+<div class="card">
+
+<div class="english">
+Ask me about my day.
+</div>
+
+</div>
+
+<p class="subtitle">
+Agora faça uma pergunta em inglês sobre
+a rotina de outra pessoa.
+</p>
+
+<input
+id="englishModeQuestion"
+placeholder="What time...?"
+>
+
+<button
+class="secondary"
+onclick="checkQuestionInput()">
+Check
+</button>
+
+<div
+id="englishModeFeedback"
+class="feedback">
+</div>
+
+<button
+class="primary"
+onclick="nextScreen()">
+Final Mission
+</button>
+
+</section>
+
+
+<!-- 16 -->
+
+<section class="screen" id="screen16">
+
+<div class="emoji">🏆</div>
+
+<h1>Daily Routine Mission</h1>
+
+<p class="subtitle">
+Agora mostre o que consegue fazer sozinho.
+</p>
+
+<div class="kit">
+
+<div class="kit-item">
+
+<strong>1️⃣ Answer</strong>
+
+<p>
+What time do you wake up?
+</p>
+
+<input
+placeholder="I wake up at..."
+>
+
+<p style="margin-top:12px">
+What do you do every morning?
+</p>
+
+<input
+placeholder="I..."
+>
+
+<p style="margin-top:12px">
+What do you do at night?
+</p>
+
+<input
+placeholder="I..."
+>
+
+</div>
+
+<div class="kit-item">
+
+<strong>2️⃣ Ask</strong>
+
+<p>
+Faça 3 perguntas sobre a rotina de outra pessoa.
+</p>
+
+<input
+placeholder="Question 1"
+>
+
+<input
+placeholder="Question 2"
+>
+
+<input
+placeholder="Question 3"
+>
+
+</div>
+
+<div class="kit-item">
+
+<strong>3️⃣ Speak 🎤</strong>
+
+<p>
+Fale sobre o seu dia usando pelo menos 3 frases.
+</p>
+
+<button
+class="mic"
+onclick="startSpeaking()">
+🎤
+</button>
+
+</div>
+
+</div>
+
+<div class="independence">
+
+<h2>English Independence</h2>
+
+<p>
+Você está ficando mais independente quando
+consegue responder, perguntar e falar sem traduzir tudo.
+</p>
+
+<div class="bar">
+
+<div
+class="fill"
+id="independenceFill">
+</div>
+
+</div>
+
+<p
+style="margin-top:10px;font-weight:bold">
+
+<span id="independenceNumber">
+0
+</span>%
+
+</p>
+
+</div>
+
+<button
+class="primary"
+onclick="finishLesson()">
+Finish Lesson
+</button>
+
+</section>
+
+
+<script>
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentScreen = 1;
+
+const totalScreens = 16;
+
+let xp = 0;
+
+let startingXP = 0;
+
+let independence = 0;
+
+let recognition = null;
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+function loadData(){
+
+  const saved =
+    localStorage.getItem(
+      "englishMZ_xp"
+    );
+
+  xp =
+    parseInt(saved) || 0;
+
+  updateXP();
+
+}
+
+
+/* =========================
+   XP
+========================= */
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  updateXP();
+
+}
+
+
+function updateXP(){
+
+  const element =
+    document.getElementById("xp");
+
+  if(element){
+
+    element.textContent =
+      xp;
+
+  }
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+  const progress =
+    ((currentScreen - 1) /
+    (totalScreens - 1)) * 100;
+
+  const bar =
+    document.getElementById(
+      "progress"
+    );
+
+  if(bar){
+
+    bar.style.width =
+      progress + "%";
+
+  }
+
+}
+
+
+/* =========================
+   SCREEN
+========================= */
+
+function showScreen(number){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen){
+
+      screen.classList.remove(
+        "active"
+      );
+
+    });
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+  if(!target){
+
+    return;
+
+  }
+
+  target.classList.add(
+    "active"
+  );
+
+  currentScreen =
+    number;
+
+  updateProgress();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(number === 16){
+
+    showResults();
+
+  }
+
+}
+
+
+function nextScreen(){
+
+  if(
+    currentScreen <
+    totalScreens
+  ){
+
+    showScreen(
+      currentScreen + 1
+    );
+
+  }
+
+}
+
+
+/* =========================
+   MULTIPLE CHOICE
+========================= */
+
+function answer(
+  button,
+  correct
+){
+
+  if(correct){
+
+    button.classList.add(
+      "correct"
+    );
+
+    addXP(2);
+
+    independence += 2;
+
+    const box =
+      button.parentElement;
+
+    const feedback =
+      box.querySelector(
+        ".feedback"
+      );
+
+    if(feedback){
+
+      feedback.className =
+        "feedback show good";
+
+      feedback.textContent =
+        "✓ Correct!";
+
+    }
+
+  }else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+    const box =
+      button.parentElement;
+
+    const feedback =
+      box.querySelector(
+        ".feedback"
+      );
+
+    if(feedback){
+
+      feedback.className =
+        "feedback show bad";
+
+      feedback.textContent =
+        "✗ Try again.";
+
+    }
+
+    setTimeout(function(){
+
+      button.classList.remove(
+        "wrong"
+      );
+
+    },700);
+
+  }
+
+}
+
+
+/* =========================
+   TEXT ANSWER
+========================= */
+
+function checkTextAnswer(
+  inputId,
+  feedbackId
+){
+
+  const input =
+    document.getElementById(
+      inputId
+    );
+
+  const feedback =
+    document.getElementById(
+      feedbackId
+    );
+
+  const value =
+    input.value.trim();
+
+  if(!value){
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "✗ Write your answer first.";
+
+    return;
+
+  }
+
+  if(
+    value.toLowerCase()
+      .startsWith("i ")
+  ){
+
+    feedback.className =
+      "feedback show good";
+
+    feedback.textContent =
+      "✓ Good! That is your own answer.";
+
+    addXP(5);
+
+    independence += 5;
+
+  }else{
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "Try starting with: I...";
+
+  }
+
+}
+
+
+/* =========================
+   QUESTION CHECK
+========================= */
+
+function checkQuestion(){
+
+  const input =
+    document.getElementById(
+      "conversationQuestion"
+    );
+
+  const feedback =
+    document.getElementById(
+      "questionFeedback"
+    );
+
+  const value =
+    input.value
+      .trim()
+      .toLowerCase();
+
+  if(!value){
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "✗ Write a question.";
+
+    return;
+
+  }
+
+  if(
+    value.includes("what time") &&
+    value.includes("wake")
+  ){
+
+    feedback.className =
+      "feedback show good";
+
+    feedback.textContent =
+      "✓ Great question!";
+
+    addXP(8);
+
+    independence += 8;
+
+  }else{
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "Think: What time do you wake up?";
+
+  }
+
+}
+
+
+/* =========================
+   REAL CONVERSATION
+========================= */
+
+function checkRealConversation(){
+
+  const answer =
+    document.getElementById(
+      "realAnswer"
+    ).value.trim();
+
+  const time =
+    document.getElementById(
+      "timeAnswer"
+    ).value.trim();
+
+  const evening =
+    document.getElementById(
+      "eveningAnswer"
+    ).value.trim();
+
+  const question =
+    document.getElementById(
+      "realQuestion"
+    ).value.trim();
+
+  const feedback =
+    document.getElementById(
+      "realFeedback"
+    );
+
+  let score = 0;
+
+  if(answer) score++;
+
+  if(time) score++;
+
+  if(evening) score++;
+
+  if(question.includes("?")) score++;
+
+  if(score >= 3){
+
+    feedback.className =
+      "feedback show good";
+
+    feedback.textContent =
+      "✓ Great! You are building a real conversation.";
+
+    addXP(12);
+
+    independence += 12;
+
+  }else{
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "Complete more parts of the conversation.";
+
+  }
+
+}
+
+
+/* =========================
+   ENGLISH MODE QUESTION
+========================= */
+
+function checkQuestionInput(){
+
+  const input =
+    document.getElementById(
+      "englishModeQuestion"
+    );
+
+  const feedback =
+    document.getElementById(
+      "englishModeFeedback"
+    );
+
+  const value =
+    input.value
+      .trim()
+      .toLowerCase();
+
+  if(!value){
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "✗ Write a question.";
+
+    return;
+
+  }
+
+  if(
+    value.includes("what") ||
+    value.includes("when") ||
+    value.includes("where") ||
+    value.includes("do")
+  ){
+
+    feedback.className =
+      "feedback show good";
+
+    feedback.textContent =
+      "✓ Good! You made a question.";
+
+    addXP(8);
+
+    independence += 8;
+
+  }else{
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "Try starting with What, When, Where or Do.";
+
+  }
+
+}
+
+
+/* =========================
+   WORD BUILDER
+========================= */
+
+let builtSentence = [];
+
+
+function selectWord(
+  button,
+  word
+){
+
+  if(
+    button.classList.contains(
+      "selected"
+    )
+  ){
+
+    return;
+
+  }
+
+  button.classList.add(
+    "selected"
+  );
+
+  builtSentence.push(
+    word
+  );
+
+  const answerBox =
+    document.getElementById(
+      "answer1"
+    );
+
+  if(answerBox){
+
+    answerBox.textContent =
+      builtSentence.join(" ");
+
+  }
+
+  if(
+    builtSentence.join(" ") ===
+    "I study English"
+  ){
+
+    addXP(8);
+
+    independence += 8;
+
+  }
+
+}
+
+
+/* =========================
+   AUDIO
+========================= */
+
+function speak(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    alert(
+      "O seu navegador não suporta áudio."
+    );
+
+    return;
+
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  utterance.lang =
+    "en-US";
+
+  utterance.rate =
+    0.82;
+
+  speechSynthesis.speak(
+    utterance
+  );
+
+}
+
+
+/* =========================
+   SPEAKING
+========================= */
+
+function startSpeaking(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  const mic =
+    document.getElementById(
+      "mic"
+    );
+
+  const status =
+    document.getElementById(
+      "speechStatus"
+    );
+
+  const result =
+    document.getElementById(
+      "speechResult"
+    );
+
+  if(!SpeechRecognition){
+
+    if(status){
+
+      status.textContent =
+        "O reconhecimento de voz não está disponível neste navegador.";
+
+    }
+
+    return;
+
+  }
+
+  recognition =
+    new SpeechRecognition();
+
+  recognition.lang =
+    "en-US";
+
+  recognition.interimResults =
+    false;
+
+  recognition.continuous =
+    false;
+
+  if(mic){
+
+    mic.classList.add(
+      "recording"
+    );
+
+  }
+
+  if(status){
+
+    status.textContent =
+      "🔴 Listening... Speak now.";
+
+  }
+
+  try{
+
+    recognition.start();
+
+  }catch(error){
+
+    if(mic){
+
+      mic.classList.remove(
+        "recording"
+      );
+
+    }
+
+    return;
+
+  }
+
+  recognition.onresult =
+    function(event){
+
+      const text =
+        event.results[0][0]
+        .transcript;
+
+      if(result){
+
+        result.textContent =
+          "🗣️ " + text;
+
+      }
+
+      if(status){
+
+        status.textContent =
+          "✓ Great! You spoke English.";
+
+      }
+
+      independence += 15;
+
+      addXP(10);
+
+    };
+
+  recognition.onerror =
+    function(event){
+
+      if(status){
+
+        if(
+          event.error ===
+          "not-allowed"
+        ){
+
+          status.textContent =
+            "Permita o acesso ao microfone.";
+
+        }else{
+
+          status.textContent =
+            "Não consegui ouvir. Tente novamente.";
+
+        }
+
+      }
+
+    };
+
+  recognition.onend =
+    function(){
+
+      if(mic){
+
+        mic.classList.remove(
+          "recording"
+        );
+
+      }
+
+    };
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showResults(){
+
+  if(
+    independence > 100
+  ){
+
+    independence = 100;
+
+  }
+
+  const number =
+    document.getElementById(
+      "independenceNumber"
+    );
+
+  if(number){
+
+    number.textContent =
+      independence;
+
+  }
+
+  setTimeout(function(){
+
+    const fill =
+      document.getElementById(
+        "independenceFill"
+      );
+
+    if(fill){
+
+      fill.style.width =
+        independence + "%";
+
+    }
+
+  },300);
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+function finishLesson(){
+
+  localStorage.setItem(
+    "englishMZ_a1_lesson10",
+    "completed"
+  );
+
+  localStorage.setItem(
+    "englishMZ_a1_lesson10_independence",
+    independence
+  );
+
+  window.location.href =
+    "../index.html";
+
+}
+
+
+/* =========================
+   EXIT
+========================= */
+
+function exitLesson(){
+
+  if(
+    confirm(
+      "Sair da aula? O XP já ganho será mantido."
+    )
+  ){
+
+    window.location.href =
+      "../index.html";
+
+  }
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadData();
+
+startingXP =
+  xp;
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
