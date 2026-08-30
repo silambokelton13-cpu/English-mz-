@@ -1,1 +1,2022 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lesson 9 — Nice to Meet You | English MZ</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f7f7f7;
+  color:#222;
+}
+
+.app{
+  max-width:520px;
+  min-height:100vh;
+  margin:auto;
+  background:white;
+}
+
+.top{
+  height:65px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 16px;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  background:white;
+  z-index:10;
+}
+
+.close{
+  border:0;
+  background:none;
+  font-size:28px;
+  color:#777;
+  cursor:pointer;
+}
+
+.progress-area{
+  flex:1;
+}
+
+.progress-bg{
+  height:10px;
+  background:#e5e5e5;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:.3s;
+}
+
+.xp{
+  color:#ff9600;
+  font-weight:bold;
+}
+
+.content{
+  padding:28px 20px 100px;
+}
+
+.screen{
+  display:none;
+  animation:fade .25s ease;
+}
+
+.screen.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.emoji{
+  text-align:center;
+  font-size:55px;
+  margin:10px 0 20px;
+}
+
+h1{
+  font-size:30px;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#f1f1f1;
+  padding:20px;
+  border-radius:18px;
+  margin:18px 0;
+}
+
+.english{
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+  line-height:1.4;
+}
+
+.translation{
+  text-align:center;
+  color:#777;
+  margin-top:8px;
+}
+
+.primary{
+  width:100%;
+  border:0;
+  background:#58cc02;
+  color:white;
+  padding:16px;
+  border-radius:15px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:14px;
+  box-shadow:0 4px 0 #46a800;
+}
+
+.primary:active{
+  transform:translateY(3px);
+  box-shadow:0 1px 0 #46a800;
+}
+
+.secondary{
+  width:100%;
+  background:white;
+  border:2px solid #ddd;
+  padding:15px;
+  border-radius:15px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.audio-button{
+  display:block;
+  width:70px;
+  height:70px;
+  margin:20px auto;
+  border:0;
+  border-radius:50%;
+  background:#58cc02;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.pattern{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:20px 0;
+}
+
+.pattern-box{
+  background:white;
+  border:2px solid #ddd;
+  border-radius:12px;
+  padding:13px;
+  font-weight:bold;
+}
+
+.arrow{
+  font-size:20px;
+  color:#888;
+}
+
+.choice-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+
+.choice{
+  background:white;
+  border:2px solid #ddd;
+  border-radius:16px;
+  padding:15px 8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.choice.selected{
+  border-color:#58cc02;
+  background:#e1f8d1;
+}
+
+.picture{
+  display:block;
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.personal{
+  text-align:center;
+  background:#eef8ff;
+  border:2px solid #b9dff2;
+  padding:20px;
+  border-radius:16px;
+  margin-top:20px;
+}
+
+.personal strong{
+  font-size:21px;
+}
+
+input{
+  width:100%;
+  padding:16px;
+  border:2px solid #ccc;
+  border-radius:14px;
+  font-size:17px;
+  margin-top:10px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#58cc02;
+}
+
+.hint{
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:14px;
+  color:#666;
+  line-height:1.5;
+  margin-top:15px;
+}
+
+.feedback{
+  display:none;
+  padding:15px;
+  border-radius:14px;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.good{
+  background:#e1f8d1;
+  color:#318000;
+}
+
+.bad{
+  background:#ffe1e1;
+  color:#b00000;
+}
+
+.option{
+  width:100%;
+  background:white;
+  border:2px solid #ddd;
+  border-radius:15px;
+  padding:16px;
+  margin-top:10px;
+  text-align:left;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.option.correct{
+  border-color:#58cc02;
+  background:#e1f8d1;
+}
+
+.option.wrong{
+  border-color:#ff4b4b;
+  background:#ffe1e1;
+}
+
+.chat{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin:20px 0;
+}
+
+.bubble{
+  max-width:85%;
+  padding:14px 16px;
+  border-radius:18px;
+  line-height:1.4;
+}
+
+.left{
+  align-self:flex-start;
+  background:#eee;
+  border-bottom-left-radius:5px;
+}
+
+.right{
+  align-self:flex-end;
+  background:#e1f8d1;
+  border-bottom-right-radius:5px;
+}
+
+.mic{
+  display:block;
+  width:95px;
+  height:95px;
+  margin:25px auto 15px;
+  border:0;
+  border-radius:50%;
+  background:#58cc02;
+  color:white;
+  font-size:38px;
+  cursor:pointer;
+  box-shadow:0 5px 0 #46a800;
+}
+
+.mic.recording{
+  background:#ff4b4b;
+  box-shadow:0 5px 0 #c90000;
+}
+
+.speech-result{
+  min-height:60px;
+  background:#f1f1f1;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  line-height:1.5;
+}
+
+.kit{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:20px;
+}
+
+.kit-item{
+  background:#f5f5f5;
+  border-radius:15px;
+  padding:16px;
+}
+
+.kit-item strong{
+  display:block;
+  margin-bottom:8px;
+}
+
+.kit-item span{
+  display:block;
+  margin:5px 0;
+}
+
+.independence{
+  margin-top:22px;
+  background:#f1f1f1;
+  padding:20px;
+  border-radius:18px;
+}
+
+.bar{
+  height:14px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.fill{
+  width:0%;
+  height:100%;
+  background:#58cc02;
+  transition:1s;
+}
+
+.circle{
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  background:#58cc02;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  margin:25px auto;
+}
+
+.number{
+  font-size:38px;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="top">
+
+<button class="close" onclick="exitLesson()">×</button>
+
+<div class="progress-area">
+<div class="progress-bg">
+<div class="progress" id="progress"></div>
+</div>
+</div>
+
+<div class="xp">
+⭐ <span id="xp">0</span>
+</div>
+
+</div>
+
+
+<div class="content">
+
+
+<!-- SCREEN 1 -->
+
+<section class="screen active" id="screen1">
+
+<div class="emoji">👋</div>
+
+<h1>Nice to meet you!</h1>
+
+<p class="subtitle">
+Hoje você vai aprender a conhecer alguém,
+falar sobre você e manter uma pequena conversa.
+</p>
+
+<div class="card">
+
+<div class="english">
+Nice to meet you.
+</div>
+
+<div class="translation">
+Prazer em conhecer você.
+</div>
+
+</div>
+
+<p class="subtitle">
+🎯 <strong>Mission:</strong><br>
+Conheça alguém, fale sobre você
+e descubra coisas sobre essa pessoa.
+</p>
+
+<button class="primary" onclick="nextScreen()">
+Start Lesson
+</button>
+
+</section>
+
+
+<!-- SCREEN 2 -->
+
+<section class="screen" id="screen2">
+
+<div class="emoji">👂</div>
+
+<h2>Listen</h2>
+
+<p class="subtitle">
+Ouça e observe como uma conversa começa.
+</p>
+
+<div class="card">
+
+<div class="english">
+Hi! What’s your name?
+</div>
+
+<button class="audio-button"
+onclick="speak('Hi! What is your name?')">
+🔊
+</button>
+
+<div class="translation">
+Qual é o seu nome?
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="english">
+Nice to meet you.
+</div>
+
+<button class="audio-button"
+onclick="speak('Nice to meet you.')">
+🔊
+</button>
+
+<div class="translation">
+Prazer em conhecer você.
+</div>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Continue
+</button>
+
+</section>
+
+
+<!-- SCREEN 3 -->
+
+<section class="screen" id="screen3">
+
+<div class="emoji">🧠</div>
+
+<h2>SVO</h2>
+
+<p class="subtitle">
+Você vai começar a perceber como as frases
+em inglês são construídas.
+</p>
+
+<div class="pattern">
+
+<div class="pattern-box">I</div>
+
+<div class="arrow">+</div>
+
+<div class="pattern-box">like</div>
+
+<div class="arrow">+</div>
+
+<div class="pattern-box">music</div>
+
+</div>
+
+<div class="card">
+
+<div class="english">
+I like music.
+</div>
+
+<div class="translation">
+Eu gosto de música.
+</div>
+
+</div>
+
+<p class="subtitle">
+
+<strong>S</strong> = Subject — quem faz<br>
+<strong>V</strong> = Verb — ação<br>
+<strong>O</strong> = Object — aquilo relacionado à ação
+
+</p>
+
+<div class="hint">
+
+💡 Não memorize apenas
+<strong>I like music.</strong>
+
+Aprenda o padrão:
+
+<br><br>
+
+<strong>I + like + something</strong>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+I understand
+</button>
+
+</section>
+
+
+<!-- SCREEN 4 -->
+
+<section class="screen" id="screen4">
+
+<div class="emoji">🎯</div>
+
+<h2>I like...</h2>
+
+<p class="subtitle">
+Agora escolha algo que você realmente gosta.
+</p>
+
+<div class="choice-grid">
+
+<button class="choice"
+onclick="chooseLike(this,'basketball')">
+
+<span class="picture">🏀</span>
+Basketball
+
+</button>
+
+<button class="choice"
+onclick="chooseLike(this,'football')">
+
+<span class="picture">⚽</span>
+Football
+
+</button>
+
+<button class="choice"
+onclick="chooseLike(this,'anime')">
+
+<span class="picture">🎌</span>
+Anime
+
+</button>
+
+<button class="choice"
+onclick="chooseLike(this,'music')">
+
+<span class="picture">🎵</span>
+Music
+
+</button>
+
+<button class="choice"
+onclick="chooseLike(this,'movies')">
+
+<span class="picture">🎬</span>
+Movies
+
+</button>
+
+<button class="choice"
+onclick="chooseLike(this,'games')">
+
+<span class="picture">🎮</span>
+Games
+
+</button>
+
+</div>
+
+<div class="personal">
+
+<strong>
+I like <span id="likeChoice">...</span>.
+</strong>
+
+</div>
+
+<button id="continue4"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 5 -->
+
+<section class="screen" id="screen5">
+
+<div class="emoji">✍️</div>
+
+<h2>Your answer</h2>
+
+<p class="subtitle">
+Agora escreva algo que você realmente gosta.
+Pode ser qualquer coisa.
+</p>
+
+<div class="card">
+
+<div class="english">
+I like...
+</div>
+
+<input
+id="customLike"
+type="text"
+placeholder="anime, music, football..."
+>
+
+</div>
+
+<div class="hint">
+Exemplo: <strong>I like anime.</strong>
+</div>
+
+<div id="feedback5" class="feedback"></div>
+
+<button class="primary" onclick="saveCustomLike()">
+Use my answer
+</button>
+
+<button
+id="continue5"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 6 -->
+
+<section class="screen" id="screen6">
+
+<div class="emoji">🏆</div>
+
+<h2>What’s your favorite sport?</h2>
+
+<p class="subtitle">
+Escolha o seu esporte favorito.
+</p>
+
+<div class="choice-grid">
+
+<button class="choice"
+onclick="chooseSport(this,'football')">
+
+<span class="picture">⚽</span>
+Football
+
+</button>
+
+<button class="choice"
+onclick="chooseSport(this,'basketball')">
+
+<span class="picture">🏀</span>
+Basketball
+
+</button>
+
+<button class="choice"
+onclick="chooseSport(this,'volleyball')">
+
+<span class="picture">🏐</span>
+Volleyball
+
+</button>
+
+<button class="choice"
+onclick="chooseSport(this,'athletics')">
+
+<span class="picture">🏃</span>
+Athletics
+
+</button>
+
+<button class="choice"
+onclick="chooseSport(this,'boxing')">
+
+<span class="picture">🥊</span>
+Boxing
+
+</button>
+
+<button class="choice"
+onclick="chooseSport(this,'sport')">
+
+<span class="picture">✍️</span>
+Other
+
+</button>
+
+</div>
+
+<div class="personal">
+
+<strong>
+My favorite sport is
+<span id="sportChoice">...</span>.
+</strong>
+
+</div>
+
+<button
+id="continue6"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 7 -->
+
+<section class="screen" id="screen7">
+
+<div class="emoji">🎬</div>
+
+<h2>What’s your favorite movie?</h2>
+
+<p class="subtitle">
+Escolha o tipo de filme que você gosta.
+</p>
+
+<div class="choice-grid">
+
+<button class="choice"
+onclick="chooseMovie(this,'action')">
+
+<span class="picture">💥</span>
+Action
+
+</button>
+
+<button class="choice"
+onclick="chooseMovie(this,'comedy')">
+
+<span class="picture">😂</span>
+Comedy
+
+</button>
+
+<button class="choice"
+onclick="chooseMovie(this,'horror')">
+
+<span class="picture">👻</span>
+Horror
+
+</button>
+
+<button class="choice"
+onclick="chooseMovie(this,'romance')">
+
+<span class="picture">❤️</span>
+Romance
+
+</button>
+
+<button class="choice"
+onclick="chooseMovie(this,'drama')">
+
+<span class="picture">🎭</span>
+Drama
+
+</button>
+
+<button class="choice"
+onclick="chooseMovie(this,'different')">
+
+<span class="picture">✍️</span>
+Other
+
+</button>
+
+</div>
+
+<div class="personal">
+
+<strong>
+I like
+<span id="movieChoice">...</span>
+movies.
+</strong>
+
+</div>
+
+<button
+id="continue7"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 8 -->
+
+<section class="screen" id="screen8">
+
+<div class="emoji">🎵</div>
+
+<h2>What kind of music do you like?</h2>
+
+<div class="choice-grid">
+
+<button class="choice"
+onclick="chooseMusic(this,'Afrobeats')">
+
+<span class="picture">🥁</span>
+Afrobeats
+
+</button>
+
+<button class="choice"
+onclick="chooseMusic(this,'Hip-hop')">
+
+<span class="picture">🎤</span>
+Hip-hop
+
+</button>
+
+<button class="choice"
+onclick="chooseMusic(this,'R&B')">
+
+<span class="picture">🎧</span>
+R&B
+
+</button>
+
+<button class="choice"
+onclick="chooseMusic(this,'Rock')">
+
+<span class="picture">🎸</span>
+Rock
+
+</button>
+
+<button class="choice"
+onclick="chooseMusic(this,'Gospel')">
+
+<span class="picture">🎼</span>
+Gospel
+
+</button>
+
+<button class="choice"
+onclick="chooseMusic(this,'music')">
+
+<span class="picture">✍️</span>
+Other
+
+</button>
+
+</div>
+
+<div class="personal">
+
+<strong>
+I like
+<span id="musicChoice">...</span>.
+</strong>
+
+</div>
+
+<button
+id="continue8"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 9 -->
+
+<section class="screen" id="screen9">
+
+<div class="emoji">💬</div>
+
+<h2>Keep talking</h2>
+
+<p class="subtitle">
+Agora aprenda pequenas expressões
+que tornam uma conversa mais natural.
+</p>
+
+<div class="card">
+
+<strong>Really?</strong>
+<div class="translation">Sério?</div>
+
+<br>
+
+<strong>Oh, nice!</strong>
+<div class="translation">Ah, legal!</div>
+
+<br>
+
+<strong>Me too!</strong>
+<div class="translation">Eu também!</div>
+
+<br>
+
+<strong>That’s great!</strong>
+<div class="translation">Isso é ótimo!</div>
+
+<br>
+
+<strong>Interesting!</strong>
+<div class="translation">Interessante!</div>
+
+<br>
+
+<strong>What about you?</strong>
+<div class="translation">E você?</div>
+
+</div>
+
+<button class="primary" onclick="nextScreen()">
+Practice
+</button>
+
+</section>
+
+
+<!-- SCREEN 10 -->
+
+<section class="screen" id="screen10">
+
+<div class="emoji">🎭</div>
+
+<h2>Real World</h2>
+
+<p class="subtitle">
+Você acabou de conhecer alguém.
+Escolha uma resposta natural.
+</p>
+
+<div class="chat">
+
+<div class="bubble left">
+Hi! I’m Daniel. What’s your name?
+</div>
+
+</div>
+
+<button class="option"
+onclick="realWorld(this,true)">
+
+I’m Alex. Nice to meet you.
+
+</button>
+
+<button class="option"
+onclick="realWorld(this,false)">
+
+I like basketball.
+
+</button>
+
+<button class="option"
+onclick="realWorld(this,false)">
+
+Good night.
+
+</button>
+
+<div id="feedback10" class="feedback"></div>
+
+<button
+id="continue10"
+class="primary"
+style="display:none"
+onclick="nextScreen()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 11 -->
+
+<section class="screen" id="screen11">
+
+<div class="emoji">🗣️</div>
+
+<h2>Your turn</h2>
+
+<p class="subtitle">
+Agora fale sobre você.
+Use as frases que aprendeu.
+</p>
+
+<div class="chat">
+
+<div class="bubble left">
+What’s your name?
+</div>
+
+<div class="bubble left">
+Where are you from?
+</div>
+
+<div class="bubble left">
+What do you like?
+</div>
+
+</div>
+
+<button
+class="mic"
+id="mic"
+onclick="startSpeaking()">
+
+🎤
+
+</button>
+
+<div
+id="speechStatus"
+style="text-align:center;color:#777">
+
+Toque no microfone e fale.
+</div>
+
+<div
+class="speech-result"
+id="speechResult">
+
+Sua fala aparecerá aqui.
+
+</div>
+
+<button
+class="secondary"
+onclick="speak('Hi. My name is Alex. I am from Mozambique. I like basketball.')">
+
+🔊 Hear an example
+</button>
+
+<button class="primary"
+onclick="finishSpeaking()">
+
+Continue
+
+</button>
+
+</section>
+
+
+<!-- SCREEN 12 -->
+
+<section class="screen" id="screen12">
+
+<div class="emoji">🎉</div>
+
+<h1>You did it!</h1>
+
+<p class="subtitle">
+Você terminou o seu primeiro Social Kit.
+</p>
+
+<div class="kit">
+
+<div class="kit-item">
+
+<strong>👋 START</strong>
+
+<span>Hi!</span>
+<span>Hello!</span>
+<span>How are you?</span>
+
+</div>
+
+<div class="kit-item">
+
+<strong>🙋 INTRODUCE</strong>
+
+<span>What’s your name?</span>
+<span>My name is...</span>
+<span>Nice to meet you.</span>
+
+</div>
+
+<div class="kit-item">
+
+<strong>🌍 TALK ABOUT YOU</strong>
+
+<span>I’m from...</span>
+<span>I live in...</span>
+<span>I like...</span>
+
+</div>
+
+<div class="kit-item">
+
+<strong>❓ ASK</strong>
+
+<span>Where are you from?</span>
+<span>What do you like?</span>
+<span>What’s your favorite sport?</span>
+<span>What kind of music do you like?</span>
+
+</div>
+
+<div class="kit-item">
+
+<strong>💬 KEEP TALKING</strong>
+
+<span>Really?</span>
+<span>Oh, nice!</span>
+<span>Me too!</span>
+<span>What about you?</span>
+
+</div>
+
+<div class="kit-item">
+
+<strong>👋 FINISH</strong>
+
+<span>Nice talking to you.</span>
+<span>See you later.</span>
+<span>Have a nice day!</span>
+
+</div>
+
+</div>
+
+
+<div class="independence">
+
+<h2>English Independence</h2>
+
+<p>
+Quanto mais você consegue responder
+com suas próprias palavras,
+mais independente você fica.
+</p>
+
+<div class="bar">
+
+<div
+class="fill"
+id="independenceFill">
+</div>
+
+</div>
+
+<p style="margin-top:10px;font-weight:bold">
+
+<span id="independenceNumber">0</span>%
+
+</p>
+
+</div>
+
+
+<div class="circle">
+
+<div class="number" id="finalXP">
++0
+</div>
+
+XP
+
+</div>
+
+
+<button class="primary"
+onclick="finishLesson()">
+
+Finish Lesson
+
+</button>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+let currentScreen = 1;
+
+const totalScreens = 12;
+
+let xp = 0;
+
+let startingXP = 0;
+
+let independence = 0;
+
+let speakingUsed = false;
+
+let recognition = null;
+
+let profile = {
+
+  like:"",
+  sport:"",
+  movie:"",
+  music:""
+
+};
+
+
+/* LOAD */
+
+function loadData(){
+
+  const saved =
+    localStorage.getItem(
+      "englishMZ_xp"
+    );
+
+  if(saved){
+
+    xp =
+      parseInt(saved) || 0;
+
+  }
+
+  updateXP();
+
+}
+
+
+/* XP */
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem(
+    "englishMZ_xp",
+    xp
+  );
+
+  updateXP();
+
+}
+
+
+function updateXP(){
+
+  document.getElementById(
+    "xp"
+  ).textContent = xp;
+
+}
+
+
+/* PROGRESS */
+
+function updateProgress(){
+
+  const percent =
+    ((currentScreen - 1) /
+    (totalScreens - 1)) * 100;
+
+  document.getElementById(
+    "progress"
+  ).style.width =
+    percent + "%";
+
+}
+
+
+/* SCREEN */
+
+function showScreen(number){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen){
+
+      screen.classList.remove(
+        "active"
+      );
+
+    });
+
+  const target =
+    document.getElementById(
+      "screen" + number
+    );
+
+  if(!target) return;
+
+  target.classList.add(
+    "active"
+  );
+
+  currentScreen =
+    number;
+
+  updateProgress();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(number === 12){
+
+    showResults();
+
+  }
+
+}
+
+
+function nextScreen(){
+
+  if(
+    currentScreen <
+    totalScreens
+  ){
+
+    showScreen(
+      currentScreen + 1
+    );
+
+  }
+
+}
+
+
+/* AUDIO */
+
+function speak(text){
+
+  if(
+    !("speechSynthesis"
+    in window)
+  ){
+
+    alert(
+      "O seu navegador não suporta áudio."
+    );
+
+    return;
+
+  }
+
+  speechSynthesis.cancel();
+
+  const voice =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  voice.lang =
+    "en-US";
+
+  voice.rate =
+    0.85;
+
+  speechSynthesis.speak(
+    voice
+  );
+
+}
+
+
+/* LIKE */
+
+function chooseLike(
+  button,
+  value
+){
+
+  profile.like =
+    value;
+
+  document.getElementById(
+    "likeChoice"
+  ).textContent =
+    value;
+
+  document
+    .querySelectorAll(
+      "#screen4 .choice"
+    )
+    .forEach(function(b){
+
+      b.classList.remove(
+        "selected"
+      );
+
+    });
+
+  button.classList.add(
+    "selected"
+  );
+
+  independence += 8;
+
+  addXP(5);
+
+  document.getElementById(
+    "continue4"
+  ).style.display =
+    "block";
+
+}
+
+
+/* CUSTOM LIKE */
+
+function saveCustomLike(){
+
+  const input =
+    document.getElementById(
+      "customLike"
+    );
+
+  const value =
+    input.value.trim();
+
+  const feedback =
+    document.getElementById(
+      "feedback5"
+    );
+
+  if(!value){
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "✗ Write something you like.";
+
+    return;
+
+  }
+
+  profile.like =
+    value;
+    independence += 12;
+
+  addXP(10);
+
+  feedback.className =
+    "feedback show good";
+
+  feedback.textContent =
+    "✓ Great! This is your own English.";
+
+  document.getElementById(
+    "continue5"
+  ).style.display =
+    "block";
+
+}
+
+
+/* SPORT */
+
+function chooseSport(
+  button,
+  value
+){
+
+  profile.sport =
+    value;
+
+  document.getElementById(
+    "sportChoice"
+  ).textContent =
+    value;
+
+  document
+    .querySelectorAll(
+      "#screen6 .choice"
+    )
+    .forEach(function(b){
+
+      b.classList.remove(
+        "selected"
+      );
+
+    });
+
+  button.classList.add(
+    "selected"
+  );
+
+  independence += 8;
+
+  addXP(5);
+
+  document.getElementById(
+    "continue6"
+  ).style.display =
+    "block";
+
+}
+
+
+/* MOVIE */
+
+function chooseMovie(
+  button,
+  value
+){
+
+  profile.movie =
+    value;
+
+  document.getElementById(
+    "movieChoice"
+  ).textContent =
+    value;
+
+  document
+    .querySelectorAll(
+      "#screen7 .choice"
+    )
+    .forEach(function(b){
+
+      b.classList.remove(
+        "selected"
+      );
+
+    });
+
+  button.classList.add(
+    "selected"
+  );
+
+  independence += 8;
+
+  addXP(5);
+
+  document.getElementById(
+    "continue7"
+  ).style.display =
+    "block";
+
+}
+
+
+/* MUSIC */
+
+function chooseMusic(
+  button,
+  value
+){
+
+  profile.music =
+    value;
+
+  document.getElementById(
+    "musicChoice"
+  ).textContent =
+    value;
+
+  document
+    .querySelectorAll(
+      "#screen8 .choice"
+    )
+    .forEach(function(b){
+
+      b.classList.remove(
+        "selected"
+      );
+
+    });
+
+  button.classList.add(
+    "selected"
+  );
+
+  independence += 8;
+
+  addXP(5);
+
+  document.getElementById(
+    "continue8"
+  ).style.display =
+    "block";
+
+}
+
+
+/* REAL WORLD */
+
+function realWorld(
+  button,
+  correct
+){
+
+  const feedback =
+    document.getElementById(
+      "feedback10"
+    );
+
+  if(correct){
+
+    button.classList.add(
+      "correct"
+    );
+
+    independence += 15;
+
+    addXP(10);
+
+    feedback.className =
+      "feedback show good";
+
+    feedback.textContent =
+      "✓ Natural response! You started the conversation.";
+
+    document
+      .querySelectorAll(
+        "#screen10 .option"
+      )
+      .forEach(function(b){
+
+        b.style.pointerEvents =
+          "none";
+
+      });
+
+    document.getElementById(
+      "continue10"
+    ).style.display =
+      "block";
+
+  }else{
+
+    button.classList.add(
+      "wrong"
+    );
+
+    feedback.className =
+      "feedback show bad";
+
+    feedback.textContent =
+      "✗ Think about the question: What’s your name?";
+
+    setTimeout(function(){
+
+      button.classList.remove(
+        "wrong"
+      );
+
+    },700);
+
+  }
+
+}
+
+
+/* SPEAKING */
+
+function startSpeaking(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  const mic =
+    document.getElementById(
+      "mic"
+    );
+
+  const status =
+    document.getElementById(
+      "speechStatus"
+    );
+
+  const result =
+    document.getElementById(
+      "speechResult"
+    );
+
+  if(!SpeechRecognition){
+
+    status.textContent =
+      "O reconhecimento de voz não está disponível neste navegador.";
+
+    return;
+
+  }
+
+  recognition =
+    new SpeechRecognition();
+
+  recognition.lang =
+    "en-US";
+
+  recognition.interimResults =
+    false;
+
+  recognition.continuous =
+    false;
+
+  mic.classList.add(
+    "recording"
+  );
+
+  status.textContent =
+    "🔴 Listening... Speak now.";
+
+  try{
+
+    recognition.start();
+
+  }catch(error){
+
+    status.textContent =
+      "Tente novamente.";
+
+    mic.classList.remove(
+      "recording"
+    );
+
+    return;
+
+  }
+
+  recognition.onresult =
+    function(event){
+
+      const text =
+        event.results[0][0]
+        .transcript;
+
+      result.textContent =
+        "🗣️ " + text;
+
+      status.textContent =
+        "✓ Great! You used your own English.";
+
+      speakingUsed =
+        true;
+
+      independence += 20;
+
+      addXP(15);
+
+    };
+
+  recognition.onerror =
+    function(event){
+
+      if(
+        event.error ===
+        "not-allowed"
+      ){
+
+        status.textContent =
+          "Permita o acesso ao microfone.";
+
+      }else{
+
+        status.textContent =
+          "Não consegui ouvir. Tente novamente.";
+
+      }
+
+    };
+
+  recognition.onend =
+    function(){
+
+      mic.classList.remove(
+        "recording"
+      );
+
+    };
+
+}
+
+
+/* FINISH SPEAKING */
+
+function finishSpeaking(){
+
+  if(!speakingUsed){
+
+    independence += 5;
+
+  }
+
+  nextScreen();
+
+}
+
+
+/* RESULTS */
+
+function showResults(){
+
+  if(independence > 100){
+
+    independence = 100;
+
+  }
+
+  document.getElementById(
+    "independenceNumber"
+  ).textContent =
+    independence;
+
+  document.getElementById(
+    "finalXP"
+  ).textContent =
+    "+" +
+    Math.max(
+      0,
+      xp - startingXP
+    );
+
+  setTimeout(function(){
+
+    document.getElementById(
+      "independenceFill"
+    ).style.width =
+      independence + "%";
+
+  },300);
+
+}
+
+
+/* SAVE LESSON */
+
+function finishLesson(){
+
+  localStorage.setItem(
+    "englishMZ_a1_lesson09",
+    "completed"
+  );
+
+  localStorage.setItem(
+    "englishMZ_a1_lesson09_profile",
+    JSON.stringify(
+      profile
+    )
+  );
+
+  localStorage.setItem(
+    "englishMZ_a1_lesson09_independence",
+    independence
+  );
+
+  window.location.href =
+    "../index.html";
+
+}
+
+
+/* EXIT */
+
+function exitLesson(){
+
+  if(
+    confirm(
+      "Sair da aula? O XP já ganho será mantido."
+    )
+  ){
+
+    window.location.href =
+      "../index.html";
+
+  }
+
+}
+
+
+/* START */
+
+loadData();
+
+startingXP =
+  xp;
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
 
